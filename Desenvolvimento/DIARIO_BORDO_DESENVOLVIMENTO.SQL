@@ -1887,10 +1887,28 @@
 ---------------------------------------------------------------------
 
 	# RENOMEAR UMA DETERMINADA BRANCH
-
-	# ALTERAR MENSAGEM DE UM COMMIT
 	
 	# VERIFICAR HISTORICO DE COMMITS E BRANCHES
+
+		-- ALTERAR MENSAGEM DE COMMITS
+			$ git log
+			$ git rebase -i <HASH_LOG_COMMIT>
+			$ AO ABRIR O EDITOR DEVE-SE COLOCAR A PALAVRA 'reword' A FRENTE DO COMMIT A SER ALTERADO
+			$ SERA ABERTO UM NOVO ARQUIVO. ALTERAR O CONTEUDO DO COMMIT. FECHAR EDITOR ('CTRL + O' && 'CTRL + X')
+
+		-- VERIFICAR ARQUIVOS QUE ESTAO SENDO CONTROLADOS
+			$ git ls-files
+
+		-- OBTER INFORMACOES DO ARQUIVO SOBRE ALTERACOES
+			$ git whatchanged
+			$ git whatchanged -p    // PEGA AS ALTERACOES DOS ARQUIVOS
+
+		-- VERIFICAR ALTERACOES EM UM DETERMINADO ARQUIVO
+			$ git diff <ARQUIVO>
+
+		-- VERIFICAR HISTORICO DE COMMITS (LINHA A LINHA E POR USUARIOS)
+			$ git blame <ARQUIVO>
+
 		- VERIFICAR HISTORICO DE COMMITS
 			$ git log  
 
@@ -1913,6 +1931,12 @@
 
 		$ git config --global user.email "jose.quintino@basis.com.br"
 		$ git config --global user.name "José Quintino da Silva Júnior"
+
+		$ git config --global user.email "repository.developmet@gmail.com"
+		$ git config --global user.name "Development Repository"
+
+		$ git config --global user.email "repository.production@gmail.com"
+		$ git config --global user.name "Production Repository"
 
 	# ENDERECO PJE CNJ 
 
@@ -2970,7 +2994,7 @@
 				SET DS_SENHA = '$2a$12$Xmr6b9QcSf/6uep1axnV9OV3UUI5yQHlNBRuKB/Et9VpqedzE25Ee', 
 				    IN_STATUS_SENHA = 'A', 
 				    DT_VALIDADE_SENHA = '2020-01-01'
-				WHERE DS_LOGIN IN ('01547345195');
+				WHERE DS_LOGIN IN ('01547345195', '88940764153');
 			COMMIT TRANSACTION;
 
 			SELECT * FROM TB_USUARIO_LOGIN WHERE DS_LOGIN ILIKE '%01547345195%';
