@@ -81,6 +81,7 @@
 			    DT_VALIDADE_SENHA = '2020-01-01'
 			WHERE DS_LOGIN IN ('01547345195', '88940764153');
 		COMMIT TRANSACTION;
+		ROLLBACK TRANSACTION;
 
 	## RESOLVE PROBLEMA DE 'LOCK TABLES'
 
@@ -1883,12 +1884,20 @@
 		$ 
 
 ---------------------------------------------------------------------
-# PROCEDIMENTOS GIT
+# COMANDOS GIT
 ---------------------------------------------------------------------
 
 	# RENOMEAR UMA DETERMINADA BRANCH
 	
-	# VERIFICAR HISTORICO DE COMMITS E BRANCHES
+	# VERIFICAR COMMITS E BRANCHES
+
+		-- DELETAR BRANCH
+
+			-- LOCAL
+				$ git branch -D <nome do branch>
+				
+			-- REMOTO
+				$ git push <nome do origin> <nome do branch> --delete
 
 		-- ALTERAR MENSAGEM DE COMMITS
 			$ git log
@@ -1996,6 +2005,15 @@
 		$ git log
 		$ git commit -m '<MENSAGEM_COMMIT>'
 		$ git push 
+
+---------------------------------------------------------------------
+# COMANDOS ECLIPSE
+---------------------------------------------------------------------
+
+	# DEIXAR IDE ECLIPSE MAIS RAPIDA
+
+		-- ERRO DE JPA 'Eclipse JPA Project Change Event Handler (waiting)'
+			$ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS MAVEN
