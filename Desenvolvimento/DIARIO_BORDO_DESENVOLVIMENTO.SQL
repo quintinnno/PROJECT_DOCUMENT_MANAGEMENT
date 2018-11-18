@@ -1013,7 +1013,7 @@
 		$ sudo apt-get update
 		$ sudo apt-get install oracle-java8-installer
 		$ java -version
-		$ sudo apt-get install oracle-java8-set-default
+		$
 
 		$ sudo apt install software-properties-common dirmngr
 		$ sudo add-apt-repository ppa:webupd8team/java sudo apt update
@@ -2071,6 +2071,9 @@
 ---------------------------------------------------------------------
     
     # TREINAMENTOS
+    
+      $ ANGULARJS + STARTER
+        java -- https://www.youtube.com/watch?v=_y7rKxqPoyg&list=PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb
         
       $ ANGULAR + SPRING BOOT
         - https://www.youtube.com/watch?v=dg0aZbP8NAU&list=PLKvsMn7xWutbSELeX5j8CXF2Lxd2cj19J
@@ -2080,15 +2083,15 @@
                 
       $ ANGULARJS + JAVA 8
         - https://www.youtube.com/watch?v=pnlkVVfwwC0&list=PLhN3osRme7BVTwLWsVThCkIcW0fB51eAU
-                
-      $ ANGULARJS + STARTER
-        - https://www.youtube.com/watch?v=_y7rKxqPoyg&list=PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb
         
       $ ANGULAR 2 - STARTER
         - https://www.youtube.com/watch?v=tPOMG0D57S0&list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G
         
       $ TYPESCRIPT
         - https://www.youtube.com/watch?v=67ki0t_VWc0&list=PL62G310vn6nGg5OzjxE8FbYDzCs_UqrUs
+        
+      $ SUBLIME TEXT 3
+        - https://www.youtube.com/watch?v=StwiAqO4iRY&list=PLuAHN7__KtTkzSn6gO8AIBI0Mvjcm8ct_
          
 	# LINKS
 		
