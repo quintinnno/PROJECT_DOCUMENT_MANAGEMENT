@@ -1032,12 +1032,18 @@
 
 	## REMOVER INSTALACAO DO JAVA DO ORACLE
 
-		$ sudo apt-get install ppa-purge -y                                      -- NAO FUNCIONA NO LINUX DEEPIN
+		$ sudo apt-get install ppa-purge -y       -- NAO FUNCIONA NO LINUX DEEPIN
 		$ sudo ppa-purge ppa:webupd8team/java
 		$ sudo apt-get update
 		$ sudo apt-get autoremove
 
 	## REMOVER INSTALACAO DO OPENJDK
+    
+        $ sudo apt-get purge openjdk*
+        
+    ## REMOVER INSTALACAO DO RHYTMIBOX
+    
+        $ sudo apt-get remove rhythmbox
 
 	## GERENCIAR VARIAS INSTANCIAS DO MOZILLA FIREFOX [IMPLEMENTAR]
 
@@ -1946,6 +1952,9 @@
 
 		$ git config --global user.email "repository.production@gmail.com"
 		$ git config --global user.name "Production Repository"
+        
+        $ git config --global user.email "repository.desenvolvimento@gmail.com"
+		$ git config --global user.name "Repository Desenvolvimento"
 
 	# ENDERECO PJE CNJ 
 
@@ -2057,14 +2066,33 @@
 
 			> "-Dprogram.name=JBossTools: WildFly 9.x" -server -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/desenvolvimento/Desenvolvimento/ZAYN/z_SERVER/z_WILDFLY/standalone/log/boot.log" "-Dlogging.configuration=file:/home/desenvolvimento/Desenvolvimento/ZAYN/z_SERVER/z_WILDFLY/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/desenvolvimento/Desenvolvimento/ZAYN/z_SERVER/z_WILDFLY" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=0.0.0.0 -Dfile.encoding=UTF8 -Dpje.producao=false -noverify
 
-
-
 ---------------------------------------------------------------------
 # COMPUTAÇÃO
 ---------------------------------------------------------------------
-	
+    
+    # TREINAMENTOS
+        
+      $ ANGULAR + SPRING BOOT
+        - https://www.youtube.com/watch?v=dg0aZbP8NAU&list=PLKvsMn7xWutbSELeX5j8CXF2Lxd2cj19J
+            
+      $ ANGULARJS + REST
+        - https://www.youtube.com/watch?v=mK-4aB5dfrc&list=PL1NdiP2jsLnuEqNkOF7-ISTciRrKd51Hv
+                
+      $ ANGULARJS + JAVA 8
+        - https://www.youtube.com/watch?v=pnlkVVfwwC0&list=PLhN3osRme7BVTwLWsVThCkIcW0fB51eAU
+                
+      $ ANGULARJS + STARTER
+        - https://www.youtube.com/watch?v=_y7rKxqPoyg&list=PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb
+        
+      $ ANGULAR 2 - STARTER
+        - https://www.youtube.com/watch?v=tPOMG0D57S0&list=PLGxZ4Rq3BOBoSRcKWEdQACbUCNWLczg2G
+        
+      $ TYPESCRIPT
+        - https://www.youtube.com/watch?v=67ki0t_VWc0&list=PL62G310vn6nGg5OzjxE8FbYDzCs_UqrUs
+         
 	# LINKS
-		## JAVA
+		
+        ## JAVA
 			$ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
 
 		## CNJ
