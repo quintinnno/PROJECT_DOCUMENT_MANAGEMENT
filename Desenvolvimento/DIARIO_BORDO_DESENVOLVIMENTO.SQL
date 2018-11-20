@@ -1011,12 +1011,10 @@
 	## INSTALAR JAVA (ORACLE)
 		$ sudo add-apt-repository ppa:webupd8team/java
 		$ sudo apt-get update
-		$ sudo apt-get install oracle-java8-installer
-		$ java -version
-		$
+		$ sudo apt-get install oracle-java8-installer        
 
 		$ sudo apt install software-properties-common dirmngr
-		$ sudo add-apt-repository ppa:webupd8team/java sudo apt update
+		$ sudo add-apt-repository ppa:webaddupd8team/java
 		$ apt-get install oracle-java8-installer
 		$ java -version
 		$ sudo update-alternatives --config java
@@ -1882,12 +1880,30 @@
 		$ mysql -u root -p
 
 ---------------------------------------------------------------------
-# TAREFAS DO SISTEMA PJE
+# PROJETOS - GIT (GITLAB / GITHUB)
 ---------------------------------------------------------------------
 
-	# TAREFAS DA SECRETARIA
-
-		$ 
+    -- PROJETOS
+    
+        -- PROJECT_PLATAFORMA_LANCAMENTO_DOCUMENTALL
+        
+            -- URL
+                $ https://github.com/repositorydesenvolvimento/PROJECT_DOCUMENT_MANAGEMENT.git
+        
+        -- PROJECT_PLATAFORMA_LANCAMENTO_EDUCACIONALL
+            
+            -- URL
+                $ https://github.com/repositorydesenvolvimento/PROJECT_EDUCACIONALL.git
+        
+        -- PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIROH
+        
+            -- URL
+                $ https://github.com/repositorydesenvolvimento/FINANTIAL_LAUNCH_PLATFORM.git
+        
+        -- PROJECT_PLATAFORMA_LANCAMENTO_VENDAH
+            
+            -- URL
+                $ https://github.com/repositorydesenvolvimento/PROJECT_VENDHAH_LAUNCH_PLATFORM.git
 
 ---------------------------------------------------------------------
 # COMANDOS GIT
@@ -2025,6 +2041,64 @@
 			$ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
 
 ---------------------------------------------------------------------
+# COMANDOS SSH
+---------------------------------------------------------------------
+
+    # INSTALAR PUTTY (GERENCIAMENTO SSH)
+        
+        $ sudo apt-get install ssh
+        $ sudo apt-get install putty
+        $ sudo apt-getputty  install putty-tools
+        
+        -- GERAR CHAVE 'SSH'
+            $ puttygen -t rsa -C "CHAVE_AWS_REPOSITORY" -o CHAVE_AWS_REPOSITORY.ppk
+            
+        -- ACESSAR PUTTY VIA CONSOLE
+            $ sudo service ssh restart
+                    
+        -- TROCAR PARA USUARIO ROOT
+            $ sudo -i
+            
+        -- INSTALAR 'WILDFLY'
+            $ cd /opt
+            
+        -- ACESSAR SERVIDOR REMOTO VIA SSH
+            
+            -- Acessar servidor remoto
+                $ ssh -i "AWS_REPOSITORY.pem" ubuntu@ec2-18-231-111-48.sa-east-1.compute.amazonaws.com
+            
+            -- Download do Container Wildfly
+                $ wget http://download.jboss.org/wildfly/10.1.0.Final/wildfly-10.1.0.Final.zip
+                
+            -- Extrair Arquivo
+                $ sudo unzip wildfly-10.1.0.Final.zip -d
+                
+            -- Startar Container
+                $ sudo firewall-cmd --zone=public --add-port=8080/tcp --permanent
+                
+            -- Iniciar/Parar serviço Wildfly
+                $ ./standalone.sh
+                $  ./jboss-cli.sh --connect command=:shutdown
+                
+---------------------------------------------------------------------
+# CONFIGURACAO SERVIDOR REMOTO
+---------------------------------------------------------------------            
+
+    -- Criar diretórios
+        $ mkdir <NOME_DIRETORIO>
+        
+    -- Transferir arquivos de um diretório para outro
+        $ cp <ORIGEM> <DESTINO>
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS APACHE
+---------------------------------------------------------------------
+
+    -- Alterar a local de deploy
+    
+        $ 
+
+---------------------------------------------------------------------
 # PROCEDIMENTOS MAVEN
 ---------------------------------------------------------------------
 
@@ -2072,8 +2146,11 @@
     
     # TREINAMENTOS
     
+      $ [UDEMY] ANGULARJS + REST
+        - https://www.udemy.com/java-p-web-v/learn/v4/t/lecture/6269612?start=0     
+    
       $ ANGULARJS + STARTER
-        java -- https://www.youtube.com/watch?v=_y7rKxqPoyg&list=PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb
+        - https://www.youtube.com/watch?v=_y7rKxqPoyg&list=PLQCmSnNFVYnTD5p2fR4EXmtlR6jQJMbPb
         
       $ ANGULAR + SPRING BOOT
         - https://www.youtube.com/watch?v=dg0aZbP8NAU&list=PLKvsMn7xWutbSELeX5j8CXF2Lxd2cj19J
@@ -2092,6 +2169,9 @@
         
       $ SUBLIME TEXT 3
         - https://www.youtube.com/watch?v=StwiAqO4iRY&list=PLuAHN7__KtTkzSn6gO8AIBI0Mvjcm8ct_
+        
+      $ AMAZON AWS
+        - https://www.youtube.com/watch?v=z0gbInwbf8c&index=1&list=PLp95aw034Wn8lGZv2sXyguMM7kN-KfUVe
          
 	# LINKS
 		
