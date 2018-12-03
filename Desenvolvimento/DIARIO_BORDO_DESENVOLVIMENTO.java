@@ -1,3 +1,9 @@
+Your Full name: José Quintin Junior
+Current Address: Brasília/Brazil
+Your Age: 30
+Marital Status: not married
+Mobile number for communication purpose: +55 061 995 995 532
+
 ---------------------------------------------------------------------
 # PROCEDIMENTOS INDRA
 ---------------------------------------------------------------------
@@ -10,13 +16,73 @@
         
         -- 22/11/2018
             
-            09:00 - 13:00
+            09:00 - 13:00   
             14:00 - 18:00
         
         -- 23/11/2018
         
             09:20 - 13:20
             14:20 - 18:20
+                
+        -- 26/11/2108
+                
+            09:22 - 12:22
+            13:22 - 18:22  
+                
+        -- 27/11/2018
+            
+            09:11 - 13:11
+            14:11 - 20:11
+                
+        -- 28/11/2018
+                
+           09:13 - 13:09
+           14:09 - 18:09
+               
+        -- 29/11/2018
+                
+            09:17 - 13:17
+            14:17 - 20:17
+        
+        -- 30/11/201
+                   
+            09:10 - 12:10
+            13:10 - 19:36
+                
+        -- 03/12/2018
+                
+            09:20 - 13:20
+            14:30 - 18:20   
+                
+    ## Procedimentos para gerar 'build' no ambiente de 'Desenvolvimento'
+        
+        -- Acessar a pasta raiz do projeto finalizado
+        
+            -- Executar 'MVN_DEPLOY'
+                -- 'clean install -DskipTests -X'                
+            
+            -- Executar 'MVN_CLEAN_INSTALL_COMPLETE'
+                -- 'clean deploy -DskipTests'
+                
+    ## Procedimentos para Gerar versão final de produção do Questionario
+        
+        -- Alterar 'POM.xml'
+        
+            -- A regra para gerar 'release' para produção é:
+
+                -- Alterar o 'POM.xml' na tag '<version>' para a numeracao correspondente a ultima versao, P.E: '1.2.25-SNAPSHOT'
+        
+        -- Rodar os comandos na pasta do projeto 
+        
+            -- clean install -X
+        
+        -- Acessar Jenkins
+        
+        -- Ir em 'release'
+        
+        -- Alterar arquivo "POM.xml" da versã final 
+        
+        -- Executar Comando de 'build' do projeto
             
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
     
@@ -37,9 +103,37 @@
     
     ## Procedimentos para a montagem do Ambiente de Desenvolvimento do projeto 'Questionario'
         
+        
+        -- No Jboss deve alterar as configurações de 
+        
+        -- Para usar o SMTP_FAKE
+        
+            -- Devese alterar a Classe "ServicoEmail" alterar o metodo "inicializar" a linha 
+                "props.put("mail.smtp.port", repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.smtp.port"));" 
+                
+                substituir por "props.put("mail.smtp.port", "2525");"        
+        
     ## Comandos GULP
     
     ## Comandos NVM
+    
+        - nvm use v6.10.2
+        - node -v
+        - nvm ls    // Saber qual as versões instaladas
+        - nvm uninstall v11.2.0
+        - node -v   // v6.10.2
+    
+            -- Para executar o Gulp deve-se:
+                -- Acessar a pasta '/home/desenvolvimento/Desenvolvimento/Nickel/nickel_REPOSITORY/nickel_SVN_PROJECT_QUESTIONARIO/questionario/src/main/frontend'
+                -- Rodar o camando 'gulp dev'                    
+    
+    ## Configuração Servidor
+        
+        -- Settar caminho do diretório de 'Arquivos' no 'Vm Arguments'
+        
+            "-Darquivos=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos"
+            
+        -- Atualizar o campo 'arquivoCertificadoIDP' do arquivo "jboss-eap-6.4/arquivos/questionario-capes/sp.properties" na linha 'arquivoCertificadoIDP=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos/questionario-capes/seguranca.crt'
     
     ## Banco de Dados 
         
@@ -53,6 +147,16 @@
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
+            
+    ## Dados SVN
+    
+        -- URL dos Projetos
+        
+            -- http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/
+        
+        -- Ambiente de Desenvolvimento
+            -- 03089233169
+            -- capes23
 
 ---------------------------------------------------------------------
 # GESTÃO DE E-MAILS
@@ -66,6 +170,32 @@
             -- quintin@zipmail.com.br
             -- josequintino@hotmail.com.br
 
+---------------------------------------------------------------------
+# INDRA COMPANY - GESTÃO DE DEMANDAS
+---------------------------------------------------------------------
+
+    ## [0001] Implementar Funcionalidade de 'Monitoramento'
+            
+        -- Links
+
+        -- Objetivo
+            
+            -- O sistema deve retornar dados de monitoramento, a saber:
+
+
+        -- Erro
+
+        -- Motivo do Erro
+        
+        -- Esperado
+
+        -- Cenário
+
+        -- Análise
+
+        - Correçõa Iplemetada
+
+        -- Observação
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS - PROGRAMAS 
@@ -1972,6 +2102,29 @@
 	# ACESSAR BANCO DE DADOS POR COMMAND LINE
 		$ mysql -u root -p
 
+---------------------------------------------------------------------
+# PROJETOS - MODULOS
+---------------------------------------------------------------------
+    
+    ## Plataforma de Lançamento Financeiro 
+    
+        -- Módulos
+        
+            -- Módulo de Gestão de Controle de Ponto
+            -- Módulo de Gestão de Despesas
+            -- Módulo de Gestão de Receitas
+            -- Módulo de Gestão de Empréstimos
+            -- Módulo de Gestão de Processos
+            
+            -- Módulo de Gestão de Contratos Trabalhistas
+                
+                -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal
+                
+                -- Mantém dados básicos de contrato como por exemplo: Calculo de Dias com vinculo com a empresa,
+                   Controle de Fériados, Controle de Benefícios (Vale Transporte, Vale Alimentação,  Seguro de Vida, Cálculo de Férias, Cálculo de Décimo Terceiro)
+                
+            -- Módulo de Gestão de Contratos com Pessoa Jurídica
+                   
 ---------------------------------------------------------------------
 # PROJETOS - GIT (GITLAB / GITHUB)
 ---------------------------------------------------------------------
