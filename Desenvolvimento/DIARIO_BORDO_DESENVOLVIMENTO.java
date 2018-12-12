@@ -1,6 +1,6 @@
 Your Full name: José Quintin Junior
 Current Address: Brasília/Brazil
-Your Age: 30
+Your Age: 28
 Marital Status: not married
 Mobile number for communication purpose: +55 061 995 995 532
 
@@ -54,14 +54,24 @@ Mobile number for communication purpose: +55 061 995 995 532
             09:20 - 13:20
             14:30 - 18:20   
                 
+                
+    ## Repositŕorio de Projetos
+    
+        -- Username: joseqj
+        -- Password: deUmASeis
+        
+        -- Projeto Questionario
+            
+            -- http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk
+                
     ## Procedimentos para gerar 'build' no ambiente de 'Desenvolvimento'
         
         -- Acessar a pasta raiz do projeto finalizado
         
-            -- Executar 'MVN_DEPLOY'
+            -- Executar 'MVN_CLEAN_INSTALL_COMPLETE'
                 -- 'clean install -DskipTests -X'                
             
-            -- Executar 'MVN_CLEAN_INSTALL_COMPLETE'
+            -- Executar 'MVN_DEPLOY'
                 -- 'clean deploy -DskipTests'
                 
     ## Procedimentos para Gerar versão final de produção do Questionario
@@ -76,7 +86,11 @@ Mobile number for communication purpose: +55 061 995 995 532
         
             -- clean install -X
         
-        -- Acessar Jenkins
+        -- Acessar Jenkins (http://jenkins.capes.gov.br/)
+        
+            -- Buscar por na aba "release" por "QUESTIONARIO-CAPES - Release"  
+            -- Selecionar a opção "release"
+            -- Rodar Maven CLean install SEM o -DskipTest
         
         -- Ir em 'release'
         
@@ -169,6 +183,8 @@ Mobile number for communication purpose: +55 061 995 995 532
             -- quinn@zipmail.com.br
             -- quintin@zipmail.com.br
             -- josequintino@hotmail.com.br
+            -- josequintin@vivaldi.net
+                -- joseKintinon*
 
 ---------------------------------------------------------------------
 # INDRA COMPANY - GESTÃO DE DEMANDAS
@@ -2111,19 +2127,58 @@ Mobile number for communication purpose: +55 061 995 995 532
         -- Módulos
         
             -- Módulo de Gestão de Controle de Ponto
+            
             -- Módulo de Gestão de Despesas
+                
+                -- RN: Quando o pagamento de uma determinada despesa for do tipo 'Parcelamento Pagamento Despesa', o sistema deve abrir tela para o registro da forma de pagamento e das formas de pagamentos disponíveis.
+            
             -- Módulo de Gestão de Receitas
             -- Módulo de Gestão de Empréstimos
             -- Módulo de Gestão de Processos
             
             -- Módulo de Gestão de Contratos Trabalhistas
                 
-                -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal
+                -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal.
                 
                 -- Mantém dados básicos de contrato como por exemplo: Calculo de Dias com vinculo com a empresa,
                    Controle de Fériados, Controle de Benefícios (Vale Transporte, Vale Alimentação,  Seguro de Vida, Cálculo de Férias, Cálculo de Décimo Terceiro)
                 
             -- Módulo de Gestão de Contratos com Pessoa Jurídica
+            -- Módulo de Gestão de Pessoas
+                
+                -- Resposável por manter dados de pessoa física e jurídica
+                
+            -- Módulo de Gestão de Relatórios
+            
+                -- Responsavel por criar relatórios para diversos módulos.
+                   
+                    -- Excel
+                    -- PDF
+                    -- Currículo
+                    -- Documentos (Declarações, Recibos, Comprovantes de Pagamento)
+                    -- Arquivos
+                   
+                   -- Emitir Relatório sobre Empréstimos por PESSOA FISICA
+                   
+            -- Módulo de Gestão de Fundos de Investimentos
+            
+                -- Controlar Fundos de Investimentos 
+                    
+                    -- Poupança
+                    -- Tesouro Direto
+                    -- Bolsa de Valores
+                    
+                -- Controlar Cofres de Moedas
+                
+                    -- Deve-se colocar em circulação as moedas no período de 1 ano
+                    -- Trocar em instituições que oferecam algun retorno
+                    
+                -- Controlar regras do COAF para movimentações financeiras acima do rendimento anual acumulado.
+                    
+         -- Módulo de Gestão Finanças de Viagens
+            
+            -- Responsavel por verificar e converter (em viagens internacionais) da moeda corrente para o Real
+            -- Implementar módulo de 'Aviso Diário' para viagens internacionais
                    
 ---------------------------------------------------------------------
 # PROJETOS - GIT (GITLAB / GITHUB)
@@ -2343,6 +2398,14 @@ Mobile number for communication purpose: +55 061 995 995 532
     -- Alterar a local de deploy
     
         $ 
+        
+---------------------------------------------------------------------
+# PROCEDIMENTOS RABBIT VCS
+---------------------------------------------------------------------
+
+    $ sudo add-apt-repository ppa:rabbitvcs/ppa
+    $ sudo apt-get update
+    $ sudo apt-get install rabbitvcs-core rabbitvcs-nautilus rabbitvcs-thunar rabbitvcs-gedit rabbitvcs-cli
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS MAVEN
