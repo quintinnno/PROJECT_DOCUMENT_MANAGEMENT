@@ -2126,6 +2126,11 @@ Mobile number for communication purpose: +55 061 995 995 532
     
         -- Módulos
         
+            -- Módulo de Gestão de Hospitais
+            
+                -- Esse módulo permite manter dados atualizados de valores referentes a consultas e medicamentos para pronto atendimento
+                -- Manter dados de medicamentos, exames, e historico de consultas referente a algun hospital
+        
             -- Módulo de Gestão de Controle de Ponto
             
             -- Módulo de Gestão de Despesas
