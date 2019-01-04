@@ -58,21 +58,36 @@ Mobile number for communication purpose: +55 061 995 995 532
     ## Repositŕorio de Projetos
     
         -- Username: joseqj
-        -- Password: deUmASeis
+        -- Password: <default>
         
         -- Projeto Questionario
             
             -- http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk
+    
+    ## Procedimentos para realizar Merge (via Eclipse)
+        
+        Botão Direito
+        
                 
     ## Procedimentos para gerar 'build' no ambiente de 'Desenvolvimento'
         
         -- Acessar a pasta raiz do projeto finalizado
-        
+            
+            -- Acessar arquivo 'pom.xml' e alterar o campo 'version' para gerar o pacote no Nexus
+                -- Exemplo: <version>1.2.27E-SNAPSHOT</version>
+            
             -- Executar 'MVN_CLEAN_INSTALL_COMPLETE'
                 -- 'clean install -DskipTests -X'                
             
             -- Executar 'MVN_DEPLOY'
                 -- 'clean deploy -DskipTests'
+            
+            -- Acessar JENKINS para gerar versão
+            
+                -- Pesquisar por "QUESTIONARIO-CAPES - Desenv" no campo de pesquisa
+                -- Acessar 'Build with Parameters'
+                -- Copiar valor alterado no campo "version" do arquivo "pom.xml"
+                -- Clicar no botão 'Construção'
                 
     ## Procedimentos para Gerar versão final de produção do Questionario
         
@@ -98,6 +113,20 @@ Mobile number for communication purpose: +55 061 995 995 532
         
         -- Executar Comando de 'build' do projeto
             
+    ## Senhas de Acesso (Capes)
+    
+        -- José Quintin
+            -- joseqj
+            -- <defaut>
+            
+        -- Arthur
+            -- arthuro
+            -- @Indra012
+        
+        -- Iago
+            -- iagoc
+            -- 842630iago
+        
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
     
         -- Para o acesso a rede interna da Indra Company se faz necessário realizar configurações
@@ -233,9 +262,6 @@ Mobile number for communication purpose: +55 061 995 995 532
                     - [Session] -> 'Saved Host' = PROJECT_PLATAFORMA_LANCAMENTO_EDUCCACIONALL
             
         -- Configuração
-    
-    ## 
-        
         
 ---------------------------------------------------------------------
 # PROCEDIMENTOS PJE
@@ -2124,19 +2150,51 @@ Mobile number for communication purpose: +55 061 995 995 532
     
     ## Plataforma de Lançamento Financeiro 
     
+        -- Fases do Projeto
+        
+            -- Criar modelagem de dados
+            -- Criar estrutura e arquitetura do projeto
+            -- Criar Protótipos
+            -- Criar Classes de mapeamento
+            -- Criar Serviços de Integraçã com o Front-End
+    
         -- Módulos
         
             -- Módulo de Gestão de Controle de Ponto
             
             -- Módulo de Gestão de Despesas
-                
-                -- RN: Quando o pagamento de uma determinada despesa for do tipo 'Parcelamento Pagamento Despesa', o sistema deve abrir tela para o registro da forma de pagamento e das formas de pagamentos disponíveis.
             
-            -- Módulo de Gestão de Receitas
+            
+                -- Responsável por gerenciar (salvar, pesquisar, editar, deletar), as receitas mensais.
+                
+                    -- Exemplo:
+
+                        - Favorecido:                   Sinagoga Keter Torah (Centro Religioso)
+                        - Data de Vencimento:           11/01/2019
+                        - Data de Pagamento:            10/01/2019 
+                        - Produto ou Serviço:           Associação Religiosa
+                        - Nota Fiscal:                  (Não se Aplica)
+                        - Valor da Despesa:             R$ 200,00
+                        - Tipo de Despesa:              Despesa Fixa (01/12)
+                        - Fonte de Pagamento:           Banco Santander do Brasil
+                        - Canal de Pagamento:           Transferência Bancária
+                        - Responsável Pagamento:        Jamille Alves
+                
+                -- RN: Quando o pagamento de uma determinada despesa for do tipo 'Parcelamento Pagamento Despesa', o sistema deve abrir tela para o registro da forma de pagamento e das formas de pagamentos disponíveis
+            
+            -- Módulo de Gestão de Receitas        
+            
             -- Módulo de Gestão de Empréstimos
+                
+                -- O módulo de Empréstimos deve ser trabalhado apenas no back-end
+                -- Todas as informações serão salvas em arquivo de texto
+                -- Deverá permitir a importação em diversos formatos (JSON, SQL, XML)
+                -- Deverá ser salvo em um estrutura de arquivos mantidos pela aplicação
+                -- Deverá permitir sincronização automática entre entre diretórios separados por 'Desenvolvimento' e 'Produção'              
+            
             -- Módulo de Gestão de Processos
             
-            -- Módulo de Gestão de Contratos Trabalhistas
+            -- Módulo de Gestão de Contratos Trabalhiostas
                 
                 -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal.
                 
@@ -2144,9 +2202,24 @@ Mobile number for communication purpose: +55 061 995 995 532
                    Controle de Fériados, Controle de Benefícios (Vale Transporte, Vale Alimentação,  Seguro de Vida, Cálculo de Férias, Cálculo de Décimo Terceiro)
                 
             -- Módulo de Gestão de Contratos com Pessoa Jurídica
+            
+            -- Módulo de Gestão de Composição de Valores Saláriais    
+            
             -- Módulo de Gestão de Pessoas
                 
                 -- Resposável por manter dados de pessoa física e jurídica
+
+            -- Módulo de Gestão de Configurador de Metas Mensais
+
+                -- Responsável por configurar as metas financeiras para um determinado período
+
+                    -- Exemplo: No mês de Fevereiro as faturas dos cartões não poderão ultrapassar R$ 200,00.
+                                Deve-se emitir alertas de quanto ainda é possível comprar
+                                Emitir alertas do valor disponíveis (poder de Compra)
+                -- Esse módulo depende da implentação dos:
+                    -- Módulos de Pessoas Jurídicas e Físiscas
+                    -- Módulos de Cartões
+                    -- Módulos de Notificações e Alertas
                 
             -- Módulo de Gestão de Relatórios
             
@@ -2179,6 +2252,11 @@ Mobile number for communication purpose: +55 061 995 995 532
             
             -- Responsavel por verificar e converter (em viagens internacionais) da moeda corrente para o Real
             -- Implementar módulo de 'Aviso Diário' para viagens internacionais
+            
+        -- Módulo de Gestão Exportação e Importação de Arquivos
+            
+            -- Nos formatos: JSON, XML, TXT, CSV, SQL, XLS
+            
                    
 ---------------------------------------------------------------------
 # PROJETOS - GIT (GITLAB / GITHUB)
