@@ -2199,7 +2199,7 @@ Mobile number for communication purpose: +55 061 995 995 532
             
             -- Módulo de Gestão de Processos
             
-            -- Módulo de Gestão de Contratos Trabalhiostas
+            -- Módulo de Gestão de Contratos Trabalhistas
                 
                 -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal.
                 
@@ -2208,7 +2208,10 @@ Mobile number for communication purpose: +55 061 995 995 532
                 
             -- Módulo de Gestão de Contratos com Pessoa Jurídica
             
-            -- Módulo de Gestão de Composição de Valores Saláriais    
+            -- Módulo de Gestão de Composição de Valores Saláriais   
+
+            -- Módulo de Gestão de Listagem de Compras
+                -- Resposável por gerenciar o dispensa e os itens que devem ser comprados, além de emitir alertas e usar dados ESTATISTICA visando compras mais baratas 
             
             -- Módulo de Gestão de Pessoas
                 
