@@ -2198,6 +2198,19 @@ Mobile number for communication purpose: +55 061 995 995 532
                 -- Deverá permitir sincronização automática entre entre diretórios separados por 'Desenvolvimento' e 'Produção'              
             
             -- Módulo de Gestão de Processos
+
+            -- Definição da Tela do Módulo de Monitoramento de Indicador Financeiro (Dashboard)
+
+            -- Módulo de Definição da Arquitetura do Sistema
+
+                -- Responsável por incluir, gerenciar, e adaptar infraestrutura do sistema de Gestão Financeira
+
+                -- Comentários
+
+                    -- [<NOME_SISTEMA>] [<MDL-<NUMERO_MODULO> - <NUMERO_DEMANDA>] <NOME_MODULO>
+                        $ [Plataforma de Lançamento Financeiro] [MDL-0001-0001] Módulo de Definição da Arquitetura do Sistema
+                    -- Branch
+                        $ [MODULO-0001-0001] Implementação da Arquitetura do Sistema 
             
             -- Módulo de Gestão de Contratos Trabalhistas
                 
@@ -2213,6 +2226,10 @@ Mobile number for communication purpose: +55 061 995 995 532
             -- Módulo de Gestão de Listagem de Compras
                 -- Resposável por gerenciar o dispensa e os itens que devem ser comprados, além de emitir alertas e usar dados ESTATISTICA visando compras mais baratas 
             
+            -- Módulo de Gestão de Plano de Aquisição
+
+                -- Responsavel por gerenciar o Plano de Aquisição (diário, mensal, anual)
+
             -- Módulo de Gestão de Pessoas
                 
                 -- Resposável por manter dados de pessoa física e jurídica
