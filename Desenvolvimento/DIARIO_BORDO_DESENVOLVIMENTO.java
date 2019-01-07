@@ -1,8 +1,35 @@
-Your Full name: José Quintin Junior
-Current Address: Brasília/Brazil
-Your Age: 28
-Marital Status: not married
-Mobile number for communication purpose: +55 061 995 995 532
+---------------------------------------------------------------------
+# DADOS BASICOS
+---------------------------------------------------------------------
+    Your Full name: José Quintin Junior
+    Current Address: Brasília/Brazil
+    Your Age: 28
+    Marital Status: not married
+    Mobile number for communication purpose: +55 061 995 995 532
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS EMPREENDORISMO
+---------------------------------------------------------------------
+    
+    # Pesquisar sobre como impulsionar vendas pela internet
+
+        + Monetizze
+
+            - Conceito
+            - Como funciona
+            - Primeiros Investimentos
+
+        + Hotmart
+
+    # Fornecedores
+
+        + Rik9 Shop 
+            - https://www.rik9shop.com.br/masculino
+            - Fornecedor nacional de Relógios
+
+        + gearbest.com
+        + banggood.com
+        + aliexpress.com
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS INDRA
@@ -10,50 +37,7 @@ Mobile number for communication purpose: +55 061 995 995 532
 
     ## Inicio da vigência do Contrato de Trabalho
        
-       $ 22/11/2018
-        
-    ## Horários
-        
-        -- 22/11/2018
-            
-            09:00 - 13:00   
-            14:00 - 18:00
-        
-        -- 23/11/2018
-        
-            09:20 - 13:20
-            14:20 - 18:20
-                
-        -- 26/11/2108
-                
-            09:22 - 12:22
-            13:22 - 18:22  
-                
-        -- 27/11/2018
-            
-            09:11 - 13:11
-            14:11 - 20:11
-                
-        -- 28/11/2018
-                
-           09:13 - 13:09
-           14:09 - 18:09
-               
-        -- 29/11/2018
-                
-            09:17 - 13:17
-            14:17 - 20:17
-        
-        -- 30/11/201
-                   
-            09:10 - 12:10
-            13:10 - 19:36
-                
-        -- 03/12/2018
-                
-            09:20 - 13:20
-            14:30 - 18:20   
-                
+       $ 22/11/2018                
                 
     ## Repositŕorio de Projetos
     
