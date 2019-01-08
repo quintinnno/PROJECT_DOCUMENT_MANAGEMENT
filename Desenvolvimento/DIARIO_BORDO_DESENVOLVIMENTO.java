@@ -160,6 +160,10 @@
         
             "-Darquivos=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos"
             
+                <system-properties>
+                    <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss_v2/jboss-eap-6.4/arquivos"/>
+                </system-properties>
+            
         -- Atualizar o campo 'arquivoCertificadoIDP' do arquivo "jboss-eap-6.4/arquivos/questionario-capes/sp.properties" na linha 'arquivoCertificadoIDP=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos/questionario-capes/seguranca.crt'
     
     ## Banco de Dados 
@@ -2150,6 +2154,12 @@
                 -- Manter dados de medicamentos, exames, e historico de consultas referente a algun hospital
         
             -- Módulo de Gestão de Controle de Ponto
+
+            -- Módulo de Gestão de Definição de Regras Bancárias
+
+                -- Esse módulo deve gerenciar todas as regras de desconto bancário.
+
+                    -- Por exemplo: Quantos TEDs e DOCs o contrato permite fazer
             
             -- Módulo de Gestão de Despesas
             
@@ -2183,7 +2193,36 @@
             
             -- Módulo de Gestão de Processos
 
-            -- Definição da Tela do Módulo de Monitoramento de Indicador Financeiro (Dashboard)
+            -- Módulo de Gestão de Jogos Lotéricos
+
+                - Criar gerenciador de jogos Lotéricos
+
+            -- Módulo de Gestão de Links
+
+                -- Responsável por criar links personalizados para uma determinada situação
+
+            -- Módulo de Gestão de Integração de Mensageria
+
+                -- Responsável por integrar o sistema com aplicativos externos como por exemplo: whatsapp, instagran, hangouts, etc
+
+            -- Módulo de Gestão Documental
+
+                -- Deve permitir a gestão Documental dentro do Sistema
+                    -- Por exemplo: gerenciar todas as notas fiscais dentro do sistema
+
+            -- Módulo de Monitoramento de Indicador Financeiro (Dashboard)
+
+                -- Esse módulo é Responsável por gerir os indicadores financeiros (Quantitativos de Receitas e Despesas)
+
+            -- Módulo de Gestão de 'Log' do sistema
+
+                -- Deve permitir o gerenciamento de LOGS do sistema
+
+                    -- Exemplo: Ser possível verificar todos os LOGS de execução de uma determinada tarefa
+
+            -- Módulo de Gestão de Demandas
+
+                -- Deve permitir que dentro do sistema o Cliente de minha aplicação possa enviar solicitações e criar erros e correções
 
             -- Módulo de Definição da Arquitetura do Sistema
 
@@ -2265,6 +2304,15 @@
         -- Módulo de Gestão Exportação e Importação de Arquivos
             
             -- Nos formatos: JSON, XML, TXT, CSV, SQL, XLS
+
+---------------------------------------------------------------------
+# PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - VERSIONAMENTO (GIT)
+---------------------------------------------------------------------
+    
+    # Vincular Projeto ao repositório remoto
+
+        $ git init
+        $ git 
             
                    
 ---------------------------------------------------------------------
@@ -5855,3 +5903,140 @@
 		### SCRIPT DE ANALISE
 
 		### SCRIPT DE CORRECAO
+
+
+
+---------------------------------------------------------------------
+# DEMANDAS DA INDRA
+---------------------------------------------------------------------
+# REDMINE 644
+
+    # Corrigir Testes de Unidade abaixo
+
+    # Tests in error:
+      alterarEntidadeIgualAntigaTest(br.gov.capes.questionario.gerenciador.GerenciadorPublicoAlvoTest)
+      alterarEntidadeTest(br.gov.capes.questionario.gerenciador.GerenciadorPublicoAlvoTest)
+
+    # Versionamento
+
+        - 1.3.0-SNAPSHOT = <Alterações de arquitetura [Mudança Estrutural]> <Alterações Implementações Novas Funionalidades e Melhorias> <Correção de Bugs>
+
+    # Comentário Padrão
+
+        - // FIXME [DESENVOLVIMENTO] --
+
+    # Semrpre alterar essas informações ao criar branch nova (no POM.xml)
+
+        <scm>
+            <connection>scm:svn:http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/branches/GESTAO_20180621000036</connection>
+            <developerConnection>scm:svn:http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/branches/GESTAO_20180621000036</developerConnection>
+            <url>http://svn.capes.gov.br/svn/QU3ESTIONARIO-CAPES/branches/GESTAO_20180621000036</url>
+        </scm>
+
+    # siglasSistema
+
+    # Criar parametro
+
+    # Diagrama de Estados
+
+        - TipoPublicoAlvoResource -> consultarTodos()
+
+    # Problemas
+
+        - Ao acessar a tela de Pesquisa do Questionario o sistema carrega (de imediato) a Sigla da Aplicação
+            - Deve-se carregar a sigla apenas depois de escolher o campo Aplicação (de acordo com o sistema)
+
+    # Estudo Público Alvo
+
+        + publico-alvo-pesquisa.html
+        + publico-alvo-pesquisa.controller.js
+        + tipo-publico-alvo.service.js
+
+        ../../resource/library/wrappixel/image/
+
+    # Questões levantadas pela Nírian
+
+        - aitivdade 716 
+
+        Considetando que foram nicluidas as combos nas telas <....> que pretende ser concluído no dia 07/01/2018
+
+            Em todas as atividades
+
+            Colocar as outras atividades "Em Codificação"
+
+        + José
+
+            - Correção dos Mantis 1.3.0
+                - Gerar versão estável
+            - Correção de histórias pendentes
+            - Corrigir as validações de Campos Obrigatórias
+            - Ajustes de integração da API
+
+    # Impactos da alteração
+
+        + Criar Públicações -> criarEntidade()
+
+            - ModeloPerguntaResource -> criarModeloPergunta(ModeloPergunta)
+            - PerguntaIdiomaResource -> criarPerguntaIdioma(PerguntaIdioma)
+            - PerguntaResource -> criar(Pergunta)
+            - PublicacaoResource -> criarPublicacao(Publicacao)
+            - PublicoAlvoResource -> criarPublicoAlvo(PublicoAlvo)
+
+            - GerenciadorPublicacao -> criarEntidade(Publicacao)
+                                    -> prepararPublicacao(Publicacao, Boolean)
+            - GerenciadorQuestionario -> criarEntidade(Questionario)
+            - QuestionarioResource -> consulta(int, int, String, boolean, String, String, String, String, String, String, Long, Long)
+
+
+    SELECT ID_APLICACAO as id FROM CATALOGO.APLICACAO WHERE SG_APLICACAO = :sigla 
+
+    # ID_PUBLICO nos Relatórios
+
+        - Testes
+
+            - Exportar Relatório para um Público Alvo em mais de uma Públicação
+
+
+
+export default {
+  name: 'formQuestionario',
+  bindings: {
+    questionario: '=',
+  },
+  template: `
+    <capes-isl-input-text label="{{'questionario.cadastro.label.nome' | translate}}"
+        ng-model="$ctrl.questionario.nome" requerido="true" tamanho-campo="200"/>
+        
+        <!-- // FIXME [DESENVOLVIMENTO] -- -->
+        <capes-isl-select label="{{'questionario.pesquisar.label.aplicacao' | translate}}"
+          model="$ctrl.pesquisaQuestionario.formPesquisa.nomeAplicacao"
+          chave="$option.nome"
+          trackby="$option.id"
+          options="$ctrl.aplicacaoCatalogoList"
+          requerido="false"/>
+          
+    <capes-isl-input-text label="{{'questionario.cadastro.label.sigla' | translate}}"
+        ng-model="$ctrl.questionario.sigla" requerido="true" tamanho-campo="60" desabilitado="true"/>
+    <capes-isl-textarea label="{{'questionario.cadastro.label.finalidade' | translate}}:"
+        ng-model="$ctrl.questionario.finalidade" wrapper-class="no-margin-bottom" maxlength="4000"/>
+  `,
+};
+
+
+
+-- Enviar por email
+INSERT INTO PARAMETRO.PARAMETRO_SISTEMA (ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
+VALUES(SQ_PARAMETRO_SISTEMA.NEXTVAL, 'questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_PARAMETRO_QUESTIONARIO', 0);
+
+
+
+    # Tarefas
+
+        + Gerar nova versão com as implementações de:
+            - Compo de Aplicações do Catalogo
+            - Mantis
+                - 1
+                - 2 
+                - 3
+
+    http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/branches/GESTAO_20180621000036/ 
