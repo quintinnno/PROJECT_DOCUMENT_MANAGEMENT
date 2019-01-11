@@ -70,7 +70,7 @@
             
                 -- Pesquisar por "QUESTIONARIO-CAPES - Desenv" no campo de pesquisa
                 -- Acessar 'Build with Parameters'
-                -- Copiar valor alterado no campo "version" do arquivo "pom.xml"
+                -- Copiar valor alterado no campo "version" do arquivo "pom.xml" para o campo "Versao" do Jekins
                 -- Clicar no botão 'Construção'
                 
     ## Procedimentos para Gerar versão final de produção do Questionario
@@ -2314,7 +2314,20 @@
         $ git init
         $ git 
             
-                   
+
+---------------------------------------------------------------------
+# PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - CONFIGURAÇÃO SERVIDOR
+---------------------------------------------------------------------
+
+    # Configurar servidor "wildfly-10.1.0.Final"
+
+        + Executar "add-user.sh" na pasta "bin" é realizar as configurações (responder todas as perguntas)
+
+            - User: plataformalancamentofinanceirodesenvolvimento
+            - Pass: <default>
+            
+        + Acessar o endereço "http://127.0.0.1:9990/console/"
+
 ---------------------------------------------------------------------
 # PROJETOS - GIT (GITLAB / GITHUB)
 ---------------------------------------------------------------------
@@ -2340,6 +2353,11 @@
             
             -- URL
                 $ https://github.com/repositorydesenvolvimento/PROJECT_VENDHAH_LAUNCH_PLATFORM.git
+
+        -- PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIRO
+            
+            -- URL
+                $ https://github.com/repositorydesenvolvimento/PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIRO.git
 
 ---------------------------------------------------------------------
 # COMANDOS GIT
@@ -6022,13 +6040,9 @@ export default {
   `,
 };
 
-
-
 -- Enviar por email
 INSERT INTO PARAMETRO.PARAMETRO_SISTEMA (ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
 VALUES(SQ_PARAMETRO_SISTEMA.NEXTVAL, 'questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_PARAMETRO_QUESTIONARIO', 0);
-
-
 
     # Tarefas
 
@@ -6040,3 +6054,163 @@ VALUES(SQ_PARAMETRO_SISTEMA.NEXTVAL, 'questionario.siglasAplicacoes', 'QC,SCBA',
                 - 3
 
     http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/branches/GESTAO_20180621000036/ 
+
+    Revista Brasileira de Anesteologia de 2018 
+    Transfunções sanguineas no introoperatirio complicações e prognóstico
+
+    Asa 2 
+    Apache 2
+    Canaliza a gravidade de paciente de UTI
+    Morbidade - Mortalidade
+
+    -Darquivos=/home/desenvolvimento/Desenvolvimento/Cyprium/cyprium_tool/cyprium_server/cyprium_server_jboss_v1/jboss-eap-6.4/arquivos
+
+    -Darquivos=/home/desenvolvimento/Desenvolvimento/Plumbum/plumbum_tool/plumbum_sever/plumbum_server_jboss_v1/jboss-eap-6.4/arquivos
+
+    -Darquivos=/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss/jboss-eap-6.4/arquivos
+
+    <system-properties>
+        <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Cyprium/cyprium_tool/cyprium_server/cyprium_server_jboss_v1/jboss-eap-6.4/arquivos"/>
+    </system-properties>
+
+    # Tirar Mapeamento da Tabela Publico
+
+    # Gerar Versão nova 1.3.0
+
+    # Entregar Implementação
+
+    # Gestão de Implementações
+
+        -- Caminho Ide:         /home/desenvolvimento/Desenvolvimento/Cesium/cesium_tool/cesium_ide/cesium_ide_eclipse_neon_v1 
+        -- Caminho Workspace:   /home/desenvolvimento/Desenvolvimento/Cesium/cesium_workspace/cesium_ws_project_questionario_v1
+        -- Versão Projeto:      3004
+        -- Versão do POM:       1.3.0-SNAPSHOT
+        -- Situação:            Funciona
+        -- Aterações:           
+
+        -- Caminho Ide:         /home/desenvolvimento/Desenvolvimento/Plumbum/plumbum_tool/plumbum_ide
+        -- Caminho Workspace:   /home/desenvolvimento/Desenvolvimento/Plumbum/plumbum_workspace/plumbum_workspace_project_questionario_v1
+        -- Versão Projeto:      3004
+        -- Versão do POM:       1.3.0-SNAPSHOT
+        -- Situação:            Funcionando
+        -- Aterações:           
+
+        -- Caminho Ide:        /home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_ide/chromium_ide_eclipse_neon 
+        -- Caminho Workspace:  /home/desenvolvimento/Desenvolvimento/Chromium/chromium_workspace/chromium_workspace_project_questionario
+        -- Versão Projeto:     3004
+        -- Versão do POM:      1.3.0-SNAPSHOT
+        -- Aterações:          Funcionando
+
+
+A tabela QUESTIONARIO.ACESSO_PREENCHIMENTO apenas registrará os dados de acesso de uma pessoa pertencente a um Público Alvo referente a um 'Questionário' Públicado e dentro da vigência de Publicação.
+
+
+Para que os dados sejam registrados na tabela QUESTIONARIO.ACESSO_PREENCHIMENTO, deve haver, obrigatoriamente, um Preenchimento para 
+uma pessoa pertencente ao Público Alvo do Questionário Publicado.
+
+Os dados dessa tabela são apenas 
+
+
+/home/desenvolvimento/Desenvolvimento/Chromium/chromium_repository/chromium_svn_project_questionario_v2
+
+[189, 8, 1, 2, 8, 3, 115, 12, SCBA - SISTEMA DE CONTROLE DE BOLSAS E AUXÍLIOS, SCBA, SISTEMA PARA ACOMPANHAMENTO E PAGAMENTO DE BOLSAS E AUXÍLIOS CONCEDIDOS PELA CAPES., http://svn.capes.gov.br/svn/SCBA/, S, 474, S, S, 38749653172, 2015-04-10 00:00:00.0, 13, 4b399ffd45dadcb3a261c8be3f57bc4edca44333.png, S, null, null, 1]
+[1237, 4, 2, 4, 95, 21, 431, 12, QUESTIONARIO CAPES, QC, Sistema de elaboração e publicação de questionários, http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/, N, null, S, N, 02146040122, 2017-04-13 12:08:37.0, 15, null, N, null, null, 1]
+
+AplicacaoCatalogoDTO
+
+
+https://mantisbt.capes.gov.br/mantisbt/view.php?id=16386
+https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383
+
+
+  vm.aplicacaoCatalogoList = [{id:1 , nome:"Aplicacao QUESTIONARIO"}, {id:2 , nome:"Aplicacao SCBA"}];
+//  vm.aplicacaoCatalogoList = {};
+
+  vm.formPesquisa = {
+//    situacao: $stateParams.situacao,
+    aplicacaoCatalogo: null,
+  };
+
+      const fecthAplicacoes = () => {
+          Questionarios.recuperarAplicacaoCatalogo()
+        .then(atualizarComboAplicacoes)
+        .catch(avisarErro);
+      };
+  
+  fecthAplicacoes();
+
+
+    
+    // FIXME [DESENVOLVIMENTO] -- Consultar Aplicacoes pela sigla
+//  @SuppressWarnings("unchecked")
+//  public List<AplicacaoCatalogoDTO> recuperarAplicacaoCatalogoPorSigla() {
+//      String[] siglas = recuperarSiglaAplicacaoCatalogo().split(SEPARADOR);
+//      StringBuilder stringBuilder = new StringBuilder("SELECT aplicacao_.NM_APLICACAO ");
+//          stringBuilder.append("FROM CATALOGO.APLICACAO aplicacao_ ");
+//          stringBuilder.append("WHERE aplicacao_.SG_APLICACAO IN ('");
+//      getIN(siglas, stringBuilder);
+//      SQLQuery query = session.createSQLQuery(stringBuilder.toString());
+//      return query.list();
+//  }
+
+
+<!--        <select id="{{::$ctrl.inputId}}" class="form-control" -->
+<!--                ng-model="$ctrl.pesquisaQuestionario.formPesquisa.aplicacaoCatalogo" ng-required="false"> -->
+<!--                    <option selected="true" value="">{{'commons.selecionar'|translate}}</option> -->
+<!--                    <option ng-repeat="aplicacao in $ctrl.aplicacaoCatalogoList" value="{{aplicacao.id}}">{{aplicacao.nome}}</option> -->
+<!--            </select> -->
+
+
+//  vm.aplicacaoCatalogoList = [{id:1 , nome:"Aplicacao QUESTIONARIO"}, {id:2 , nome:"Aplicacao SCBA"}];
+
+QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v1
+QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
+
+# Demanda
+    
+    + Alterar as telas de:
+
+        - Pesquisar Questionário    
+        - Cadastrar Questionário    
+        - Replicar Questionario   
+        - Editar Questionário       
+
+        + Objetivo
+            - Inserir combo 'Aplicacão' nas telas
+            - Recuperar os valores do Banco de Dados nas telas
+
+
+        + Sequência
+
+            - Cadastrar
+
+                -> questionario-cadastro.html 
+                    -> questionario-cadastro.controller.js 
+                        -> questionarios.service.js 
+                            -> QuestionarioResource.java (criarQuestionario())
+                                ->  
+
+
+        + Angular
+
+            - $stateParams
+
+            /* // FIXME [DESENVOLVIMENTO] -- Erro de ID nesse ponto. */
+            aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id,
+            
+
+    # Corrigir erros de implementação da Combo da Aplicação
+    
+        - Replicar
+        - Editar 
+        - Salvar 
+        - Pesquisar        
+
+    # Mantis
+
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16381
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16402
+        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16386 (0016386: [Relatórios Respostas] Dados de identificação sendo apresentados)
+        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390 (0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa)
+        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16408 (0016408: [QUESTIONÁRIO-CAPES] Duplicidade de registro)
+        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383 (0016383: [Relatórios Respostas] Erro na mensagem informativa de data inválida)
