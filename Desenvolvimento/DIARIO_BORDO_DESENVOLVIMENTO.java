@@ -2313,7 +2313,29 @@
 
         $ git init
         $ git 
-            
+
+---------------------------------------------------------------------
+# PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - CONFIGURAÇÃO DO SERVIDOR EXTERNO
+---------------------------------------------------------------------
+
+    # Heroku
+
+        + Acesso
+            - URL:   https://dashboard.heroku.com/login
+            - User:  repository.desenvolvimento@gmail.com 
+            - Pass:  _<default> 
+
+        + Instalar
+            $ curl https://cli-assets.heroku.com/install-ubuntu.sh | sh
+            $ heroku --version
+            $ heroku login
+            $ heroku login -i
+            $ heroku create plataformalancamentofinanceiro     -- Cria a aplicação
+                - https://plataformalancamentofinanceiro.herokuapp.com/
+                - https://git.heroku.com/plataformalancamentofinanceiro.git
+            $ heroku addons:create heroku-postgresql:hobby-dev   -- Cria banco de dados Postgres (padrão do Heroku)
+            $ git push heroku master
+            $ heroku logs --tails
 
 ---------------------------------------------------------------------
 # PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - CONFIGURAÇÃO SERVIDOR
@@ -2325,8 +2347,10 @@
 
             - User: plataformalancamentofinanceirodesenvolvimento
             - Pass: <default>
-            
+
         + Acessar o endereço "http://127.0.0.1:9990/console/"
+
+        + Executar "standalone.sh" na pasta "bin" para subir o servidor
 
 ---------------------------------------------------------------------
 # PROJETOS - GIT (GITLAB / GITHUB)
@@ -6197,20 +6221,51 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
 
             /* // FIXME [DESENVOLVIMENTO] -- Erro de ID nesse ponto. */
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id,
-            
+
+
+Questionário 11/01/2019 (Identificador Opcional) v7
+Público Alvo 11/01/2019 (Identificador Opcional) v7
+Interno - Público Alvo 11/01/2019 (Identificador Opcional) v6
+
+ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
+---------|-----------------------------|---------------------------|---------------------------------
+   705191|ALISSON CHAGAS SOUSA         |00935766170                |testesoftware.722765@capes.gov.br
+  2514057|ROBERTA SILVA MILHOMEM       |04897639107                |rsmilhomem@indracompany.com      
+  2536187|JOSE QUINTINO DA SILVA JUNIOR|02735025144                |jqsilva@indracompany.com         
+  2536050|PATRICK NASCIMENTO PEREIRA   |03089233169                |teste@gmail.com.br               
+
 
     # Corrigir erros de implementação da Combo da Aplicação
     
         - Replicar
         - Editar 
         - Salvar 
-        - Pesquisar        
+        - Pesquisar      
 
     # Mantis
 
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16381
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16402
-        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16386 (0016386: [Relatórios Respostas] Dados de identificação sendo apresentados)
-        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390 (0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa)
-        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16408 (0016408: [QUESTIONÁRIO-CAPES] Duplicidade de registro)
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16386 
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16408
+        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390 (0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa)               
         + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383 (0016383: [Relatórios Respostas] Erro na mensagem informativa de data inválida)
+
+================================================================================================================================================
+Erro 0001
+
+[Resultado Obtido]
+
+    O sistema não está validando quando se Envia Respostas pela Grid. O sistema apresenta a mensagem de "Operação Relizada com Sucesso".
+    Por esse comportamento errado o sistema não salva o envio das respostas do Questionário.
+
+[Resultado Esperado]
+
+    Quando o Questionário tiver perguntas obrigatórias, o sistema deve emitir a mensagem "Favor informar todos os campos obrigatórios."
+
+[Passos]
+
+    1 - Acessar Sistema
+    2 - Tela de Respostas
+    3 - Enviar Respostas do Questionário (com perguntas obrigatórias) pela Grid (botão externo)
+================================================================================================================================================
