@@ -250,7 +250,15 @@
                     - [Session] -> 'Saved Host' = PROJECT_PLATAFORMA_LANCAMENTO_EDUCCACIONALL
             
         -- Configuração
-        
+
+---------------------------------------------------------------------
+# UNIVERSIDADE XTI - TREINAMENTO 
+---------------------------------------------------------------------
+    # Javascript
+
+        - É uma linguagem interpretada, ou seja, ao ser incorporada ao browser, são interpretadas pelo mesmo.
+        - Manipular elementos (objetos) dentro da página HTML         
+
 ---------------------------------------------------------------------
 # PROCEDIMENTOS PJE
 ---------------------------------------------------------------------
@@ -2662,7 +2670,9 @@
 	# LINKS
 		
         ## JAVA
-			$ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
+			
+            - Fórum
+                $ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
 
 		## CNJ
 			# VANADIO INTERNA                                        
@@ -2694,6 +2704,13 @@
 			$ https://drive.google.com/drive/folders/0BwQVtcaBt81tYVNYLWtuTllTNmc
 			$ https://drive.google.com/drive/folders/0B7URW_vbvwtHNHk3MkNfdnNrNU0
 					
+
+        ## Empresas
+
+            $ https://www.devmedia.com.br/join/efetua-cadastro.php
+                - User: josequintino@hotmail.com.br
+                - Pass: <default>
+
 ---------------------------------------------------------------------
 # JUDAISMO
 ---------------------------------------------------------------------
@@ -6223,9 +6240,9 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id,
 
 
-Questionário 11/01/2019 (Identificador Opcional) v7
-Público Alvo 11/01/2019 (Identificador Opcional) v7
-Interno - Público Alvo 11/01/2019 (Identificador Opcional) v6
+Questionário 15/01/2019 (Identificador Opcional) v1
+Público Alvo 15/01/2019 (Identificador Opcional) v1
+Interno - Público Alvo 15/01/2019 (Identificador Opcional) v1
 
 ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
 ---------|-----------------------------|---------------------------|---------------------------------
@@ -6240,7 +6257,37 @@ ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_E
         - Replicar
         - Editar 
         - Salvar 
-        - Pesquisar      
+        - Pesquisar     
+
+
+    # Fluxo de Desenvolvimento
+
+        - Ler demanda
+        - Entender demanda
+            - Simular caso seja possível
+        - Implementar
+        - Testar
+        - Rodar Teste Unitário
+        - Commitar
+        - Gerar Versão
+
+-------------------------------------------------------------------------------------
+Commit
+-------------------------------------------------------------------------------------
+[jqsilva@indracompany.com]
+[MANTIS 0016390] [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa.
+
+[jqsilva@indracompany.com]
+[MANTIS 0016383] [QUESTIONÁRIO-CAPES] [Relatórios Respostas] Erro na mensagem informativa de data inválida
+
+[jqsilva@indracompany.com]
+[MANTIS 0016386] [QUESTIONÁRIO-CAPES] [Relatórios Respostas] Dados de identificação sendo apresentados
+-------------------------------------------------------------------------------------
+
+[Author Commit] jqsilva@indracompany.com
+[REDMINE_634] [QUESTIONÁRIO CAPES] - Desenvolver solução definitiva para tratamento de Público Alvo.
+[MANTIS_0016390] 0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa.
+Defeito #393: [QUESTIONÁRIO CAPES] - Corrigir na tela de responder questionário para que obedeça ao parâmetro do público alvo (Anonimo, Opcional e Identificada)
 
     # Mantis
 
@@ -6248,8 +6295,8 @@ ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_E
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16402
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16386 
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16408
-        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390 (0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa)               
-        + [AGUARDANDO]   https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383 (0016383: [Relatórios Respostas] Erro na mensagem informativa de data inválida)
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390
+        + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383
 
 ================================================================================================================================================
 Erro 0001
@@ -6268,4 +6315,23 @@ Erro 0001
     1 - Acessar Sistema
     2 - Tela de Respostas
     3 - Enviar Respostas do Questionário (com perguntas obrigatórias) pela Grid (botão externo)
+
+
+Melhoria 0001
+
+    Deve-se realizar melhoria na tela 'respostas-pesquisa.html', para que ao dar qualquer erro de execeção, o sistema recupere 
+    na grid o valor da ultima pesquisa.
+
+    Usar como exemplo a tela 'modelo-email-pesquisa.html' que já tem esse mesmo comportamento
 ================================================================================================================================================
+
+ /* FIXME [DESENVOLVIMENTO] -- */
+  this.avisarCamposObrigatorios = (event) => {
+      if(vm.form.dataInicio == null || vm.form.dataFim == null) {
+          CapesIslToaster.error('commons.mensagem.MSG038', { i18n: true });
+          return;
+      }
+      event.preventDefault();
+      CapesIslToaster.error('commons.mensagem.MSG004', { i18n: true });
+      return;
+  };
