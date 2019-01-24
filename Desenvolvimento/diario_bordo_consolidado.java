@@ -1246,6 +1246,13 @@
 # PROCEDIMENTOS LINUX
 ---------------------------------------------------------------------
 
+    # Ativar tradução ao WPS
+
+        $ wget http://biglinux.c3sl.ufpr.br/packages/unstable/main/wps-office-mui-pt_2.0.0-2biglinux1_all.deb
+        $ sudo dpkg -i wps-office-mui-pt_2.0.0-2biglinux1_all.deb
+        $ sudo apt-get install libreoffice libreoffice-l10n-pt-br libreoffice-help-pt-br mythes-pt-pt hyphen-pt-br hunspell-pt-br --yes
+        $ sudo apt-get remove --purge libreoffice*
+
     # Liberar memória (Linux Mint)
 
         $ echo 3 > /proc/sys/vm/drop_caches
@@ -2143,11 +2150,46 @@
             # [BASIS-59059] https://sgo.basis.com.br/browse/BASIS-59059                                    [FECHADO]           
 
 ---------------------------------------------------------------------
-# PROCEDIMENTOS MYSQL
+# PROCEDIMENTOS REDMINE
 ---------------------------------------------------------------------
+
+    # "PROCEDIMENTOS APACHE"
+
+    # "PROCEDIMENTOS MYSQL"
 
     # ACESSAR BANCO DE DADOS POR COMMAND LINE
         $ mysql -u root -p
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS APACHE
+---------------------------------------------------------------------
+
+    # Instalar Apache2
+
+        $ sudo apt-get install apache2 libapache2-mod-passeager
+
+    # Configurar Apache2
+
+        --   
+---------------------------------------------------------------------
+# PROCEDIMENTOS MYSQL
+---------------------------------------------------------------------
+
+    # Instalar MySQL
+
+        $ sudo apt-get install mysql-server mysql-client
+
+    # Configuração MySQL
+    
+        -- Senha do Banco de Dados (Root)
+
+            -- PLATAFORMALANCAMENTO
+
+    # Comandos
+
+        - Acessar Banco de Dados por linha de comando
+
+            $ mysql -u root -p
 
 ---------------------------------------------------------------------
 # PROJETOS - MODULOS
@@ -2162,6 +2204,48 @@
             -- Criar Protótipos
             -- Criar Classes de mapeamento
             -- Criar Serviços de Integraçã com o Front-End
+
+        -- Os controles de demandas serão gerenciadas pelo Redmine
+
+            -- Requisitos
+
+                -- Instalar MySql
+                -- Instalar Apache2
+
+        -- Usuários do sistema PLF
+        
+            -- Gerência de Projetos
+
+            -- Arquitetura
+
+            -- Desenvolvimento
+
+            -- Teste    
+
+        -- Demandas do Projeto
+
+            -- MDAS Módulo de Definição de Arquitetura do Sistema
+ 
+                -- MDAS-001 - Configurar bibliotecas do sistema
+                    -- MDAS-0011 - Configurar bibliotecas de componentes visuais
+                    -- MDAS-0012 - Configurar bibliotecas de ícones
+                    -- MDAS-0013 - Configurar bibliotecas de gráficos
+
+                -- MDAS-002 - Configurar sistema de controle de versão
+
+            -- MGPSS - Módulo de Gestão de Pessoas
+
+                -- MGPSS-001 -- Criar Protótipos
+                -- MGPSS-002 -- Implementação do Gerenciador
+                     -- MGPSS-0021 -- Cadastrar  
+                     -- MGPSS-0022 -- Editar 
+                     -- MGPSS-0023 -- Excluir
+                     -- MGPSS-0024 -- Alterar
+                     -- MGPSS-0025 -- Configurar
+
+            -- MGDSPS - Módulo de Gestão de Despesas
+
+                -- MGDSPS-0001
     
         -- Módulos
         
@@ -2584,14 +2668,6 @@
         
     -- Transferir arquivos de um diretório para outro
         $ cp <ORIGEM> <DESTINO>
-
----------------------------------------------------------------------
-# PROCEDIMENTOS APACHE
----------------------------------------------------------------------
-
-    -- Alterar a local de deploy
-    
-        $ 
         
 ---------------------------------------------------------------------
 # PROCEDIMENTOS RABBIT VCS
@@ -6249,18 +6325,23 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id
 
 
-Questionário 23/01/2019 (Identificador Opcional) v1
-Público Alvo 23/01/2019 (Identificador Opcional) v1
+Questionário 24/01/2019 (Identificador Opcional) v1
+Público Alvo 24/01/2019 (Identificador Opcional) v1
 
-Público Alvo 23/01/2019 (Identificador Opcional) v2
-Questionário 23/01/2019 (Identificador Opcional) v2
+Público Alvo 24/01/2019 (Identificador Opcional) v2
+Questionário 24/01/2019 (Identificador Opcional) v2
 
-Público Alvo 23/01/2019 (Identificador Opcional) v3
-Questionário 23/01/2019 (Identificador Opcional) v3
+Público Alvo 24/01/2019 (Identificador Opcional) v3
+Questionário 24/01/2019 (Identificador Opcional) v3
 
-Público Alvo 23/01/2019 (Identificador Opcional) v7
-Questionário 23/01/2019 (Identificador Opcional) v7
+Público Alvo 24/01/2019 (Identificador Opcional) v7
+Questionário 24/01/2019 (Identificador Opcional) v7
 
+Modelo de E-mail 23/01/2018 (Interno) v1
+Modelo de E-mail 23/01/2018 (Interno) v2
+Modelo de E-mail 23/01/2018 (Interno) v3
+Modelo de E-mail 23/01/2018 (Interno) v4
+Modelo de E-mail 23/01/2018 (Interno) v5
 
 ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
 ---------|-----------------------------|---------------------------|---------------------------------
@@ -6269,6 +6350,41 @@ ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_E
   2536187|JOSE QUINTINO DA SILVA JUNIOR|02735025144                |jqsilva@indracompany.com         
   2536050|PATRICK NASCIMENTO PEREIRA   |03089233169                |teste@gmail.com.br               
 
+
+
+1 Falha de entendimento da issue
+
+    1.1 Na descrição do erro diz: "o sistema deve registra(r) apenas uma informação no banco de dados para o questionário", dando a entender que
+    o sistema permitiria a duplicidade na tabela QUESTIONARIO.QUESTIONARIO 
+
+    1.2 A resposta da equipe de Desenvolvimento foi baseado nessa premissa
+
+    1.3 A resposta anterior, bem como a evidência, devem ser desconsiderada, ou seja, não se aplica a esse caso relatado
+
+2 Implementação da funcionalidade (quanto ao Público Alvo)
+    
+    2.1 Ao criar um determinado Público Alvo, cada pessoa incluída nesse Público Alvo (QUESTIONARIO.PUBLICO_ALVO) compõe um Público (QUESTIONARIO.PUBLICO).
+
+    2.2 Nesse contexto o corolário estabelecido é: 'o Público corresponde a cada Pessoa que integra um Público Alvo'.
+
+    2.3 Ao criar um Público Alvo não há Público inserido
+
+    2.4 Depois de criado Público Alvo pode-se inserir uma ou várias pessoas (Público) 
+
+3 Implementação da funcionalidade (quanto ao Preenchimento)
+
+    3.1 Sempre que é feita uma Publicação de um Questionário, será criado um registro na tabela Preenchimento (QUESTIONARIO.PREENCHIMENTO) correspondente a cada Público
+ 
+
+
+Tem uma alteração a ser realizada no  UC013 - Consultar Monitoramento, na RNG085 – Apresentação Monitoramento.
+
+Onde lê-se "Usuários que logaram e não enviaram o Questionário" foi alterado para "Usuários que logaram e não enviaram Respostas" com a descrição de 
+"Lista de usuários que logaram e não enviaram o questionário dentro do período da vigência da publicação" para "Lista de usuários que logaram e não enviaram as respostas dentro do período da vigência da publicação",
+
+Esse ponto causou confusão de entendimento em algum momento.
+
+Já realizaou essa alteração ?
 
 Alison,
 
