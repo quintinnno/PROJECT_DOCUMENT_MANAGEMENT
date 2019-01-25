@@ -1312,6 +1312,10 @@
         $ sudo apt-get update
         $ sudo apt-get autoremove
 
+    ## INSTALAR OPENJDK
+
+        $ sudo apt-get install openjdk-8-jre
+
     ## REMOVER INSTALACAO DO OPENJDK
     
         $ sudo apt-get purge openjdk*
