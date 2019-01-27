@@ -189,7 +189,7 @@
 ---------------------------------------------------------------------
 # GESTÃO DE E-MAILS
 ---------------------------------------------------------------------
-    ## E-MAIL'S
+    ## E-MAILS
             
             -- jose.quintinn@gmail.com
             -- josequinnn@gmail.com
@@ -204,7 +204,7 @@
 # INDRA COMPANY - GESTÃO DE DEMANDAS
 ---------------------------------------------------------------------
 
-    ## [0001] Implementar Funcionalidade de 'Monitoramento'
+    ## [0001] Implementar Funcionalidade de Monitoramento
             
         -- Links
 
@@ -243,8 +243,8 @@
                     $ putty
                     
                 -- Ao abrir a tela deve-se onfigurar (Acesso ao Sistema Plataforma de Lançamentto - Educaccionall)
-                    - [Session] -> 'Host' = 
-                    - [Session] -> 'Saved Host' = PROJECT_PLATAFORMA_LANCAMENTO_EDUCCACIONALL
+                    - [Session] -> Host = 
+                    - [Session] -> Saved Host = PROJECT_PLATAFORMA_LANCAMENTO_EDUCCACIONALL
             
         -- Configuração
 
@@ -2489,7 +2489,7 @@
                 $ https://github.com/repositorydesenvolvimento/PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIRO.git
 
 ---------------------------------------------------------------------
-# COMANDOS GIT
+# PROCEDIMENTOS GIT
 ---------------------------------------------------------------------
 
     # RENOMEAR UMA DETERMINADA BRANCH
@@ -2521,7 +2521,7 @@
             $ git diff <ARQUIVO>
 
         -- VERIFICAR HISTORICO DE COMMITS (LINHA A LINHA E POR USUARIOS)
-            $ git blame <ARQUIVO>
+            $ git blame <ENDERECO_ARQUIVO>
 
         - VERIFICAR HISTORICO DE COMMITS
             $ git log  
