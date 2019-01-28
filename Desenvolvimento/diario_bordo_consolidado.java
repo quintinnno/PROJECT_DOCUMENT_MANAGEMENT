@@ -2237,37 +2237,43 @@
 
                 -- MDAS-002 - Configurar sistema de controle de versão
 
-            -- MGPSS - Módulo de Gestão de Pessoas
+            -- MGPSS - 001 - Módulo de Gestão de Pessoas
 
-                -- MGPSS-001 -- Criar Protótipos
-                -- MGPSS-002 -- Implementação do Gerenciador
-                     -- MGPSS-0021 -- Cadastrar  
-                     -- MGPSS-0022 -- Editar 
-                     -- MGPSS-0023 -- Excluir
-                     -- MGPSS-0024 -- Alterar
-                     -- MGPSS-0025 -- Configurar
+                -- MGPSS-001-001 -- Criação de Protótipos do Módulo
+                -- MGPSS-001-002 -- Implementação do Gerenciador
+                     -- MGPSS-001-0021 -- Cadastrar  
+                     -- MGPSS-001-0022 -- Editar 
+                     -- MGPSS-001-0023 -- Excluir
+                     -- MGPSS-001-0024 -- Alterar
+                     -- MGPSS-001-0025 -- Configurar
 
-            -- MGDSPS - Módulo de Gestão de Despesas
+            -- MGFIF - 003 - Módulo de Gestão de Fundos de Investimentos Financeiros
 
-                -- MGDSPS-0001
+                -- MGFIF-003-001 -- Criação de Protótipos do Módulo
+                    -- MGFIF-003-0012 -- Criação do Modelo 
+
+                -- MGFIF-003-002 -- Implementação do Gerenciador
+                    -- MGFIF-0021 -- Cadastrar
+
+                [Plataforma de Lançamento Financeiro]
+                [MGFIF-003] - Módulo de Gestão de Fundos de Investimentos Financeiros
+                [MGFIF-003-001] Criação de Protótipos do Módulo
+                [MDAS_0001_0003] Implementar a Prototipação do Sistema 
+                [MDAS_0001_0003_0003] Implementar Tela de Gerenciamento de Despesas                    
     
         -- Módulos
         
-            -- Módulo de Gestão de Hospitais
-            
+            -- Módulo de Gestão de Hospitais            
                 -- Esse módulo permite manter dados atualizados de valores referentes a consultas e medicamentos para pronto atendimento
                 -- Manter dados de medicamentos, exames, e historico de consultas referente a algun hospital
         
             -- Módulo de Gestão de Controle de Ponto
-
             -- Módulo de Gestão de Definição de Regras Bancárias
-
                 -- Esse módulo deve gerenciar todas as regras de desconto bancário.
 
                     -- Por exemplo: Quantos TEDs e DOCs o contrato permite fazer
             
-            -- Módulo de Gestão de Despesas - MGDSPS
-            
+            -- Módulo de Gestão de Despesas - MGDSPS            
             
                 -- Responsável por gerenciar (salvar, pesquisar, editar, deletar, configurar, projetar), as receitas mensais.
                 
@@ -2297,40 +2303,31 @@
                 -- Deverá permitir sincronização automática entre entre diretórios separados por 'Desenvolvimento' e 'Produção'              
             
             -- Módulo de Gestão de Processos
-
             -- Módulo de Gestão de Jogos Lotéricos
-
                 - Criar gerenciador de jogos Lotéricos
 
             -- Módulo de Gestão de Links
-
                 -- Responsável por criar links personalizados para uma determinada situação
 
             -- Módulo de Gestão de Integração de Mensageria
-
                 -- Responsável por integrar o sistema com aplicativos externos como por exemplo: whatsapp, instagran, hangouts, etc
 
             -- Módulo de Gestão Documental
-
                 -- Deve permitir a gestão Documental dentro do Sistema
                     -- Por exemplo: gerenciar todas as notas fiscais dentro do sistema
 
             -- Módulo de Monitoramento de Indicador Financeiro (Dashboard)
-
                 -- Esse módulo é Responsável por gerir os indicadores financeiros (Quantitativos de Receitas e Despesas)
 
             -- Módulo de Gestão de 'Log' do sistema
-
                 -- Deve permitir o gerenciamento de LOGS do sistema
 
                     -- Exemplo: Ser possível verificar todos os LOGS de execução de uma determinada tarefa
 
             -- Módulo de Gestão de Demandas
-
                 -- Deve permitir que dentro do sistema o Cliente de minha aplicação possa enviar solicitações e criar erros e correções
 
             -- Módulo de Definição da Arquitetura do Sistema - MDAS
-
                 -- Responsável por incluir, gerenciar, e adaptar infraestrutura do sistema de Gestão Financeira
 
                 -- Comentários
@@ -2338,32 +2335,26 @@
                     -- [<NOME_SISTEMA>] [<MDL-<NUMERO_MODULO> - <NUMERO_DEMANDA>] <NOME_MODULO>
                         $ [Plataforma de Lançamento Financeiro] [MDL-0001-0001] Módulo de Definição da Arquitetura do Sistema
                     -- Branch
-                        $ [MODULO-0001-0001] Implementação da Arquitetura do Sistema 
+                        $ [MODULO-0001-0001] Implementação da Arquitetura do Sistema
             
             -- Módulo de Gestão de Contratos Trabalhistas
-                
                 -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal.
                 
                 -- Mantém dados básicos de contrato como por exemplo: Calculo de Dias com vinculo com a empresa,
                    Controle de Fériados, Controle de Benefícios (Vale Transporte, Vale Alimentação,  Seguro de Vida, Cálculo de Férias, Cálculo de Décimo Terceiro)
                 
             -- Módulo de Gestão de Contratos com Pessoa Jurídica
-            
-            -- Módulo de Gestão de Composição de Valores Saláriais   
-
+            -- Módulo de Gestão de Composição de Valores Saláriais
             -- Módulo de Gestão de Listagem de Compras
                 -- Resposável por gerenciar o dispensa e os itens que devem ser comprados, além de emitir alertas e usar dados ESTATISTICA visando compras mais baratas 
             
             -- Módulo de Gestão de Plano de Aquisição
-
                 -- Responsavel por gerenciar o Plano de Aquisição (diário, mensal, anual)
 
             -- Módulo de Gestão de Pessoas
-                
                 -- Resposável por manter dados de pessoa física e jurídica
 
             -- Módulo de Gestão de Configurador de Metas Mensais
-
                 -- Responsável por configurar as metas financeiras para um determinado período
 
                     -- Exemplo: No mês de Fevereiro as faturas dos cartões não poderão ultrapassar R$ 200,00.
@@ -2374,8 +2365,7 @@
                     -- Módulos de Cartões
                     -- Módulos de Notificações e Alertas
                 
-            -- Módulo de Gestão de Relatórios
-            
+            -- Módulo de Gestão de Relatórios            
                 -- Responsavel por criar relatórios para diversos módulos.
                    
                     -- Excel
@@ -2386,28 +2376,22 @@
                    
                    -- Emitir Relatório sobre Empréstimos por PESSOA FISICA
                    
-            -- Módulo de Gestão de Fundos de Investimentos
-            
-                -- Controlar Fundos de Investimentos 
-                    
+            -- Módulo de Gestão de Fundos de Investimentos (Catalogo de Aplicações Financeiras)           
+                -- Controlar Fundos de Investimentos                     
                     -- Poupança
                     -- Tesouro Direto
                     -- Bolsa de Valores
-                    
-                -- Controlar Cofres de Moedas
-                
+                    -- Ações da Bolsa de Valores                    
+                -- Controlar Cofres de Moedas                
                     -- Deve-se colocar em circulação as moedas no período de 1 ano
-                    -- Trocar em instituições que oferecam algun retorno
-                    
+                    -- Trocar em instituições que oferecam algun retorno                    
                 -- Controlar regras do COAF para movimentações financeiras acima do rendimento anual acumulado.
                     
-         -- Módulo de Gestão Finanças de Viagens
-            
+         -- Módulo de Gestão Finanças de Viagens            
             -- Responsavel por verificar e converter (em viagens internacionais) da moeda corrente para o Real
             -- Implementar módulo de 'Aviso Diário' para viagens internacionais
             
-        -- Módulo de Gestão Exportação e Importação de Arquivos
-            
+        -- Módulo de Gestão Exportação e Importação de Arquivos            
             -- Nos formatos: JSON, XML, TXT, CSV, SQL, XLS
 
 ---------------------------------------------------------------------
