@@ -2274,6 +2274,10 @@
             -- MGDSPS - Módulo de Gestão de Despesas
 
                 -- MGDSPS-0001
+
+            -- MGFIAF - Módulo de Gestão de Fundos de Investimentos e Aplicações Financeiras
+
+                -- MGFIAF-001 -- Criação de Protótipos do Módulo
     
         -- Módulos
         
@@ -2410,7 +2414,7 @@
                    
                    -- Emitir Relatório sobre Empréstimos por PESSOA FISICA
                    
-            -- Módulo de Gestão de Fundos de Investimentos
+            -- Módulo de Gestão de Fundos de Investimentos e Aplicações Financeiras
             
                 -- Controlar Fundos de Investimentos 
                     
@@ -6344,7 +6348,6 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
                             -> QuestionarioResource.java (criarQuestionario())
                                 ->  
 
-
         + Angular
 
             - $stateParams
@@ -6353,8 +6356,9 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id
 
 
-[SCBA] Questionário 28/01/2019 (Identificador Opcional) v1
-[SCBA] Público Alvo 28/01/2019 (Identificador Opcional) v1
+Questionário SCBA 29/01/2019 (Identificador Opcional) v1
+
+Público Alvo 28/01/2019 (Identificador Opcional) v1
 
 Público Alvo 24/01/2019 (Identificador Opcional) v2
 Questionário 24/01/2019 (Identificador Opcional) v2
