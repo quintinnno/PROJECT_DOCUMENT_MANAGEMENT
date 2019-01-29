@@ -43,7 +43,22 @@
 
         -- Indicação de vagas
 
-        -- 
+        -- Imputação de Horas (semanais/mensais)
+
+            -- Jira
+
+                -- Sem acesso
+
+            -- Dedicaciones (imputar horas todas as semanas - as sextas-feiras de preferência)
+
+                -- https://apps.indraweb.net/DedicacionesWEB/pages/homeimputacion.xhtml
+
+                    - Acessar plataforma (Iniciar Sessão)
+                    - Imputar por semana
+                        - Códigos
+                            -- Código do Projeto: 5AP031
+                            -- Elemento:          1.1.1
+                            -- Horas:             8.8
 
     ## Inicio da vigência do Contrato de Trabalho
        
@@ -6338,8 +6353,8 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id
 
 
-Questionário 24/01/2019 (Identificador Opcional) v1
-Público Alvo 24/01/2019 (Identificador Opcional) v1
+[SCBA] Questionário 28/01/2019 (Identificador Opcional) v1
+[SCBA] Público Alvo 28/01/2019 (Identificador Opcional) v1
 
 Público Alvo 24/01/2019 (Identificador Opcional) v2
 Questionário 24/01/2019 (Identificador Opcional) v2
