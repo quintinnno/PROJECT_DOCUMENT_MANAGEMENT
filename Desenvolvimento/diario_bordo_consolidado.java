@@ -35,6 +35,31 @@
 # PROCEDIMENTOS INDRA
 ---------------------------------------------------------------------
 
+    ## Plataformas de Controle Interno
+
+        -- Ponto Eletrônico
+
+        -- Holerite
+
+        -- Indicação de vagas
+
+        -- Imputação de Horas (semanais/mensais)
+
+            -- Jira
+
+                -- Sem acesso
+
+            -- Dedicaciones (imputar horas todas as semanas - as sextas-feiras de preferência)
+
+                -- https://apps.indraweb.net/DedicacionesWEB/pages/homeimputacion.xhtml
+
+                    - Acessar plataforma (Iniciar Sessão)
+                    - Imputar por semana
+                        - Códigos
+                            -- Código do Projeto: 5AP031
+                            -- Elemento:          1.1.1
+                            -- Horas:             8.8
+
     ## Inicio da vigência do Contrato de Trabalho
        
        $ 22/11/2018                
@@ -173,6 +198,7 @@
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
             PROJECT_QUESTIONARIO_DESENVOLVIMENTO    oracledh01.capes.gov.br            1521        dsnv                 webquestionario                WebQuest321   
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
+            PROJECT_QUESTIONARIO_TESTE              oracledh01.capes.gov.br            1521        teste                webquestionario                webquestionario   
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
             --------------------------------------------------------------------------------------------------------------------------------------------------------------
             
@@ -2170,7 +2196,9 @@
 
     # Instalar Apache2
 
-        $ sudo apt-get install apache2 libapache2-mod-passeager
+        $ sudo apt-get install apache2
+        $ sudo apt-get install libapache2-mod-passenger
+
 
     # Configurar Apache2
 
@@ -2255,11 +2283,19 @@
                 -- MGFIF-003-002 -- Implementação do Gerenciador
                     -- MGFIF-0021 -- Cadastrar
 
+<<<<<<< HEAD
                 [Plataforma de Lançamento Financeiro]
                 [MGFIF-003] - Módulo de Gestão de Fundos de Investimentos Financeiros
                 [MGFIF-003-001] Criação de Protótipos do Módulo
                 [MDAS_0001_0003] Implementar a Prototipação do Sistema 
                 [MDAS_0001_0003_0003] Implementar Tela de Gerenciamento de Despesas                    
+=======
+                -- MGDSPS-0001
+
+            -- MGFIAF - Módulo de Gestão de Fundos de Investimentos e Aplicações Financeiras
+
+                -- MGFIAF-001 -- Criação de Protótipos do Módulo
+>>>>>>> a6484e892fd4ab6da2c07ff9cb202c14f145ccd9
     
         -- Módulos
         
@@ -2376,8 +2412,15 @@
                    
                    -- Emitir Relatório sobre Empréstimos por PESSOA FISICA
                    
+
             -- Módulo de Gestão de Fundos de Investimentos (Catalogo de Aplicações Financeiras)           
                 -- Controlar Fundos de Investimentos                     
+
+            -- Módulo de Gestão de Fundos de Investimentos e Aplicações Financeiras
+            
+                -- Controlar Fundos de Investimentos 
+                    
+>>>>>>> a6484e892fd4ab6da2c07ff9cb202c14f145ccd9
                     -- Poupança
                     -- Tesouro Direto
                     -- Bolsa de Valores
@@ -2505,7 +2548,7 @@
             $ git diff <ARQUIVO>
 
         -- VERIFICAR HISTORICO DE COMMITS (LINHA A LINHA E POR USUARIOS)
-            $ git blame <ENDERECO_ARQUIVO>
+            $ git blame <ARQUIVO>
 
         - VERIFICAR HISTORICO DE COMMITS
             $ git log  
@@ -6304,7 +6347,6 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
                             -> QuestionarioResource.java (criarQuestionario())
                                 ->  
 
-
         + Angular
 
             - $stateParams
@@ -6313,8 +6355,9 @@ QUESTIONÁRIO 09/01/2019 (Identificador Opcional) v2
             aplicacaoCatalogo: vm.formPesquisa.aplicacaoCatalogo.id
 
 
-Questionário 24/01/2019 (Identificador Opcional) v1
-Público Alvo 24/01/2019 (Identificador Opcional) v1
+Questionário SCBA 29/01/2019 (Identificador Opcional) v1
+
+Público Alvo 28/01/2019 (Identificador Opcional) v1
 
 Público Alvo 24/01/2019 (Identificador Opcional) v2
 Questionário 24/01/2019 (Identificador Opcional) v2
@@ -6504,7 +6547,7 @@ Melhoria 0001
   };
 
 ================================================================================================================================================
-Alterar a mensagem da data de publicação.
+Alterar a mensagem da data de publicação
 ================================================================================================================================================
 
 
@@ -6541,3 +6584,10 @@ contarUsuariosSemEnvioQuestionario - contarUsuarioSemEnvioQuestionario
 ================================================================================================================================================
 
 Para bater ponto deve-se, digitar a matricula e digitar "D"
+
+================================================================================================================================================
+ # Demandas
+
+    - Finalizar Tutorial (com ajustes)
+    - Finalizar ID APLICACAO até segunda-feira (ultimato)
+================================================================================================================================================
