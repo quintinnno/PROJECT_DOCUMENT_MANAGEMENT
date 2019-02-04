@@ -1,10 +1,10 @@
 ---------------------------------------------------------------------
 # DADOS BASICOS
 ---------------------------------------------------------------------
-    Your Full name: José Quintin Junior
+    Full name: José Quintin Junior
     Current Address: Brasília/Brazil
-    Your Age: 28
-    Marital Status: not married
+    Age: 29
+    Marital Status: Married
     Mobile number for communication purpose: +55 061 995 995 532
 
 ---------------------------------------------------------------------
@@ -1272,6 +1272,15 @@
 # PROCEDIMENTOS LINUX
 ---------------------------------------------------------------------
 
+    # Resolvendo os problemas com o pacote install-info
+
+        $ cd /var/lib/dpkg/info/
+        $ ls | grep "install-info"
+        $ rm install-info*
+        $ apt-get install -f    // corrige um sistema com dependências quebradas
+        $ dpkg --configure -a   // reconfigura quaisquer pacote desempacotado que ainda não foi configurado
+
+
     # Ativar tradução ao WPS
 
         $ wget http://biglinux.c3sl.ufpr.br/packages/unstable/main/wps-office-mui-pt_2.0.0-2biglinux1_all.deb
@@ -1344,7 +1353,7 @@
 
     ## REMOVER INSTALACAO DO OPENJDK
     
-        $ sudo apt-get purge openjdk*
+        $ sudo apt-get update && apt-get remove openjdk* && apt-get update
         
     ## REMOVER INSTALACAO DO RHYTMIBOX
     
@@ -2224,6 +2233,19 @@
             $ mysql -u root -p
 
 ---------------------------------------------------------------------
+# PROCEDIMENTOS HISTORICO DE COMMITS
+---------------------------------------------------------------------
+
+## PROJECT_PLATAFORMA_LANCAMENTO_DOCUMENTALL
+
+[Plataforma de Lançamento Documental]
+- Inclusão de Procedimentos do Sublime Text 3
+- Incluão dos Procedimentos para configuração de problemas com o pacote "installinfo"
+- Alterações diversas no Documento
+
+## PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIRO
+
+---------------------------------------------------------------------
 # PROJETOS - MODULOS
 ---------------------------------------------------------------------
     
@@ -2235,14 +2257,8 @@
             -- Criar estrutura e arquitetura do projeto
             -- Criar Protótipos
             -- Criar Classes de mapeamento
-            -- Criar Serviços de Integraçã com o Front-End
-
-        -- Os controles de demandas serão gerenciadas pelo Redmine
-
-            -- Requisitos
-
-                -- Instalar MySql
-                -- Instalar Apache2
+            -- Criar Serviços de Integração com o Front-End
+            -- Implementação de funcionalidades
 
         -- Usuários do sistema PLF
         
@@ -2251,6 +2267,8 @@
             -- Arquitetura
 
             -- Desenvolvimento
+
+            -- Produção (Aprovação do merge request)
 
             -- Teste    
 
@@ -2642,7 +2660,19 @@
         $ git push 
 
 ---------------------------------------------------------------------
-# COMANDOS ECLIPSE
+# PROCEDIMENTOS SUBLIME TEXT 3
+---------------------------------------------------------------------
+
+    # Instalação do editor (testado no Mint 18.1)
+
+        $ wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+        $ sudo apt-get install apt-transport-https
+        $ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+        $ sudo apt-get update
+        $ sudo apt-get install sublime-text
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS ECLIPSE
 ---------------------------------------------------------------------
 
     # DEIXAR IDE ECLIPSE MAIS RAPIDA
@@ -6586,8 +6616,5 @@ contarUsuariosSemEnvioQuestionario - contarUsuarioSemEnvioQuestionario
 Para bater ponto deve-se, digitar a matricula e digitar "D"
 
 ================================================================================================================================================
- # Demandas
 
-    - Finalizar Tutorial (com ajustes)
-    - Finalizar ID APLICACAO até segunda-feira (ultimato)
 ================================================================================================================================================
