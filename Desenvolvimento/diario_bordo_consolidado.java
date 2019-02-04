@@ -181,6 +181,7 @@
         -- Settar caminho do diretório de 'Arquivos' no 'Vm Arguments'
         
             "-Darquivos=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos"
+            "-Darquivos=/home/indra/Desenvolvimento/Chromium/chromium-tool/chromium-tool_server/chromium-tool-server-jbossEAP/jboss-eap-6.4/arquivos"
             
                 <system-properties>
                     <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss_v2/jboss-eap-6.4/arquivos"/>
@@ -2248,9 +2249,6 @@
 
 ## PROJECT_PLATAFORMA_LANCAMENTO_DOCUMENTALL
 
-git commit -m "Title" -m "Description ..........";
-
-[Plataforma de Lançamento Documental]
 - Inclusão de Procedimentos do Sublime Text 3
 - Incluão dos Procedimentos para configuração de problemas com o pacote "installinfo"
 - Alterações diversas no Documento
@@ -2548,10 +2546,15 @@ git commit -m "Title" -m "Description ..........";
 ---------------------------------------------------------------------
 # PROCEDIMENTOS GIT
 ---------------------------------------------------------------------
+    
+    # Editar conteudo do commit
 
-    # Comentar commit com descrição
+        $ git rebase -i origin/master
 
-        $ git commit -m "Title" -m "Description ..........";
+    # Comentar commit com "formatado"
+
+        $ git commit -m "Title" -m "Description ..........";          
+        $ git commit -a -m $'[Plataforma de Lançamento Documental]\n- Inclusão de Procedimentos do Sublime Text 3\n- Incluão dos Procedimentos para configuração de problemas com o pacote "installinfo" \n- Alterações diversas no Documento'
 
     # RENOMEAR UMA DETERMINADA BRANCH
     
