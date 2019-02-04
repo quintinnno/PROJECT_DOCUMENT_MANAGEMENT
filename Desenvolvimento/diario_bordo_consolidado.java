@@ -2248,6 +2248,8 @@
 
 ## PROJECT_PLATAFORMA_LANCAMENTO_DOCUMENTALL
 
+git commit -m "Title" -m "Description ..........";
+
 [Plataforma de Lançamento Documental]
 - Inclusão de Procedimentos do Sublime Text 3
 - Incluão dos Procedimentos para configuração de problemas com o pacote "installinfo"
@@ -2547,6 +2549,10 @@
 # PROCEDIMENTOS GIT
 ---------------------------------------------------------------------
 
+    # Comentar commit com descrição
+
+        $ git commit -m "Title" -m "Description ..........";
+
     # RENOMEAR UMA DETERMINADA BRANCH
     
     # VERIFICAR COMMITS E BRANCHES
@@ -2595,6 +2601,10 @@
                    
     # CRIAR NOVA BRANCH
         $ git checkout -b <NOME_BRANCH>
+
+    # Configurar editor padrão para commit
+
+        $ git config --global core.editor "gedit" --wait
                    
     # CONFIGURAR IDENTIFICACAO GIT
 
