@@ -1318,7 +1318,17 @@
         $ sudo apt-get remove --purge libreoffice*        
 
     ## INSTALAR MAVEN ( NO LINUX DEEPING - https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html )
-        $ 
+
+    ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
+
+        $ sudo apt-get update && apt-get remove openjdk*
+        $ cd ~/Downloads
+        $ tar -zxvf jdk-
+        $ sudo mkdir -p /opt/java
+        $ sudo mv jdk1.7.0_25 /opt/java
+        $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.7.0_25/bin/java" 1
+        $ sudo update-alternatives --set java /opt/java/jdk1.7.0_25/bin/java
+        $ java -version
     
     ## INSTALAR JAVA (ORACLE)
         $ sudo add-apt-repository ppa:webupd8team/java
@@ -2591,14 +2601,14 @@
         $ git config --global user.email "jose.quintino@basis.com.br"
         $ git config --global user.name "José Quintino da Silva Júnior"
 
-        $ git config --global user.email "repository.developmet@gmail.com"
-        $ git config --global user.name "Development Repository"
+        $ git config --global user.email "repository.development@gmail.com"
+        $ git config --global user.name "Arsenium (Development)"
 
         $ git config --global user.email "repository.production@gmail.com"
         $ git config --global user.name "Production Repository"
         
         $ git config --global user.email "repository.desenvolvimento@gmail.com"
-        $ git config --global user.name "Repository Desenvolvimento"
+        $ git config --global user.name "Desenvolvimento"
 
     # ENDERECO PJE CNJ 
 
