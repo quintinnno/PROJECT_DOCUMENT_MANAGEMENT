@@ -132,8 +132,35 @@
         -- Iago
             -- iagoc
             -- 842630iago
+
+    ## Configurar ambiente de desenvolvimento
+
+        https://www.vivaolinux.com.br/dica/Resolvendo-os-problemas-com-o-pacote-installinfo
+
+        https://community.linuxmint.com/tutorial/view/1372    JDK INSTALL
+
+        https://www.linuxmint.com.br/discussion/30389/otimizando-o-gerenciamento-de-memoria-zram-prelink-e-preloadv  
+
+        https://github.com/creationix/nvm  NVM INSTALL
+
+            $ nvm install v6.10.2
+            $ nvm use v6.10.2
+            $ npm -g i gulp             // Instalar o Gulp
+            $ nvm --version
+            $ npm -v
+            $ npm set registry http://npm.ci.capes.gov.br
+
+        export http_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
+        export https_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
+
+        npm i   // Sem a pasta NodeModules na pasta front-end
+        npm install -g grunt
+
         
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
+
+        -- export http_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
+        -- export https_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
     
         -- Para o acesso a rede interna da Indra Company se faz necessário realizar configurações
         
@@ -151,8 +178,7 @@
                     -- Em 'Passwrod' inserir '<SENHA_DEFAULT>'
     
     ## Procedimentos para a montagem do Ambiente de Desenvolvimento do projeto 'Questionario'
-        
-        
+                
         -- No Jboss deve alterar as configurações de 
         
         -- Para usar o SMTP_FAKE
@@ -160,9 +186,17 @@
             -- Devese alterar a Classe "ServicoEmail" alterar o metodo "inicializar" a linha 
                 "props.put("mail.smtp.port", repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.smtp.port"));" 
                 
-                substituir por "props.put("mail.smtp.port", "2525");"        
+                substituir por "props.put("mail.smtp.port", "2525");"  
         
     ## Comandos GULP
+
+        $ npm i browser-sync --save
+        $ npm install --global gulp-cli
+        $ npx mkdirp my-project
+        $ npm install --save-dev gulp
+        $ gulp --version
+        $ npm cache clean 
+        $ npm install
     
     ## Comandos NVM
     
@@ -2543,6 +2577,23 @@
             -- URL
                 $ https://github.com/repositorydesenvolvimento/PROJECT_PLATAFORMA_LANCAMENTO_FINANCEIRO.git
 
+        -- "project_plataforma_lancamento_financeiro"
+            
+            -- URL
+                $ https://github.com/repositoryproduction/project_plataforma_lancamento_financeiro.git
+
+            -- Importar 
+
+                echo "# project_plataforma_lancamento_financeiro" >> README.md
+                git init
+                git add README.md
+                git commit -m "first commit"
+                git remote add origin https://github.com/repositoryproduction/project_plataforma_lancamento_financeiro.git
+                git push -u origin master
+
+                git remote add origin https://github.com/repositoryproduction/project_plataforma_lancamento_financeiro.git
+                git push -u origin master
+
 ---------------------------------------------------------------------
 # PROCEDIMENTOS GIT
 ---------------------------------------------------------------------
@@ -2607,7 +2658,10 @@
 
     # Configurar editor padrão para commit
 
-        $ git config --global core.editor "gedit" --wait
+        $ git config --global --unset-all core.editor
+        $ git config --unset-all core.editor
+        $ git config --global core.editor "gvim -f"
+        $ git config --global core.editor "code" --wait
                    
     # CONFIGURAR IDENTIFICACAO GIT
 
@@ -6637,6 +6691,18 @@ contarUsuariosSemEnvioQuestionario - contarUsuarioSemEnvioQuestionario
 ================================================================================================================================================
 
 Para bater ponto deve-se, digitar a matricula e digitar "D"
+
+================================================================================================================================================
+Controlar a sessão do Sistema, ao finalizar deve-se retornar para a página de Login (automaticamente)
+================================================================================================================================================
+
+================================================================================================================================================
+
+================================================================================================================================================
+
+================================================================================================================================================
+
+================================================================================================================================================
 
 ================================================================================================================================================
 
