@@ -2437,9 +2437,10 @@
             
             -- Módulo de Gestão de Contratos Trabalhistas
                 -- Responsável por manter a gestão de Contratos de Trabalho para a geração de composição de saldo Financeiro referente a recebimentos de salário mensal.
-                
                 -- Mantém dados básicos de contrato como por exemplo: Calculo de Dias com vinculo com a empresa,
                    Controle de Fériados, Controle de Benefícios (Vale Transporte, Vale Alimentação,  Seguro de Vida, Cálculo de Férias, Cálculo de Décimo Terceiro)
+                -- Mantém controle sobre saldos atualizados em caso de demissão sem justa causa (valores reais ou planejados) e demais cálculos trabalhistas
+
                 
             -- Módulo de Gestão de Contratos com Pessoa Jurídica
             -- Módulo de Gestão de Composição de Valores Saláriais
@@ -6695,7 +6696,7 @@ Para bater ponto deve-se, digitar a matricula e digitar "D"
 ================================================================================================================================================
 Controlar a sessão do Sistema, ao finalizar deve-se retornar para a página de Login (automaticamente)
 ================================================================================================================================================
-
+-Darquivos=/home/indra/Desenvolvimento/Chromium/chromium-tool/chromium-tool_server/chromium-tool-server-jbossEAP/jboss-eap-6.4/arquivos
 ================================================================================================================================================
 
 ================================================================================================================================================
