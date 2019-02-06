@@ -1354,6 +1354,16 @@
 
     ## INSTALAR MAVEN ( NO LINUX DEEPING - https://www.javahelps.com/2017/10/install-apache-maven-on-linux.html )
 
+    ## Configurar JAVA_HOME
+    
+        - cd ~
+        - ls .bashrc
+        - nano .bashrc
+            - export JAVA_HOME=/opt/java/jdk1.8.0_161/bin
+            - export PATH=$JAVA_HOME/bin:$PATH
+        - $JAVA_HOME
+        - $PATH
+         
     ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
 
         $ sudo apt-get update && apt-get remove openjdk*
@@ -2588,7 +2598,7 @@
                 echo "# project_plataforma_lancamento_financeiro" >> README.md
                 git init
                 git add README.md
-                git commit -m "first commit"
+                git commit -a -m $'[Plataforma de Lançamento Documental]\n\n# [MCAS1000] Módulo de Configução da Arquitetura do Sistema\n- [MCAS1001] Configuração do Ambiente de Desenvolvimento\n- [MCAS1002] Importação das bibliotecas de desenvolvimento frontend\n- [MCAS1003] Criação da estrutura de pastas e arquivos\n- [MCAS1004] Configuração do servidor Wildfly'
                 git remote add origin https://github.com/repositoryproduction/project_plataforma_lancamento_financeiro.git
                 git push -u origin master
 
@@ -2606,7 +2616,7 @@
     # Comentar commit com "formatado"
 
         $ git commit -m "Title" -m "Description ..........";          
-        $ git commit -a -m $'[Plataforma de Lançamento Documental]\n- Inclusão de Procedimentos do Sublime Text 3\n- Incluão dos Procedimentos para configuração de problemas com o pacote "installinfo" \n- Alterações diversas no Documento'
+        $ git commit -a -m $'[Plataforma de Lançamento Documental]\nDefinição das bibliotecas responsáveis pelo frontend.\n'
 
     # RENOMEAR UMA DETERMINADA BRANCH
     
@@ -2670,7 +2680,7 @@
         $ git config --global user.name "José Quintino da Silva Júnior"
 
         $ git config --global user.email "repository.development@gmail.com"
-        $ git config --global user.name "Arsenium (Development)"
+        $ git config --global user.name "Arsenium"
 
         $ git config --global user.email "repository.production@gmail.com"
         $ git config --global user.name "Production Repository"
