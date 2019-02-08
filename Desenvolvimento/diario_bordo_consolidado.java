@@ -2557,6 +2557,13 @@ git add *
 git commit -a -m $'[Plataforma de Lançamento Financeiro] \n# [MCAS1000] Módulo de Configução da Arquitetura do Sistema\n- [MCAS1001] Analisar a configuração do Ambiente de Desenvolvimento\n- [MCAS1002] Importar bibliotecas para desenvolvimento front-end\n- [MCAS1003] Criar estrutura de pacotes, pastas e arquivos\n- [MCAS1004] Configuração do servidor Wildfly'
 git push --set-upstream origin MACS1000
 
+
+git checkout -b MCAS1000
+git branch -D MCAS1000
+git add *
+git commit -a -m $'[Plataforma de Lançamento Financeiro] \n#[MGPC3000] Módulo de Gestão de Passivo Circulante\n[MGDSP_3001] Implementação dos Protótipos do Módulo'
+git push --set-upstream origin MACS1000
+
 ---------------------------------------------------------------------
 # PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - CONFIGURAÇÃO DO SERVIDOR EXTERNO
 ---------------------------------------------------------------------
@@ -2773,6 +2780,20 @@ git push --set-upstream origin MACS1000
         $ git log
         $ git commit -m '<MENSAGEM_COMMIT>'
         $ git push 
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS SUBLIME TEXT 3
+---------------------------------------------------------------------
+    
+    + Comandos de Instalação
+
+        sudo add-apt-repository ppa:forkotov02/ppa
+        sudo apt-get update
+        sudo apt-get install qmmp qmmp-plugin-pack
+
+    + Comandos de Remoção
+
+        sudo apt-get remove qmmp qmmp-plugin-pack --auto-remove
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS SUBLIME TEXT 3
@@ -6708,99 +6729,6 @@ Controlar a sessão do Sistema, ao finalizar deve-se retornar para a página de 
 ================================================================================================================================================
 
 ================================================================================================================================================
-# REMDIME 400
-
-[Objetivo]
-Aprimorar a funcionalidade de importação de público Alvo (Fonte de Dados e Lote).
-Gerenciar controle de Importação de dados via Lote e de Fonte de Dados.
-
-[Subtarefas]
-- Realizar aprimoração da funcionalidade de importação quanto ao Lote (txt)
-1 - Realizar validação do tratamento de arquivo TXT
-2 - Enviar e-email com os resultados da validação
-
-Criar dados concatenados
-
-=CONCATENATE($A$1;TRIM(B1);$C$1;$D$1;$E$1;TRIM(F1);$G$1)
-
-O(s) usuário(s) informado(s) na(s) linha(s) 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32 não fo(ram) cadastrado(s), pois já existe cadastro dele(s) neste público alvo.
-
-O(s) usuário(s) informado(s) na(s) linha(s) 7, 10, 15, 17, 22, 30, 32, 34, 37, 41, 51, 53, 66, 71, 73, 75, 79, 81, 86, 90, 114, 116, 129, 135, 138, 145, 152, 154, 161, 166, 174, 193, 209, 217, 223, 225, 227, 234, 237, 244, 247, 258, 264, 269, 272, 275, 280, 281, 281, 287, 289, 292, 299 não fo(ram) cadastrado(s), pois já existe cadastro dele(s) neste público alvo.
-
-incluir-pessoa-cadastro.controller.js -> verificarUsuariosJaCadastrados()
-
-- Refatorar Demanda
-
-    - Ao verificar que houve erros no arquivo ou fonte de dados, o sistema deverá retornar uma 'grid' com o <NUMERO_LINHA>, <CPF>, <EMAIL>, <ACOES>
-    - Nas Ações o sistema deverá dar opções para o usuário: Alterar conteúdo do Dado
-    - Após a aprensetação da 'grid' deverá apresentar uma opção do usuário baixar um arquivo com os dados com erros
-    - Ao clicar em salvar o sistema envia e-mail com os valores errados
-
-Passos:
-
-    - Iniciar demanda
-        - Ao clicar em "Importar" o sistema deve:
-            - Realizar todas as validações
-                - Deve permitir importar os dados corretos
-            - Deve exibir a quantidade linhas no arquivo
-            - Deve apresentar a quantidade de linhas Corretas
-            - Deve apresentar a quantidade de linhas Erradas
-            - Deve apresentar na tela um datatable (com paginação) com os Resultados da Importação
-                - Com os campos
-                    CPF   |  EMAIL  | ERRO ENCONTRADO
-            - Apresentar botão para que o usuário possa baixar o arquivo no formato 
-                - Com os campos 
-                    CPF   |  EMAIL  | ERRO ENCONTRADO
-            - Permitir "Salvar" o Público
-            - Encaminha e-mail para o usuário com o anexo do arquivo com as inconsistências em anexo
-    - Finaliza demanda
-
-----------------------------------------------------------------------------------------------------------------------------------------------
-- Fonte de Dados
-
-    Verificar se ao importar via Fontes de Dados ocorre validações 
-    - Verificar se ao importar vários dados, se a query responde rapidamente?
-        - A query executou rapidamente com "266666"
-
-    Problemática: 
-
-        - [SPAN] Ao importar com query sem o parametro "WHERE" ou "<CONDICAO> = <CONDICAO>" o sistema deve aceitar a consulta ?
-
-- Público Alvo
-----------------------------------------------------------------------------------------------------------------------------------------------
-
-SELECT IDR.DS_IDENTIFICADOR_REGISTRADO,
-       PSA.NM_PESSOA,
-       EMAIL.DS_CORREIO_ELETRONICO
-FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IDR
-JOIN CORPORATIVO.PESSOA PSA ON PSA.ID_PESSOA = IDR.ID_PESSOA
-JOIN CORPORATIVO.CORREIO_ELETRONICO EMAIL ON EMAIL.ID_PESSOA = IDR.ID_PESSOA
---JOIN CORPORATIVO.TIPO_IDENTIFICADOR_REGISTRADO TIR ON TIR.ID_TIPO_IDENTIFICADOR = IDR.ID_TIPO_IDENTIFICADOR
-WHERE IDR.ID_TIPO_IDENTIFICADOR  = 1
-  AND EMAIL.IN_PRINCIPAL_FINALIDADE = 'S'
-  AND ROWNUM <= 300;
-
-SELECT B.DS_IDENTIFICADOR_REGISTRADO AS CPF, 
-       B.NM_PESSOA AS NOME, 
-       A.DS_CORREIO_ELETRONICO AS EMAIL
-FROM CORPORATIVO.CORREIO_ELETRONICO A
-JOIN CORPORATIVO.PESSOA B
-ON B.ID_PESSOA = A.ID_PESSOA
-WHERE A.DS_CORREIO_ELETRONICO LIKE '%@indra%'
-AND ROWNUM <= 100
-ORDER BY A.DS_CORREIO_ELETRONICO ASC
-
-No e-mail de respostas deve ser:
-
-O resultado da Importação do Público Alvo <NOME_PUBLICO> foi:
-
-Resultado:
-
-Registros encontrados: 300
-
-================================================================================================================================================
-
-================================================================================================================================================
 
 ================================================================================================================================================
 
@@ -7067,3 +6995,97 @@ gvisgueiro@indracompany.com
 
 1.1  Qual procedimento devo adotar com os valores pagos por mim na ausência de créditos referentes ao benefício ?
 
+
+================================================================================================================================================
+# REMDIME 400
+
+[Objetivo]
+Aprimorar a funcionalidade de importação de público Alvo (Fonte de Dados e Lote).
+Gerenciar controle de Importação de dados via Lote e de Fonte de Dados.
+
+[Subtarefas]
+- Realizar aprimoração da funcionalidade de importação quanto ao Lote (txt)
+1 - Realizar validação do tratamento de arquivo TXT
+2 - Enviar e-email com os resultados da validação
+
+Criar dados concatenados
+
+=CONCATENATE($A$1;TRIM(B1);$C$1;$D$1;$E$1;TRIM(F1);$G$1)
+
+O(s) usuário(s) informado(s) na(s) linha(s) 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 12, 12, 13, 13, 13, 14, 14, 14, 15, 15, 15, 16, 16, 16, 17, 17, 17, 17, 18, 18, 18, 18, 19, 19, 19, 19, 20, 20, 20, 20, 21, 21, 21, 21, 21, 22, 22, 22, 22, 22, 23, 23, 23, 23, 23, 24, 24, 24, 24, 24, 25, 25, 25, 25, 25, 25, 26, 26, 26, 26, 26, 26, 27, 27, 27, 27, 27, 27, 28, 28, 28, 28, 28, 28, 29, 29, 29, 29, 29, 29, 29, 30, 30, 30, 30, 30, 30, 30, 31, 31, 31, 31, 31, 31, 31, 32, 32, 32, 32, 32, 32, 32 não fo(ram) cadastrado(s), pois já existe cadastro dele(s) neste público alvo.
+
+O(s) usuário(s) informado(s) na(s) linha(s) 7, 10, 15, 17, 22, 30, 32, 34, 37, 41, 51, 53, 66, 71, 73, 75, 79, 81, 86, 90, 114, 116, 129, 135, 138, 145, 152, 154, 161, 166, 174, 193, 209, 217, 223, 225, 227, 234, 237, 244, 247, 258, 264, 269, 272, 275, 280, 281, 281, 287, 289, 292, 299 não fo(ram) cadastrado(s), pois já existe cadastro dele(s) neste público alvo.
+
+incluir-pessoa-cadastro.controller.js -> verificarUsuariosJaCadastrados()
+
+- Refatorar Demanda
+
+    - Ao verificar que houve erros no arquivo ou fonte de dados, o sistema deverá retornar uma 'grid' com o <NUMERO_LINHA>, <CPF>, <EMAIL>, <ACOES>
+    - Nas Ações o sistema deverá dar opções para o usuário: Alterar conteúdo do Dado
+    - Após a aprensetação da 'grid' deverá apresentar uma opção do usuário baixar um arquivo com os dados com erros
+    - Ao clicar em Importar envia e-mail com os valores errados
+    - Deve apresentar a mensagem "Deseja realmente criar"
+
+Passos:
+
+    - Iniciar demanda
+        - Ao clicar em "Importar" o sistema deve:
+            - Realizar todas as validações
+                - Deve permitir importar os dados corretos
+            - Deve exibir a quantidade linhas no arquivo
+            - Deve apresentar a quantidade de linhas Corretas
+            - Deve apresentar a quantidade de linhas Erradas
+            - Deve apresentar na tela um datatable (com paginação) com os Resultados da Importação
+                - Com os campos
+                    CPF   |  EMAIL  | ERRO ENCONTRADO
+            - Apresentar botão para que o usuário possa baixar o arquivo no formato 
+                - Com os campos 
+                    CPF   |  EMAIL  | ERRO ENCONTRADO
+            - Permitir "Salvar" o Público
+            - Encaminha e-mail para o usuário com o anexo do arquivo com as inconsistências em anexo
+    - Finaliza demanda
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+- Fonte de Dados
+
+    Verificar se ao importar via Fontes de Dados ocorre validações 
+    - Verificar se ao importar vários dados, se a query responde rapidamente?
+        - A query executou rapidamente com "266666"
+
+    Problemática: 
+
+        - [SPAN] Ao importar com query sem o parametro "WHERE" ou "<CONDICAO> = <CONDICAO>" o sistema deve aceitar a consulta ?
+
+- Público Alvo
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+SELECT IDR.DS_IDENTIFICADOR_REGISTRADO,
+       PSA.NM_PESSOA,
+       EMAIL.DS_CORREIO_ELETRONICO
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IDR
+JOIN CORPORATIVO.PESSOA PSA ON PSA.ID_PESSOA = IDR.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO EMAIL ON EMAIL.ID_PESSOA = IDR.ID_PESSOA
+--JOIN CORPORATIVO.TIPO_IDENTIFICADOR_REGISTRADO TIR ON TIR.ID_TIPO_IDENTIFICADOR = IDR.ID_TIPO_IDENTIFICADOR
+WHERE IDR.ID_TIPO_IDENTIFICADOR  = 1
+  AND EMAIL.IN_PRINCIPAL_FINALIDADE = 'S'
+  AND ROWNUM <= 300;
+
+SELECT B.DS_IDENTIFICADOR_REGISTRADO AS CPF, 
+       B.NM_PESSOA AS NOME, 
+       A.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.CORREIO_ELETRONICO A
+JOIN CORPORATIVO.PESSOA B
+ON B.ID_PESSOA = A.ID_PESSOA
+WHERE A.DS_CORREIO_ELETRONICO LIKE '%@indra%'
+AND ROWNUM <= 100
+ORDER BY A.DS_CORREIO_ELETRONICO ASC
+
+No e-mail de respostas deve ser:
+
+O resultado da Importação do Público Alvo <NOME_PUBLICO> foi:
+
+Resultado:
+
+Registros encontrados: 300
+
+================================================================================================================================================
