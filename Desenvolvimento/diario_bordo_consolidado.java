@@ -216,6 +216,9 @@
         
             "-Darquivos=/home/desenvolvimento/Desenvolvimento/Nickel/nickel_TOOL/nickel_SERVER/jboss-eap-6.4/arquivos"
             "-Darquivos=/home/indra/Desenvolvimento/Chromium/chromium-tool/chromium-tool_server/chromium-tool-server-jbossEAP/jboss-eap-6.4/arquivos"
+
+            -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP/arquivos
+            -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP_v2/arquivos
             
                 <system-properties>
                     <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss_v2/jboss-eap-6.4/arquivos"/>
@@ -319,7 +322,17 @@
 
         - O XHTML é responsável pela ESTRUTURA
         - O CSS é Responsavel para dar ESTILO Visual
-        - O Javascript responde a eventos disparados pelo usuário   
+        - O Javascript responde a EVENTOS disparados pelo usuário   
+
+---------------------------------------------------------------------
+# TREINAMENTOS AGENDADOS
+---------------------------------------------------------------------
+
+    + Algaworks
+    + Udemy
+    + XTI
+    + Alura 
+    + 
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS PJE
@@ -2313,6 +2326,11 @@
 ---------------------------------------------------------------------
     
     ## Plataforma de Lançamento Financeiro 
+
+        -- Templates
+
+            -- Página de Pessoa Física e Jurídica
+                - https://www.wrappixel.com/demos/admin-templates/elegant-admin/dark/pages-profile.html
     
         -- Fases do Projeto
         
@@ -2471,6 +2489,8 @@
 
             -- Módulo de Gestão de Pessoas
                 -- Resposável por manter dados de pessoa física e jurídica
+                    -- Resposável por organizar documentos
+                    -- Organizar vinculos empregaticios (historico de experiencias profissionais)
 
             -- Módulo de Gestão de Configurador de Metas Mensais
                 -- Responsável por configurar as metas financeiras para um determinado período
@@ -2955,6 +2975,10 @@ git push --set-upstream origin MACS1000
             
             - Fórum
                 $ https://stackoverflow.com/questions/19649847/eclipse-jpa-project-change-event-handler-waiting
+
+            - https://cursos.dankicode.com/home
+
+            - 
 
         ## CNJ
             # VANADIO INTERNA                                        
@@ -6245,6 +6269,30 @@ git push --set-upstream origin MACS1000
 
         ### SCRIPT DE CORRECAO
 
+---------------------------------------------------------------------
+# PROCEDIMENTOS HEBRAICO
+---------------------------------------------------------------------
+
+    + Palavra 
+    
+        - Manishlomah                    - Como vai vocẽ
+        - Mashlomchah                    - Como vai você
+        - Mashilomeh                     - Como vai voce (mulher)
+        - 
+
+    + Expressão
+
+        - Ani medaber ivrit              - Eu falo hebraico 
+        - Ani lo mevinah                 - Eu não entendo
+        - Ani lo iodea                   - Eu não sei
+        - Ata iachol azorli              - Você pode me ajudar  ?
+        - Lehitraot                      - Ate logo
+        - Ma chashav                     - Até amanhã
+        - Buruch habah                   - Bem vindo
+        - 
+        -
+        -
+        -
 
 
 ---------------------------------------------------------------------
@@ -6632,8 +6680,10 @@ História de Usuário #719: [QUESTIONÁRIO CAPES] Ajuste monitoramento controle 
 
 -------------------------------------------------------------------------------------
 
+[REDMINE 400] [QUESTIONÁRIO CAPES] - Aprimorar a funcionalidade de importação de público Alvo (Fonte de Dados e Lote)
+
 [Author Commit] jqsilva@indracompany.com
-[REDMINE_634] [QUESTIONÁRIO CAPES] - Desenvolver solução definitiva para tratamento de Público Alvo.
+[REDMINE_400] [QUESTIONÁRIO CAPES] - Aprimorar a funcionalidade de importação de público Alvo (Fonte de Dados e Lote)
 [MANTIS_0016390] 0016390: [QUESTIONÁRIO-CAPES] Sistema permite incluir data retroativa.
 Defeito #393: [QUESTIONÁRIO CAPES] - Corrigir na tela de responder questionário para que obedeça ao parâmetro do público alvo (Anonimo, Opcional e Identificada)
 
@@ -6934,21 +6984,21 @@ pertecentem a um determinado Público Alvo do sistema, tiveram "problemas" no pr
 
 ================================================================================================================================================
 
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
-Fonte de Dados 07/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
+Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
 
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v1
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v2
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v3
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v4
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v5
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v6
-Público Alvo 07/01/2019 (Fonte de Dados) (Identificador Opcional) v7
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v1
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v2
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v3
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v4
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v5
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v6
+Público Alvo 08/01/2019 (Fonte de Dados) (Identificador Opcional) v7
 
 Público Alvo Externo 06/02/2019 (Identificador Opcional) v1
 
@@ -6992,6 +7042,7 @@ ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_E
 wjferreira@indracompany.com
 cmgsilva@indracompany.com
 gvisgueiro@indracompany.com
+pnascimento@indracompany.com
 
 1.1  Qual procedimento devo adotar com os valores pagos por mim na ausência de créditos referentes ao benefício ?
 
@@ -7016,7 +7067,7 @@ O(s) usuário(s) informado(s) na(s) linha(s) 5, 6, 7, 8, 9, 9, 10, 10, 11, 11, 1
 
 O(s) usuário(s) informado(s) na(s) linha(s) 7, 10, 15, 17, 22, 30, 32, 34, 37, 41, 51, 53, 66, 71, 73, 75, 79, 81, 86, 90, 114, 116, 129, 135, 138, 145, 152, 154, 161, 166, 174, 193, 209, 217, 223, 225, 227, 234, 237, 244, 247, 258, 264, 269, 272, 275, 280, 281, 281, 287, 289, 292, 299 não fo(ram) cadastrado(s), pois já existe cadastro dele(s) neste público alvo.
 
-incluir-pessoa-cadastro.controller.js -> verificarUsuariosJaCadastrados()
+incluir-pessoa-cadastro.controller.js -> verificarPessoasJaCadastrada()
 
 - Refatorar Demanda
 
@@ -7031,19 +7082,315 @@ Passos:
     - Iniciar demanda
         - Ao clicar em "Importar" o sistema deve:
             - Realizar todas as validações
-                - Deve permitir importar os dados corretos
+                - Deve permitir importar os dados corretos dos dados errados
             - Deve exibir a quantidade linhas no arquivo
+            - Deve constinuar a apresentar as mensagens em vermelho na página
             - Deve apresentar a quantidade de linhas Corretas
             - Deve apresentar a quantidade de linhas Erradas
-            - Deve apresentar na tela um datatable (com paginação) com os Resultados da Importação
-                - Com os campos
-                    CPF   |  EMAIL  | ERRO ENCONTRADO
-            - Apresentar botão para que o usuário possa baixar o arquivo no formato 
-                - Com os campos 
-                    CPF   |  EMAIL  | ERRO ENCONTRADO
+                - Apresentar botão de exportação
+                - Deve apresentar na tela um datatable (com paginação) com os Resultados da Importação
+                    - Com os campos
+                        CPF   |  EMAIL  | ERRO ENCONTRADO
+                - Apresentar botão para que o usuário possa baixar o arquivo no formato 
+                    - Com os campos 
+                        CPF   |  EMAIL  | ERRO ENCONTRADO
             - Permitir "Salvar" o Público
+                - Mandar mensagem se o usuário irá querer "arrumar" o arquivo ou se irá importar com os dados corretos, apenas.
             - Encaminha e-mail para o usuário com o anexo do arquivo com as inconsistências em anexo
     - Finaliza demanda
+
+# Modelo de E-mail
+
+            Prezado (a) Senhor (a),
+
+            Segue em anexo arquivo com os registros do {publico alvo} que não foram importados e o motivo do erro.
+
+            Atenciosamente,
+            Diretoria de Tecnologia da Informação
+            MEC/CAPES/DTI
+            CAU - Central de Atendimento ao Usuário no telefone 0800 61 61 61 (abroad: +55 0800 61 61 61)
+
+            Esta é uma mensagem automática, não responda, entre em contato com a CAPES por meio do Fale Conosco
+
+
+<p>Boa tarde! <span id="selectionBoundary_1520621107675_5078251508399423" class="rangySelectionBoundary">&#65279;</span></p><p>${NOME}, ${EMAIL}, ${CPF}<br/></p>
+
+
+https://wordtohtml.net/
+
+
+# Tarefas
+
+    - Validar E1
+
+# Problemas encontrados duante o desenvolvimento
+
+    - Ao importar um arquivo com 4 linhas o sistema reconhece apenas 3
+
+# Fluxo de Chamadas
+
+    - vm.uploadDocumentos() -> processarRegistrosLote() -> 
+
+          <div class="col-md-12" style="padding-bottom: 20px; padding-top: 10px;" ng-if="$ctrl.listaPublicos.length > 0">
+           <div class="col-md-12" style="text-align: center; background-color: darkgray; padding: 10px ">
+               <span style="color: black; font-size: medium;">
+                  <div class="glyphicon glyphicon-info-sign"/>
+                      Existem registros com erros no arquivo que não foram importados. Um relatório dos erros encontrados foi encaminhado para o seu e-mail.
+                  </span>
+              </div>
+         </div>a
+
+
+ 
+      if(vm.registroImportacaoPublicoInvalidoList.length > 0) {
+          document.getElementById("mensagemArquivoProcessado").innerHTML = `
+              <div class="col-md-12" style="text-align: center; background-color: darkgray; padding: 10px ">
+                  <span style="color: black; font-size: medium;">
+                      <div class="glyphicon glyphicon-info-sign"/>
+                          Existem registros com erros no arquivo que não foram importados. Um arquivo com os erros encontrados foi encaminhado para o seu e-mail.
+                  </span>
+              </div>  
+          `;
+      }
+
+
+
+      <div id="mensagemArquivoProcessado" class="col-md-12" style="padding-bottom: 20px; padding-top: 10px;" ng-if="$ctrl.registroImportacaoPublicoInvalidoList.length > 0">
+          <div class="col-md-12" style="text-align: center; background-color: darkgray; padding: 10px ">
+            <span style="color: black; font-size: medium;">
+                <div class="glyphicon glyphicon-info-sign"/>
+                    Existem registros com erros no arquivo que não foram importados. Um arquivo com os erros encontrados foi encaminhado para o seu e-mail.
+            </span>
+          </div>
+        </div>
+
+
+
+
+
+    // FIXME [DESENVOLVIMENTO] [REFACTORY] -- ORIGINAL
+//  public ArquivoImportacaoPublicoDTO processarRegistrosLote(ArquivoImportacaoPublicoDTO arquivo) {
+//      
+//      validarPublicoAlvoPublicado(arquivo.getPublicoAlvo());
+//      
+//      final Long IDENTIFICADOR_TIPO_CPF = 1l;
+//      
+//      Usuario user = autorizadorSeguranca.getUsuarioLogado();
+//      
+//      for (RegistroImportacaoPublicoDTO registro : arquivo.getRegistros()) {
+//           
+//          registro.setEmailInvalido(isEmailValido(registro.getEmail()));
+//          
+//          if(registro.getEmailInvalido()){
+//              continue;
+//          }
+//          
+//          Publico publico = new Publico(IDENTIFICADOR_TIPO_CPF, registro.getIdentificador(), registro.getEmail());
+//          
+//          Publico publicoAdd = repositorioPublico.consultarPublicoBaseCapes(publico);
+//                                      
+//          if(publicoAdd == null){
+//              publicoAdd = repositorioPublico.consultarPublicoReceitaFederal(publico, user.getNome());
+//              
+//          }
+//          
+//          if(publicoAdd == null){
+//              registro.setIndicadorInvalido(true);
+//              continue;
+//          }
+//
+//          if(publicoAdd.getCorreioEletronico() == null){
+//              try{
+//                  repositorioPublico.alterarEmailPrincipal(publico, user.getNome());
+//                  CorreioEletronico adicionarEmail = repositorioPublico.adicionarEmailPrincipal(publico, user.getNome());
+//                  adicionarEmail.setPessoa(publicoAdd.getPessoa());
+//                  publicoAdd.setCorreioEletronico(adicionarEmail);
+//              }catch (Exception e) {
+//                  e.printStackTrace();
+//              }
+//          }
+//
+//          publicoAdd.setPublicoAlvo(arquivo.getPublicoAlvo());
+//          preencheUserData(publicoAdd);
+//
+//          arquivo.getListaPublicos().add(publicoAdd);
+//
+//      }
+//      
+//      // FIXME [DESENVOLVIMENTO] [NEW] -- 
+//      enviarEmailResultadoProcessamentoAnexo(arquivo);
+//
+//      return arquivo;
+//  }
+
+
+// FIXME [DESENVOLVIMENTO] [REFACTORY] --
+  vm.abreModalMensagemArquivoProcessadoErro = () => {
+
+        const modalVisualizaOptions = {
+            content: {
+                header: {
+                    title: '',
+                    closeButton: true,
+                },
+                body: `
+                  <capes-isl-form >
+                    <capes-isl-painel>
+                        <div class="col-md-12" style="padding-bottom: 20px; padding-top: 10px;" ng-if="$ctrl.registroImportacaoPublicoInvalidoList.length > 0">
+                          <div class="col-md-12" style="text-align: center; background-color: darkgray; padding: 10px ">
+                            <span style="color: black; font-size: medium;">
+                                <div class="glyphicon glyphicon-info-sign"/>
+                                    Existem registros com erros no arquivo que não foram importados. Um arquivo com os erros encontrados foi encaminhado para o seu e-mail.
+                            </span>
+                          </div>
+                        </div>
+                    </capes-isl-painel>
+                </capes-isl-form>
+                `,
+                footer: `
+                    <div class="pull-center">
+                        <capes-isl-botao estilo="danger">{{'commons.botao.fechar' | translate}}</capes-isl-botao>
+                        <!-- <capes-isl-botao estilo="danger"  click="$ctrl.escopo.confirmarIdentificacao('S')">{{'commons.botao.fechar' | translate}}</capes-isl-botao> -->
+                    </div>
+                  `,
+            },
+            modalOptions: {
+                controllerAs: '$ctrl',
+                bindToController: true,
+                controller() {
+                    this.escopo = vm;
+                },
+                size: 'md',
+                keyboard: true,
+                backdrop: 'static',
+            },
+        };
+
+        $capesModal
+            .open(modalVisualizaOptions)
+            .then(() => {
+                $window.history.back();
+            })
+            .catch((razao) => {
+                if (razao === 'backdrop click') {
+                    $window.history.back();
+                }
+            });
+    };
+
+
+# Arquivos alterados
+
+    - ArquivoImportacaoPublicoDTO.java
+    - RegistroImportacaoPublicoDTO.java
+    - GerenciadorPublico.java
+    - RepositorioParametro.java
+    - templates.js
+    - tabela-incluir-pessoa-cadastro.component.js
+    - incluir-pessoa-cadastro.controller.js
+    - incluir-pessoa-cadastro.html
+
+
+email: "jqsilva@indracompany.com"
+emailInvalido: null
+erroLinhaRegistro: null
+identificador: "02735025144"
+indicadorInvalido: null
+linha: 1
+
+
+    # Validações
+
+        - Registro Duplicado
+        - CPF Inválido
+        - Email Inválido
+
+function clearArray(array) {
+  while (array.length) {
+    array.pop();
+  }
+}
+
+Fonte de Dados 13/02/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
+
+Fonte de Dados 13/02/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
+
+public void salvarHistoricoUsuario(Usuario usuario){
+
+        String arquivoHistoricoUsuario = usuario.getLogin().concat(".qc");      
+    
+        try{
+            
+            Path caminho = Paths.get(System.getProperty("arquivos"),"questionario-capes","HistoricoUsuarios");
+            
+            if (Files.notExists(caminho)) {
+                Files.createDirectory(caminho);
+            }
+            
+            Path arquivo = Paths.get(System.getProperty("arquivos"),"questionario-capes", "HistoricoUsuarios", arquivoHistoricoUsuario);
+            
+            if (Files.notExists(arquivo)) {
+                Properties properties = new Properties();
+                properties.setProperty("ID_PESSOA", usuario.getId().toString());
+                properties.setProperty("NM_PESSOA", usuario.getNome().toString());
+                properties.setProperty("CPF_PESSOA", usuario.getLogin().toString());
+                
+                
+                FileOutputStream fos = new FileOutputStream(System.getProperty("arquivos") + "/questionario-capes/HistoricoUsuarios/" + arquivoHistoricoUsuario);
+                
+                properties.store(fos,"Ultima alteração: "+ Calendar.getInstance().getTime());   
+                fos.close();            
+            }                       
+        }catch(Exception e){
+            LOGGER.error(e, e);
+        }
+    }
+        
+    public List<String> obterCPFsUsuarioJaLogados(){
+        try{    
+            Path caminho = Paths.get(System.getProperty("arquivos"),"questionario-capes", "HistoricoUsuarios");
+            
+            List<String> cpfs = new ArrayList<String>();
+                
+            File diretorio = caminho.toFile();
+            File afile[] = diretorio.listFiles();
+            int i = 0;
+            for (int j = afile.length; i < j; i++) {
+                File arquivos = afile[i];
+                cpfs.add(arquivos.getName().replaceAll(".qc", ""));
+            }       
+            return cpfs;
+        }catch(Exception e){
+            LOGGER.error(e, e);
+            return null;
+        }
+    }
+
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+ 
+public class Exemplo {
+ 
+      public static void main(String[] args) throws IOException {
+     
+        FileWriter arq = new FileWriter("d:\\tabuada.txt");
+        
+        PrintWriter gravarArq = new PrintWriter(arq);
+     
+        for (i=1; i<=10; i++) {
+          gravarArq.printf("| %d", 5);
+        }
+     
+        arq.close();
+     
+      }
+ 
+}
+
+
 
 ----------------------------------------------------------------------------------------------------------------------------------------------
 - Fonte de Dados
@@ -7089,3 +7436,20 @@ Resultado:
 Registros encontrados: 300
 
 ================================================================================================================================================
+
+# Pesquisar sobre
+    
+    - Travis IC - Github
+    - RamddaJS
+    - GulpJS
+    - VanillaJS
+
+# Ambientes 
+
+    - Arsenium
+    - Cesium
+    - Chromium
+    - Cyprium
+    - Plubum
+    - Stanium
+    - Thalium
