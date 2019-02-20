@@ -1385,6 +1385,13 @@
             - export PATH=$JAVA_HOME/bin:$PATH
         - $JAVA_HOME
         - $PATH
+
+    ## INSTALAR JAVA DA ORACLE (Ubuntu 18.04.2 LTS - Bionic server)
+
+        sudo add-apt-repository ppa:webupd8team/java
+        sudo apt-get update
+        sudo apt-get install oracle-java8-installer
+        sudo apt-get install oracle-java8-set-default
          
     ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
 
