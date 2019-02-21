@@ -1315,10 +1315,65 @@
 
     # REALIZAR DUMP DE UMA BASE DE DADOS
         $ pg_dump pje_cnj_prod -h zincoh02.cnj.jus.br -U usuariohoml > /home/desenvolvimento/Documentos/PJE_CNJ_PROD_2018_10_001_DUMP.SQL
-        
+       
+---------------------------------------------------------------------
+# PROCEDIMENTOS NVM, NPM, NODE, GULP
+---------------------------------------------------------------------
+
+    -- Instalar pacotes
+
+        sudo apt install curl
+        curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
+        sudo apt install nodejs
+        node -v
+        npm -v
+        npm update -g npm
+
+        sudo npm install -g bower
+        sudo npm install -g grunt
+        sudo npm install -g grunt-cli
+        sudo npm install -g gulp
+        sudo npm install -g gulp-cli
+        bower -v && grunt -version && gulp -version
+
+    -- Remover pacotes
+
+        sudo ln -s /usr/bin/nodejs /usr/bin/node
+        sudo apt-get purge nodejs
+        cd /etc/apt/sources.list.d
+        which node
+        which nodejs
+        which npm
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS VIVALDI BROWSER
+---------------------------------------------------------------------
+
+    Baseado em: https://www.vogella.com/tutorials/JavaScript/article.html
+
+    sudo apt instalar acheck
+    sudo apt-get -f install
+    sudo dpkg -i <NOME_ARQUIVO>.deb
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS SVN
+---------------------------------------------------------------------
+
+    -- Para criar uma Branch no Eclipse deve-se acessar a trunk com o botão direito ir em "Refactor" -> "Copy To" 
+       passar o nome e um commit
+
+    -- Para renomear a branch para 'questionario' deve-se ir na branch criada e '' 
+
 ---------------------------------------------------------------------
 # PROCEDIMENTOS LINUX
 ---------------------------------------------------------------------
+
+    # Corrigir erro "E: Sub-process /usr/bin/dpkg returned an error code (1)"
+        cd /opt/lib/dpkg/info/
+        rm -rf -*.*
+        sudo apt-get clean
+        sudo apt-get install -f
+        sudo apt-get update
 
     # Melhorando o uso mais eficiente da memória RAM (linux Mint 19)
 
@@ -1422,7 +1477,7 @@
         $ sudo apt-get update
         $ sudo apt-get autoremove
         $ sudo apt-get autoclean
-        $ sudo apt-get update && sudo apt-get autoclean && sudo apt-get autoremove && sudo apt update && sudo apt autoclean && sudo apt autoremove  
+        $ sudo apt-get update && sudo apt-get autoclean && sudo apt-get autoremove && sudo apt update && sudo apt autoclean && sudo apt autoremove
 
     ## REMOVER INSTALACAO DO JAVA DO ORACLE
 
@@ -2809,7 +2864,7 @@ git push --set-upstream origin MACS1000
         $ git push 
 
 ---------------------------------------------------------------------
-# PROCEDIMENTOS SUBLIME TEXT 3
+# PROCEDIMENTOS QMMP
 ---------------------------------------------------------------------
     
     + Comandos de Instalação
@@ -7460,3 +7515,60 @@ Registros encontrados: 300
     - Plubum
     - Stanium
     - Thalium
+
+
+================================================================================================================================================
+# REDMINE 392
+================================================================================================================================================
+-- REDMINE_392_TIPO_MATRIZ_INCLUIR
+
+*[QUESTIONÁRIO CAPES]* 
+
+*[Mensagem do Demandante]*
+
+> Implementar aprimoramento da Pergunta do Tipo Matriz.
+
+*[Objetivo]*
+
+> Essa tarefa é responsável por *CADASTRAR* uma pergunta do Tipo Matriz.
+
+*[Resultado Esperado]*
+
+> Que seja possível cadastrar uma pergunta do *Tipo Matriz*.  
+
+*[UC Afetados]*
+
+> *QC UC007 Manter Resposta*
+
+*[Implementações]*
+
+*[Cenários]*
+
+> Acessar: [Login] -> [Menu: 'Questionário'] ->  [...]
+
+*[Análise]*
+
+*[Impacto]*
+
+*[Arquivos (Classes) Afetadas]*
+
+*[Tabelas de Banco de Dados Afetados]*
+
+*[Commit]*
+
+*[Subtarefas de Desenvolvimento]*
+
+*[Verificações - Aguardando]*
+
+*[Observações]*
+
+*[Considerações Finais]*
+
+
+# Criar Branch
+
+SPRINT_003
+
+================================================================================================================================================
+# REDMINE 392
+================================================================================================================================================
