@@ -142,6 +142,8 @@
         https://www.linuxmint.com.br/discussion/30389/otimizando-o-gerenciamento-de-memoria-zram-prelink-e-preloadv  
 
         https://github.com/creationix/nvm  NVM INSTALL
+        
+        https://gist.github.com/luisfc/ca843dd5c6b244dde496168d99b4282a
 
         -- https://tecadmin.net/install-gulp-js-on-ubuntu/
                 -- Comandos usados para configurar o ambiente no Ubuntu 18.04.2
@@ -234,8 +236,9 @@
             "-Darquivos=/home/indra/Desenvolvimento/Chromium/chromium-tool/chromium-tool_server/chromium-tool-server-jbossEAP/jboss-eap-6.4/arquivos"
 
             -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP/arquivos
-            -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP_v2/arquivos
-            
+            -Darquivos=-Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP_v2/arquivos
+            -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jbossEAP/arquivos
+
                 <system-properties>
                     <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss_v2/jboss-eap-6.4/arquivos"/>
                 </system-properties>
