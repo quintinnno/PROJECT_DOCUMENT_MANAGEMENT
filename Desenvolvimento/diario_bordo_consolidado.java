@@ -7588,7 +7588,6 @@ Registros encontrados: 300
 
 *[Considerações Finais]*
 
-
 # Criar Branch
 
 SPRINT_003
@@ -7605,3 +7604,875 @@ VALUES ('questionario.idGrupoPublicoAlvo', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 
 INSERT INTO PARAMETRO.PARAMETRO_SISTEMA
 (ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
 VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
+
+
+================================================================================================================================================
+# INDRA COMPANY - CONFIGURAÇÃO DA REDE DA INDRA
+================================================================================================================================================
+PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+http_proxy=http://jqsilva:Kintino9@proxylatam.indra.es:8080/
+https_proxy=http://jqsilva:Kintino9@proxylatam.indra.es:8080/
+ftp_proxy=http://jqsilva:Kintino9@proxylatam.indra.es:8080/
+no_proxy=localhost, 127.0.0.0/8, ::1, 172.19.* , 172.25.*, *.capes.gov.br , *.capes.gov.br/* , *.indra.es, *.indraweb.net , *.indracompany.com , *.mec.gov.br
+
+Acquire {
+HTTP::Proxy http://jqsilva:Kintino9@proxylatam.indra.es:8080;
+FTP::Proxy http://jqsilva:Kintino9@proxylatam.indra.es:8080;
+};
+
+alias wget="wget --proxy-user= --proxy-Kintino9wd="
+
+
+
+
+
+
+
+
+
+127.0.0.1   localhost
+127.0.1.1   indra-company-brazil
+
+
+
+127.0.0.1   smtp.capes.gov.br
+127.0.0.1   smtp1.capes.gov.br
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+==============
+172.25.100.105  freire2.capes.gov.br
+172.25.100.109  cas.hom.capes.gov.br
+172.25.100.11   aposent.capes.gov.br
+172.25.100.112  gip.hom.capes.gov.br
+172.25.100.118  consiafi3.capes.gov.br
+172.25.100.118  monitoria.hom.capes.gov.br
+172.25.100.119  scriptcase7.capes.gov.br
+172.25.100.120  mstr.capes.gov.br
+172.25.100.121  postgres.teste.capes.gov.br
+172.25.100.121  postgresql.teste.capes.gov.br
+172.25.100.122  projeto.teste.capes.gov.br
+172.25.100.125  metadados.capes.gov.br
+172.25.100.128  educapes.hom.capes.gov.br
+172.25.100.130  desenv0.capes.gov.br
+172.25.100.130  hom0.capes.gov.br
+172.25.100.131  procauto.hom.capes.gov.br
+172.25.100.132  prtg.capes.gov.br
+172.25.100.136  desenv1.capes.gov.br
+172.25.100.136  hom1.capes.gov.br
+172.25.100.145  mstr.des.capes.gov.br
+#172.25.100.149 svn.capes.gov.br
+#172.25.100.149 svn2.capes.gov.br
+#172.25.100.149 svn.des.capes.gov.br
+172.25.100.126  svn.capes.gov.br
+172.25.100.126  svn2.capes.gov.br
+172.25.100.126  svn.des.capes.gov.b
+172.25.100.150  ldap.capes.gov.br
+172.25.100.152  cienciasemfronteiras.teste.capes.gov.br
+172.25.100.153  mysql.capes.gov.br
+172.25.100.155  postgresro.capes.gov.br
+172.25.100.160  oraclegrid.capes.gov.br
+172.25.100.160  oraclegrid
+172.25.100.162  oracledh01.capes.gov.br
+172.25.100.162  oracledh01
+172.25.100.163  oracledh02.capes.gov.br
+172.25.100.163  oracledh02
+172.25.100.165  oracle02.capes.gov.br
+172.25.100.165  oracle02
+172.25.100.166  rac-prod.capes.gov.br
+172.25.100.168  rac-prod
+172.25.100.169  rac-dh.capes.gov.br
+172.25.100.169  rac-dh
+172.25.100.170  rac-dh
+172.25.100.171  rac-dh.capes.gov.br
+172.25.100.172  oracledh01-vip.capes.gov.br
+172.25.100.172  oracledh01-vip
+172.25.100.173  oracledh02-vip.capes.gov.br
+172.25.100.173  oracledh02-vip
+172.25.100.174  oracle01-vip.capes.gov.br
+172.25.100.174  oracle01-vip
+172.25.100.175  oracle02-vip.capes.gov.br
+172.25.100.175  oracle02-vip
+172.25.100.176  composer.capes.gov.br
+172.25.100.177  postgres.des.capes.gov.br
+172.25.100.177  postgresql.des.capes.gov.br
+172.25.100.179  postgres.hom.capes.gov.br
+172.25.100.179  postgresql.hom.capes.gov.br
+172.25.100.180  oracledg01.capes.gov.br
+172.25.100.180  oracledg01
+172.25.100.186  oracle03.capes.gov.br
+172.25.100.186  oracle03
+172.25.100.187  oracle03-vip.capes.gov.br
+172.25.100.187  oracle03-vip
+172.25.100.189  vip-contrasicapes.capes.gov.br
+172.25.100.189  contrasicapes.capes.gov.br
+172.25.100.192  npm.ci.capes.gov.br
+172.25.100.205  oracle01.capes.gov.br
+172.25.100.205  oracle01
+172.25.100.213  proddw.capes.gov.br
+172.25.100.214  prod0.capes.gov.br
+172.25.100.215  prod1.capes.gov.br
+172.25.100.217  consiafi.capes.gov.br
+172.25.100.223  sas.capes.gov.br
+172.25.100.225  titreina.capes.gov.br
+172.25.100.229  jenkins.capes.gov.br
+172.25.100.231  dlp.capes.gov.br
+172.25.100.231  sonar.capes.gov.br
+172.25.100.236  redmine.capes.gov.br
+172.25.100.110  ldap.hom.capes.gov.br
+172.25.100.110  ldap.homolog.capes.gov.br
+172.25.100.240  postgres.capes.gov.br
+172.25.100.249  chef.capes.gov.br
+172.25.100.254  siem.hom.capes.gov.br
+172.25.100.29   listas.capes.gov.br
+172.25.100.3    fw2.capes.gov.br
+172.25.100.30   samba-gns.capes.gov.br
+172.25.100.30   v-samba01.capes.gov.br
+172.25.100.37   cati.des.capes.gov.br
+172.25.100.37   sau.des.capes.gov.br
+172.25.100.38   atuabold.des.capes.gov.br
+172.25.100.38   auth.des.capes.gov.br
+172.25.100.38   disco.des.capes.gov.br
+172.25.100.42   gip.capes.gov.br
+172.25.100.45   nexus.capes.gov.br
+172.25.100.48   gipwf.capes.gov.br
+172.25.100.50   procauto.capes.gov.br
+172.25.100.51   procauto.des.capes.gov.br
+172.25.100.51   processosautomatizados.des.capes.gov.br
+172.25.100.54   pasem.capes.gov.br
+172.25.100.54   processosautomatizados.hom.capes.gov.br
+172.25.100.70   gipwf.hom.capes.gov.br
+172.25.100.76   biblivre.capes.gov.br
+172.25.100.90   mysql.des.capes.gov.br
+172.25.100.97   metadadosoperacional.capes.gov.br
+172.25.100.97   metadadospre.capes.gov.br
+172.25.120.105  agil.teste.capes.gov.br
+172.25.120.140  agenteuab.hom.capes.gov.br
+172.25.120.149  sei2.capes.gov.br
+172.25.120.151  sei.teste.capes.gov.br
+172.25.120.153  sei.hom.capes.gov.br
+172.25.120.178  ipam.hom.capes.gov.br
+172.25.120.200  rbpg.hom.capes.gov.br
+172.25.120.203  sdi.hom.capes.gov.br
+172.25.120.236  redmine.hom.capes.gov.br
+172.25.120.24   sonar.teste.capes.gov.br
+172.25.120.68   intranet.des.capes.gov.br
+172.25.120.68   www.des.capes.gov.br
+172.25.120.81   git.hom.capes.gov.br
+172.25.140.100  performancefinan.teste.capes.gov.br
+172.25.140.102  testefinanceiro.teste.capes.gov.br
+172.25.140.103  performance.teste.capes.gov.br
+172.25.140.143  educapes.teste.capes.gov.br
+172.25.140.168  freire2.teste.capes.gov.br
+172.25.140.200  agendamentodeservicos.teste.capes.gov.br
+172.25.140.200  demandasimprensa.teste.capes.gov.br
+172.25.140.200  memoriapos.teste.capes.gov.br
+172.25.140.200  paep.teste.capes.gov.br
+172.25.140.200  pcn.teste.capes.gov.br
+172.25.140.200  proequipamentos.teste.capes.gov.br
+172.25.140.200  sae2.teste.capes.gov.br
+172.25.140.200  saep.teste.capes.gov.br
+172.25.140.200  sicapes3-individual.teste.capes.gov.br
+172.25.140.200  sicapes3-projeto.teste.capes.gov.br
+172.25.140.228  editais.teste.capes.gov.br
+172.25.140.228  sicapes3.teste.capes.gov.br
+172.25.140.248  comunidades.teste.capes.gov.br
+172.25.140.56   teste.capes.gov.br
+172.25.140.56   teste.capes.gov.br/balanceador  
+172.25.140.56   assinador.teste.capes.gov.br
+172.25.140.56   jbpmgerenciador.teste.capes.gov.br
+172.25.140.56   linhadireta.teste.capes.gov.br
+172.25.140.56   pagamento.teste.capes.gov.br
+172.25.140.56   sac.teste.capes.gov.br
+172.25.140.56   sadmin.teste.capes.gov.br
+172.25.140.56   sap.teste.capes.gov.br
+172.25.140.56   scba.teste.capes.gov.br
+172.25.140.56   scpb.teste.capes.gov.br
+172.25.140.56   seguranca.teste.capes.gov.br
+172.25.140.56   segurancasicapes.teste.capes.gov.br
+172.25.140.56   servicosies.teste.capes.gov.br
+172.25.140.56   sigadmin.teste.capes.gov.br
+172.25.140.56   sigrh.teste.capes.gov.br
+172.25.140.56   sipac.teste.capes.gov.br
+172.25.140.56   siprec.teste.capes.gov.br
+172.25.140.56   sisuab2.teste.capes.gov.br
+172.25.140.59   bancodeteses.teste.capes.gov.br
+172.25.140.59   cabes.teste.capes.gov.br
+172.25.140.59   cadcons.teste.capes.gov.br
+172.25.140.59   cadcons2.teste.capes.gov.br
+172.25.140.59   candidaturas.teste.capes.gov.br
+172.25.140.59   consultoria-ad-hoc.teste.capes.gov.br
+172.25.140.59   contrasicapes.teste.capes.gov.br
+172.25.140.59   contrasicapes2.teste.capes.gov.br
+172.25.140.59   freire.teste.capes.gov.br
+172.25.140.59   gestao.teste.capes.gov.br
+172.25.140.59   inscricoes-cgbe.teste.capes.gov.br
+172.25.140.59   isolado_sgb.teste.capes.gov.br
+172.25.140.59   jovenstalentos.teste.capes.gov.br
+172.25.140.59   paepvirtual.teste.capes.gov.br
+172.25.140.59   pci.teste.capes.gov.br
+172.25.140.59   pct.teste.capes.gov.br
+172.25.140.59   pibid.teste.capes.gov.br
+172.25.140.59   pvc.teste.capes.gov.br
+172.25.140.59   questionario.teste.capes.gov.br
+172.25.140.59   sacexteriornovo.teste.capes.gov.br
+172.25.140.59   sae.teste.capes.gov.br
+172.25.140.59   saetrienal.teste.capes.gov.br
+172.25.140.59   sains.teste.capes.gov.br
+172.25.140.59   sgb.teste.capes.gov.br
+172.25.140.59   sgb-teste.teste.capes.gov.br
+172.25.140.59   sicapes.teste.capes.gov.br
+172.25.140.59   stem.teste.capes.gov.br
+172.25.140.59   validadocumentos.teste.capes.gov.br
+172.25.140.60   cadastrodedocumentos.teste.capes.gov.br
+172.25.140.61   cadastrodepessoas.teste.capes.gov.br
+172.25.150.104  dadosabertos.capes.gov.br
+172.25.150.110  gestao.capes.gov.br
+172.25.150.110  ged.capes.gov.br
+172.25.150.110  ged4.capes.gov.br
+172.25.150.110  homologacao-bex.capes.gov.br
+172.25.150.110  inroa.capes.gov.br
+172.25.150.110  sacexterior.capes.gov.br
+172.25.150.110  sael.capes.gov.br
+172.25.150.110  sgb.capes.gov.br
+172.25.150.110  siteinroa.capes.gov.br
+172.25.150.110  validadocumentos.capes.gov.br
+172.25.150.110  buscacomunidades.capes.gov.br
+172.25.150.110  cadcons.capes.gov.br
+172.25.150.110  capes60anos.capes.gov.br
+172.25.150.110  cartadeservicos.capes.gov.br
+172.25.150.110  consultoria-ad-hoc.capes.gov.br
+172.25.150.110  cooperacaointernacional.capes.gov.br
+172.25.150.110  coordenadorcsf.capes.gov.br
+172.25.150.110  extratobolsista.capes.gov.br
+172.25.150.110  fmailing.capes.gov.br
+172.25.150.110  inscricoes-cgbe.capes.gov.br
+172.25.150.110  inscricoes-cgci.capes.gov.br
+172.25.150.110  life.capes.gov.br
+172.25.150.110  mailing.capes.gov.br
+172.25.150.110  metropolizacao.capes.gov.br
+172.25.150.110  pci.capes.gov.br
+172.25.150.110  pct.capes.gov.br
+172.25.150.110  pctantigo.capes.gov.br
+172.25.150.110  pesquisa.capes.gov.br
+172.25.150.110  pibiddiversidade.capes.gov.br
+172.25.150.110  pvcantigo.capes.gov.br
+172.25.150.110  sacexteriornovo.capes.gov.br
+172.25.150.110  sains.capes.gov.br
+172.25.150.110  seminario.capes.gov.br
+172.25.150.110  seminarios.capes.gov.br
+172.25.150.110  socioemocionais.capes.gov.br
+172.25.150.110  stem.capes.gov.br
+172.25.150.110  www2.capes.gov.br
+172.25.150.112  pnc.capes.gov.br
+172.25.150.113  analytics.capes.gov.br
+172.25.150.114  ficha.capes.gov.br
+172.25.150.117  interno.capes.gov.br
+172.25.150.120  apminterdinter.capes.gov.br
+172.25.150.120  candidaturas.capes.gov.br
+172.25.150.120  paepvirtual.capes.gov.br
+172.25.150.120  aplicadorestoefl.capes.gov.br
+172.25.150.120  bjt.capes.gov.br
+172.25.150.120  homologacaomeo.capes.gov.br
+172.25.150.120  homologacaomtur.capes.gov.br
+172.25.150.120  inscricaomtur.capes.gov.br
+172.25.150.120  meocapes.capes.gov.br
+172.25.150.120  meocapeshomolog.capes.gov.br
+172.25.150.120  novostalentos.capes.gov.br
+172.25.150.120  obeduc.capes.gov.br
+172.25.150.120  parforprivadas.capes.gov.br
+172.25.150.120  procad.capes.gov.br
+172.25.150.120  prodocencia.capes.gov.br
+172.25.150.120  pve.capes.gov.br
+172.25.150.120  sae.capes.gov.br
+172.25.150.120  sicapes.capes.gov.br
+172.25.150.121  saep.capes.gov.br
+172.25.150.121  agendamentodeservicos.capes.gov.br
+172.25.150.121  demandasimprensa.capes.gov.br
+172.25.150.121  paep.capes.gov.br
+172.25.150.121  pcn.capes.gov.br
+172.25.150.133  aniversarios.capes.gov.br
+172.25.150.133  coleta.capes.gov.br
+172.25.150.133  estatico.capes.gov.br
+172.25.150.133  registrodeponto.capes.gov.br
+172.25.150.137  sipac.capes.gov.br
+172.25.150.138  sigrh.capes.gov.br
+172.25.150.139  sigadmin.capes.gov.br
+172.25.150.150  assinador.capes.gov.br
+172.25.150.150  indicacaocoordenador.capes.gov.br
+172.25.150.150  qualis.capes.gov.br
+172.25.150.150  questionario.capes.gov.br
+172.25.150.150  sac.capes.gov.br
+172.25.150.150  sap.capes.gov.br
+172.25.150.150  bancodeteses.capes.gov.br
+172.25.150.150  catalogodeteses.capes.gov.br
+172.25.150.150  instituicoes.capes.gov.br
+172.25.150.150  jbpmgerenciador.capes.gov.br
+172.25.150.150  manutencao.capes.gov.br
+172.25.150.150  pagamento.capes.gov.br
+172.25.150.150  resultadostrienal.capes.gov.br
+172.25.150.150  sso.capes.gov.br
+172.25.150.152  servicosbex.capes.gov.br
+172.25.150.152  transparencia.capes.gov.br
+172.25.150.156  etl.capes.gov.br
+172.25.150.160  atuab.capes.gov.br
+172.25.150.180  jovenstalentos.capes.gov.br
+172.25.150.182  mensageiro.capes.gov.br
+172.25.150.189  uploads.capes.gov.br
+172.25.150.194  sisrel.capes.gov.br
+172.25.150.194  sisrel2.capes.gov.br
+172.25.150.197  mantisbt.capes.gov.br
+172.25.150.201  editais.capes.gov.br
+172.25.150.212  frontendsucupira01.capes.gov.br
+172.25.150.212  sucupira.capes.gov.br
+172.25.150.212  sucupiraapcn.capes.gov.br
+172.25.150.222  frontendsucupira02.capes.gov.br
+172.25.150.40   apcn.capes.gov.br
+172.25.150.40   apcn2.capes.gov.br
+172.25.150.40   aviso.capes.gov.br
+172.25.150.40   campus.capes.gov.br
+172.25.150.40   capesdw.capes.gov.br
+172.25.150.40   cienciasemfronteiras.capes.gov.br
+172.25.150.40   elmg.capes.gov.br
+172.25.150.40   ged2.capes.gov.br
+172.25.150.40   googlelogin.capes.gov.br
+172.25.150.40   proequipamentos.capes.gov.br
+172.25.150.40   homologacaocsf.capes.gov.br
+172.25.150.40   imagens.capes.gov.br
+172.25.150.40   pibid.capes.gov.br
+172.25.150.40   placementcsf.capes.gov.br
+172.25.150.40   webtv.capes.gov.br
+172.25.150.42   controleremoto.capes.gov.br
+172.25.150.43   wiki.capes.gov.br
+172.25.150.50   servicosies.capes.gov.br
+172.25.150.50   instituicoes-services.capes.gov.br
+172.25.150.50   linhadiretaservicos.capes.gov.br
+172.25.150.50   scpbservicos.capes.gov.br
+172.25.150.50   servicos.capes.gov.br
+172.25.150.52   memoriapos.capes.gov.br
+172.25.150.53   Inteligente1.capes.gov.br
+172.25.150.54   apcncapes.capes.gov.br
+172.25.150.54   autorizanovoano.capes.gov.br
+172.25.150.54   cadastrousuario.capes.gov.br
+172.25.150.54   conteudoweb.capes.gov.br
+172.25.150.54   discente.capes.gov.br
+172.25.150.54   icd.capes.gov.br
+172.25.150.54   integracaocoletadiscentes.capes.gov.br
+172.25.150.54   scba.capes.gov.br
+172.25.150.54   balanceador.capes.gov.br
+172.25.150.54   coletaespecificos.capes.gov.br
+172.25.150.54   dominiopublico.capes.gov.br
+172.25.150.54   geocapes.capes.gov.br
+172.25.150.54   informerendimentos.capes.gov.br
+172.25.150.54   invoice.capes.gov.br
+172.25.150.54   linhadireta.capes.gov.br
+172.25.150.54   sadmin.capes.gov.br
+172.25.150.54   segurancasicapes.capes.gov.br
+172.25.150.54   servicosadd.capes.gov.br
+172.25.150.54   siprec.capes.gov.br
+172.25.150.54   sistemas.capes.gov.br
+172.25.150.54   sisuab.capes.gov.br
+172.25.150.55   Inteligente2.capes.gov.br
+172.25.150.56   admin.capes.gov.br
+172.25.150.59   siapg.capes.gov.br
+172.25.150.61   transmissao.capes.gov.br
+172.25.150.64   sparq.capes.gov.br
+172.25.150.70   consultacadcons.capes.gov.br
+172.25.150.70   sisuab2.capes.gov.br
+172.25.150.72   testlink.capes.gov.br
+172.25.150.80   inscricao.capes.gov.br
+172.25.150.87   memoriabex.capes.gov.br
+172.25.160.100  agendamentodeservicos.hom.capes.gov.br
+172.25.160.100  demandasimprensa.hom.capes.gov.br
+172.25.160.100  gestao.hom.capes.gov.br
+172.25.160.100  memoriapos.hom.capes.gov.br
+172.25.160.100  paep.hom.capes.gov.br
+172.25.160.100  pcn.hom.capes.gov.br
+172.25.160.100  proequipamentos.hom.capes.gov.br
+172.25.160.100  sae2.hom.capes.gov.br
+172.25.160.100  saep.hom.capes.gov.br
+172.25.160.100  siapg.hom.capes.gov.br
+172.25.160.116  assinadordigital.hom.capes.gov.br
+172.25.160.120  sgbteste.hom.capes.gov.br
+172.25.160.147  ckan.hom.capes.gov.br
+172.25.160.156  financeiro.hom.capes.gov.br
+172.25.160.162  comunidades.hom.capes.gov.br
+172.25.160.168  freire2.hom.capes.gov.br
+172.25.160.236  editais.hom.capes.gov.br
+172.25.160.236  sicapes3.hom.capes.gov.br
+172.25.160.250  repositorioded.hom.capes.gov.br
+172.25.160.46   analytics.hom.capes.gov.br
+172.25.160.54   dc.teste.capes.gov.br
+172.25.160.56   hom.capes.gov.br
+172.25.160.56   assinador.hom.capes.gov.br
+172.25.160.56   bolsaservices.hom.capes.gov.br
+172.25.160.56   conteudoweb.hom.capes.gov.br
+172.25.160.56   dadosabertos.hom.capes.gov.br
+172.25.160.56   discente.hom.capes.gov.br
+172.25.160.56   dspace.hom.capes.gov.br
+172.25.160.56   ficha.hom.capes.gov.br
+172.25.160.56   geocapes.hom.capes.gov.br
+172.25.160.56   indicacaocoordenador.hom.capes.gov.br
+172.25.160.56   informerendimentos.hom.capes.gov.br
+172.25.160.56   instituicoes.hom.capes.gov.br
+172.25.160.56   jbpmgerenciador.hom.capes.gov.br
+172.25.160.56   linhadireta.hom.capes.gov.br
+172.25.160.56   manutencao.hom.capes.gov.br
+172.25.160.56   pagamento.hom.capes.gov.br
+172.25.160.56   qualis.hom.capes.gov.br
+172.25.160.56   sac.hom.capes.gov.br
+172.25.160.56   sacexterior.hom.capes.gov.br
+172.25.160.56   sap.hom.capes.gov.br
+172.25.160.56   scba.hom.capes.gov.br
+172.25.160.56   scpb.hom.capes.gov.br
+172.25.160.56   seguranca.hom.capes.gov.br
+172.25.160.56   segurancasicapes.hom.capes.gov.br
+172.25.160.56   servicosies.hom.capes.gov.br
+172.25.160.56   sigadmin.hom.capes.gov.br
+172.25.160.56   sigrh.hom.capes.gov.br
+172.25.160.56   sipac.hom.capes.gov.br
+172.25.160.56   siprec.hom.capes.gov.br
+172.25.160.56   sisuab.hom.capes.gov.br
+172.25.160.56   sisuab2.hom.capes.gov.br
+172.25.160.56   sucupira.hom.capes.gov.br
+172.25.160.56   transparencia.hom.capes.gov.br
+172.25.160.56   invoice.hom.capes.gov.br
+172.25.160.60   add.hom.capes.gov.br
+172.25.160.60   apcn.hom.capes.gov.br
+172.25.160.60   aplicadorestoefl.hom.capes.gov.br
+172.25.160.60   bancodeteses.hom.capes.gov.br
+172.25.160.60   bjt.hom.capes.gov.br
+172.25.160.60   bkpintranet.hom.capes.gov.br
+172.25.160.60   buscacomunidades.hom.capes.gov.br
+172.25.160.60   cabes.hom.capes.gov.br
+172.25.160.60   cadcons.hom.capes.gov.br
+172.25.160.60   cadcons2.hom.capes.gov.br
+172.25.160.60   candidaturas.hom.capes.gov.br
+172.25.160.60   cienciasemfronteiras.hom.capes.gov.br
+172.25.160.60   cienciasemfronteirassicapes.hom.capes.gov.br
+172.25.160.60   configurador.hom.capes.gov.br
+172.25.160.60   consultoria-ad-hoc.hom.capes.gov.br
+172.25.160.60   contrasicapes.hom.capes.gov.br
+172.25.160.60   cooperacaointernacional.hom.capes.gov.br
+172.25.160.60   coordppg.hom.capes.gov.br
+172.25.160.60   cse.hom.capes.gov.br
+172.25.160.60   csf.hom.capes.gov.br
+172.25.160.60   estatico.hom.capes.gov.br
+172.25.160.60   extratobolsista.hom.capes.gov.br
+172.25.160.60   fmailing.hom.capes.gov.br
+172.25.160.60   freire.hom.capes.gov.br
+172.25.160.60   homologacao-bex.hom.capes.gov.br
+172.25.160.60   homologacao-csf.hom.capes.gov.br
+172.25.160.60   homologacaocsf.hom.capes.gov.br
+172.25.160.60   homologacaomeo.hom.capes.gov.br
+172.25.160.60   homologacaomtur.hom.capes.gov.br
+172.25.160.60   inscricaomtur.hom.capes.gov.br
+172.25.160.60   inscricoes-cgbe.hom.capes.gov.br
+172.25.160.60   inscricoes-cgci.hom.capes.gov.br
+172.25.160.60   jovenstalentos.hom.capes.gov.br
+172.25.160.60   life.hom.capes.gov.br
+172.25.160.60   metadados.hom.capes.gov.br
+172.25.160.60   metadadosoperacional.hom.capes.gov.br
+172.25.160.60   novostalentos.hom.capes.gov.br
+172.25.160.60   obeduc.hom.capes.gov.br
+172.25.160.60   paepantigo.hom.capes.gov.br
+172.25.160.60   paepvirtual.hom.capes.gov.br
+172.25.160.60   pci.hom.capes.gov.br
+172.25.160.60   pct.hom.capes.gov.br
+172.25.160.60   pibid.hom.capes.gov.br
+172.25.160.60   pibiddiversidade.hom.capes.gov.br
+172.25.160.60   pibjunior.hom.capes.gov.br
+172.25.160.60   placementcsf.hom.capes.gov.br
+172.25.160.60   procad.hom.capes.gov.br
+172.25.160.60   prodocencia.hom.capes.gov.br
+172.25.160.60   pvc.hom.capes.gov.br
+172.25.160.60   pve.hom.capes.gov.br
+172.25.160.60   questionario.hom.capes.gov.br
+172.25.160.60   sacexteriornovo.hom.capes.gov.br
+172.25.160.60   sae.hom.capes.gov.br
+172.25.160.60   sael.hom.capes.gov.br
+172.25.160.60   saetrienal.hom.capes.gov.br
+172.25.160.60   sains.hom.capes.gov.br
+172.25.160.60   seminarios.hom.capes.gov.br
+172.25.160.60   sgb.hom.capes.gov.br
+172.25.160.60   siasp.hom.capes.gov.br
+172.25.160.60   sicapes.hom.capes.gov.br
+172.25.160.60   sigestao.hom.capes.gov.br
+172.25.160.60   sisrel.hom.capes.gov.br
+172.25.160.60   socioemocionais.hom.capes.gov.br
+172.25.160.60   sparq.hom.capes.gov.br
+172.25.160.60   spcp.hom.capes.gov.br
+172.25.160.60   stem.hom.capes.gov.br
+172.25.160.60   validadocumentos.hom.capes.gov.br
+172.25.160.73   dc.hom.capes.gov.br
+172.25.160.81   intranet.hom.capes.gov.br
+172.25.160.81   www.hom.capes.gov.br
+172.25.160.82   hom.capes.gov.br/sso
+172.25.160.110  preprod.capes.gov.br/sso
+172.25.160.89   uab.hom.capes.gov.br
+172.25.170.108  des.capes.gov.br/sso
+172.25.170.110  composer.des.capes.gov.br
+172.25.170.120  poc.des.capes.gov.br
+172.25.170.121  c10.des.capes.gov.br
+172.25.170.143  educapes.des.capes.gov.br
+172.25.170.146  siapg.des.capes.gov.br
+172.25.170.162  ds.des.capes.gov.br
+172.25.170.167  atuab.des.capes.gov.br
+172.25.170.168  freire2.des.capes.gov.br
+172.25.170.171  testlinkteste.des.capes.gov.br
+172.25.170.186  financeiro.des.capes.gov.br
+172.25.170.239  sucupirateste.capes.gov.br
+172.25.170.246  editais.des.capes.gov.br
+172.25.170.246  sicapes3.des.capes.gov.br
+172.25.170.246  sicapes3-individual.des.capes.gov.br
+172.25.170.249  comunidades.des.capes.gov.br
+172.25.170.66   novosgb.des.capes.gov.br
+172.25.170.70   ocs.des.capes.gov.br
+172.25.170.71   php.des.capes.gov.br
+172.25.170.78   disco2.des.capes.gov.br
+172.25.170.80   calendario.des.capes.gov.br
+172.25.170.82   add.des.capes.gov.br
+172.25.170.82   addeditor.des.capes.gov.br
+172.25.170.82   anda.des.capes.gov.br
+172.25.170.82   apcn.des.capes.gov.br
+172.25.170.82   aplicadorestoefl.des.capes.gov.br
+172.25.170.82   bancodeteses.des.capes.gov.br
+172.25.170.82   bjt.des.capes.gov.br
+172.25.170.82   bolsas-exterior.des.capes.gov.br
+172.25.170.82   buscacomunidades.des.capes.gov.br
+172.25.170.82   cabes.des.capes.gov.br
+172.25.170.82   cadcons.des.capes.gov.br
+172.25.170.82   cadcons2.des.capes.gov.br
+172.25.170.82   candidaturas.des.capes.gov.br
+172.25.170.82   cienciasemfronteiras.des.capes.gov.br
+172.25.170.82   cienciasemfronteirassicapes.des.capes.gov.br
+172.25.170.82   configurador.des.capes.gov.br
+172.25.170.82   consultoria-ad-hoc.des.capes.gov.br
+172.25.170.82   contrasicapes.des.capes.gov.br
+172.25.170.82   contrasicapes2.des.capes.gov.br
+172.25.170.82   cooperacaointernacional.des.capes.gov.br
+172.25.170.82   coordppg.des.capes.gov.br
+172.25.170.82   csf.des.capes.gov.br
+172.25.170.82   estatico.des.capes.gov.br
+172.25.170.82   extratobolsista.des.capes.gov.br
+172.25.170.82   fmailing.des.capes.gov.br
+172.25.170.82   freire.des.capes.gov.br
+172.25.170.82   homologacao-bex.des.capes.gov.br
+172.25.170.82   homologacao-csf.des.capes.gov.br
+172.25.170.82   homologacaomeo.des.capes.gov.br
+172.25.170.82   homologacaomtur.des.capes.gov.br
+172.25.170.82   icaatom.des.capes.gov.br
+172.25.170.82   inscricaomtur.des.capes.gov.br
+172.25.170.82   inscricoes-cgbe.des.capes.gov.br
+172.25.170.82   inscricoes-cgci.des.capes.gov.br
+172.25.170.82   jovenstalentos.des.capes.gov.br
+172.25.170.82   life.des.capes.gov.br
+172.25.170.82   mailing.des.capes.gov.br
+172.25.170.82   mantis.des.capes.gov.br
+172.25.170.82   metadados.des.capes.gov.br
+172.25.170.82   metadadosoperacional.des.capes.gov.br
+172.25.170.82   metadadospre.des.capes.gov.br
+172.25.170.82   novaintranet.des.capes.gov.br
+172.25.170.82   novoportal.des.capes.gov.br
+172.25.170.82   novosisuab.des.capes.gov.br
+172.25.170.82   novostalentos.des.capes.gov.br
+172.25.170.82   obeduc.des.capes.gov.br
+172.25.170.82   paep2012.des.capes.gov.br
+172.25.170.82   paepvirtual.des.capes.gov.br
+172.25.170.82   pci.des.capes.gov.br
+172.25.170.82   pct.des.capes.gov.br
+172.25.170.82   pibid.des.capes.gov.br
+172.25.170.82   pibiddiversidade.des.capes.gov.br
+172.25.170.82   placementcsf.des.capes.gov.br
+172.25.170.82   procad.des.capes.gov.br
+172.25.170.82   prodocencia.des.capes.gov.br
+172.25.170.82   pvc.des.capes.gov.br
+172.25.170.82   pve.des.capes.gov.br
+172.25.170.82   questionario.des.capes.gov.br
+172.25.170.82   sacexteriornovo.des.capes.gov.br
+172.25.170.82   sae.des.capes.gov.br
+172.25.170.82   sael.des.capes.gov.br
+172.25.170.82   saeltrienal.des.capes.gov.br
+172.25.170.82   sdi.des.capes.gov.br
+172.25.170.82   sei.des.capes.gov.br
+172.25.170.82   seminarios.des.capes.gov.br
+172.25.170.82   sgb.des.capes.gov.br
+172.25.170.82   siasp.des.capes.gov.br
+172.25.170.82   sicapes.des.capes.gov.br
+172.25.170.82   sigep.des.capes.gov.br
+172.25.170.82   sigestao.des.capes.gov.br
+172.25.170.82   sisrel.des.capes.gov.br
+172.25.170.82   socioemocionais.des.capes.gov.br
+172.25.170.82   spcp.des.capes.gov.br
+172.25.170.82   stem.des.capes.gov.br
+172.25.170.82   trienal.des.capes.gov.br
+172.25.170.82   validadocumentos.des.capes.gov.br
+172.25.170.86   des.capes.gov.br
+172.25.170.86   assinador.des.capes.gov.br
+172.25.170.86   bolsaservices.des.capes.gov.br
+172.25.170.86   conteudoweb.des.capes.gov.br
+172.25.170.86   dadosabertos.des.capes.gov.br
+172.25.170.86   discente.des.capes.gov.br
+172.25.170.86   ficha.des.capes.gov.br
+172.25.170.86   indicacaocoordenador.des.capes.gov.br
+172.25.170.86   instituicoes.des.capes.gov.br
+172.25.170.86   jbpmgerenciador.des.capes.gov.br
+172.25.170.86   linhadireta.des.capes.gov.br
+172.25.170.86   manutencao.des.capes.gov.br
+172.25.170.86   pagamento.des.capes.gov.br
+172.25.170.86   qualis.des.capes.gov.br
+172.25.170.86   sac.des.capes.gov.br
+172.25.170.86   sacexterior.des.capes.gov.br
+172.25.170.86   sap.des.capes.gov.br
+172.25.170.86   scba.des.capes.gov.br
+172.25.170.86   scpb.des.capes.gov.br
+172.25.170.86   seguranca.des.capes.gov.br
+172.25.170.86   segurancasicapes.des.capes.gov.br
+172.25.170.86   servicosies.des.capes.gov.br
+172.25.170.86   sigadmin.des.capes.gov.br
+172.25.170.86   sigrh.des.capes.gov.br
+172.25.170.86   sipac.des.capes.gov.br
+172.25.170.86   siprec.des.capes.gov.br
+172.25.170.86   sisuab.des.capes.gov.br
+172.25.170.86   sisuab2.des.capes.gov.br
+172.25.170.86   transparencia.des.capes.gov.br
+172.25.170.94   pcn.des.capes.gov.br
+172.25.170.94   agendamentodeservicos.des.capes.gov.br
+172.25.170.94   demandasimprensa.des.capes.gov.br
+172.25.170.94   gestao.des.capes.gov.br
+172.25.170.94   memoriapos.des.capes.gov.br
+172.25.170.94   paep.des.capes.gov.br
+172.25.170.94   pcn.des.capes.gov.br
+172.25.170.94   proequipamentos.des.capes.gov.br
+172.25.170.94   sae2.des.capes.gov.br
+172.25.170.94   saep.des.capes.gov.br
+172.25.170.94   sascggp.des.capes.gov.br
+172.25.170.94   sicapes3-projeto.des.capes.gov.br
+172.25.170.94   teste.des.capes.gov.br
+172.25.170.94   testlink.des.capes.gov.br
+172.25.170.140  des.capes.gov.br/instituicoes-servico
+172.25.20.69    tteste1.capes.gov.br
+172.25.20.69    tteste2.capes.gov.br
+172.25.200.147  agenteuab.capes.gov.br
+172.25.200.147  monitoriauab.capes.gov.br
+172.25.200.155  idp.teste.capes.gov.br
+172.25.200.156  vpn.capes.gov.br
+172.25.200.157  idp.hom.capes.gov.br
+172.25.200.158  idp.capes.gov.br
+172.25.200.165  adito.capes.gov.br
+172.25.200.200  correioweb.capes.gov.br
+172.25.200.200  webmail.capes.gov.br
+172.25.200.241  analisevisual.capes.gov.br
+172.25.200.247  estatisticavisual.capes.gov.br
+172.25.200.250  estatisticavisual2.capes.gov.br
+172.25.200.37   cadri.capes.gov.br
+172.25.200.46   analisevisual.des.capes.gov.br
+172.25.200.48   acomcapesnet.capes.gov.br
+172.25.200.48   documentosproxy.capes.gov.br
+172.25.200.48   geoplanes.capes.gov.br
+172.25.200.51   siapre.hom.capes.gov.br
+172.25.200.61   educapes.capes.gov.br
+172.25.200.9    www1.capes.gov.br
+200.130.18.174  gestao.capes.gov.br
+200.250.18.155  freire.capes.gov.br
+200.250.18.225  sei.capes.gov.br
+
+
+###########################################################################
+# localhost name resolution is santander
+###########################################################################
+    96.7.192.145    wwws2.santandernet.com.br   # GbPlugin
+
+###########################################################################
+# localhost name resolution is indra
+###########################################################################
+#   172.18.220.1    brasigantwsus.indra.es      #
+#   172.18.210.2    brahdantwsus.indra.es       #
+    10.61.1.180 mindbr.indra.es         #
+
+###########################################################################
+# localhost name resolution is politec
+###########################################################################
+    10.61.1.7   monitor.politec.com.br      #
+#   10.61.1.96  sap.politec.com.br      #
+    10.61.1.192 pontoweb-bsb.politec.com.br #
+    10.61.1.244 certsrv.politec.com.br
+    10.61.1.167 cyberdocs.politec.com.br
+    10.61.1.31  dotproject.politec.com.br
+
+###########################################################################
+# localhost name resolution is politec-bsb
+###########################################################################
+    # localhost name resolution is REDE INFRAESTRUTURA
+    10.61.8.3   bsb032324vm
+    10.61.8.4   bsb027609
+
+    # localhost name resolution is servidores
+    10.61.1.168     BRASIGCAIXA01       
+#   10.61.1.34      BRASIGCTR       
+    10.61.1.146     BRASIGFS01      
+    10.61.1.189     BRASIGFTP       
+    10.61.1.36      BRASIGFTP       
+    10.61.1.32      BRASIGFTP       
+    10.61.1.17      BRASIGFTP       
+    10.61.1.8       BRASIGFTP       
+    10.61.1.236     BRASIGPS        
+    10.61.40.132        BRASIGPVW7      
+    10.61.1.109     BRASIGSAPHCM        
+    10.61.1.69      BRASIGVCENTER       
+    10.71.252.11        BRASIGVIVOCVS       
+    10.61.40.67     brasigvmteste       
+    10.61.1.70      BRASIGVMW01     
+    10.61.1.72      BRASIGVMW02     
+    10.61.1.73      BRASIGVMW03     
+    10.61.1.74      BRASIGVMW04     
+    10.61.1.227     BRASIGVMWPOC01      
+    10.61.1.228     BRASIGVMWPOC02          
+    10.61.8.10      BRASIGVPN       
+    10.61.1.105     bsbsap006       
+    10.61.1.108     bsbsap007       
+    10.61.1.107     bsbsap009       
+    10.61.1.94      bsbsap01        
+    10.61.1.111     bsbsap011       
+    10.61.1.95      bsbsap01db      
+    10.61.1.96      bsbsapp01       
+    10.61.1.1       bsbserv001      
+    10.61.1.2       bsbserv002      
+    10.61.1.4       bsbserv004      
+    10.61.1.7       bsbserv007      
+    10.61.1.9       bsbserv009      
+    10.61.1.11      bsbserv011      
+    10.61.1.12      bsbserv012      
+    10.61.1.20      bsbserv020      
+    10.61.1.21      bsbserv021      
+    10.61.1.22      bsbserv022      
+    10.61.1.23      bsbserv023      
+    10.61.1.29      bsbserv029      
+    10.61.1.56      bsbserv056      
+    10.61.1.67      bsbserv067      
+    10.61.1.80      bsbserv080      
+    10.61.1.116     bsbserv116      
+    10.61.1.89      bsbservsap01        
+    10.61.1.90      bsbservsap02        
+    10.61.1.91      bsbservsap03        
+    10.61.1.92      BSBSERVSAP04        
+    10.61.1.104     bsbservsap06        
+    10.61.1.106     BSBSERVSAP08        
+    10.61.1.15      bsbsigav01      
+    10.61.2.1       bsbsigcfw01     
+    10.61.2.2       bsbsigcfw02     
+    10.61.2.3       bsbsigcfw03     
+    10.61.2.4       bsbsigcfw04     
+    10.61.1.233     BSBSIGEX01      
+    10.61.1.246     bsbsigex03      
+    10.61.1.58      bsbsigfs01          
+    10.61.1.252     bsbsigfw01      
+    10.61.1.253     bsbsigfw02      
+    10.61.1.33      bsbsigfwc01     
+    186.215.94.77       bsbsigisa01     
+    10.61.1.115     BSBSIGLAB02     
+    10.61.1.133     bsbsiglab03     
+    10.61.1.136     bsbsiglnx01     
+    10.61.1.137     bsbsiglnx02     
+    10.61.1.127     bsbsiglnx03     
+    10.61.1.143     BSBSIGLNX04     
+    10.61.1.84      bsbsiglnx06     
+    10.61.1.30      bsbsigvpn01     
+    10.61.1.68      bsbsigws03      
+    10.61.1.36      bsbsigws05      
+    10.61.8.102     bsbsnsterm01        
+    10.61.1.43      bsbsrvbd02      
+    10.61.1.120     bsbsrvbd03      
+    10.61.1.35      bsbsrvbkp01     
+    10.61.1.138     bsbsrvbncrdm        
+    10.61.1.151     bsbsrvcapes01       
+    10.61.1.244     bsbsrvdc01      
+    10.61.1.245     BSBSRVDC02      
+    10.61.1.61      bsbsrvdes01     
+    10.61.1.62      bsbsrvdes02     
+    10.61.1.161     bsbsrvdes03     
+    10.61.1.206     bsbsrvdes04     
+    10.61.1.164     bsbsrvdes05     
+    10.61.1.207     bsbsrvdes06     
+    10.61.1.208     bsbsrvdes07     
+    10.61.1.116     bsbsrvdes08     
+    10.61.1.128     bsbsrvdes09     
+    10.61.1.251     bsbsrvfw03      
+    10.61.1.249     bsbsrvfw05      
+    10.61.1.71      BSBSRVHV02      
+    10.61.1.17      BSBSRVLNX07     
+    10.61.1.144     bsbsrvlnx08     
+    10.61.1.145     BSBSRVLNX09     
+    10.61.1.147     bsbsrvlnx10     
+    10.61.1.179     bsbsrvlnx15     
+    10.61.1.134     bsbsrvlnx19     
+    10.61.1.66      bsbsrvlnxsvn        
+    10.61.1.160     bsbsrvmantiscaixa   
+    10.61.1.158     bsbsrvmapa01        
+    10.61.1.159     bsbsrvmapa02        
+    10.61.1.180     bsbsrvmindap01      
+    10.61.1.181     bsbsrvminddb01      
+    10.61.1.7       bsbsrvmon01     
+    10.61.1.172     bsbsrvmp10a     
+    10.61.1.171     bsbsrvmp10b     
+    10.61.1.173     bsbsrvmp10c     
+    10.61.1.237     BSBSRVMSC01     
+    10.61.1.25      bsbsrvprx01     
+    10.61.1.24      BSBSRVPRX02     
+    BSBSRVPS01      brasigps.politec.local.
+    10.61.1.176     bsbsrvrdmcaixa      
+    10.61.1.145     bsbsrvstj01     
+    10.61.1.150     bsbsrvstj02     
+    10.61.1.149     bsbsrvsvncaixa
+    10.61.1.166     bsbsrvtlinkcaixa    
+    10.61.1.152     bsbsrvtse01     
+    10.61.1.156     bsbsrvtse02     
+    10.61.1.139     bsbsrvtse03     
+    10.61.1.13      bsbsrvvm02      
+    10.61.1.235     BSBSRVWSS01     
+
+
+    
+    # localhost name resolution is impressoras
+    10.61.50.14 bsbprint14          #
+
+
+# localhost name resolution is MEC
+        192.168.44.5    sigpethmg.mec.gov.br
+        192.168.44.6    wiki.mec.gov.br
+        192.168.44.7    sigproj1.mec.gov.br
+        192.168.44.8    subversion.mec.gov.br
+        192.168.44.9    sigpet.mec.gov.br
+        192.168.44.10   clientewsjava.mec.gov.br
+        192.168.44.11   ssd.mec.gov.br
+        192.168.44.12   ws.mec.gov.br
+        192.168.44.13   hmg-proext.mec.gov.br/admin/
+        192.168.44.14   hmg-isfinscricao.mec.gov.br/
+        192.168.44.15   dsv-oracle-scan
+        192.168.44.16   dsv-jenkins-la-01.mec.gov.br
+        192.168.44.17   dsv-siscebas2-lap-01.mec.gov.br
+        192.168.44.18   svn.mec.gov.br
+        192.168.44.19   mantis.mec.gov.br
+        192.168.44.21   isfaluno.mec.gov.br
+        192.168.44.22   isfgestao.mec.gov.br
+        192.168.44.23   webmail.mec.gov.br
+        192.168.44.24   simec.mec.gov.br
+        192.168.44.25   siscebas.mec.gov.br
+        192.168.44.26   simec.mec.gov.br
+        192.168.44.27   dsv-oracle-ld-01
+        192.168.44.28   dsv-oracle-ld-02
+        192.168.44.29   dsv-postgres-ld-01
+        192.168.44.30   BD: POSTGres
+        192.168.44.31   dsv-oracle-ld-01-vip
+        192.168.44.32   dsv-oracle-ld-02-vip
+        192.168.44.33   dsv-oracle
+        192.168.44.34   dsv-oracle
+        192.168.44.35   dsv-oracle
+        192.168.44.36   Servidor de HOMOLOGAÇÃO HOST: HMG-SQL-WADS-01\PROUNI
+        192.168.44.101  static00.mec.gov.br
