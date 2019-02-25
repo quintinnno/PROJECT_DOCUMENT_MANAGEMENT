@@ -143,6 +143,22 @@
 
         https://github.com/creationix/nvm  NVM INSTALL
 
+        -- https://tecadmin.net/install-gulp-js-on-ubuntu/
+                -- Comandos usados para configurar o ambiente no Ubuntu 18.04.2
+
+                        sudo -i
+                        apt-get purge nodejs
+                        rm -fr /etc/apt/sources.list.d/
+                        wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+                        sudo apt-get install nodejs
+                        node --version
+                        npm --version
+                        gulp --version
+                        nvm install v6.10.2
+                        nvm use v6.10.2
+
+            $ wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+            $ nvm install node 
             $ nvm install v6.10.2
             $ nvm use v6.10.2
             $ npm -g i gulp             // Instalar o Gulp
@@ -150,8 +166,8 @@
             $ npm -v
             $ npm set registry http://npm.ci.capes.gov.br
 
-        export http_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
-        export https_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
+        export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
+        export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
 
         npm i   // Sem a pasta NodeModules na pasta front-end
         npm install -g grunt
@@ -1322,6 +1338,8 @@
 
     -- Instalar pacotes
 
+        sudo ln -s /usr/bin/nodejs /usr/bin/node
+
         sudo apt install curl
         curl -sL https://deb.nodesource.com/setup_10.x | sudo bash -
         sudo apt install nodejs
@@ -1337,8 +1355,7 @@
         bower -v && grunt -version && gulp -version
 
     -- Remover pacotes
-
-        sudo ln -s /usr/bin/nodejs /usr/bin/node
+        
         sudo apt-get purge nodejs
         cd /etc/apt/sources.list.d
         which node
@@ -2633,7 +2650,10 @@
 - [MCAS1003] Criar estrutura de pacotes, pastas e arquivos
 - [MCAS1004] Configuração do servidor Wildfly
 
-git checkout -b MCAS1000
+git checkout -b MGPC3000
+git commit -a -m $'[Plataforma de Lançamento Financeiro] [MGPC3000]'
+git push --set-upstream origin MGPC3000
+
 git branch -D MCAS1000
 git add *
 git commit -a -m $'[Plataforma de Lançamento Financeiro] \n# [MCAS1000] Módulo de Configução da Arquitetura do Sistema\n- [MCAS1001] Analisar a configuração do Ambiente de Desenvolvimento\n- [MCAS1002] Importar bibliotecas para desenvolvimento front-end\n- [MCAS1003] Criar estrutura de pacotes, pastas e arquivos\n- [MCAS1004] Configuração do servidor Wildfly'
@@ -7093,6 +7113,8 @@ Modelo de E-mail 23/01/2018 (Interno) v3
 Modelo de E-mail 23/01/2018 (Interno) v4
 Modelo de E-mail 23/01/2018 (Interno) v5
 
+Questionário 22/02/2019 (QC) (Identificador Opcional) v1
+
 ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
 ---------|-----------------------------|---------------------------|---------------------------------
    705191|ALISSON CHAGAS SOUSA         |00935766170                |testesoftware.722765@capes.gov.br
@@ -7558,6 +7580,8 @@ Registros encontrados: 300
 
 *[Subtarefas de Desenvolvimento]*
 
+> * Verificar funcionamento dos tipo Matriz já existente no Sistema.
+
 *[Verificações - Aguardando]*
 
 *[Observações]*
@@ -7570,5 +7594,14 @@ Registros encontrados: 300
 SPRINT_003
 
 ================================================================================================================================================
-# REDMINE 392
+# INDRA COMPANY - SCRIPTS ORACLE
 ================================================================================================================================================
+
+SELECT * FROM PARAMETRO.PARAMETRO_SISTEMA WHERE NM_PARAMETRO_SISTEMA LIKE '%questionario.siglasAplicacoes%';
+
+INSERT INTO PARAMETRO.PARAMETRO_SISTEMA (NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
+VALUES ('questionario.idGrupoPublicoAlvo', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
+
+INSERT INTO PARAMETRO.PARAMETRO_SISTEMA
+(ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
+VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
