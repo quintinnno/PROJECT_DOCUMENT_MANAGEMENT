@@ -198,8 +198,8 @@
         
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
 
-        -- export http_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
-        -- export https_proxy="http://jqsilva:Kintino8@proxylatam.indra.es:8080"
+        -- export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
+        -- export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
     
         -- Para o acesso a rede interna da Indra Company se faz necessário realizar configurações
         
@@ -1410,39 +1410,24 @@
 # PROCEDIMENTOS LINUX
 ---------------------------------------------------------------------
 
-    # Informações do Sistema
+    # Erros
 
-        inxi -b
+        + Err:1 http://packages.deepin.com/deepin panda InRelease
+              N?o foi poss?vel conectar em packages.deepin.com:80 (94.130.49.186), conex?o expirou
+            Lendo listas de pacotes... Pronto                     
+            W: Falhou ao buscar http://packages.deepin.com/deepin/dists/panda/InRelease  N?o foi poss?vel conectar em packages.deepin.com:80 (94.130.49.186), conex?o expirou
+            W: Falhou o download de alguns ficheiros de ?ndice. Foram ignorados ou os antigos foram usados em seu lugar.
 
         Resultado
 
-                System:    Host: indra-brazil Kernel: 4.15.0-45-generic x86_64 bits: 64 Desktop: Cinnamon 3.8.9
-                Distro: Linux Mint 19 Tara
-                Machine:   Device: laptop System: HP product: HP 240 G4 Notebook PC v: Type1ProductConfigId serial: BRJ611352M
-                           Mobo: HP model: 8131 v: KBC Version 30.0A serial: PFMNU0AGA9X09K UEFI: Insyde v: F.1D date: 12/02/2015
-                Battery    BAT0: charge: 32.2 Wh 94.0% condition: 34.3/34.3 Wh (100%)
-                CPU:       Dual core Intel Core i5-6200U (-MT-MCP-) speed/max: 808/2800 MHz
-                Graphics:  Card: Intel Skylake GT2 [HD Graphics 520]
-                           Display Server: X.Org 1.19.6 drivers: modesetting (unloaded: fbdev,vesa)
-                           Resolution: 1366x768@59.99hz, 1366x768@59.79hz
-                           OpenGL: renderer: Mesa DRI Intel HD Graphics 520 (Skylake GT2) version: 4.5 Mesa 18.2.2
-                Network:   Card-1: Realtek RTL8111/8168/8411 PCI Express Gigabit Ethernet Controller driver: r8169
-                           Card-2: Realtek RTL8723BE PCIe Wireless Network Adapter driver: rtl8723be
-                Drives:    HDD Total Size: 2000.4GB (48.7% used)
-                Info:      Processes: 223 Uptime: 1:59 Memory: 6878.4/7900.2MB Client: Shell (bash) inxi: 2.3.56 
+	+ dpkg: erro ao processar o pacote install-info (--configure):
+		 installed install-info package post-installation script subprocess returned error exit status 127
+		Erros foram encontrados durante o processamento de:
+		 install-info
+		E: Sub-process /usr/bin/dpkg returned an error code (1)
 
-    
-    # Atualizar Codecs
-
-        sudo apt install mint-meta-codecs
-        sudo apt install libdvd-pkg && sudo dpkg-reconfigure libdvd-pkg
-
-    # Corrigir erro "E: Sub-process /usr/bin/dpkg returned an error code (1)"
-        cd /opt/lib/dpkg/info/
-        rm -rf -*.*
-        sudo apt-get clean
-        sudo apt-get install -f
-        sudo apt-get update
+	+ Correção
+		sudo rm /var/lib/dpkg/info/*
 
     # Melhorando o uso mais eficiente da memória RAM (linux Mint 19)
 
@@ -1546,7 +1531,7 @@
         $ sudo apt-get update
         $ sudo apt-get autoremove
         $ sudo apt-get autoclean
-        $ sudo apt-get update && sudo apt-get autoclean && sudo apt-get autoremove && sudo apt update && sudo apt autoclean && sudo apt autoremove
+        $ sudo apt-get update && sudo apt-get autoclean && sudo apt-get autoremove && sudo apt update && sudo apt autoclean && sudo apt autoremove  
 
     ## REMOVER INSTALACAO DO JAVA DO ORACLE
 
@@ -2936,7 +2921,7 @@ git push --set-upstream origin MACS1000
         $ git push 
 
 ---------------------------------------------------------------------
-# PROCEDIMENTOS QMMP
+# PROCEDIMENTOS SUBLIME TEXT 3
 ---------------------------------------------------------------------
     
     + Comandos de Instalação
@@ -6891,7 +6876,7 @@ Wennya,
 
 Segue os controles de ponto atualizados.
 
-Nota 1: Informo que perdi meus controles de ponto referente ao período entre 14/01/2019 à 18/01/2019.
+Nota 1: Informo que perdi meus controles de ponto referente ao período entre 14/01/2019 \C3  18/01/2019.
 
 
 Saudações,
@@ -7249,7 +7234,7 @@ Passos:
             Esta é uma mensagem automática, não responda, entre em contato com a CAPES por meio do Fale Conosco
 
 
-<p>Boa tarde! <span id="selectionBoundary_1520621107675_5078251508399423" class="rangySelectionBoundary">&#65279;</span></p><p>${NOME}, ${EMAIL}, ${CPF}<br/></p>
+<p>Boa tarde!\C2 <span id="selectionBoundary_1520621107675_5078251508399423" class="rangySelectionBoundary">&#65279;</span></p><p>${NOME}, ${EMAIL},\C2 ${CPF}<br/></p>
 
 
 https://wordtohtml.net/
@@ -7302,7 +7287,21 @@ https://wordtohtml.net/
 
 
 
+"commons.mensagem.MSG0890": "Existem registros com erros. Um arquivo com os erros encontrados foi encaminhado para o seu e-mail.",
 
+
+// FIXME [DESENVOLVIMENTO] [NEW] --
+    async function aguardaLeituraMensagem() {
+      console.log('aguardando...');
+      await sleep(5000);
+      console.log('Finalizado!');
+    }
+    
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    aguardaLeituraMensagem();
 
     // FIXME [DESENVOLVIMENTO] [REFACTORY] -- ORIGINAL
 //  public ArquivoImportacaoPublicoDTO processarRegistrosLote(ArquivoImportacaoPublicoDTO arquivo) {
@@ -7679,9 +7678,10 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 
             apt-get install node            
             nvm install v6.10.2
+            npm -g i gulp
 
         + Desisntalar
 
-            nvm desactivate
+            nvm deactivate
             nvm uninstall v6.10.2
-            npm -g i gulp
+            
