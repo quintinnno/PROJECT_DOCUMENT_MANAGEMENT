@@ -1412,6 +1412,20 @@
 
     # Erros
 
+        + Erro
+
+            ERROR [org.jboss.resteasy.resteasy_jaxrs.i18n] (http-localhost/127.0.0.1:8080-2) RESTEASY000105: Failed to execute: javax.ws.rs.WebApplicationException
+            at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:39) [classes:]
+
+        + Erro
+
+            407 Proxy Authentication Required
+
+        + Solução
+
+            https://www.vivaolinux.com.br/topico/Shell-Script/Configurar-aptget-com-proxy
+
+
         + Err:1 http://packages.deepin.com/deepin panda InRelease
               N?o foi poss?vel conectar em packages.deepin.com:80 (94.130.49.186), conex?o expirou
             Lendo listas de pacotes... Pronto                     
@@ -7678,10 +7692,13 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 
             apt-get install node            
             nvm install v6.10.2
-            npm -g i gulp
+            npm -d -g i gulp
 
         + Desisntalar
 
             nvm deactivate
-            nvm uninstall v6.10.2
-            
+            nvm uninstall v6.10.2        
+
+        + Estimar o tempos restante 
+        + Deixar a demanda com apenas 70 horas
+
