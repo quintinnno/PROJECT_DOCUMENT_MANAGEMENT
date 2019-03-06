@@ -2717,6 +2717,21 @@ git add *
 git commit -a -m $'[Plataforma de Lançamento Financeiro] \n#[MGPC3000] Módulo de Gestão de Passivo Circulante\n[MGDSP_3001] Implementação dos Protótipos do Módulo'
 git push --set-upstream origin MACS1000
 
+
+---------------------------------------------------------------------
+# PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - DEMANDAS
+---------------------------------------------------------------------
+
+    # DEMANDA
+
+        -- LOG:
+        -- IMPLEMENTAÇÕES:
+
+            -- Ajustes na view
+            -- Configurações das diretivas do Angular para permitir cadastro
+            -- 
+
+
 ---------------------------------------------------------------------
 # PROJECT - PLATAFORMA DE LANCAMENTO FINANCEIRO - CONFIGURAÇÃO DO SERVIDOR EXTERNO
 ---------------------------------------------------------------------
@@ -3111,7 +3126,9 @@ git push --set-upstream origin MACS1000
 
             - https://cursos.dankicode.com/home
 
-            - 
+            + Curso de AngularJS ou JAX-RS
+
+                - https://www.youtube.com/watch?v=pnlkVVfwwC0&list=PLhN3osRme7BVTwLWsVThCkIcW0fB51eAU&index=1
 
         ## CNJ
             # VANADIO INTERNA                                        
