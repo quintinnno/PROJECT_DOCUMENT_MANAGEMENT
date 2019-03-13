@@ -192,9 +192,63 @@
         export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
         export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
 
+        npm config set proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
+        npm config set https-proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
+
         npm i   // Sem a pasta NodeModules na pasta front-end
         npm install -g grunt
 
+================================================================================================================
+# [INICIO] Comandos de Configuração - Linux Mint 19.1
+================================================================================================================
+    
+    + Verificação
+
+        nvm --version && node --version && npm --version && gulp --version
+        npm list -g
+
+    + Instalar
+
+        + Instalar NVM
+
+            nvm --version
+                curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.34.0/install.sh | bash
+            nvm --version
+        
+        + Instalar NODE
+
+            npm --version
+            node --version
+                nvm install v6.10.2
+                nvm use v6.10.2
+            node --version
+            npm --version
+
+        + Instalar GULP
+
+            gulp --version
+                npm -g i gulp
+            gulp --version
+
+        nvm --version && node --version && npm --version && gulp --version
+
+    + Desinstalar 
+
+        npm cache clean
+
+        + GULP
+            
+            npm uninstall -g gulp
+
+        + NODE
+
+            rm -rf "$NVM_DIR"
+            <Editar ultima Linha do ~BACHRC>        
+       
+
+================================================================================================================
+# [FIM] Comandos de Configuração - Linux Mint 19.1
+================================================================================================================
         
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
 
@@ -260,6 +314,7 @@
             -Darquivos=-Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_server/stanium_tool_server_jbossEAP_v2/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jbossEAP/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss-eap/arquivos/
+            -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
                 
                 <system-properties>
                     <property name="arquivos" value="/home/desenvolvimento/Desenvolvimento/Chromium/chromium_tool/chromium_server/chromium_server_jboss_v2/jboss-eap-6.4/arquivos"/>
@@ -1504,10 +1559,12 @@
         - cd ~
         - ls .bashrc
         - nano .bashrc
-            - export JAVA_HOME=/opt/java/jdk1.8.0_161/bin
-            - export PATH=$JAVA_HOME/bin:$PATH
+            export JAVA_HOME=/opt/java/jdk1.8.0_201/bin
+            export PATH=$JAVA_HOME/bin:$PATH
         - $JAVA_HOME
         - $PATH
+        source /etc/profile
+        echo $JAVA_HOME
 
     ## INSTALAR JAVA DA ORACLE (Ubuntu 18.04.2 LTS - Bionic server)
 
@@ -2950,7 +3007,7 @@ git push --set-upstream origin MACS1000
         $ git push 
 
 ---------------------------------------------------------------------
-# PROCEDIMENTOS SUBLIME TEXT 3
+# PROCEDIMENTOS QMMP
 ---------------------------------------------------------------------
     
     + Comandos de Instalação
@@ -2974,6 +3031,16 @@ git push --set-upstream origin MACS1000
         $ echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
         $ sudo apt-get update
         $ sudo apt-get install sublime-text
+
+---------------------------------------------------------------------
+# PROCEDIMENTOS SUBLIME MERGE
+---------------------------------------------------------------------
+    
+    wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+    sudo apt-get install apt-transport-https
+    echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
+    sudo apt-get update
+    sudo apt-get install sublime-merge
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS ECLIPSE
@@ -6895,7 +6962,6 @@ https://en.wikipedia.org/wiki/Web_widget
 https://www.lifewire.com/what-are-web-widgets-3486686
 http://hilite.me/                                                        -- Formatador de Código
 
-
 Como assim estáticos? Achei confuso. O que vocẽ está tentando explicar? O que é estático nesse código de exemplo é o token de authorization e a ID do Preenchimento. Essas coisas deveriam ser obtidas/fornecidas dinamicamente pela aplicação cliente.
 
 A variável url é basicamente estática pois deve apontar para o host da Widget.
@@ -7174,6 +7240,7 @@ Questionário 24/01/2019 (Identificador Opcional) v3
 
 Público Alvo 24/01/2019 (Identificador Opcional) v7
 Questionário 24/01/2019 (Identificador Opcional) v7
+Questionário 07/01/2019 (Identificador Opcional) v1
 
 Modelo de E-mail 23/01/2018 (Interno) v1
 Modelo de E-mail 23/01/2018 (Interno) v2
@@ -7182,6 +7249,9 @@ Modelo de E-mail 23/01/2018 (Interno) v4
 Modelo de E-mail 23/01/2018 (Interno) v5
 
 Questionário 22/02/2019 (QC) (Identificador Opcional) v1
+
+Questionário 07/03/2019 (QC) (Identificador Opcional) v1
+Público Alvo 07/03/2019 (QC) (Identificador Opcional) v1
 
 ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
 ---------|-----------------------------|---------------------------|---------------------------------
@@ -7197,7 +7267,6 @@ gvisgueiro@indracompany.com
 pnascimento@indracompany.com
 
 1.1  Qual procedimento devo adotar com os valores pagos por mim na ausência de créditos referentes ao benefício ?
-
 
 ================================================================================================================================================
 # REMDIME 400
@@ -7620,6 +7689,55 @@ Registros encontrados: 300
     - Stanium
     - Thalium
 
+================================================================================================================================================
+# INDRA COMPANY - SCRIPTS ORACLE
+================================================================================================================================================
+
+SELECT * FROM PARAMETRO.PARAMETRO_SISTEMA WHERE NM_PARAMETRO_SISTEMA LIKE '%questionario.siglasAplicacoes%';
+
+INSERT INTO PARAMETRO.PARAMETRO_SISTEMA (NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
+VALUES ('questionario.idGrupoPublicoAlvo', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
+
+INSERT INTO PARAMETRO.PARAMETRO_SISTEMA
+(ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
+VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
+
+================================================================================================================================================
+# INSTALACAO DE SISTEMA OPERACIONAL LINUX MINT 19.0
+================================================================================================================================================
+
+    # Instalar Sistema Operacional
+
+        + Particionamento da memória
+
+    # Instalar Atualizações
+
+    # Instalar Java
+
+    # Instalar Node, NPM, NVM, GULP
+
+        + Verificar
+
+            node --version && npm --version && gulp --version
+
+        + Instalar
+
+            apt-get install node            
+            nvm install v6.10.2
+            npm -d -g i gulp
+
+        + Desisntalar
+
+            nvm deactivate
+            nvm uninstall v6.10.2        
+
+        + Estimar o tempos restante 
+        + Deixar a demanda com apenas 70 horas
+
+================================================================================================================================================
+# ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES
+================================================================================================================================================
+    smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
 
 ================================================================================================================================================
 # REDMINE 392
@@ -7674,48 +7792,1085 @@ Registros encontrados: 300
 
 SPRINT_003
 
+SELECT * FROM QUESTIONARIO.TIPO_PERGUNTA;
+
+-- UPDATE
+UPDATE QUESTIONARIO.TIPO_PERGUNTA
+SET DS_TIPO_PERGUNTA='MATRIZ_SELECAO_UNICA', 
+    DS_USUARIO_ULTIMA_ALTERACAO=NULL,
+    DH_ULTIMA_ALTERACAO=NULL
+WHERE ID_TIPO_PERGUNTA=17;
+
+-- DELETE 
+DELETE FROM QUESTIONARIO.TIPO_PERGUNTA
+WHERE ID_TIPO_PERGUNTA=17;
+
+/*
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(16, 'SELECT', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(17, 'MATRIZ_SELECAO_UNICA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(19, 'MATRIZ_SELECAO_MULTIPLA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(0, 'GRUPO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(1, 'SELECT_ONE_ITEM', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(2, 'SELECT_MANY_ITEM', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(3, 'INPUT_TEXT', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(4, 'INPUT_NUMBER', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(5, 'UPLOAD', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(6, 'LIST_BOX_ONE', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(7, 'LIST_BOX_MANY', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(8, 'ROTULO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(9, 'DATA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(10, 'PERIODO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(11, 'QUESTIONARIO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(12, 'GRUPO_TABELA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(13, 'EMAIL', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(14, 'ASSINATURA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(15, 'DOCUMENTO_PROCESSO_SCBA', NULL, NULL);
+    
+    
+    
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=16;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='MATRIZ_SELECAO_UNICA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=17;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='MATRIZ_SELECAO_MULTIPLA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=19;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='GRUPO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=0;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT_ONE_ITEM', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=1;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT_MANY_ITEM', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=2;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='INPUT_TEXT', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=3;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='INPUT_NUMBER', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=4;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='UPLOAD', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=5;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='LIST_BOX_ONE', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=6;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='LIST_BOX_MANY', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=7;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='ROTULO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=8;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='DATA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=9;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='PERIODO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=10;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='QUESTIONARIO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=11;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='GRUPO_TABELA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=12;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='EMAIL', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=13;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='ASSINATURA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=14;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='DOCUMENTO_PROCESSO_SCBA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=15;
+*/
+
+0   GRUPO
+1   SELECT_ONE_ITEM
+2   SELECT_MANY_ITEM
+3   INPUT_TEXT
+4   INPUT_NUMBER
+5   UPLOAD
+6   LIST_BOX_ONE
+7   LIST_BOX_MANY
+8   ROTULO
+9   DATA
+10  PERIODO
+11  QUESTIONARIO
+12  GRUPO_TABELA
+13  EMAIL
+14  ASSINATURA
+15  DOCUMENTO_PROCESSO_SCBA
+16  SELECT
+17  MATRIZ_SELECAO_UNICA
+18  MATRIZ_SELECAO_MULTIPLA
+
+DATA
+DOCUMENTO_PROCESSO_SCBA
+EMAIL
+GRUPO
+GRUPO_TABELA
+INPUT_NUMBER
+INPUT_TEXT
+LIST_BOX_MANY
+LIST_BOX_ONE
+MATRIZ_SELECAO_MULTIPLA
+PERIODO
+QUESTIONARIO
+ROTULO
+SELECT
+SELECT_MANY_ITEM
+SELECT_ONE_ITEM
+UPLOAD
+
+0   GRUPO GRUPO
+1   SELECT_ONE_ITEM SELECT_ONE_ITEM
+2   SELECT_MANY_ITEM SELECT_MANY_ITEM
+3   INPUT_TEXT INPUT_TEXT
+4   INPUT_NUMBER INPUT_NUMBER
+5   UPLOAD UPLOAD
+6   LIST_BOX_ONE LIST_BOX_ONE
+7   LIST_BOX_MANY LIST_BOX_MANY
+8   ROTULO ROTULO
+9   DATA DATA
+10  PERIODO PERIODO
+11  QUESTIONARIO QUESTIONARIO
+12  GRUPO_TABELA GRUPO_TABELA
+13  EMAIL EMAIL
+14  ASSINATURA
+15  DOCUMENTO_PROCESSO_SCBA DOCUMENTO_PROCESSO_SCBA
+16  SELECT SELECT
+17  MATRIZ_SELECAO_UNICA
+18  MATRIZ_SELECAO_MULTIPLA MATRIZ_SELECAO_MULTIPLA
+
+ASSINATURA
+MATRIZ_SELECAO_UNICA
+
++ Corrigir 
+    
+    # PROBLEMA
+
+        - Erro 
+            - O sistema apresenta a tabela do resultado da importação quando o tipo de público é 'Interno'
+
+        - Esperado
+            - O sistema apenas apresentar a tabela do resultado da importação quando o tipo do público for igual a 'Lote'
+
+        - Arquivos afetados
+
+            - tabela-incluir-pessoa-cadastro.component.js
+            - incluir-pessoa-cadastro.controller.js
+
+    # PROBLEMA 
+
+        - Erro 
+            - O sistema não abre a opção de "Alternativas" ao clicar no ícone
+
+        - Esperado
+                - Deve abrir uma nova tela com as opções do tipo de Matriz de Seleção Única e Matriz de Seleção Múltipla
+
+        - Arquivos Afetados
+            - tabela-perguntas.component.js
+            - ???
+
+    # PROBLEMA 
+
+        - Erro 
+            - O sistema não apresenta as perguntas do tipo de Matriz de Seleção Única e Matriz de Seleção Múltipla na tela 'Responder Questionario'
+
+        - Esperado
+                - Deve abrir uma nova tela com as perguntas do tipo de Matriz de Seleção Única e Matriz de Seleção Múltipla
+
+        - Arquivos Afetados
+            - ???
+            - ???
+
+    # # PROBLEMA 
+
+        - Erro 
+            - O sistema não apresenta as perguntas do tipo de Matriz de Seleção Única e Matriz de Seleção Múltipla na tela de 'Visualizar Questionario'
+
+        - Esperado
+                - Deve abrir uma nova tela com as perguntas do tipo de Matriz de Seleção Única e Matriz de Seleção Múltipla
+
+        - Arquivos Afetados
+            - pergunta-resposta-questionario-visualiza.component.js
+            - pergunta-resposta-tipo-matriz.component.js
+
+    # Arquivos Afetados
+
+        [N] pergunta-resposta-tipo-matriz-selecao-multipla.component.js
+        [A] 
+
+        Questionário 08/03/2019 (QC) (Identificador Opcional) v1
+
+        01 - Matriz de Seleção Única - Alternativa Linha
+        01 - Matriz de Seleção Única - Alternativa Coluna
+
+        02 - Matriz de Seleção Única - Alternativa Linha
+        02 - Matriz de Seleção Única - Alternativa Coluna
+
+        03 - Matriz de Seleção Única - Alternativa Linha
+        03 - Matriz de Seleção Única - Alternativa Coluna
+
+        04 - Matriz de Seleção Única - Alternativa Linha
+        04 - Matriz de Seleção Única - Alternativa Coluna
+
+        05 - Matriz de Seleção Única - Alternativa Linha
+        05 - Matriz de Seleção Única - Alternativa Coluna
+
+
+        01 - Matriz de Seleção Múltipla - Alternativa Linha
+        01 - Matriz de Seleção Múltipla - Alternativa Coluna
+
+        02 - Matriz de Seleção Múltipla - Alternativa Linha
+        02 - Matriz de Seleção Múltipla - Alternativa Coluna
+
+        03 - Matriz de Seleção Múltipla - Alternativa Linha
+        03 - Matriz de Seleção Múltipla - Alternativa Coluna
+
+        04 - Matriz de Seleção Múltipla - Alternativa Linha
+        04 - Matriz de Seleção Múltipla - Alternativa Coluna
+
+        05 - Matriz de Seleção Múltipla - Alternativa Linha
+        05 - Matriz de Seleção Múltipla - Alternativa Coluna        
+
+        
+Data finalização preenchida é Enviado
+Data finalização estiver nula preenchida é Aberto
+
+QUESTIONARIO NMSS
+
+-- Verificar
+
+    - Documentar os questionario com divergencias de facto (de valore)
+    - Os apartir de outubro ja estava funcionando
+    - Quais os pontos de divergencias
+        - Gerar documentação sobre o historicos
+
+    # Problemas
+
+        + Matriz de Seleção Multipla não abre tela de Cadastro de Opções
+        
+    - alternativa-matriz_selecao_unica
+    - alternativa-matriz-selecao-unica.html
+
+    # Objetivos 
+
+        - [EFEITO COLATERAL] [AGUARDANDO]  O item 'Visualizar Pergunta' deve exibir todos os tipos de perguntas
+
+
+        Público Alvo 13/03/2019 (QC) (Identificador Opcional) v1 
+
+                ID_PESSOA|NM_PESSOA                         |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO       
+        ---------|----------------------------------|---------------------------|----------------------------
+          2536142|ARTHUR ARAUJO OLIVEIRA            |92538088100                |aaraujoo@indracompany.com   
+          2536050|PATRICK NASCIMENTO PEREIRA        |03089233169                |pnascimento@indracompany.com
+          2536142|ARTHUR ARAUJO OLIVEIRA            |92538088100                |adas@indracompany.com       
+          1128037|NIRIAN MARTINS SILVEIRA DOS SANTOS|89626850191                |nmsantos@stefanini.com      
+          2514086|TATIANA MOSER LOPES               |01873511124                |tmoser@indracompany.com     
+          2535905|IAGO FERNANDES BARBOSA CUNHA      |15997717720                |ifbarbosa@indracompany.com  
+          2514081|WILTON MARINHO CARNEIRO DE SOUZA  |71987614100                |wmarinho@indracompany.com  
+
 ================================================================================================================================================
-# INDRA COMPANY - SCRIPTS ORACLE
+QUESTIONARIO CAPES
 ================================================================================================================================================
 
-SELECT * FROM PARAMETRO.PARAMETRO_SISTEMA WHERE NM_PARAMETRO_SISTEMA LIKE '%questionario.siglasAplicacoes%';
+    + Realizar importação de 500 usuarios pela Fonte de Dados
+    + Verificar Monitoramento (via código)
 
-INSERT INTO PARAMETRO.PARAMETRO_SISTEMA (NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
-VALUES ('questionario.idGrupoPublicoAlvo', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
 
-INSERT INTO PARAMETRO.PARAMETRO_SISTEMA
-(ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
-VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
+
+5AP031
+Questionario-Capes
+Indra
+Franco Danny Matos Rocha
+
+Informo que o teclado do notebook recém adquirido está com problemas de "Teclas Duras" (algumas teclas ficam pressionadas continuamente). Consigo utilizar o notebook com conforto com outro teclado, mas ao precisar utilizar no cliente (onde tenho falta de espaço físico para o teclado), por isso solicito troca ou conserto.             
+
+Nirian,
+
+1 Terminamos os ajustes no Questionário-Capes. 
+
+2 O Lucioney irá abrir um chamado para a execução nos ambientes de Teste e Produção dos scripts.
+
 
 ================================================================================================================================================
-# INSTALACAO DE SISTEMA OPERACIONAL LINUX MINT 19.0
+[INICIO] CORRECÃO DE PRODUCAO
 ================================================================================================================================================
+-- REFLETE PRODUCAO
+SELECT PR.ID_PREENCHIMENTO, MAX(PR.DH_ULTIMA_ALTERACAO) 
+FROM QUESTIONARIO.PREENCHIMENTO PR
+INNER JOIN QUESTIONARIO.RESPOSTA R 
+ON R.ID_PREENCHIMENTO = PR.ID_PREENCHIMENTO
+WHERE ID_QUESTIONARIO IN(SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE SG_QUESTIONARIO = 'QC' )
+AND PR.DT_FINALIZACAO IS NULL
+GROUP BY PR.ID_PREENCHIMENTO;
 
-    # Instalar Sistema Operacional
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO ASC;
 
-        + Particionamento da memória
+------------------------------------------------------------------------------------------------------------------------------------------------
+-- TESTE DE VERIFICACAO DO QUESTIOARIO 'Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 1 - nov/2018)'
+------------------------------------------------------------------------------------------------------------------------------------------------
 
-    # Instalar Atualizações
+-- RETORNA DADOS QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 45;
 
-    # Instalar Java
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 1 - nov/2018)%' ;
 
-    # Instalar Node, NPM, NVM, GULP
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%DED-Circular%' ;
 
-        + Verificar
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 2093741;
 
-            node --version && npm --version && gulp --version
+SELECT COUNT(*) FROM QUESTIONARIO.ACESSO_PREENCHIMENTO;
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO;
 
-        + Instalar
+DELETE FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE ID_PREENCHIMENTO IS NOT NULL;
 
-            apt-get install node            
-            nvm install v6.10.2
-            npm -d -g i gulp
+-- INSERT
+-- INSERT INTO QUESTIONARIO.ACESSO_PREENCHIMENTO (ID_ACESSO_PREENCHIMENTO, ID_PREENCHIMENTO, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+VALUES(1, 720569, TIMESTAMP '2019-03-11 00:00:00.000000', 'ABNALDO RAMOS DA PAZ', TIMESTAMP '2019-03-11 00:00:00.000000');
+ 
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 45 AND ID_PESSOA = 2093741;
 
-        + Desisntalar
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 2093741;
 
-            nvm deactivate
-            nvm uninstall v6.10.2        
+-- VERIFICAR QUAIS PESSOAS ESTAO E UM DETERMINADO PUBLICO ALVO
+SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO A
+JOIN CORPORATIVO.PESSOA B
+ON B.ID_PESSOA = A.ID_PESSOA
+JOIN QUESTIONARIO.QUESTIONARIO C
+ON C.ID_QUESTIONARIO = A.ID_QUESTIONARIO
+JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO D
+ON D.ID_PREENCHIMENTO = A.ID_PREENCHIMENTO
+JOIN QUESTIONARIO.PUBLICO E
+ON E.ID_PUBLICO = A.ID_PUBLICO
+JOIN QUESTIONARIO.PUBLICO_ALVO F
+ON F.ID_PUBLICO_ALVO = E.ID_PUBLICO_ALVO
+WHERE C.ID_QUESTIONARIO = 45
+AND A.ID_PESSOA IN (B.ID_PESSOA);
 
-        + Estimar o tempos restante 
-        + Deixar a demanda com apenas 70 horas
+-- USUARIO QUE NAO ENVIRAM QUESTIONARIO
+SELECT p.ID_PESSOA AS pessoa
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON
+pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q ON
+q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.RESPOSTA rp ON
+rp.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO ir ON
+ir.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON
+pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+WHERE pr.DT_FINALIZACAO IS NULL
+AND q.SG_QUESTIONARIO = 'QC'
+AND q.ID_QUESTIONARIO = 20
+--AND TRUNC(pr.DT_INICIO) >= TRUNC(:dataInicio)
+--AND TRUNC(pr.DT_FIM) <= TRUNC(:dataFim)
+AND ir.ID_TIPO_IDENTIFICADOR = 1;
+GROUP BY p.ID_PESSOA;
 
+-- QUANTIDADE DE USUARIOS QUE LOGARAM
+-- SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO
+SELECT COUNT(*)
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ACESSOPREENCHIMENTO_
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON
+PREENCHIMENTO_.ID_PREENCHIMENTO = ACESSOPREENCHIMENTO_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADORREGISTRADO_ ON
+IDENTIFICADORREGISTRADO_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON
+PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 20
+AND IDENTIFICADORREGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;
+
+-- QUANTIDADE DE USUARIOS COM RESPOSTAS ENVIADAS
+-- SELECT p.ID_PESSOA AS pessoa
+SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON
+pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q ON
+q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON
+pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON
+acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 20;
+GROUP BY p.ID_PESSOA;
+
+SELECT COUNT(*) AS contagem
+FROM ( SELECT R.ID_RESPOSTA
+FROM QUESTIONARIO.RESPOSTA R
+INNER JOIN QUESTIONARIO.PREENCHIMENTO P ON
+P.ID_PREENCHIMENTO = R.ID_PREENCHIMENTO
+INNER JOIN QUESTIONARIO.QUESTIONARIO Q ON
+Q.ID_QUESTIONARIO = P.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO PB ON
+PB.ID_QUESTIONARIO = Q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON
+acessoPreenchimento_.ID_PREENCHIMENTO = P.ID_PREENCHIMENTO
+WHERE Q.SG_QUESTIONARIO LIKE 'QC'
+AND P.DT_FINALIZACAO IS NOT NULL
+AND P.ID_QUESTIONARIO = 45
+GROUP BY R.ID_RESPOSTA);
+
+-- RECUPERAR QUANTIDA DE USUARIO LOGADOS
+--SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO
+SELECT COUNT(*)
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 45
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6;
+
+-- CONSULTARPUBLICOCOMRESPOSTA
+--SELECT p.ID_PESSOA AS pessoa
+SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON
+pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q ON
+q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON
+pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON
+acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 45;
+
+SELECT DISTINCT P.ID_QUESTIONARIO,
+                R.ID_PREENCHIMENTO, P.DT_FINALIZACAO, 
+                (SELECT NM_PESSOA FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = P.ID_PESSOA ) NM_PESSOA, 
+                SYSDATE DH_ULTIMA_ALTERACAO
+FROM QUESTIONARIO.RESPOSTA R
+LEFT JOIN QUESTIONARIO.PREENCHIMENTO P ON
+P.ID_PREENCHIMENTO = R.ID_PREENCHIMENTO
+LEFT JOIN QUESTIONARIO.PUBLICO PB ON
+P.ID_PESSOA = PB.ID_PESSOA
+WHERE EXISTS( SELECT 1
+FROM QUESTIONARIO.QUESTIONARIO
+WHERE ID_QUESTIONARIO = P.ID_QUESTIONARIO
+AND SG_QUESTIONARIO = 'QC' )
+AND P.ID_QUESTIONARIO = 45
+ORDER BY 1;
+
+SELECT DISTINCT p.id_questionario, r.id_preenchimento, p.dt_finalizacao, ( SELECT nm_pessoa
+FROM corporativo.pessoa
+WHERE id_pessoa = p.id_pessoa ) NM_PESSOA, SYSDATE DH_ULTIMA_ALTERACAO
+FROM QUESTIONARIO.RESPOSTA r
+LEFT JOIN QUESTIONARIO.PREENCHIMENTO p ON
+p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO
+LEFT JOIN QUESTIONARIO.PUBLICO pb ON
+p.ID_PESSOA = pb.ID_PESSOA
+WHERE EXISTS( SELECT 1
+FROM questionario.questionario
+WHERE id_questionario = p.id_questionario
+AND sg_questionario = 'QC' )
+AND P.ID_QUESTIONARIO = 45
+ORDER BY 1;
+
+-- QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Marluci 2%';
+
+-- QUANTIDADE DE PARTICIPANTES DO PUBLICO ALVO
+SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO A
+JOIN CORPORATIVO.PESSOA B
+ON B.ID_PESSOA = A.ID_PESSOA
+JOIN QUESTIONARIO.QUESTIONARIO C
+ON C.ID_QUESTIONARIO = A.ID_QUESTIONARIO
+JOIN QUESTIONARIO.ACESSO_PREENCHIMENSELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO, publicacao_.DT_INICIO, publicacao_.DT_FIM
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 45
+AND identificadorRegistrado_.ID_TIPO_IDENTIFPúblico DED - Complemento 01ICADOR = 6
+AND acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO BETWEEN TO_DATE('2018-11-14', 'YYYY-MM-DD') AND TO_DATE('2018-11-30', 'YYYY-MM-DD');TO D
+ON D.ID_PREENCHIMENTO = A.ID_PREENCHIMENTO
+JOIN QUESTIONARIO.PUBLICO E
+ON E.ID_PUBLICO = A.ID_PUBLICO
+JOIN QUESTIONARIO.PUBLICO_ALVO F
+ON F.ID_PUBLICO_ALVO = E.ID_PUBLICO_ALVO
+WHERE C.ID_QUESTIONARIO = 45
+AND A.ID_PESSOA IN (B.ID_PESSOA);
+
+-- QUANTIDADE DE RESPOSTAS ENVIADAS
+-- QUANTIDADE DE USUARIOS COM RESPOSTAS ENVIADAS
+-- QUANTIDADE DE USUARIOS QUE LOGARAM
+
+
+Público DED - Complemento 01
+--DELETE FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE ID_PREENCHIMENTO IS NOT NULL;
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO;
+
+--INSERT INTO QUESTIONARIO.ACESSO_PREENCHIMENTO( id_preenchimento, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO ) 
+SELECT DISTINCT p.id_questionario, r.id_preenchimento, p.dt_finalizacao, ( 
+    SELECT nm_pessoa FROM corporativo.pessoa WHERE id_pessoa = p.id_pessoa ) NM_PESSOA, SYSDATE DH_ULTIMA_ALTERACAO FROM QUESTIONARIO.RESPOSTA r
+LEFT JOIN QUESTIONARIO.PREENCHIMENTO p
+ON p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO
+LEFT JOIN QUESTIONARIO.PUBLICO pb 
+ON p.ID_PESSOA = pb.ID_PESSOA
+WHERE EXISTS( SELECT 1 FROM questionario.questionario WHERE id_questionario = p.id_questionario AND sg_questionario = 'QC' )
+AND P.ID_QUESTIONARIO = 45
+ORDER BY 1;
+
+--INSERT INTO QUESTIONARIO.ACESSO_idQuestionarioParametroPREENCHIMENTO( id_preenchimento, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO ) 
+SELECT DISTINCT r.id_preenchimento, p.dt_finalizacao, ( 
+    SELECT nm_pessoa FROM corporativo.pessoa WHERE id_pessoa = p.id_pessoa ) NM_PESSOA, SYSDATE DH_ULTIMA_ALTERACAO FROM QUESTIONARIO.RESPOSTA r
+LEFT JOIN QUESTIONARIO.PREENCHIMENTO p 
+ON p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO
+LEFT JOIN QUESTIONARIO.PUBLICO pb
+ON p.ID_PESSOA = pb.ID_PESSOA
+WHERE EXISTS( SELECT 1 FROM questionario.questionario WHERE id_questionario = p.id_questionario AND sg_questionario = 'QC' )
+AND P.ID_QUESTIONARIO = 45
+ORDER BY 1;
+
+-- TODOS OS PARTICIPANTES DO PUBLICO ALVO DO QUESTIONARIO PELA RESPOSTAS ENVIADAS
+SELECT DISTINCT R.ID_PREENCHIMENTO,
+                P.DT_FINALIZACAO, 
+                (SELECT NM_PESSOA FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = P.ID_PESSOA ) NM_PESSOA, 
+                SYSDATE DH_ULTIMA_ALTERACAO
+FROM QUESTIONARIO.RESPOSTA R
+LEFT JOIN QUESTIONARIO.PREENCHIMENTO P ON P.ID_PREENCHIMENTO = R.ID_PREENCHIMENTO
+LEFT JOIN QUESTIONARIO.PUBLICO PB  ON P.ID_PESSOA = PB.ID_PESSOA
+WHERE EXISTS(SELECT 1 FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = P.ID_QUESTIONARIO AND SG_QUESTIONARIO = 'QC')
+AND P.ID_QUESTIONARIO = 20
+ORDER BY P.DT_FINALIZACAO;
+
+-- USUARIOS QUE LOGARAM
+SELECT COUNT(*)
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ 
+ON preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ 
+ON identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_
+ON publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 45
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6;
+
+-- USUARIOS COM RESPOSTAS ENVIADAS
+SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q  ON q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 20;
+
+-- TODOS OS PARTICIPANTES DO PUBLICO ALVO
+SELECT * 
+FROM QUESTIONARIO.PUBLICO_ALVO A
+WHERE A.DS_PUBLICO_ALVO LIKE '%Público Alvo - Questionário: Assistentes à Docência do Sistema UAB (v.1 - nov/18)%';
+
+SELECT *
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+WHERE A.ID_PUBLICO_ALVO = 39
+ORDER BY B.ID_PESSOA;
+
+SELECT DT_INICIO, DT_FIM FROM QUESTIONARIO.PUBLICACAO A WHERE ID_QUESTIONARIO = 20;
+
+SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO, publicacao_.DT_INICIO, publicacao_.DT_FIM
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 20
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6
+AND acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO BETWEEN TO_DATE('2018-03-19', 'YYYY-MM-DD') AND TO_DATE('2018-03-23', 'YYYY-MM-DD');
+
+SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = :idQuestionarioParametro
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6
+AND acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO BETWEEN TRUNC(publicacao_.DT_INICIO) AND TRUNC(publicacao_.DT_FIM);
+
+-- VERIFICAR SE OS INTEGRANTES DE UM PUBLICO ALVO ESTA PRESENTE NO ACESSO PREENCHIMENTO 
+
+
+--=======================================================================================================================--
+-- QUESTIONARIO 'DED-Circular' - 20
+--=======================================================================================================================--
+
+-- RETORNAR PUBLICO ALVO
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO A
+INNER JOIN QUESTIONARIO.PREENCHIMENTO B
+ON B.ID_QUESTIONARIO = A.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICO C
+ON C.ID_PUBLICO = B.ID_PUBLICO
+WHERE A.ID_QUESTIONARIO = 20;
+
+SELECT MIN(DT_INICIO), MAX(DT_FIM) FROM QUESTIONARIO.PUBLICACAO A WHERE ID_QUESTIONARIO = 20 ORDER BY DT_INICIO;
+
+SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO
+
+-- QUANTIDADE DE USUARIOS QUE LOGARAM
+SELECT *
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 20
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6
+AND acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO
+BETWEEN TO_DATE('2018-03-14', 'YYYY-MM-DD') AND TO_DATE('2018-03-23', 'YYYY-MM-DD');
+
+-- QUANTIDADE DE USUSARIOS COM RESPOSTAS ENVIADAS
+SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr  ON pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q  ON q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 20;
+
+-- VERIFICAR PUBLICO DE UM  QUESTIONARIO
+
+SELECT p.ID_PESSOA AS pessoa
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON
+pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q ON
+q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON
+pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON
+acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 20
+GROUP BY p.ID_PESSOA;
+
+
+SELECT * FROM QUESTIONARIO.TIPO_PERGUNTA ORDER BY DS_TIPO_PERGUNTA ASC;
+
+-- UPDATE
+UPDATE QUESTIONARIO.TIPO_PERGUNTA
+SET ID_TIPO_PERGUNTA = 18, 
+    DS_TIPO_PERGUNTA = 'MATRIZ_SELECAO_MULTIPLA', 
+    DS_USUARIO_ULTIMA_ALTERACAO = NULL, 
+    DH_ULTIMA_ALTERACAO = NULL 
+WHERE ID_TIPO_PERGUNTA = 19;
+
+UPDATE QUESTIONARIO.TIPO_PERGUNTA
+SET DS_TIPO_PERGUNTA='SELECT',
+    DS_USUARIO_ULTIMA_ALTERACAO=NULL,
+    DH_ULTIMA_ALTERACAO=NULL
+WHERE ID_TIPO_PERGUNTA <> 17
+AND ID_TIPO_PERGUNTA <> 19;
+
+-- DELETE 
+DELETE FROM QUESTIONARIO.TIPO_PERGUNTA WHERE ID_TIPO_PERGUNTA <> 17 AND ID_TIPO_PERGUNTA <> 19;
+
+/*
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(16, 'SELECT', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(17, 'MATRIZ_SELECAO_UNICA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(19, 'MATRIZ_SELECAO_MULTIPLA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(0, 'GRUPO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(1, 'SELECT_ONE_ITEM', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(2, 'SELECT_MANY_ITEM', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(3, 'INPUT_TEXT', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(4, 'INPUT_NUMBER', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(5, 'UPLOAD', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(6, 'LIST_BOX_ONE', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(7, 'LIST_BOX_MANY', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(8, 'ROTULO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(9, 'DATA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(10, 'PERIODO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(11, 'QUESTIONARIO', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(12, 'GRUPO_TABELA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(13, 'EMAIL', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(14, 'ASSINATURA', NULL, NULL);
+    INSERT INTO QUESTIONARIO.TIPO_PERGUNTA
+    (ID_TIPO_PERGUNTA, DS_TIPO_PERGUNTA, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+    VALUES(15, 'DOCUMENTO_PROCESSO_SCBA', NULL, NULL);
+    
+    
+    
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=16;  
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='MATRIZ_SELECAO_UNICA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=17;  
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='MATRIZ_SELECAO_MULTIPLA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=19;  
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='GRUPO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=0;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT_ONE_ITEM', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=1;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='SELECT_MANY_ITEM', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=2;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='INPUT_TEXT', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=3;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='INPUT_NUMBER', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=4;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='UPLOAD', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=5;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='LIST_BOX_ONE', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=6;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='LIST_BOX_MANY', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=7;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='ROTULO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=8;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='DATA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=9;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='PERIODO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=10;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='QUESTIONARIO', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=11;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='GRUPO_TABELA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=12;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='EMAIL', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=13;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='ASSINATURA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=14;
+    UPDATE QUESTIONARIO.TIPO_PERGUNTA
+    SET DS_TIPO_PERGUNTA='DOCUMENTO_PROCESSO_SCBA', DS_USUARIO_ULTIMA_ALTERACAO=NULL, DH_ULTIMA_ALTERACAO=NULL
+    WHERE ID_TIPO_PERGUNTA=15;
+
+*/
+
+SELECT * FROM QUESTIONARIO.TIPO_PUBLICO_ALVO ORDER BY NM_TIPO_PUBLICO_ALVO ASC;
+
+-- VERIFICAR INTEGRANTES DE UM DETERMINADO PUBLICO ALVO
+SELECT A.ID_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA 
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+WHERE A.DS_PUBLICO_ALVO LIKE '%Público Alvo 07/03/2019 (QC) (Identificador Opcional) v1%';
+
+-- VERIFICAR INTEGRANTES DE UM DETERMINADO QUESTIONARIO
+SELECT A.ID_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA 
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+JOIN QUESTIONARIO.PREENCHIMENTO D
+ON D.ID_PUBLICO = B.ID_PUBLICO
+WHERE D.ID_QUESTIONARIO = 815;
+
+SELECT * FROM QUESTIONARIO.PUBLICO;
+SELECT * FROM CORPORATIVO.PESSOA;
+
+-- VERIFICAR ACESSO PREENCHIMENTO
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ORDER BY DH_ACESSO_PREENCHIMENTO DESC;
+
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE DS_USUARIO_ULTIMA_ALTERACAO LIKE '%NIR%';
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE LOWER(NM_QUESTIONARIO) LIKE LOWER('%1.5%');
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+-- VERIFICAR TIPOS DE PERGUNTA (ENCONTRAR PERGUNTAS DO TIPO MATRIZ)
+
+-- ACESSO PREENCHIMENTO
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ORDER BY DH_ULTIMA_ALTERACAO DESC;
+
+-- CONSULTAR QUESTIONARIO
+SELECT PR.ID_PREENCHIMENTO, MAX(PR.DH_ULTIMA_ALTERACAO) 
+FROM QUESTIONARIO.PREENCHIMENTO PR
+INNER JOIN QUESTIONARIO.RESPOSTA R 
+ON R.ID_PREENCHIMENTO = PR.ID_PREENCHIMENTO
+WHERE ID_QUESTIONARIO IN(SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE SG_QUESTIONARIO = 'QC' )
+AND PR.DT_FINALIZACAO IS NULL
+GROUP BY PR.ID_PREENCHIMENTO;
+
+SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO PR
+INNER JOIN QUESTIONARIO.RESPOSTA R 
+ON R.ID_PREENCHIMENTO = PR.ID_PREENCHIMENTO
+WHERE ID_QUESTIONARIO IN(SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE SG_QUESTIONARIO = 'QC' )
+AND PR.DT_FINALIZACAO IS NULL
+AND PR.SG_SISTEMA_ORIGEM = 'QC';
+
+-- QUESTIONARIO BASE - TESTE NMSS 1.2.13x snap
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE LOWER(NM_QUESTIONARIO) LIKE LOWER('GRUPO ROBERTA (18/10)'); -- 494
+
+SELECT A.ID_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA 
+--SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+JOIN QUESTIONARIO.PREENCHIMENTO D
+ON D.ID_PUBLICO = B.ID_PUBLICO
+WHERE D.ID_QUESTIONARIO = 494;
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 2514057;
+
+SELECT PR.ID_PREENCHIMENTO, MAX(PR.DH_ULTIMA_ALTERACAO) 
+FROM QUESTIONARIO.PREENCHIMENTO PR
+INNER JOIN QUESTIONARIO.RESPOSTA R 
+ON R.ID_PREENCHIMENTO = PR.ID_PREENCHIMENTO
+WHERE ID_QUESTIONARIO IN(SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE SG_QUESTIONARIO = 'QC' )
+AND PR.DT_FINALIZACAO IS NULL
+GROUP BY PR.ID_PREENCHIMENTO;
+
+SELECT A.ID_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA 
+--SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+JOIN QUESTIONARIO.PREENCHIMENTO D
+ON D.ID_PUBLICO = B.ID_PUBLICO
+WHERE D.ID_QUESTIONARIO = 494
+ORDER BY NM_PESSOA ASC;
+
+-- RETORNA O PREEENCHIMENTO DE UM DETERMINADO USUARIO
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 494 AND ID_PESSOA = 2514057; -- ID_PREENCHIMENTO: 146353
+
+-- SELECT MAX(ID_PREENCHIMENTO) FROM QUESTIONARIO.PREENCHIMENTO;
+SELECT MAX(ID_PREENCHIMENTO)+1 AS PROXIMO_ID FROM QUESTIONARIO.PREENCHIMENTO;
+
+INSERT INTO QUESTIONARIO.ACESSO_PREENCHIMENTO (ID_ACESSO_PREENCHIMENTO, ID_PREENCHIMENTO, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+VALUES(147961, 146353, TIMESTAMP '2018-10-18 18:35:06', 'ROBERTA SILVA MILHOMEM', TIMESTAMP '2018-10-18 18:35:06');
+
+-- METODO: RepositorioPublico.consultarPublicoComResposta
+-- RETORNA O PUBLICO COM RESPOSTAS ENVIADAS
+-- SELECT p.ID_PESSOA as pessoa FROM QUESTIONARIO.PUBLICO p INNER JOIN QUESTIONARIO.PREENCHIMENTO pr on pr.ID_PESSOA = p.ID_PESSOA INNER JOIN QUESTIONARIO.QUESTIONARIO q on q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO INNER JOIN QUESTIONARIO.PUBLICACAO pb ON    pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO WHERE q.SG_QUESTIONARIO = :sigla AND pr.CS_STATUS_PREENCHIMENTO = :status AND q.ID_QUESTIONARIO = :idQuestionario GROUP BY p.ID_PESSOA 
+SELECT P.ID_PESSOA AS PESSOA
+FROM QUESTIONARIO.PUBLICO P
+INNER JOIN QUESTIONARIO.PREENCHIMENTO PR ON
+PR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO Q ON
+Q.ID_QUESTIONARIO = PR.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO PB ON
+PB.ID_QUESTIONARIO = Q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO ACESSOPREENCHIMENTO_ ON
+ACESSOPREENCHIMENTO_.ID_PREENCHIMENTO = PR.ID_PREENCHIMENTO
+WHERE Q.SG_QUESTIONARIO = 'QC'
+AND PR.CS_STATUS_PREENCHIMENTO = 'E'
+AND Q.ID_QUESTIONARIO = 494
+GROUP BY P.ID_PESSOA;
+
+
+-- METODO: MonitoramentoResource.consultarUsuariosSemEnvioQuestionario => RepositorioPublico.consultarUsuarioSemEnvioQuestionario
+-- RETORNA USUARIOS QUE NAO ENVIARAM RESPOSTAS (Usuários que logaram e não enviaram Respostas)
+-- SELECT p.ID_PESSOA as pessoa FROM QUESTIONARIO.PUBLICO p INNER JOIN QUESTIONARIO.PREENCHIMENTO pr on pr.ID_PESSOA = p.ID_PESSOA INNER JOIN QUESTIONARIO.QUESTIONARIO q on q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO ir on ir.ID_PESSOA = p.ID_PESSOA INNER JOIN QUESTIONARIO.PUBLICACAO pb ON pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO WHERE q.SG_QUESTIONARIO = :sigla AND ir.ID_TIPO_IDENTIFICADOR = :tipoIdentificador AND pr.CS_STATUS_PREENCHIMENTO = :status AND q.ID_QUESTIONARIO = :idQuestionario AND ir.DS_IDENTIFICADOR_REGISTRADO in ( '04897639107') GROUP BY p.ID_PESSOA 
+
+SELECT p.ID_PESSOA AS pessoa
+FROM QUESTIONARIO.PUBLICO P
+INNER JOIN QUESTIONARIO.PREENCHIMENTO PR ON
+PR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO Q ON
+Q.ID_QUESTIONARIO = PR.ID_QUESTIONARIO
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IR ON
+IR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN QUESTIONARIO.PUBLICACAO PB ON
+PB.ID_QUESTIONARIO = Q.ID_QUESTIONARIO
+WHERE Q.SG_QUESTIONARIO = 'QC'
+AND IR.ID_TIPO_IDENTIFICADOR = 1
+AND PR.CS_STATUS_PREENCHIMENTO = 'A'
+AND Q.ID_QUESTIONARIO = 494
+AND IR.DS_IDENTIFICADOR_REGISTRADO IN ('04897639107')
+GROUP BY P.ID_PESSOA;
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 2514057;
+
+
+-- METODO: MonitoramentoResource.consultarPublicoComResposta => RepositorioPublico.consultarPublicoComResposta
+-- RETORNA USUARIOS QUE ENVIARAM RESPOSTAS (Usuários com Respostas Enviadas)
+-- SELECT p.ID_PESSOA as pessoa FROM QUESTIONARIO.PUBLICO p INNER JOIN QUESTIONARIO.PREENCHIMENTO pr on pr.ID_PESSOA = p.ID_PESSOA INNER JOIN QUESTIONARIO.QUESTIONARIO q on q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO INNER JOIN QUESTIONARIO.PUBLICACAO pb ON    pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO WHERE q.SG_QUESTIONARIO = :sigla AND pr.CS_STATUS_PREENCHIMENTO = :status AND q.ID_QUESTIONARIO = :idQuestionario GROUP BY p.ID_PESSOA 
+
+SELECT p.ID_PESSOA AS pessoa
+FROM QUESTIONARIO.PUBLICO p
+INNER JOIN QUESTIONARIO.PREENCHIMENTO pr ON
+pr.ID_PESSOA = p.ID_PESSOA
+INNER JOIN QUESTIONARIO.QUESTIONARIO q ON
+q.ID_QUESTIONARIO = pr.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.PUBLICACAO pb ON
+pb.ID_QUESTIONARIO = q.ID_QUESTIONARIO
+INNER JOIN QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ ON
+acessoPreenchimento_.ID_PREENCHIMENTO = pr.ID_PREENCHIMENTO
+WHERE q.SG_QUESTIONARIO = 'QC'
+AND pr.CS_STATUS_PREENCHIMENTO = 'E'
+AND q.ID_QUESTIONARIO = 494
+GROUP BY p.ID_PESSOA;
+
+
+-- METODO: MonitoramentoResource.contarQuantidadeUsuariosQueLogaram => RepositorioAcessoPreenchimento.recuperarIdentificadorRegistradoUsuario
+-- RETORNA USUARIOS QUE ENVIARAM RESPOSTAS (Usuários com Respostas Enviadas)
+-- SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_ JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO WHERE preenchimento_.ID_QUESTIONARIO = :idQuestionarioParametro AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6 AND acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO BETWEEN TRUNC(publicacao_.DT_INICIO) AND TRUNC(publicacao_.DT_FIM) AND TRUNC(acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO) >= TRUNC(:dataInicioParametro) AND TRUNC(acessoPreenchimento_.DH_ACESSO_PREENCHIMENTO) <= TRUNC(:dataFimParametro) 
+
+SELECT DISTINCT identificadorRegistrado_.DS_IDENTIFICADOR_REGISTRADO
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO acessoPreenchimento_
+JOIN QUESTIONARIO.PREENCHIMENTO preenchimento_ ON
+preenchimento_.ID_PREENCHIMENTO = acessoPreenchimento_.ID_PREENCHIMENTO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificadorRegistrado_ ON
+identificadorRegistrado_.ID_PESSOA = preenchimento_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON
+publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO
+WHERE preenchimento_.ID_QUESTIONARIO = 494
+AND identificadorRegistrado_.ID_TIPO_IDENTIFICADOR = 6;
+
+-- QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Marluci 2%';
+
+-- QUANTIDADE DE PARTICIPANTES DO PUBLICO ALVO
+SELECT *
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO;
+
+-- QUANTIDADE DE RESPOSTAS ENVIADAS
+-- QUANTIDADE DE USUARIOS COM RESPOSTAS ENVIADAS
+-- QUANTIDADE DE USUARIOS QUE LOGARAM
+
+-- RECUPERAR USUARIOS PARA COMPOR PUBLICO ALVO NO SISTEMA QUESTIONARIO-CAPES
+SELECT A.ID_PESSOA, 
+       A.NM_PESSOA,
+       A.DS_IDENTIFICADOR_REGISTRADO,
+       B.DS_CORREIO_ELETRONICO
+FROM CORPORATIVO.PESSOA A
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO B
+ON B.ID_PESSOA = A.ID_PESSOA
+WHERE (A.NM_PESSOA LIKE '%ARTHUR ARAUJO OLIVEIRA%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%PATRICK NASCIMENTO PEREIRA%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%TATIANA MOSER LOPES%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%IAGO FERNANDES BARBOSA CUNHA%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%WILTON%MARINHO%CARNEIRO%DE%SOUZA%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%NIRIAN MARTINS SILVEIRA DOS SANTOS%' AND B.DS_CORREIO_ELETRONICO LIKE '%@stefanini.com%');
+
+ID_PESSOA|NM_PESSOA                         |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO       
+---------|----------------------------------|---------------------------|----------------------------
+  2536142|ARTHUR ARAUJO OLIVEIRA            |92538088100                |aaraujoo@indracompany.com   
+  2536050|PATRICK NASCIMENTO PEREIRA        |03089233169                |pnascimento@indracompany.com    
+  1128037|NIRIAN MARTINS SILVEIRA DOS SANTOS|89626850191                |nmsantos@stefanini.com      
+  2514086|TATIANA MOSER LOPES               |01873511124                |tmoser@indracompany.com     
+  2535905|IAGO FERNANDES BARBOSA CUNHA      |15997717720                |ifbarbosa@indracompany.com  
+  2514081|WILTON MARINHO CARNEIRO DE SOUZA  |71987614100                |wmarinho@indracompany.com    
+
+================================================================================================================================================
+[FIM] CORRECÃO DE PRODUCAO
+================================================================================================================================================
