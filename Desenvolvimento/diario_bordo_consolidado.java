@@ -3252,7 +3252,82 @@ git push --set-upstream origin MACS1000
         $ Nissan                        - Inicio do ano religioso.
         $ Tishirei                      - Sétimo mês do calendário religioso é o primeiro mês do calendário civil. E o sétimo mês do calendário civil e o primeiro mês do calendário religioso.
 
+Estudando sobre alguns costumes de _Purim_ encontrei fontes curiosas que norteiam minha opinião. Sobre fantasias, por exemplo:
 
+"Uma das espécies mais estranhas de "folia" [_Purim_] foi o costume do disfarce, que foi introduzido pela primeira vez entre os judeus italianos no final do século XV sob a influência do carnaval romano. Da Itália este costume espalhou-se por todos os países onde os judeus viviam, exceto talvez o Oriente (Steinschneider, lcp. 181; xlvii. 469, No. 9)"
+
+O primeiro entre os autores judeus a mencionar esse costume é _Judah Minz_ em seu _Responsa_, nº 17, ele expressa a opinião de que, "desde o propósito do "baile de máscaras" [_Purim_] é apenas folia, não deve ser considerada uma transgressão da lei bíblica sobre o vestuário. Embora algumas autoridades rigorosas tenham emitido proibições contra esse costume, as pessoas não lhes deram atenção, e a visão mais tolerante prevaleceu". 
+
+“Não apenas a indecência resultante do uso de fantasias é proibida, mas também é proibido (fantasias) por ser _chukos hagoym_ (prática dos gentios)” - R’ Yosef Messas em Respostas 298 (tradução livre)
+
+
+"Nós podemos não seguir os estatutos dos idólatras ou assemelhar-se a eles em seu estilo de vestimenta, penteado ou coisas semelhantes, como [_Vaykhah_ 20:23] declara:" Não siga os estatutos da nação [que eu estou dirigindo antes de você], "como [_Vaykhah_ 18: 3] afirma:" Não siga os seus estatutos ", e como [_Devarim_ 12:30] declara:" Tenha cuidado, para que você não pergunte por eles. "[Todos estes versos] um único tema: eles nos advertem a não se assemelhar [aos gentios]. Em vez disso, os judeus devem ser separados deles e distintos em suas roupas e ações, assim como em seus ideais e traços de caráter. [_Vaykhah_ 20:26] declara: "Eu vos separei das nações [para ser Meu]." _Hilkhoth Avodah Zarah_ 11
+
+
+As fontes estão restritas ao _Purim_. Infelizmente vestir-se em Purim é um costume que só foi encontrado entre as comunidades nos países católicos há mais de 100 anos e coincidentemente tem muito mais semelhanças com as festividades da Igreja do que qualquer coisa encontrada no Talmude.
+
+Na primavera, antes do período católico de luto que vem antes da Páscoa, um período de seis semanas que é tradicionalmente marcado pela abstenção de álcool, comidas finas, entretenimento de diferentes tipos e com algum jejum. Tradicionalmente, a véspera da festa da Quaresma inclui o consumo *excessivo de álcool* , a ingestão de alimentos e outras formas de devassidão e, mais predominantemente, fantasias e máscaras para disfarçar aqueles que estão realizando tais atividades. Estes ritos de celebração ainda são pré-formados em todo o mundo sob diferentes nomes: Carnaval, _Mardis gras_, _Khamis el sakara_ no Líbano, Terça-feira Gorda (https://pt.wikipedia.org/wiki/Ter%C3%A7a-feira_gorda) 
+
+
+Não só muitas comunidades de _Mizrahim_ e _Chabashim_ e outros grupos étnicos não-europeus *não se fantasiam* em _Purim_ por causa das origens questionáveis
+
+
+Os judeus sefarditas são autorizados a vestir fantasias em Purim ?
+
+
+http://www.jewishencyclopedia.com/articles/12448-purim
+
+https://judaism.stackexchange.com/questions/26286/are-sephardic-jews-allowed-to-dress-up-in-costumes-on-purim/26371#26371
+
+
+
+Outra fonte é um comentário do Sha'ar Ha'siyun (notas acrescentadas ao comentário de Mishna Berura ao Shulhan Aruch), nas leis de Zimun (199: 6). O Sha'ar Ha'siyun afirma que as mulheres não contam para um Zimun (quórum de três homens necessários para a Beracha especial antes de Birkat Ha'mazon) porque o Zimun era tradicionalmente conduzido por uma taça de vinho, e é impróprio para um mulher para beber vinho. O rabino Greenblat observa que, se as mulheres fossem excluídas de Zimun porque habitualmente envolviam beber uma única taça de vinho, certamente seria inapropriado uma mulher beber e ficar inebriada, mesmo como parte das festividades do Purim. 
+
+
+
+
+Ele usa o raciocínio das fontes talmúdicas sobre as mulheres que não são contadas para o _Zimun_ _Zimun_ _Zimun_ _Zimun_ _Zimun_ _Zimun_ (do _Efraym_). Nesse  caso (do _Zimun_), como envolve beber uma única taça de vinho e as mulheres estão exclusas, ele usa da lógica de que certamente seria inapropriado uma mulher beber no _Zimun_ para que a mulher ficar inebriada, mesmo como parte das festividades do _Purim_. 
+
+
+
+Já viu um homem bêbado vomitar? Sua degradante para ele também ...
+
+
+
+
+As minhas consultas tinham por objetivo esclarecer a questão: Os judeus sefarditas vestem fantasias em _Purim_ ? Até onde pude chegar e  segundo o _Minchag_ do _Mizrahim_ e _Chabashim_ (Judeus do Iemen) e demais judeus do *Oriente* e segundo a Enciclopédia Judaica e  demais _poskim_ (legisladores não _askenah_) essa prática não é encorajada,
+
+
+
+"E sua cerveja*foi diluída com água" - Isaías 1:22 
+
+
+
+
+[12:46, 17/3/2019] Rabino Emanuel: E ainda assim todos ficaram calados neste grupo quando 2 cidadãos questionaram sua honestidade e capacidade no tocante à permissão dada aos nossos shochatim de abater.
+[12:46, 17/3/2019] Rabino Emanuel: Gostaria que esta apreciação e carinho fosse suficiente o bastante para que se levantassem em sua defesa quando um dos vossos o ofendeu e desmereceu no grupo.
+[12:47, 17/3/2019] Rabino Emanuel: Continuo perplexo com tudo o que se passou aqui e com o silêncio da maioria.
+
+
+Rabino Ventura,
+
+Diante do que o senhor disse sobre a comunidade não ter se pronuciado (no grupo), eu externo minha visão:
+
+1 Imaginei que a diligência ocorrida no grupo da minha comunidade de Brasília já estivesse sanada.
+
+2 Houveram uma série de diálogos e reuniões com a comunidade e com os envolvidos onde pontos foram acordados e esclarecidos.
+
+3 Depois de todos os "embates" eu e minha esposa (e muitos da Conunidade Keter Torah) nos posicionamos de acordo com a _halachah_ e de acordo com as leis de _kavod_.
+
+4 Minha esposa se manifestou em um grupo paralelo em áudio (segue) e eu em intensas conversas com o meu _Moreh_ e _Morah_ e membros da comunidade.
+
+5 Espero que vossa perplexidade seja suprimida e o aparente "silêncio da maioria" seja desmistificado.
+
+6 Áudio
+
+7 Depois que minha esposa se pronunciou com esse áudio, algumas pessoas falaram no privado dela que foi desnecessário, pois ja se tinha passados alguns dias, porém ela esperou a "poeira abaixar" para "não magoar" mais as pessoas.
+
+8 Quero que saiba que a Comunidade está alinhada com o direcionamento do senhor e que agimos com cautela com relação a alguns fatos.
 ---------------------------------------------------------------------
 # CORRECAO DE DEMANDAS
 ---------------------------------------------------------------------
