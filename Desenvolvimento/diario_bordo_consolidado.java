@@ -135,6 +135,8 @@
 
     ## Configurar ambiente de desenvolvimento
 
+        https://community.linuxmint.com/tutorial/view/2363    -- CORRIGE PROBLEMA QUE IMPEDE O SISTEMA OPERATIVO DE ATUALIZAR 'FONTE DE DADOS'
+
         https://www.vivaolinux.com.br/dica/Resolvendo-os-problemas-com-o-pacote-installinfo
 
         https://community.linuxmint.com/tutorial/view/1372    JDK INSTALL
@@ -198,9 +200,24 @@
         npm i   // Sem a pasta NodeModules na pasta front-end
         npm install -g grunt
 
+
+        + Fonte de Dados
+
+            cd /etc/apt/
+            sudo gedit apt.conf
+
+                Inserir no arquivo
+
+                    Acquire::http::proxy "http://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+                    Acquire::https::proxy "https://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+                    Acquire::ftp::proxy "ftp://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+
+
 ================================================================================================================
 # [INICIO] Comandos de Configuração - Linux Mint 19.1
 ================================================================================================================
+
+    + Corrigir problemas de ''
     
     + Verificação
 
@@ -1402,6 +1419,8 @@
     # INSTALAR 'POSTGRES'
         $ sudo apt install postgresql postgresql-common
     
+        sudo apt install postgresql postgresql-common postgresql-contrib
+            
     # ACESSAR POSTGRES VIA TERMINAL
         $ psql -h zincoh02.cnj.jus.br -U usuariohoml -d pje_cnj_prod  -p 5432
         $ psql -h 172.20.18.73 -U postgres -d pje_cnj_prod  -p 5432
@@ -1516,6 +1535,15 @@
         $ dpkg --configure -a   // reconfigura quaisquer pacote desempacotado que ainda não foi configurado
 
 
+
+    # Acessar Maquina Windows Remota
+
+        sudo apt-get install rdesktop
+        rdesktop 172.25.30.246 -g 1600×900
+        FC\joseqj
+        Senha
+
+
     # Ativar tradução ao WPS
 
         $ wget http://biglinux.c3sl.ufpr.br/packages/unstable/main/wps-office-mui-pt_2.0.0-2biglinux1_all.deb
@@ -1546,6 +1574,7 @@
             $ https://www.jetbrains.tools/
 
     ## DEFINIR CARACTERES NO LINUX MINT
+
         $ gsettings set org.gnome.meld detect-encodings "['utf8','latin1']"
 
     ## DESINSTALAR LIBREOFFICE
@@ -1679,6 +1708,11 @@
     ## SIMULAR 'SPOTFY'
 
         $ chromium-browser --app=http://streamsquid.com/
+
+    ## CHROME FOR APP
+    
+        $ cd /opt/google/chrome
+        $ ./chrome --app=http://streamsquid.com/ 
 
     ## INSERIR CERTIFICADO DIGITAL NO SISTEMA
 
@@ -2836,7 +2870,7 @@ git push --set-upstream origin MACS1000
         -- PROJECT_PLATAFORMA_LANCAMENTO_DOCUMENTALL
         
             -- URL
-                $ https://github.com/repositorydesenvolvimento/PROJECT_DOCUMENT_MANAGEMENT.git
+                https://github.com/repositorydesenvolvimento/PROJECT_DOCUMENT_MANAGEMENT.git
         
         -- PROJECT_PLATAFORMA_LANCAMENTO_EDUCACIONALL
             
@@ -7037,6 +7071,7 @@ https://en.wikipedia.org/wiki/Web_widget
 https://www.lifewire.com/what-are-web-widgets-3486686
 http://hilite.me/                                                        -- Formatador de Código
 
+
 Como assim estáticos? Achei confuso. O que vocẽ está tentando explicar? O que é estático nesse código de exemplo é o token de authorization e a ID do Preenchimento. Essas coisas deveriam ser obtidas/fornecidas dinamicamente pela aplicação cliente.
 
 A variável url é basicamente estática pois deve apontar para o host da Widget.
@@ -7328,6 +7363,8 @@ Questionário 22/02/2019 (QC) (Identificador Opcional) v1
 Questionário 07/03/2019 (QC) (Identificador Opcional) v1
 Público Alvo 07/03/2019 (QC) (Identificador Opcional) v1
 
+Público Alvo (QC) (Identificador Opcional) (03089233169, 02735025144, 04897639107)
+
 ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
 ---------|-----------------------------|---------------------------|---------------------------------
    705191|ALISSON CHAGAS SOUSA         |00935766170                |testesoftware.722765@capes.gov.br
@@ -7342,6 +7379,7 @@ gvisgueiro@indracompany.com
 pnascimento@indracompany.com
 
 1.1  Qual procedimento devo adotar com os valores pagos por mim na ausência de créditos referentes ao benefício ?
+
 
 ================================================================================================================================================
 # REMDIME 400
@@ -7625,6 +7663,8 @@ Fonte de Dados 13/02/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
 
 Fonte de Dados 13/02/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
 
+Fonte de Dados 19/03/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
+
 public void salvarHistoricoUsuario(Usuario usuario){
 
         String arquivoHistoricoUsuario = usuario.getLogin().concat(".qc");      
@@ -7813,6 +7853,10 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 # ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES
 ================================================================================================================================================
     smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
+
+        User Capes: joseqj
+        :           FC
+        Senha:      ||||||||||||||| 
 
 ================================================================================================================================================
 # REDMINE 392
@@ -8233,7 +8277,7 @@ SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 45;
 
 SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 1 - nov/2018)%' ;
 
-SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%DED-Circular%' ;
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%DED-Circular%';
 
 SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 2093741;
 
@@ -8949,3 +8993,103 @@ ID_PESSOA|NM_PESSOA                         |DS_IDENTIFICADOR_REGISTRADO|DS_CORR
 ================================================================================================================================================
 [FIM] CORRECÃO DE PRODUCAO
 ================================================================================================================================================
+
+Bom dia, Nírian,
+
+Ontem (14/03/2019) estive de atestado médico devido a um problema na coluna.
+
+Implementações Pedentes
+
+- Ajustes na Persistência das Perguntas do tipo 'Matriz de Seleção Múltipla'
+
+- Ajustes na Edição das Perguntas do tipo 'Matriz de Seleção Múltipla'
+
+- Adaptação da Visualização, Cadastro e Edição de perguntas do Tipo 'Matriz de Seleção Múltipla' na API (QC UC014)
+
+- Correção de efeito colateral na funcionalidade de 'Pergunta Modelo' (QC UC004)
+
+O sistema deve permitir cadastrar todos os usuários que satisfazem as condições e as pessoas "erradas"
+
+devem ser reportadas  por e-mail com o Nome de Usuário, CPF e E-mail (o sistema deve identificar o erro para cada usuário).
+
+Convide de Purim
+https://www.zazzle.com.br/pd/spp/pt-zazzle_postcard?tdid=d392de3d-4656-47cb-ba68-eb0d0e10c59f
+
+
+Nírian,
+
+
+
+Sobre o erro ocorrido nos ambientes informamos que:
+
+Verificamos que as pessoas que foram retornadas na Fonte de Dados testada possuem CPF, mas nem todas possuem o Identificador Login;
+Para que seja possível recuperar pessoas que tenham Login, deve adaptar a Fonte de Dados para utilizar o Tipo de Identificador 6 , que corresponde ao Login) e cadastrar o Identificador Login para as pessoas que não possuem.
+Para que seja corrigido definitivamente, deve-se realizar um tratamento na aplicação Questionário Capes, para que informe sobre quais pessoas importadas não têm Identificador do Tipo Login.
+Informamos que o chamado 20180928000010, que ainda não foi homologado, esse chamado implementa a atribuição de grupos ao importar pessoas para um determinado Público Alvo e utiliza o serviços de Segurança-Service, busca somente pessoas que possuam  Identificador do tipo 6, ou seja Login.
+Saudações,
+
+Júnior, José Quintino
++55 (061) 995 995 532
+
+
+-------------------------------
+
+/*
+    Erro no Ambiente de Produção, Teste e Desenvolvimento (I e II) na funcionalidade de 'Fonte de Dados'
+    Ocorre quando se tenta cadastrar uma determinada fonte de dados de Público Alvo com SQL
+    
+    Fonte de Dados 19/03/2019 (Lote) (Público Alvo) (Identificação Opcional) v1
+    Fonte de Dados 19/03/2019 v1
+*/
+
+SELECT cpf, nome_completo, email_principal
+FROM ( SELECT ROW_NUMBER() OVER( PARTITION BY P.DS_IDENTIFICADOR_REGISTRADO ORDER BY P.DS_IDENTIFICADOR_REGISTRADO ) ordem_email, P.DS_IDENTIFICADOR_REGISTRADO AS "CPF", P.NM_PESSOA AS "NOME_COMPLETO", (CE.DS_CORREIO_ELETRONICO) AS "EMAIL_PRINCIPAL"
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR
+INNER JOIN CORPORATIVO.PESSOA P ON
+IR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO ce ON
+ce.ID_PESSOA = p.id_pessoa
+AND in_principal_finalidade = 'S'
+WHERE IR.ID_TIPO_IDENTIFICADOR = 6
+AND P.DS_IDENTIFICADOR_REGISTRADO IN( '88171515720', '81204809704', '05503132572', '35866080044', '61539112349', '30496614886', '87195712400', '20181230259', '58652710244', '00326264361', '96453354500', '00658773909', '26306700315', '77051254715', '01775137724', '01475741022', '85511595187', '05618899612', '95889671391', '03641004608', '85476404104', '98206338187', '84984260653', '40075265249', '45833907187', '03702299408', '27466094368', '68464037015', '63517990400', '14860219805', '22962760244', '04587388912', '52686280034', '33661079875', '06621377606', '58550356034', '07317420603', '92767427604', '42498643168', '32554361843', '62093258900', '34990186249', '08133476372', '63129566520', '03622503831', '74634976749', '99628910604', '71192999304', '06823798670', '40717178153', '62235478700', '01578509866', '28730291291', '13629140459', '27777021877', '72986018068', '72455691772', '91333784449', '78584884220', '20750145587', '04724239832', '83777741353', '95561331000', '69105413249', '06535940462', '06371957287', '13086723572', '10508597315', '37815938434', '37958526768', '17152879915', '16951972168', '71926224191', '37565427772', '00158840909', '32973063353', '52477924672', '83664211120', '55098940168', '49203487620', '68419252891', '08070449896', '64162516472', '66202973072', '07757956315', '02373339960', '68059515268', '35641444553', '45404992034', '11285753100', '32388101468', '06439719475', '60231335415', '27556964787', '39544222049', '06299355808', '03715775602', '82076006087', '76357309168', '54379830691', '48165379615', '75081040649', '71631488600', '01562216163', '34905162734', '99775581591', '67021840691', '57358702972', '59564245400', '39098338968', '09891363880', '60716410206', '80825990653', '13880702861', '76520005134', '64527697315', '56467060687', '25189468968', '83032495091', '16197658291', '85772062700', '58767860125', '85582549587', '57358702972', '08532303404', '23411872349', '46408720978', '38497522320' )
+ORDER BY cpf, (CE.DS_CORREIO_ELETRONICO) )
+WHERE ordem_email = 1
+
+
+-- 
+SELECT cpf, nome_completo, email_principal
+FROM ( SELECT ROW_NUMBER() OVER( PARTITION BY P.DS_IDENTIFICADOR_REGISTRADO ORDER BY P.DS_IDENTIFICADOR_REGISTRADO ) ordem_email, P.DS_IDENTIFICADOR_REGISTRADO AS "CPF", P.NM_PESSOA AS "NOME_COMPLETO", (CE.DS_CORREIO_ELETRONICO) AS "EMAIL_PRINCIPAL"
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR
+INNER JOIN CORPORATIVO.PESSOA P ON
+IR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO ce ON
+ce.ID_PESSOA = p.id_pessoa
+AND in_principal_finalidade = 'S'
+WHERE P.DS_IDENTIFICADOR_REGISTRADO IN( '88171515720', '81204809704', '05503132572', '35866080044', '61539112349', '30496614886', '87195712400', '20181230259', '58652710244', '00326264361', '96453354500', '00658773909', '26306700315', '77051254715', '01775137724', '01475741022', '85511595187', '05618899612', '95889671391', '03641004608', '85476404104', '98206338187', '84984260653', '40075265249', '45833907187', '03702299408', '27466094368', '68464037015', '63517990400', '14860219805', '22962760244', '04587388912', '52686280034', '33661079875', '06621377606', '58550356034', '07317420603', '92767427604', '42498643168', '32554361843', '62093258900', '34990186249', '08133476372', '63129566520', '03622503831', '74634976749', '99628910604', '71192999304', '06823798670', '40717178153', '62235478700', '01578509866', '28730291291', '13629140459', '27777021877', '72986018068', '72455691772', '91333784449', '78584884220', '20750145587', '04724239832', '83777741353', '95561331000', '69105413249', '06535940462', '06371957287', '13086723572', '10508597315', '37815938434', '37958526768', '17152879915', '16951972168', '71926224191', '37565427772', '00158840909', '32973063353', '52477924672', '83664211120', '55098940168', '49203487620', '68419252891', '08070449896', '64162516472', '66202973072', '07757956315', '02373339960', '68059515268', '35641444553', '45404992034', '11285753100', '32388101468', '06439719475', '60231335415', '27556964787', '39544222049', '06299355808', '03715775602', '82076006087', '76357309168', '54379830691', '48165379615', '75081040649', '71631488600', '01562216163', '34905162734', '99775581591', '67021840691', '57358702972', '59564245400', '39098338968', '09891363880', '60716410206', '80825990653', '13880702861', '76520005134', '64527697315', '56467060687', '25189468968', '83032495091', '16197658291', '85772062700', '58767860125', '85582549587', '57358702972', '08532303404', '23411872349', '46408720978', '38497522320' )
+AND NOT EXISTS (SELECT 1 FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO IN('88171515720', '81204809704', '05503132572', '35866080044', '61539112349', '30496614886', '87195712400', '20181230259', '58652710244', '00326264361', '96453354500', '00658773909', '26306700315', '77051254715', '01775137724', '01475741022', '85511595187', '05618899612', '95889671391', '03641004608', '85476404104', '98206338187', '84984260653', '40075265249', '45833907187', '03702299408', '27466094368', '68464037015', '63517990400', '14860219805', '22962760244', '04587388912', '52686280034', '33661079875', '06621377606', '58550356034', '07317420603', '92767427604', '42498643168', '32554361843', '62093258900', '34990186249', '08133476372', '63129566520', '03622503831', '74634976749', '99628910604', '71192999304', '06823798670', '40717178153', '62235478700', '01578509866', '28730291291', '13629140459', '27777021877', '72986018068', '72455691772', '91333784449', '78584884220', '20750145587', '04724239832', '83777741353', '95561331000', '69105413249', '06535940462', '06371957287', '13086723572', '10508597315', '37815938434', '37958526768', '17152879915', '16951972168', '71926224191', '37565427772', '00158840909', '32973063353', '52477924672', '83664211120', '55098940168', '49203487620', '68419252891', '08070449896', '64162516472', '66202973072', '07757956315', '02373339960', '68059515268', '35641444553', '45404992034', '11285753100', '32388101468', '06439719475', '60231335415', '27556964787', '39544222049', '06299355808', '03715775602', '82076006087', '76357309168', '54379830691', '48165379615', '75081040649', '71631488600', '01562216163', '34905162734', '99775581591', '67021840691', '57358702972', '59564245400', '39098338968', '09891363880', '60716410206', '80825990653', '13880702861', '76520005134', '64527697315', '56467060687', '25189468968', '83032495091', '16197658291', '85772062700', '58767860125', '85582549587', '57358702972', '08532303404', '23411872349', '46408720978', '38497522320') AND ID_TIPO_IDENTIFICADOR = 6)
+ORDER BY cpf, (CE.DS_CORREIO_ELETRONICO) )
+WHERE ordem_email = 1;
+
+
+SELECT cpf, nome_completo, email_principal
+FROM ( SELECT ROW_NUMBER() OVER( PARTITION BY P.DS_IDENTIFICADOR_REGISTRADO ORDER BY P.DS_IDENTIFICADOR_REGISTRADO ) ordem_email, P.DS_IDENTIFICADOR_REGISTRADO AS "CPF", P.NM_PESSOA AS "NOME_COMPLETO", (CE.DS_CORREIO_ELETRONICO) AS "EMAIL_PRINCIPAL"
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR
+INNER JOIN CORPORATIVO.PESSOA P ON
+IR.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO ce ON
+ce.ID_PESSOA = p.id_pessoa
+AND in_principal_finalidade = 'S'
+WHERE IR.ID_TIPO_IDENTIFICADOR = 1
+AND P.DS_IDENTIFICADOR_REGISTRADO IN( '88171515720', '81204809704', '05503132572', '35866080044', '61539112349', '30496614886', '87195712400', '20181230259', '58652710244', '00326264361', '96453354500', '00658773909', '26306700315', '77051254715', '01775137724', '01475741022', '85511595187', '05618899612', '95889671391', '03641004608', '85476404104', '98206338187', '84984260653', '40075265249', '45833907187', '03702299408', '27466094368', '68464037015', '63517990400', '14860219805', '22962760244', '04587388912', '52686280034', '33661079875', '06621377606', '58550356034', '07317420603', '92767427604', '42498643168', '32554361843', '62093258900', '34990186249', '08133476372', '63129566520', '03622503831', '74634976749', '99628910604', '71192999304', '06823798670', '40717178153', '62235478700', '01578509866', '28730291291', '13629140459', '27777021877', '72986018068', '72455691772', '91333784449', '78584884220', '20750145587', '04724239832', '83777741353', '95561331000', '69105413249', '06535940462', '06371957287', '13086723572', '10508597315', '37815938434', '37958526768', '17152879915', '16951972168', '71926224191', '37565427772', '00158840909', '32973063353', '52477924672', '83664211120', '55098940168', '49203487620', '68419252891', '08070449896', '64162516472', '66202973072', '07757956315', '02373339960', '68059515268', '35641444553', '45404992034', '11285753100', '32388101468', '06439719475', '60231335415', '27556964787', '39544222049', '06299355808', '03715775602', '82076006087', '76357309168', '54379830691', '48165379615', '75081040649', '71631488600', '01562216163', '34905162734', '99775581591', '67021840691', '57358702972', '59564245400', '39098338968', '09891363880', '60716410206', '80825990653', '13880702861', '76520005134', '64527697315', '56467060687', '25189468968', '83032495091', '16197658291', '85772062700', '58767860125', '85582549587', '57358702972', '08532303404', '23411872349', '46408720978', '38497522320' )
+AND NOT EXISTS (SELECT 1 FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE ID_PESSOA = IR.ID_PESSOA AND ID_TIPO_IDENTIFICADOR = 6)
+ORDER BY cpf, (CE.DS_CORREIO_ELETRONICO))
+WHERE ordem_email = 1;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# REDMINE 392
+
+    - Corrigir erro na tela de Cadastro de Pergunta (apresenta a mensagem de Resultado não Encontrado)
+    - Não apresentar o Quadro de Importação para Fontes de Dados diferentes de 'Lote'
+
+
