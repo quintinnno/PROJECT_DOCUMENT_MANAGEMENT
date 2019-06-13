@@ -18890,4 +18890,23 @@ https://des.capes.gov.br/questionario-capes/
 02735025144
 bb6c5p
 ====================================================================================================================================
+indra@indra:~$ ifconfig
+enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.18.221.150  netmask 255.255.255.0  broadcast 172.18.221.255
+        inet6 fe80::8878:b835:e7d1:268e  prefixlen 64  scopeid 0x20<link>
+        ether 58:20:b1:0c:b4:e0  txqueuelen 1000  (Ethernet)
+        RX packets 186572  bytes 186731551 (186.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 106016  bytes 12403847 (12.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 180129  bytes 1975544350 (1.9 GB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 180129  bytes 1975544350 (1.9 GB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+====================================================================================================================================
 
