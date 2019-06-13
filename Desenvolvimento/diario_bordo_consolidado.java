@@ -2940,6 +2940,7 @@ git push --set-upstream origin MACS1000
 ---------------------------------------------------------------------
     - sudo apt-get install rabbitvcs-core rabbitvcs-nautilus rabbitvcs-gedit rabbitvcs-cli
     - Pesquisar pelo pacote "nemo-rabbitvcs" no "Gerenciador de Aplicativos" do Mint 18.1
+    - instalar Files
 
 ---------------------------------------------------------------------
 # PROCEDIMENTOS GIT
@@ -18908,5 +18909,65 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         RX errors 0  dropped 0  overruns 0  frame 0
         TX packets 180129  bytes 1975544350 (1.9 GB)
         TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+====================================================================================================================================
+1 > Pesquisar Vinculo Organizacional
+
+2 > Cadastrar Unidade Organizacional
+
+3 > Incluir Pessoa 
+====================================================================================================================================
+# PLFIN
+
+    - TB_CONTRATO
+    
+        ID_CONTRATO
+        ID_PESSOA -- GOLDENCROSS / AMIL
+        ID_PESSOA_MANTENEDORA_CONTRATO -- INDRA COMPANY / STEFANINI
+        NUMERO_CONTRATO
+        
+    
+    - TB_CARTAO (PLANO DE SAUDE)
+    
+        ID_CARTAO -- IDENTIFICADOR UNICO DA TABELA
+        ID_DOCUMENTO -- ENDERECO DA FONTE DE GUARDA DO DOCUMENTO
+        ID_TIPO_CARTAO -- PLANO DE SAUDE, TRANSPORTE PÚBLICO, LIBERACAO DE ACESSO PORTARIA, PLANO DE SAUDE, VALE ALIMENTACAO 
+        ID_PESSOA_JURIDICA -- ODONTOPREV, AMIL, DFTRANS, GOLDENCROSS, ETC
+        ID_CONTRATO -- VINCULADO A QUAL CONTRATO (CONTRATO DE TRABALHO - INDRA, STEFANINI, BASIS, CONTRATO DE PRESTACAO DE SERVICOS A SAUDE)
+        ID_PESSOA_TITULAR_CARTAO -- BENEFICIARIO DO SERVICO DE UM DETERMINADO CARTAO
+        ID_ABRANGENCIA_CARTAO -- NACIONAL, INTERNACIONAL, ESTADUAL, MINICIPAL
+        NUMERO_CARTAO
+        NUMERO_CARTAO_NACIONAL_SAUDE
+        CODIGO_OPERACAO
+        CATEGORIA_PLANO_SAUDE
+        NUMERO_REGISTRO_PLANO_SAUDE
+        DATA_RECEBIMENTO_CARTAO
+        DATA_VALIDADE_CARTAO
+        
+    - TB_CARTAO (INSTITUICAO FINANCEIRA)
+    
+        ID_CARTAO
+        ID_DOCUMENTO
+        ID_TIPO_CARTAO -- CREDITO, DEBITO, VALE TRANSPORTE, VALE ALIMENTACAO
+        ID_PESSOA_INSTITUICAO_FINANCEIRA -- RICARDO ELETRO / AMERICANAS / NUBANK
+        ID_PESSOA_INSTITUICAO_FINANCEIRA_MANTENEDORA -- LOSANGO / CETELEM / NULL
+        ID_BANDEIRA_CARTAO
+        ID_CONTRATO
+        ID_CATEGORIA_STATUS_CARTAO -- SILVER, GOLD, BLACK, CORPORATIVO
+        ID_ABRANGENCIA_CARTAO -- NACIONAL-INTERNACIONAL, NACIONAL, INTERNACIONAL
+        NUMERO_CARTAO
+        DATA_EMISSAO_CARTAO
+        DATA_VALIDADE_CARTAO
+        NOME_IMPRESSO_CARTAO
+        LIMITE_MAXIMO_CARTAO
+        LIMITE_REAL_CARTAO
+        
+        
+        
+        
+        
+        
+        
+        
+
 ====================================================================================================================================
 
