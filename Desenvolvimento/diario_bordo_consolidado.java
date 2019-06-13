@@ -344,6 +344,8 @@
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jbossEAP/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss-eap/arquivos/
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
+            -Darquivos=/home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos                          
+                            
                             
 -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
 -Darquivos=/home/indra/Desenvolvimento/Ununtrium/ununtrium_tool/ununtrium_tool_server/arquivos
@@ -1501,6 +1503,12 @@
 # PROCEDIMENTOS LINUX
 ---------------------------------------------------------------------
 
+    + Instalar Lareira
+    
+        yum install dnf
+        sudo apt install libaa-bin
+        aafire -driver curses
+        
     + Verificar configuração de Proxy
     
         env | grep -i proxy
@@ -1735,7 +1743,8 @@
     ## SIMULAR 'SPOTFY'
 
         chromium-browser --app=http://streamsquid.com/
-        chromium-browser --app=https://www.youtube.com/?gl=BR&hl=pt&app=desktop
+        chromium-browser --app=https://www.youtube.com/?gl=BR&hl=pt&app=desktop                       
+        chromium-browser --app=https://radios.band.uol.com.br/?radio=bandnews-brasilia
 
     ## CHROME FOR APP
     
@@ -7404,12 +7413,15 @@ Público Alvo 07/03/2019 (QC) (Identificador Opcional) v1
 
 Público Alvo (QC) (Identificador Opcional) (03089233169, 02735025144, 04897639107)
 
-ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO            
----------|-----------------------------|---------------------------|---------------------------------
-   705191|ALISSON CHAGAS SOUSA         |00935766170                |testesoftware.722765@capes.gov.br
+---------|-----------------------------|---------------------------|-----------------------------------
+ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_ELETRONICO           
+---------|-----------------------------|---------------------------|-----------------------------------
+   705191|ALISSON CHAGAS SOUSA         |00935766170                |testesoftware.722765@capes.gov.br 
   2514057|ROBERTA SILVA MILHOMEM       |04897639107                |testesoftware.3577161@capes.gov.br     
-  2536187|JOSE QUINTINO DA SILVA JUNIOR|02735025144                |jqsilva@indracompany.com        
-  2536050|PATRICK NASCIMENTO PEREIRA   |03089233169                |teste@gmail.com.br               
+  2536187|JOSE QUINTINO DA SILVA JUNIOR|02735025144                |jqsilva@indracompany.com          
+  2536050|PATRICK NASCIMENTO PEREIRA   |03089233169                |teste@gmail.com.br              
+---------|-----------------------------|---------------------------|-----------------------------------
+
 ================================================================================================================================================
 
 wjferreira@indracompany.com
@@ -18196,10 +18208,20 @@ SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%17/05%';
           trackby="$option.id"
         />
 
-  "questionario.pesquisar.label.status_questionario": "Situação do Questionário",
-  
+  "questionario.pesquisar.label.status_questionario": "Situação do Questionário",  
   
 [REDMINE 00398] [QUESTIONÁRIO CAPES] - Incluir status do questionário (Visão do Respondente)
+
+    # 31/05/2019
+
+        - {1} Recuperar Todas as Unidades Organizacionais
+        - {2} Cadastrar Uma Unidade Organizacional         
+        
+UnidadeOrganizacional
+unidade-organizacional
+unidadeOrganizacional
+unidade-organizacional-pesquisa.html
+unidadeOrganizacionalPesquisaController
   
 ====================================================================================================================================
 [TAREFAS]
@@ -18462,8 +18484,6 @@ where regexp_instr(upper(tc.column_name || ' - ' || cc.comments), '.YES.') > 0
     or regexp_instr(upper(tc.column_name || ' - ' || cc.comments), '.NAME.') > 0
 AND tc.owner = 'QUESTIONARIO';
 
-
-
 ====================================================================================================================================
 Matricula:      2173456800
 Dezembro:       61 9-9599 5532
@@ -18531,7 +18551,16 @@ Irei encerrar meu expediente às 12:40. Minhas atividades até então foram:
             EXCLUIR:
             
                 - https://jira.indra.es/browse/CCAPNSGA-9401
-                - https://jira.indra.es/browse/CCAPNSGA-9402            
+                - https://jira.indra.es/browse/CCAPNSGA-9402
+                
+            VinculoOrganizacional
+            vinculo-organizacional
+            
+            UnidadeOrganizacional
+            unidade-organizacional
+            
+            perfil-pessoa
+            PerfilPessoa
                     
 ====================================================================================================================================
 [REDMINE 00388] - Aprimorar perfil para acesso aos questionários (Unidade Organizacional)
@@ -18539,8 +18568,10 @@ Irei encerrar meu expediente às 12:40. Minhas atividades até então foram:
     
     # Tarefas
     
-        - Mapeamento de Dados
-        - Protótipos
+        - Mapeamento das tabelas
+            - QUESTIONARIO.VINCULO_ORGANIZACIONAL
+            - QUESTIONARIO.PERFIL_PESSOA
+        - Mapear os Protótipos
         - Criar regras de acesso a essa funcionalidade
         
         PermissaoAcesso.java -> verificar onde devo cadastrar o UC015
@@ -18557,13 +18588,10 @@ Administrador - Questionário	QUESTIONARIO CAPES	Manter Público Alvo	Incluir P�
 Administrador - Questionário	QUESTIONARIO CAPES	Manter Público Alvo	Pesquisar Pessoa	 
 Administrador - Questionário	QUESTIONARIO CAPES	Manter Público Alvo	Pesquisar Público Alvo
 Administrador - Questionário	QUESTIONARIO CAPES	Manter Público Alvo	Visualizar Público Alvo
-
-    - Cadastrar 
     
 ====================================================================================================================================
 # PROCEDIMENTOS ATOM + GITHUB (repositorynihonium)
 ====================================================================================================================================
-    
     - Token
     
         - 206a03a8b218aa8a20989b93ac3cdc5af80735cc
@@ -18576,5 +18604,290 @@ Administrador - Questionário	QUESTIONARIO CAPES	Manter Público Alvo	Visualizar
     https://seantheme.com/source-admin/admin/html/index_v4.html
     https://seantheme.com/infinite-admin/admin/html/index.html
     
+====================================================================================================================================
+
+- Credito      
+
+- Débito
+    
+====================================================================================================================================
+
+# PLFIN - MCDV - Módulo de Cadastro de Despesas Variáveis
+
+________________________________________________________
+De 15 MAI até 09 JUN
+________________________________________________________
+
+14 MAI Pravoce Supermercados	   52,93
+16 MAI Banca Palacio Desenvo.	  4,00
+16 MAI A Pizza do Pedaco	        41,50
+17 MAI Uber do Brasil Tecnolo   	15,44
+17 MAI Rfc Comercio de Alimen	  45,30
+18 MAI Cia do Bolo	             23,00
+18 MAI Brasil Vexado	       32,90
+20 MAI Taguatinga Paes	      15,42
+20 MAI Mercado Di	          44,06
+22 MAI Taguatinga Paes	4,19
+23 MAI Vivenda Camarao	28,90
+23 MAI Wilson Grangeiro da Si	5,50
+28 MAI Acy Comercio Alimento	15,80
+28 MAI Francisco de A.Basilio	1,00
+28 MAI Uber do Brasil Tecnolo	5,00
+28 MAI Uber do Brasil Tecnolo	7,14
+28 MAI Uber do Brasil Tecnolo	5,00
+30 MAI Pravoce Supermercados	70,13
+01 JUN Francisco Mota da Silv	10,00
+01 JUN Ki Lanchonete do Minei	8,00
+01 JUN Taguatinga Paes	8,89
+01 JUN Cia do Bolo	19,00
+02 JUN Taguatinga Paes	9,82
+02 JUN Acai Mais Sabor Taguap	48,00
+02 JUN Pag*Churrostiodan	5,00
+03 JUN Subway	43,30
+
+====================================================================================================================================
+
+<div class="col-lg-12">
+															<div class="panel panel-inverse">
+																<div class="panel-heading">
+																	<h4 class="panel-title">Cadastro de Pessoa</h4>
+																</div>
+																<div class="panel-body">
+																	<div class="form-group col-md-12">
+																		<label for="nome_pessoa_despesa">Nome da Pessoa</label> <input id="nome_pessoa_despesa" name="nome_pessoa_despesa" type="text" placeholder="Nome da Pessoa" class="form-control" />
+																	</div>
+																	<div class="form-group col-md-12">
+																		<label for="categoria_pessoa_despesa">Categoria da Pessoa</label> <select id="categoria_pessoa_despesa" name="categoria_pessoa_despesa" data-live-search="true"
+																			data-style="btn-default" class="selectpicker form-control">
+																			<option>Selecione</option>
+																			<option>Alimentação</option>
+																			<option>Transporte Privado</option>
+																			<option>Posto de Combustível</option>
+																			<option>Saúde</option>
+																			<option>Transporte Público</option>
+																		</select>
+																	</div>
+																	<div class="form-group col-md-12">
+																		<div class="card-body">
+																			<div class="row">
+																				<div class="col-md-10">
+																					<a href="paginaGerenciadorDespesaCadastro.html" class="btn btn-primary btn-block">Cadastrar Pessoa</a>
+																				</div>
+																				<div class="col-md-2">
+																					<a href="paginaGerenciadorDespesaCadastro.html" class="btn btn-danger btn-block">Voltar</a>
+																				</div>
+																			</div>
+																		</div>
+																	</div>
+																	<div data-scrollbar="true" data-height="218px"></div>
+																</div>
+															</div>
+														</div>
+                                                        
+public List<UnidadeOrganizacional> consultarTodos() {
+		StringBuilder stringBuilder = new StringBuilder("SELECT unidade_organizacional_.SG_UNIDADE_ORGANIZACIONAL, ")
+				.append("unidade_organizacional_.NM_UNIDADE_ORGANIZACIONAL ")
+                .append("FROM CORPORATIVO.UNIDADE_ORGANIZACIONAL unidade_organizacional_ ")
+                .append("WHERE unidade_organizacional_.CS_SITUACAO_UNIDADE = :situacaoUnidadeOrganizacional ");
+		SQLQuery query = session.createSQLQuery(stringBuilder.toString());
+			query.setParameter("situacaoUnidadeOrganizacional", "A");
+		return query.list();
+	}
+    
+	public List<UnidadeOrganizacional> consultarTodos() {
+		StringBuilder stringBuilder = new StringBuilder("SELECT unidade_organizacional_ ")
+                .append("FROM UnidadeOrganizacional unidade_organizacional_ ")
+                .append("WHERE unidade_organizacional_.situacao = :situacaoUnidadeOrganizacional ");
+		Query query = entityManager.createQuery(stringBuilder.toString());
+			query.setParameter("situacaoUnidadeOrganizacional", "A");
+		return query.getResultList();
+	}
+
+
+  /* Redirecionar para pagina de Pesquisar Unidade Organizacional */
+  vm.redirecionarPaginaPesquisaVinculoOrganizacional = () => {
+	$state.go('pesquisa-vinculo-organizacional');
+  };
+    
+====================================================================================================================================
+    
+    Commitar código: /home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_ide
+    
+====================================================================================================================================
+[TREINAMENTO]
+====================================================================================================================================
+
+    - Javascript
+    
+        - Desenvolver sistema para gestão de cartão de crédito
+        
+            - Conta Bancária
+            - Cartão de Crédito
+
+====================================================================================================================================
+[DAYLI SPRINT 08]
+====================================================================================================================================
+
+    - Implementar Redmine #
+    - Gerar de release 1.8.3 para teste do Débito do Redmine #
+    - Finalizar Redmine #
+
+====================================================================================================================================
+[REDMINE 11426] [QUESTIONÁRIO CAPES] - Erro desconhecido ao importar publico alvo em lote
+
+====================================================================================================================================
+[JIRA] 06/2019
+====================================================================================================================================
+
+    REDMINE 11042                   2019AAAAAAAAAA – QUESTIONARIO-CAPES                     https://jira.indra.es/browse/CCAPNSGA-9545
+    REDMINE 11929                   2019BBBBBBBBBB – QUESTIONARIO-CAPES                     https://jira.indra.es/browse/CCAPNSGA-9546
+    REDMINE 11928                   2019CCCCCCCCCC – QUESTIONARIO-CAPES                     https://jira.indra.es/browse/CCAPNSGA-9547
+    REDMINE 11930                   2019DDDDDDDDDD – QUESTIONARIO-CAPES                     https://jira.indra.es/browse/CCAPNSGA-9548
+
+====================================================================================================================================
+"E agora, José? A festa acabou, a luz apagou, o povo sumiu, a noite esfriou, e agora, José? E agora, você? Você que é sem nome, que zomba dos outros, você que faz versos, que ama, protesta? E agora, José? Está sem mulher, está sem discurso, está sem carinho. Já não pode beber, já não pode fumar, cuspir já não pode. A noite esfriou, o dia não veio, o bonde não veio, o riso não veio, não veio a utopia e tudo acabou e tudo fugiu e tudo mofou, e agora, José?
+
+"E agora, José? E agora, você? Você que é sem nome, que zomba dos outros, você que faz versos, que ama, protesta? E agora, Você? que o riso não veio, não veio a utopia e tudo acabou e tudo fugiu e tudo mofou, e agora, Você?
+
+E agora, Jose?
+E agora, Você? Deixar tudo. Arrume a mala e parta... Vai ficar e continuar a me perguntar e agora josé? O que vai seguir
+O que devemos seguir?
+O devo fazer?
+Sim, as questões são parte da confusão da inteligencia.
+
+
+"Só sofre de amor quem ainda não tem emprego"
+"Fui seguir em frente, mas tropecei"
+"Algumas pessoas entram na nossa vida só para criarmos anticorpos."
+"Algumas pessoas sozinhas já estão mal acompanhadas"
+"Quimicamente falando o Alcóo é uma solução"
+
+https://www.osvigaristas.com.br/frases/pagina3.html
+
+====================================================================================================================================
+Glenn Greenwald (o defensor de neonazistas) afirmava que "os jornalistas brasileiros não têm uma estratégia para combater Bolsonaro". 
+Foi necessário um progressista estrangeiro do Grupo First Look Media para elaborar uma estratégia. Até nisso vocês demonstram sua inferioridade cognitiva.
+====================================================================================================================================
+
+Nirian Santos escreveu:
+> Complementar com a lista de itens para o backlog, considerando o resultado dos alinhamentos e investigações realizados.
+
+Decorrente das limitações quanto a volumetria dos registros importados bem como o desempenho ao realizar importações de arquivos se faz necessário adaptar o sistema Questionário para:
+
+* Alterar a implementação das funcionalidades referente ao *UC 006 - Manter Público Alvo* para permitir tratamento assíncrono dos processamentos de importação de arquivos para a composição de Público Alvo na modalidade *Lote*
+
+> - Alterar mapeamento das tabelas para gerir o tratamento criando as tabelas QUESTIONARIO.CARGA e QUESTIONARIO.CARGA_DETALHE
+
+> - Alterar a funcionalidade do UC006 ao Incluir uma Pessoa (fluxo A5) para permitir o acompanhamento (por parte do usuário responsável por criar um determinado Público Alvo), dos resultados do processamento.
+
+* Alterar as versões da dependência do _Deltaspike_ para versão superior (1.8.2) a utilizada no sistema atualmente (1.2.1) (tratado no Redmine #11918)
+
+* Alterar a parametrização do e-mail substituindo no e e-mail _no-reply@capes.gov.br_ para o e-mail _no-reply@listas.capes.gov.br_
+
+====================================================================================================================================
+[Login] -> Acessar funcionalidade [Unidade Organizacional] -> Acessar [Incluir Pessoa] -> 
+====================================================================================================================================
+
+			<table class="tabela-vincular-unidade-organizacional" capes-isl-tabela>
+			
+				<thead>
+			
+					<tr>
+						<th class="minwidth"> {{'unidade-organizacional.common.label.tipo_identificador' | translate}} </th>
+					
+						<th class="minwidth"> {{'unidade-organizacional.common.label.identificador' | translate}} </th>
+					
+						<th class="minwidth"> {{'unidade-organizacional.common.label.nome' | translate}} </th>
+					
+						<th class="minwidth"> {{'unidade-organizacional.common.label.email' | translate}} </th>
+						
+						<th class="minwidth"> {{'unidade-organizacional.coluna.acoes' | translate}} </th>
+					</tr>
+			
+				</thead>
+			
+				<tbody>
+				</tbody>
+			
+			</table>
+
+====================================================================================================================================
+
+var current_page = 1;
+var records_per_page = 2;
+
+var objJson = [
+    { adName: "AdName 1"},
+    { adName: "AdName 2"},
+    { adName: "AdName 3"},
+    { adName: "AdName 4"},
+    { adName: "AdName 5"},
+    { adName: "AdName 6"},
+    { adName: "AdName 7"},
+    { adName: "AdName 8"},
+    { adName: "AdName 9"},
+    { adName: "AdName 10"}
+]; // Can be obtained from another source, such as your objJson variable
+
+function prevPage()
+{
+    if (current_page > 1) {
+        current_page--;
+        changePage(current_page);
+    }
+}
+
+function nextPage()
+{
+    if (current_page < numPages()) {
+        current_page++;
+        changePage(current_page);
+    }
+}
+
+function changePage(page)
+{
+    var btn_next = document.getElementById("btn_next");
+    var btn_prev = document.getElementById("btn_prev");
+    var listing_table = document.getElementById("listingTable");
+    var page_span = document.getElementById("page");
+
+    // Validate page
+    if (page < 1) page = 1;
+    if (page > numPages()) page = numPages();
+
+    listing_table.innerHTML = "";
+
+    for (var i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+        listing_table.innerHTML += objJson[i].adName + "<br>";
+    }
+    page_span.innerHTML = page;
+
+    if (page == 1) {
+        btn_prev.style.visibility = "hidden";
+    } else {
+        btn_prev.style.visibility = "visible";
+    }
+
+    if (page == numPages()) {
+        btn_next.style.visibility = "hidden";
+    } else {
+        btn_next.style.visibility = "visible";
+    }
+}
+
+function numPages()
+{
+    return Math.ceil(objJson.length / records_per_page);
+}
+
+window.onload = function() {
+    changePage(1);
+};
+
+====================================================================================================================================
+https://des.capes.gov.br/questionario-capes/
+02735025144
+bb6c5p
 ====================================================================================================================================
 
