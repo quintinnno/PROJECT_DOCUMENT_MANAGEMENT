@@ -18709,6 +18709,96 @@ public List<UnidadeOrganizacional> consultarTodos() {
   vm.redirecionarPaginaPesquisaVinculoOrganizacional = () => {
 	$state.go('pesquisa-vinculo-organizacional');
   };
+  
+  	  // Cadastrar Pessoa a uma Unidade Organizacional
+//	  PerfilPessoaService.criarEntidade(perfilPessoa).then(({ data: response }) => {
+////		vm.perfilPessoaList = prepend(perfilPessoa, vm.perfilPessoaList);
+//		vm.perfilPessoaList.push(response);
+////		CapesIslToaster.success('commons.mensagem.MSG003', { i18n: true });
+////		vm.limparForm();
+//	   	return true;
+//	  }).catch(validacaoNegocialError);
+
+private PerfilPessoa getPerfilPessoaFactory(PerfilPessoa perfilPessoa) {
+		PerfilPessoa perfilPessoaFactory = new PerfilPessoa();
+			perfilPessoaFactory.setCorreioEletronico(recuperarCorreioEletronico(perfilPessoa.getCorreioEletronico().getDescricaoCorreioEletronico()));
+			perfilPessoaFactory.setDataUltimaAlteracao(recuperarDataUltimaAlteracao());
+			perfilPessoaFactory.setIdentificadorRegistrado(recuperarIdentificadorRegistradoPrincipal(perfilPessoa.getIdentificadorRegistrado().getDescricao()));
+			perfilPessoaFactory.setPessoa(perfilPessoaFactory.getIdentificadorRegistrado().getPessoa());
+			perfilPessoaFactory.setUsuarioUltimaAlteracao(recuperarUsuarioLogado().getLogin());
+			perfilPessoaFactory.setVinculoOrganizacional(recuperarVinculoOrganizacional(perfilPessoa.getVinculoOrganizacional()));
+		return perfilPessoaFactory;
+	}
+    
+    
+PerfilPessoaService.recuperarPerfilPessoa(perfilPessoa).then(({ data: response }) => {
+		var perfilPessoaResponse = response;
+//			perfilPessoaResponse.tipoIdentificador = response.tipoIdentificador;
+//			perfilPessoaResponse.identificadorRegistrado = response.identificadorRegistrado;
+//			perfilPessoaResponse.correioEletronico = response.correioEletronico;
+//			perfilPessoaResponse.vinculoOrganizacional = response.vinculoOrganizacional;
+//			perfilPessoaResponse.pessoa = response.pessoa;
+		vm.perfilPessoaList.push(perfilPessoaResponse);
+		vm.limparForm();
+		return true;
+	}).catch(validacaoNegocialError);
+    
+    
+//		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT unidade_organizacional_.nome ")
+//			.append("FROM UnidadeOrganizacional unidade_organizacional_ ")
+//			.append("JOIN VinculoOrganizacional vinculo_organizacional_ ")
+//			.append("ON vinculo_organizacional_.id = unidade_organizacional_.id ");
+//		return entityManager.createQuery(stringBuilder.toString()).getResultList();
+
+
+	/* Responsavel por recuperar os Vinculos Organizacionais cadastradas */
+	@SuppressWarnings("unchecked")
+	public List<UnidadeOrganizacional> consultarUnidadeOrganizacionalVinculada() {
+		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT unidade_organizacional_.NM_UNIDADE_ORGANIZACIONAL ")
+				.append("FROM CORPORATIVO.UNIDADE_ORGANIZACIONAL unidade_organizacional_ ")
+				.append("JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL vinculo_organizacional_ ")
+				.append("ON unidade_organizacional_.ID_UNIDADE_ORGANIZACIONAL = vinculo_organizacional_.ID_UNIDADE_ORGANIZACIONAL ");
+		return session.createSQLQuery(stringBuilder.toString()).list();
+	}
+
+private static void executeQuery() {
+       System.out.println("-- executing query --");
+       EntityManager em = entityManagerFactory.createEntityManager();
+       Query query = em.createQuery("SELECT DISTINCT e FROM Employee e INNER JOIN e.tasks t");
+       List<Employee> resultList = query.getResultList();
+       resultList.forEach(System.out::println);
+       em.close();
+   }
+   
+	/* Responsavel por recuperar os Vinculos Organizacionais cadastradas */
+	@SuppressWarnings("unchecked")
+	public List<UnidadeOrganizacional> consultarUnidadeOrganizacionalVinculada() {
+		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT vinculo_organizacional_ ")
+			.append("FROM VinculoOrganizacional vinculo_organizacional_ ")
+			.append("JOIN vinculo_organizacional_.unidadeOrganizacional unidade_organizacional_ ");
+		return entityManager.createQuery(stringBuilder.toString()).getResultList();
+	}
+    
+    
+//		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT vinculo_organizacional_ ")
+//			.append("FROM VinculoOrganizacional vinculo_organizacional_ ")
+//			.append("JOIN vinculo_organizacional_.unidadeOrganizacional unidade_organizacional_ ");
+//		return entityManager.createQuery(stringBuilder.toString()).getResultList();
+
+
+	/* Responsavel por recuperar os Vinculos Organizacionais cadastradas */
+	@SuppressWarnings("unchecked")
+	public List<UnidadeOrganizacional> consultarUnidadeOrganizacionalVinculada() {
+		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT unidade_organizacional_ ")
+				.append("FROM UnidadeOrganizacional unidade_organizacional_ ")
+				.append("JOIN VinculoOrganizacional vinculo_organizacional_.unidadeOrganizacional ");
+			return entityManager.createQuery(stringBuilder.toString()).getResultList();
+	}
+    
+    
+02735025144 jqsilva@indracompany.com	
+03089233169 teste@gmail.com.br	
+04897639107 testesoftware.3577161@capes.gov.br
     
 ====================================================================================================================================
     
@@ -18811,6 +18901,8 @@ Decorrente das limitações quanto a volumetria dos registros importados bem com
 				</tbody>
 			
 			</table>
+            
+vm.perfilPessoaList = prepend(perfilPessoa, vm.perfilPessoaList);
 
 ====================================================================================================================================
 
@@ -18942,6 +19034,7 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         NUMERO_REGISTRO_PLANO_SAUDE
         DATA_RECEBIMENTO_CARTAO
         DATA_VALIDADE_CARTAO
+        IS_ATIVO
         
     - TB_CARTAO (INSTITUICAO FINANCEIRA)
     
@@ -18959,15 +19052,8 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         DATA_VALIDADE_CARTAO
         NOME_IMPRESSO_CARTAO
         LIMITE_MAXIMO_CARTAO
-        LIMITE_REAL_CARTAO
-        
-        
-        
-        
-        
-        
-        
-        
+        LIMITE_REAL_CARTAO        
+        IS_ATIVO
 
 ====================================================================================================================================
 
