@@ -355,7 +355,9 @@
 
             -Darquivos=/home/indra/Desenvolvimento/Cyprium/cyprium_tool/cyprium_tool_server/cyprium_tool_server_jboss/arquivos
             
-            -Darquivos=/home/indra/Desenvolvimento/Natrium/natrium_tool/natrium_tool_server/arquivos                       
+            -Darquivos=/home/indra/Desenvolvimento/Natrium/natrium_tool/natrium_tool_server/arquivos
+            
+            -Darquivos=/home/indra/Desenvolvimento/Natrium/natrium_tool/natrium_tool_server/arquivos            
 
             -Darquivos=/home/indra/Desenvolvimento/Cyprium/cyprium_tool/cyprium_tool_server/cyprium_tool_server_jboss/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Thalium/thalium_tool/thalium_tool_server/thalium_tool_server_jboss/arquivos
@@ -6663,10 +6665,7 @@ Diante do que o senhor disse sobre a comunidade não ter se pronuciado (no grupo
         - Lehitraot                      - Ate logo
         - Ma chashav                     - Até amanhã
         - Buruch habah                   - Bem vindo
-        - 
-        -
-        -
-        -
+        - Atah medaber portuguezit ?     - Você fala português ?
 
 
 ---------------------------------------------------------------------
@@ -19056,4 +19055,574 @@ lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
         IS_ATIVO
 
 ====================================================================================================================================
+[TELEFONE]
+====================================================================================================================================
 
+    - Telefone Help Desk CAPES
+        - 2022 6170
+
+====================================================================================================================================
+    
+    Realizamos um _"cherry-pick"_ do código referente ao _commit_ dessa correção para a versão *1.9.0*.
+    
+    - https://redmine.capes.gov.br/issues/8382   
+        [REDMINE 8382] [QUESTIONÁRIO CAPES] - Sistema não especifica qual campo é considerado de preenchimento obrigatório
+    
+    - https://redmine.capes.gov.br/issues/11426
+        [REDMINE 11426] [QUESTIONÁRIO CAPES] - Erro desconhecido ao importar publico alvo em lote
+    
+    - https://redmine.capes.gov.br/issues/8399
+        [REDMINE 8399] [QUESTIONÁRIO CAPES] - Sistema está contabilizando a quantidade de pessoas baseando-se na quantidade de e-mail existente
+    
+    - https://redmine.capes.gov.br/issues/8408
+        [MERGE] [REDMINE 8408] [QUESTIONÁRIO CAPES] - Não contabilização dos usuários que apenas logaram na aplicação
+        
+        - Realizar merge na "Trunk"
+        
+        Da 'Plubum -> Trunk'
+
+====================================================================================================================================
+
+    Ferrum      Responsável pela Branch "TRUNK"
+    Plubum      Reponsável pela Branch "SPRINT 07 - evolutiva" - Unidade Organizacional
+    Stanium     Reponsável pela Branch "SPRINT 07 - evolutiva" - Unidade Organizacional
+
+====================================================================================================================================
+
+Nome do arquivo: Eclipse JEE 2019.desktop
+
+--------------------------------------------
+[Desktop Entry]
+Categories=
+Comment[pt]=An ISQL tool
+Encoding=UTF-8
+Exec=/home/indra/Software/EclipseOxygen/eclipse
+GenericName=
+GenericName[pt]=
+Icon=/home/indra/Software/EclipseOxygen/icon.xpm
+MimeType=
+Name=Eclipse Oxygen
+Name[pt]=Eclipse Oxygen
+Path=/home/indra/Software/EclipseOxygen/eclipse
+ServiceTypes=
+SwallowExec=
+SwallowTitle=
+Terminal=
+TerminalOptions=
+Type=Application
+URL=
+X-KDE-SubstituteUID=false
+X-KDE-Username=root
+Name[pt_BR]=Eclipse Oxygen
+--------------------------------------------
+
+====================================================================================================================================
+
+// FIXME [SPRINT-0001] {N} -- ""
+
+====================================================================================================================================
+
+    # Tarefas SPRINT 09
+    
+        - https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=134&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=243&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+
+====================================================================================================================================
+
+function TabelaUnidadeOrganizacionalPesquisaControler() {
+  'ngInject';
+}
+
+export default {
+  name: 'tabelaUnidadeOrganizacionalPesquisa',
+  bindings: {
+    publicosAlvo: '<',
+    visualizarUnidadeOrganizacional: '&',
+    excluirUnidadeOrganizacional: '&',
+    incluirPessoa: '&',
+    onReorder: '&',
+    modelCampo: '<',
+    asc: '<',
+  },
+  template: `
+    <table class="tabela-unidade-organizacional-pesquisa" ng-if="$ctrl.unidadeOrganizacionalVinculadaList.length > 0" capes-isl-tabela>
+      <thead>
+        <tr>
+          <th class="minwidth" capes-isl-botao-reorder="unidadeOrganizacional.nome" model-campo="$ctrl.modelCampo" asc="$ctrl.asc" on-reorder="$ctrl.onReorder({ $asc: $asc, $orderBy: $orderBy })">
+            {{'unidade-organizacional.common.label.unidade-organizacional' | translate}}
+          </th>
+          <th>{{'commons.coluna.acoes' | translate}}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="UnidadeOrganizacional in $ctrl.publicosAlvo">
+          <td>{{UnidadeOrganizacional.tipoUnidadeOrganizacional.nome}}</td>
+          <td>
+            <acoes-unidade-organizacional-pesquisa unidade-organizacional="UnidadeOrganizacional" 
+            									   visualizar-unidade-organizacional="$ctrl.visualizarUnidadeOrganizacional({idUnidadeOrganizacional: idUnidadeOrganizacional})"
+            									   excluir-unidade-organizacional="$ctrl.excluirUnidadeOrganizacional({idUnidadeOrganizacional: idUnidadeOrganizacional})" 
+            									   incluir-pessoa="$ctrl.incluirPessoa({idUnidadeOrganizacional: idUnidadeOrganizacional})" />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  `,
+};
+
+
+====================================================================================================================================
+# Gerenciador Despesa (Variável)
+
+# AQUISIÇÃO 0001 {AQUISICAO201906211222} = <AQUISICAO><ANO><MES><DIA><HORA><MINUTO><SEQUENCIAL_AQUISICAO>
+==============================================================================================================
+Código:                 01
+Data:                   20/06/2019
+Favorecido:             Restaurante Miau que Mia (Categoria: Alimentação)
+Produto / Serviço:      Almoço Executivo (Tilápia a Milanesa)
+
+---------------------------------------------------------------------
+Item Aquisição:         Tilápia a Milanesa
+Valor Item:             R$ 22,00
+---------------------------------------------------------------------
+
+Forma Pagamento:        Cartão de Crédito {Pagamento Cartão de Débito,Dinheiro,Transferência,Pagamento Cartão de Crédito, Aplicativo (Cartão de Crédito)}
+
+---------------------------------------------------------------------
+Quantidade de Parcelas: 6 (vezes sem juros) {vezes sem juros, com juros}
+---------------------------------------------------------------------
+
+Canal Pagamento:        Aplicativo (Ifood) {Aplicativo, Loja, Eccomerce}
+Valor da Despesa:       R$ 22,00
+Fonte de Pagamento:     Nubank (Cartão de Crédito)
+==============================================================================================================
+
+# AQUISIÇÃO 0002 {AQUISICAO201610031415} = <AQUISICAO><ANO><MES><DIA><HORA><MINUTO><SEQUENCIAL_AQUISICAO>
+==============================================================================================================
+Código:                 02
+Data:                   03/10/2016
+Favorecido:             Trocafone (Categoria: Aparelhos Eletrônicos)
+Produto / Serviço:      Smarthphone (iPhone 6 Plus 64 Gigas)
+
+---------------------------------------------------------------------
+Item Aquisição:         Smarthphone
+Valor Item:             R$ 2.003,55
+---------------------------------------------------------------------
+
+Forma Pagamento:        Cartão de Crédito {Pagamento Cartão de Débito,Dinheiro,Transferência,Pagamento Cartão de Crédito, Aplicativo (Cartão de Crédito)}
+
+---------------------------------------------------------------------
+Quantidade de Parcelas: 6 (vezes sem juros) {vezes sem juros, com juros}
+Parcela 01: 333,93
+Parcela 02: 333,93
+Parcela 03: 333,93
+Parcela 04: 333,93
+Parcela 05: 333,93
+Parcela 06: 333,93
+---------------------------------------------------------------------
+
+Canal Aquisição:        Eccomerce {Aplicativo, Loja, Eccomerce}
+Valor da Despesa:       R$ 2.003,55
+Fonte de Pagamento:     Banco Santander (Cartão de Crédito)
+==============================================================================================================
+====================================================================================================================================
+
+[PLFIN-201906211211]
+- Mapeamento das entidades referente ao PLFIN-MGDES
+
+[PLFIN-201906211220]
+- Atualização do Modelo de Dados referente ao PLFIN-MGDES
+
+[PLFIN-201906211145]
+- Ajuste na recuperação do nome do repositório de persistência
+
+
+====================================================================================================================================
+# Procedimentos Git
+
+    - Criar Branch (SPRINT-0002)
+    - Baixar Branch
+    - Subir Branch
+
+====================================================================================================================================
+
+Realizamos o _merge_ dessa implementação para a _trunk_ (_build_ *1.9.0*).
+
+[REDMINE-00397] [QUESTIONÁRIO CAPES] - Mensagem na ação "Salvar" - Perspectiva do Respondente
+[REDMINE-00398] [QUESTIONÁRIO CAPES] - Incluir status do questionário - Visão do Respondente
+[REDMINE-12177] [QUESTIONÁRIO CAPES] - Manter Resposta ajuste na ação do botão "Limpar"
+[REDMINE-11401] [QUESTIONÁRIO CAPES] - BACKEND: Tratamento QC_UC007_Manter_Resposta
+[REDMINE-11396] [QUESTIONÁRIO CAPES]- BACKEND: Tratamento QC_UC008_Gerar_Relatorios
+
+https://redmine.capes.gov.br/issues/11979
+
+====================================================================================================================================
+
+Jira para faltas: 9033
+
+====================================================================================================================================
+
+    Thalium
+    
+    Adoçante de Sucralose
+    
+    [PLFIN-201906241105]
+    - Implementar mapeamento das Entidade e Relacionamento do UC004-MGDES    
+    
+    **[SPRINT0001]**
+
+    > Data Inicio: 01/06/2019
+    > Data Término: 30/06/2019
+
+    > Implementação da Funcionalidade de Ciclo I
+
+    **[Implementação]**
+
+    > Realizar a configuração do servidor WildFly 10.0
+    > Realizar configuração de Conexão com Banco de Dados PostgreSQL
+
+    **[Arquivos Afetados]**
+
+    > Diversos
+
+    **[Correções Futuras]**
+
+    **[Comandos]**
+
+    > git status
+    > git add *
+    > git commit -m "[PLFIN-201906241105]" -m "- Implementar mapeamento das Entidade e Relacionamento do UC004-MGDES";
+    > git push --set-upstream SPRINT0001 PLFIN-201906241105
+    >> Username: repositorynihonium
+    >> Password: ******************
+
+    **[URL]**
+
+    - _Open Merge Request_
+
+    > https://github.com/repositorynihonium/PLFIN/pull/new/PLFIN-201906241105
+
+    **[Commit]**
+
+    > [PLFIN-201906241105]
+    > - Implementar mapeamento das Entidade e Relacionamento do UC004-MGDES
+
+    **[LOG]**
+
+    > **a2af50ebb3078e896ecd1021b7b1d72dca5aab3e**
+
+    [PLFIN-201906241412]
+    - Realizar a configuração do servidor WildFly 10.0
+    - Realizar configuração de Conexão com Banco de Dados PostgreSQL
+    
+    
+    git commit -m "[PLFIN-201906241412]" -m "- Realizar a configuração do servidor WildFly 10.0" -m "- Realizar configuração de Conexão com Banco de Dados PostgreSQL";
+    
+
+====================================================================================================================================
+Version 5.0.3
+Tuesday, March 26th, 2019
+Wave your hands in the air if you feel fine. We're gonna take it into overtime. Welcome to v5.0.3! 🚀🏀
+
+Features
+Y'all ready for this? Users may now resize the reference column inside the graph.
+Whoop there it is: Favorite repositories are just a keyboard shortcut away. By typing CTRL/CMD + 1/2/3/etc, you will open your favorite repos in the corresponding order.
+We know you have that favorite TuneSquid player... Users are now able to reorder favorite repositories.
+C'mon, check it out, y'all ready to jam? We added a search filter to the repository management modal.
+Improvements
+No more flagrant fouls! Spell-checking has been added to the support and feedback forms.
+By typing the keyboard shortcut Ctrl/Cmd + Shift + M, users now have the ability to focus the commit message box. Nothin'. But. Net.
+Bug Fixes 🐛
+Bitbucket Server users will no longer experience an indefinite hang when opening a pull request or initializing a new repository. Sorry, hang time isn't allowed on the GitKraken court.
+What's up doc? 🥕 The hide/show all tags context menu will now correctly hide and show annotated tags.
+NOT. TODAY. Mr. Swackhammer… Commits made with an email address that doesn't match your GPG key email address will no longer display as trusted.
+Keif with the assist! GitKraken now supports different locales of GPG when signing a commit.
+Initializing an LFS submodule will no longer cause GitKraken to crash. No more busted brackets workflows around here.
+Alley-oop! Performing a pull on a repository with submodules configured with SSH should now correctly update the submodule.
+Stand-Alone Clients
+The license.dat file may now be added to GitKraken's parent directory. SHAZAM!
+====================================================================================================================================
+
+Os merge realizados foram:
+
+[REDMINE-00397] [QUESTIONÁRIO CAPES] - Mensagem na ação "Salvar" - Perspectiva do Respondente
+
+[REDMINE-00398] [QUESTIONÁRIO CAPES] - Incluir status do questionário - Visão do Respondente
+
+[REDMINE-12177] [QUESTIONÁRIO CAPES] - Manter Resposta ajuste na ação do botão "Limpar"
+
+[REDMINE-11401] [QUESTIONÁRIO CAPES] - BACKEND: Tratamento QC_UC007_Manter_Resposta
+
+[REDMINE-11396] [QUESTIONÁRIO CAPES]- BACKEND: Tratamento QC_UC008_Gerar_Relatorios
+
+
+Bom dia, Nírian,
+
+Realizamos os "merges", entretanto não estamos conseguindo gerar versão no ambiente de Desenvolvimento.
+Estamos recebendo um erro ao executar a build: 
+
+Building on master in workspace /var/lib/jenkins/workspace/QUESTIONARIO-CAPES - Desenv
+INFO: define repo: [Repository id=central, type=default, url=http://nexus.capes.gov.br/nexus/content/groups/public, isRepositoryManager=false]
+INFO: set authentication for jenkins
+deleted file:/var/lib/jenkins/workspace/QUESTIONARIO-CAPES%20-%20Desenv/questionario-capes.war
+copy /tmp/repositoryconnector-repo/br/gov/capes/questionario/1.9.0E-SNAPSHOT/questionario-1.9.0E-SNAPSHOT.war to file:/var/lib/jenkins/workspace/QUESTIONARIO-CAPES%20-%20Desenv/questionario-capes.war
+Performing Post build task...
+Match found for : : True
+Logical operation result is TRUE
+Running script  : sudo rm -f sudo /CAPES/AplWeb/Desenv/Java/questionario-capes/deployments/.war
+sudo cp -u -f questionario-capes.war /CAPES/AplWeb/Desenv/Java/questionario-capes/deployments/
+/opt/restart_cluster.sh des.capes.gov.br questionario-capes
+[QUESTIONARIO-CAPES - Desenv] $ /bin/sh -xe /tmp/hudson8218883219338739619.sh
++ sudo rm -f sudo '/CAPES/AplWeb/Desenv/Java/questionario-capes/deployments/*.war*'
++ sudo cp -u -f questionario-capes.war /CAPES/AplWeb/Desenv/Java/questionario-capes/deployments/
+cp: cannot create regular file `/CAPES/AplWeb/Desenv/Java/questionario-capes/deployments/': No such file or directory
+POST BUILD TASK : FAILURE
+END OF POST BUILD TASK : 0
+ESCALATE FAILED POST BUILD TASK TO JOB STATUS
+Build step 'Post build task' changed build result to FAILURE
+Finished: FAILURE
+
+O Alison entrou em contato com o David, mas ainda não tivemos retorno.
+
+Poderia verificar com a RSI a causa desse impedimento ?
+
+====================================================================================================================================
+
+# [QUESTIONARIO-CAPES] [SPRINT-009]
+
+    - [REDMINE-11928] [QUESTIONARIO CAPES] - Desenvolvimento de unidade organizacional
+    - [REDMINE-11929] [QUESTIONARIO CAPES] - Vincular unidade organizacional ao questionário
+    - [REDMINE-11930] [QUESTIONARIO CAPES] - Ajustar a visibilidade dos questionários nas funcionalidades (Unidade Organizacional)
+
+
+# JIRA [https://jira.indra.es/browse/CCAPNSGA-9506]
+
+    - [GESTAO-20190516000016] [REDMINE-11426] [QUESTIONARIO CAPES] - Erro desconhecido ao importar publico alvo em lote
+
+====================================================================================================================================
+
+[Evolutiva] [Redmine 11928] - Desenvolvimento de unidade organizacional [José] [XXXXX]
+[Evolutiva] [Redmine 11929] - Vincular unidade organizacional ao questionário [José] [XXXXX]
+[Evolutiva] [Redmine 11930] - Ajustar a visibilidade dos questionários nas funcionalidades [José] [XXXXX]
+[Evolutiva] [Redmine 11396] - BACKEND: Tratamento QC_UC008_Gerar_Relatorios [Arthur] [XXXXX]
+[Evolutiva] [Redmine 11401] - BACKEND: Tratamento QC_UC007_Manter_Resposta [Arthur] [XXXXX]
+
+
+[Defeito] [Redmine 12015] [Gestão 20190531000057] - [Parametrizar Notificação Vencimento - campos obrigatórios] Não destaca visualmente [Alisson]
+[Melhoria] [Redmine 00397] [Gestão 20190524000008] - Mensagem na ação "Salvar" - Perspectiva do Respondente [José]
+[Melhoria] [Redmine 00398] [Gestão 20190524000009] - Incluir status do questionário - Visão do Respondente [José]
+[Melhoria] [Redmine 11401] [Gestão 20190612000026] - BACKEND: Tratamento QC_UC007_Manter_Resposta [Arthur]
+[Melhoria] [Redmine 11396] [Gestão 20190612000027] - BACKEND: Tratamento QC_UC008_Gerar_Relatorios [Arthur]
+[Melhoria] [Redmine 11012] [Gestão 20190524000010] - Desenvolvimento da configuração de segurança para validação nos serviços [Arthur]
+
+====================================================================================================================================
+
+[REDMINE-00398] [QUESTIONÁRIO CAPES] - Incluir status do questionário - Visão do Respondente
+
+    - Refactory da implementação
+        
+        - Deve retornar os dados da Enum "StatusPreenchimentoEnum" no back-end
+        - Quando o usuário clicar em "Enviar" as respostas de um determinado Questionário o sistema deve registrar o CPF desse usuário
+        como o finalizador, pois os Preenchimentos "Encerrados" pelo sistema ficará em branco.
+
+====================================================================================================================================
+[PLFIN-201906261221]
+- Gerar massa (10.000 registros) de teste para tabela TB_PESSOA
+
+[PLFIN-201906261015]
+- Implementar serviço de persistência do Gerenciador de Pessoas
+
+[PLFIN-201906261327]
+- Configurar FlyWay (ferramenta para versionamento de script SQL)
+
+[PLFIN-201906261848]
+- Gerar massa para tabela TB_PAIS
+- Gerar massa para tabela TB_ESTADO
+- Gerar massa para tabela TB_MUNICIPIO
+- Gerar massa para tabela TB_BANCO
+
+[PLFIN-201906261945]
+- Implementar Protótipos do Módulo de Genciamento de Pessoas do sistema (UC000XXXXXX)
+
+[PLFIN-201906261958]
+- Implementar Protótipos do UC0004-MGDES
+
+[PLFIN-201906271111]
+- Realizar configuração do LOG4J
+
+[PLFIN-201906271252]
+- Implementar Protótipo do Módulo de Gerenciamento de Registro de Ponto Eletrônico
+
+[PLFIN-201906271255]
+- Implementar Funcionalidade do Módulo de Gerenciamento de Registro de Ponto Eletrônico
+
+====================================================================================================================================
+
+@SuppressWarnings("unchecked")
+	public List<VinculoOrganizacional> consultarUnidadeOrganizacionalVinculadaPesquisa(Long id) {
+		StringBuilder stringBuilder = new StringBuilder("SELECT DISTINCT vinculo_organizacional_ ")
+			.append("FROM VinculoOrganizacional vinculo_organizacional_ ")
+			.append("JOIN PerfilPessoa perfil_pessoa_.vinculoOrganizacional_.id ")
+			.append("WHERE vinculo_organizacional_.id = :codigoUnidadeOrganizacional ");
+		Query query = entityManager.createQuery(stringBuilder.toString());
+			query.setParameter("codigoUnidadeOrganizacional", id);
+		return query.getResultList();
+	}
+
+====================================================================================================================================
+public static void persist() {
+		
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(TimeUtility.HOUR_FORMAT);
+		
+		try {
+			
+			Date horaPrimeiraEntrada = simpleDateFormat.parse("08:00");
+			Date horaSegundaEntrada = simpleDateFormat.parse("12:00");
+			Date horaPrimeiraSaida = simpleDateFormat.parse("13:00");
+			Date horaSegundaSaida = simpleDateFormat.parse("17:00");
+			
+			Long tempoIntervalo = horaSegundaEntrada.getTime() - horaPrimeiraSaida.getTime();
+			Long timeMillisExpedienteMatutino = (long) ((horaPrimeiraSaida.getTime() - horaPrimeiraEntrada.getTime()) / (60 * 60 * 1000));
+			Long timeMillisExpedienteVespertino = horaSegundaSaida.getTime() - horaSegundaEntrada.getTime();
+			
+			Double periodoIntervalo = ((double) tempoIntervalo) / (60 * 60 * 1000);
+			Double periodoMatutino = ((double) timeMillisExpedienteMatutino) / (60 * 60 * 1000);
+			Double periodoVespertino = ((double) timeMillisExpedienteVespertino) / (60 * 60 * 1000);
+			
+			Long expedienteDiarioTotal = (horaSegundaSaida.getTime() + horaPrimeiraEntrada.getTime());
+			Double expedienteDiarioTotalFinal = (double) (expedienteDiarioTotal / (60 * 60 * 1000));
+
+			getLogger().info("Matutino: " + simpleDateFormat.format(periodoMatutino));
+//			getLogger().info("Horas Trabalhadas: " + simpleDateFormat.format(expedienteDiarioTotalFinal));
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		
+	}
+====================================================================================================================================
+
+- https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=o&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=243&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+
+- https://redmine.capes.gov.br/issues/8408
+
+====================================================================================================================================
+
+Formato                 1
+ID Públicação           
+ID Público Alvo
+ID Questionário
+Nome Público Alvo
+Nome Pessoa             
+CPF                     
+
+====================================================================================================================================
+Formato:            1
+ID Publicaçaõ:      1104
+ID Público Alvo     422
+ID Questionário     882
+Nome Público Alvo   Versão 1.8.0
+Nome Pessoa:        null
+CPF:                null
+====================================================================================================================================
+public static void persist() throws ParseException {
+		
+		String tempoEsforco = "00:00:00";
+		 
+		String horaInicioManha = "10:48:00";
+		String horaFimManha = "14:00:00";
+		 
+		String horaInicioTarde = "15:3:00";
+		String horaFimTarde = "20:12:00";
+		 
+		SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+		 
+		//Período da manhã
+		Date hm1 = sdf.parse(horaInicioManha);
+		Date hm2 = sdf.parse(horaFimManha);
+		double diffInMillis1 =   (hm2.getTime() - hm1.getTime())/ (double) (1000*60*60); //4.5
+		int horasManha = (int) (diffInMillis1);
+		int minutosManha = (int) ((diffInMillis1-horasManha) * 60);
+		
+//		System.out.println(horasManha+ ":" +minutosManha);
+		 
+		//Período da tarde
+		Date ht1 = sdf.parse(horaInicioTarde);
+		Date ht2 = sdf.parse(horaFimTarde);
+		double diffInMillis2 =   (ht2.getTime() - ht1.getTime())/ (double) (1000*60*60); //4.5
+		int horasTarde = (int) (diffInMillis2);
+		int minutosTarde = (int) ((diffInMillis2-horasTarde) * 60);
+		
+//		System.out.println(horasTarde+ " : " +minutosTarde);
+		
+		//Total dos dois períodos
+		double somaDiffInMillis =   diffInMillis1 + diffInMillis2; //9.0
+		int horasTotal = (int) (somaDiffInMillis);
+		int minutosTotal = (int) ((somaDiffInMillis-horasTotal) * 60);
+		
+		getLogger().info(horasTotal + ":" + minutosTotal);
+		 
+		//Tempo esforço
+		Date tempoEsf = sdf.parse(tempoEsforco);
+		double diffInMillisTempoEsforco =   (tempoEsf.getTime()) / (double) (1000*60*60);
+		//Aqui deveria dar 20.25 e está dando 23.25
+	}
+====================================================================================================================================
+https://www.guj.com.br/t/diferenca-entre-datas/26160/13
+https://www.guj.com.br/t/problema-calculo-de-diferenca-entre-horas/134399/6
+https://www.guj.com.br/t/somar-horas-e-minutos/58271/3
+https://www.guj.com.br/t/incrementar-segundos-na-data-e-hora/38450/7
+https://pt.stackoverflow.com/questions/8279/como-somar-tempos-em-java
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
