@@ -196,6 +196,9 @@
 
         export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
         export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
+                            
+        export http_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
+        export https_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
 
         npm config set proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
         npm config set https-proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
@@ -1609,6 +1612,12 @@
 
         $ ACESSAR ENDERECO
             $ https://www.jetbrains.tools/
+            
+======================================================================================================================================
+CATF44LT7C-eyJsaWNlbnNlSWQiOiJDQVRGNDRMVDdDIiwibGljZW5zZWVOYW1lIjoiVmxhZGlzbGF2IEtvdmFsZW5rbyIsImFzc2lnbmVlTmFtZSI6IiIsImFzc2lnbmVlRW1haWwiOiIiLCJsaWNlbnNlUmVzdHJpY3Rpb24iOiJGb3IgZWR1Y2F0aW9uYWwgdXNlIG9ubHkiLCJjaGVja0NvbmN1cnJlbnRVc2UiOmZhbHNlLCJwcm9kdWN0cyI6W3siY29kZSI6IklJIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In0seyJjb2RlIjoiQUMiLCJwYWlkVXBUbyI6IjIwMjAtMDEtMDgifSx7ImNvZGUiOiJEUE4iLCJwYWlkVXBUbyI6IjIwMjAtMDEtMDgifSx7ImNvZGUiOiJQUyIsInBhaWRVcFRvIjoiMjAyMC0wMS0wOCJ9LHsiY29kZSI6IkdPIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In0seyJjb2RlIjoiRE0iLCJwYWlkVXBUbyI6IjIwMjAtMDEtMDgifSx7ImNvZGUiOiJDTCIsInBhaWRVcFRvIjoiMjAyMC0wMS0wOCJ9LHsiY29kZSI6IlJTMCIsInBhaWRVcFRvIjoiMjAyMC0wMS0wOCJ9LHsiY29kZSI6IlJDIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In0seyJjb2RlIjoiUkQiLCJwYWlkVXBUbyI6IjIwMjAtMDEtMDgifSx7ImNvZGUiOiJQQyIsInBhaWRVcFRvIjoiMjAyMC0wMS0wOCJ9LHsiY29kZSI6IlJNIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In0seyJjb2RlIjoiV1MiLCJwYWlkVXBUbyI6IjIwMjAtMDEtMDgifSx7ImNvZGUiOiJEQiIsInBhaWRVcFRvIjoiMjAyMC0wMS0wOCJ9LHsiY29kZSI6IkRDIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In0seyJjb2RlIjoiUlNVIiwicGFpZFVwVG8iOiIyMDIwLTAxLTA4In1dLCJoYXNoIjoiMTE1MzA4ODUvMCIsImdyYWNlUGVyaW9kRGF5cyI6MCwiYXV0b1Byb2xvbmdhdGVkIjpmYWxzZSwiaXNBdXRvUHJvbG9uZ2F0ZWQiOmZhbHNlfQ==-BZLL+H88k449OQC56NsqU0fwb6wMAX1Di+CK5HS46DuOD1E68HPiTqREdn8DzrLVAoMkJReaH30RaIDLwUI8GEFifDcCYE5RbpE5ApNJ8mcUJr8oA1nrjY9IzZCgrSBFr4GAOLqSfXH+1UJ3K8UPqGh8nThomnKW9Jvv9pA7HIH/KrNm2RLV/aNMHWO8Q44A8ToXm7g5FS2lW903URPQ0KFgxT11w/KL81UkHm6yUXC7/LTAygIBArI8j+XUk3rlz4rpi2wrJclYXukrKQqH/V6CTbnVV3d6XAdtCqjryQ2Ga7bP/XTLjwAGwPEB3Q1W7LHNQ7CsyvZG/oTSOgD2YQ==-MIIElTCCAn2gAwIBAgIBCTANBgkqhkiG9w0BAQsFADAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBMB4XDTE4MTEwMTEyMjk0NloXDTIwMTEwMjEyMjk0NlowaDELMAkGA1UEBhMCQ1oxDjAMBgNVBAgMBU51c2xlMQ8wDQYDVQQHDAZQcmFndWUxGTAXBgNVBAoMEEpldEJyYWlucyBzLnIuby4xHTAbBgNVBAMMFHByb2QzeS1mcm9tLTIwMTgxMTAxMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxcQkq+zdxlR2mmRYBPzGbUNdMN6OaXiXzxIWtMEkrJMO/5oUfQJbLLuMSMK0QHFmaI37WShyxZcfRCidwXjot4zmNBKnlyHodDij/78TmVqFl8nOeD5+07B8VEaIu7c3E1N+e1doC6wht4I4+IEmtsPAdoaj5WCQVQbrI8KeT8M9VcBIWX7fD0fhexfg3ZRt0xqwMcXGNp3DdJHiO0rCdU+Itv7EmtnSVq9jBG1usMSFvMowR25mju2JcPFp1+I4ZI+FqgR8gyG8oiNDyNEoAbsR3lOpI7grUYSvkB/xVy/VoklPCK2h0f0GJxFjnye8NT1PAywoyl7RmiAVRE/EKwIDAQABo4GZMIGWMAkGA1UdEwQCMAAwHQYDVR0OBBYEFGEpG9oZGcfLMGNBkY7SgHiMGgTcMEgGA1UdIwRBMD+AFKOetkhnQhI2Qb1t4Lm0oFKLl/GzoRykGjAYMRYwFAYDVQQDDA1KZXRQcm9maWxlIENBggkA0myxg7KDeeEwEwYDVR0lBAwwCgYIKwYBBQUHAwEwCwYDVR0PBAQDAgWgMA0GCSqGSIb3DQEBCwUAA4ICAQAF8uc+YJOHHwOFcPzmbjcxNDuGoOUIP+2h1R75Lecswb7ru2LWWSUMtXVKQzChLNPn/72W0k+oI056tgiwuG7M49LXp4zQVlQnFmWU1wwGvVhq5R63Rpjx1zjGUhcXgayu7+9zMUW596Lbomsg8qVve6euqsrFicYkIIuUu4zYPndJwfe0YkS5nY72SHnNdbPhEnN8wcB2Kz+OIG0lih3yz5EqFhld03bGp222ZQCIghCTVL6QBNadGsiN/lWLl4JdR3lJkZzlpFdiHijoVRdWeSWqM4y0t23c92HXKrgppoSV18XMxrWVdoSM3nuMHwxGhFyde05OdDtLpCv+jlWf5REAHHA201pAU6bJSZINyHDUTB+Beo28rRXSwSh3OUIvYwKNVeoBY+KwOJ7WnuTCUq1meE6GkKc4D/cXmgpOyW/1SmBz3XjVIi/zprZ0zf3qH5mkphtg6ksjKgKjmx1cXfZAAX6wcDBNaCL+Ortep1Dh8xDUbqbBVNBL4jbiL3i3xsfNiyJgaZ5sX7i8tmStEpLbPwvHcByuf59qJhV/bZOl8KqJBETCDJcY6O2aqhTUy+9x93ThKs1GKrRPePrWPluud7ttlgtRveit/pcBrnQcXOl1rHq7ByB8CFAxNotRUYL9IF5n3wJOgkPojMy6jetQA5Ogc8Sm7RG6vg1yow==
+                            
+https://contentim.ru/how-to-activation-intellij-idea-license-server
+======================================================================================================================================
 
     ## DEFINIR CARACTERES NO LINUX MINT
 
@@ -19391,6 +19400,7 @@ Poderia verificar com a RSI a causa desse impedimento ?
     - [REDMINE-11928] [QUESTIONARIO CAPES] - Desenvolvimento de unidade organizacional
     - [REDMINE-11929] [QUESTIONARIO CAPES] - Vincular unidade organizacional ao questionário
     - [REDMINE-11930] [QUESTIONARIO CAPES] - Ajustar a visibilidade dos questionários nas funcionalidades (Unidade Organizacional)
+    - [REDMINE-12422] [QUESTIONARIO-CAPES] - Erro na Importação de múltiplos registros por lote
 
 
 # JIRA [https://jira.indra.es/browse/CCAPNSGA-9506]
@@ -19453,6 +19463,7 @@ Poderia verificar com a RSI a causa desse impedimento ?
 
 [PLFIN-201906271255]
 - Implementar Funcionalidade do Módulo de Gerenciamento de Registro de Ponto Eletrônico
+- Implementar teste de Registro de Simulador de Ponto Eletrônico
 
 ====================================================================================================================================
 
@@ -19571,6 +19582,1907 @@ https://www.guj.com.br/t/problema-calculo-de-diferenca-entre-horas/134399/6
 https://www.guj.com.br/t/somar-horas-e-minutos/58271/3
 https://www.guj.com.br/t/incrementar-segundos-na-data-e-hora/38450/7
 https://pt.stackoverflow.com/questions/8279/como-somar-tempos-em-java
+====================================================================================================================================
+unidadeOrganizacionalVincular.id
+====================================================================================================================================
+<capes-isl-select  label="{{'unidade-organizacional.common.label.unidade-organizacional' | translate}}"
+        				   model="$ctrl.unidadeOrganizacionalVincular.vinculoOrganizacional"
+        				   options="$ctrl.unidadeOrganizacionalList"
+        				   chave="$option.nome"
+        				   trackby="$option.id"
+        				   desabilitado="$ctrl.isDesabilitarUnidadeOrganizacional"
+        				   requerido="true" />
+====================================================================================================================================
+//	    vm.unidadeOrganizacionalVincular.id = vm.unidadeOrganizacionalVincular.vinculoOrganizacional.id;
+//	    vm.unidadeOrganizacionalVincular.tipoIdentificador = null;
+//	    vm.unidadeOrganizacionalVincular.correioEletronico = null;
+//	    vm.unidadeOrganizacionalVincular.identificadorRegistrado = null;
+====================================================================================================================================
+RespostaResource.java -> criarResposta()
+
+    ObjectMapper mapper = new ObjectMapper();
+    String jsonString = mapper.writeValueAsString(respostas);
+    System.out.println(jsonString);
+====================================================================================================================================
+https://www.brasiliadevfestival.com.br/
+====================================================================================================================================
+return Response.ok(arquivo).build();
+====================================================================================================================================
+// [relatorios] [GET] "/relatorios/questionario"
+
+1
+NULL
+2
+QC
+PB
+NULL
+0
+1
+
+// [relatorios] [GET] "/relatorios/respostas"
+2
+992
+255
+810
+teste patrick 30/11
+
+====================================================================================================================================
+
+-- Themas Diversos
+> https://themeforest.net/category/site-templates/admin-templates?clickid=1D3SPLRbAxyJTHNwUx0Mo3I2UklW32wDUR4SSs0&iradid=275988&iradtype=ONLINE_TRACKING_LINK&irgwc=1&irmptype=mediapartner&irpid=369282&page=3&sort=sales&term=admin&utm_campaign=af_impact_radius_369282&utm_medium=affiliate&utm_source=impact_radius
+
+-- Sistema completo em Bootstrap
+> http://demo.interface.club/limitless/demo/bs4/Template/layout_1/LTR/material/full/task_manager_list.html
+
+-- Sistema de Gestão de Salão de Beleza
+> https://graces.com.br/funcionalidades/
+
+====================================================================================================================================
+sudo apt-get install wget
+wget -r http://www.endereço_do_site 
+
+wget -r http://demo.interface.club/limitless/demo/bs4/Template/layout_1/LTR/material/full/index.html
+====================================================================================================================================
+package br.gov.capes.questionario.gerenciador;
+
+import java.util.List;
+import java.util.Map;
+
+import javax.inject.Inject;
+
+import org.apache.commons.validator.routines.EmailValidator;
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
+import org.joda.time.LocalDateTime;
+
+import br.gov.capes.questionario.dominio.CorreioEletronico;
+import br.gov.capes.questionario.dominio.IdentificadorRegistrado;
+import br.gov.capes.questionario.dominio.ParametroConsulta;
+import br.gov.capes.questionario.dominio.PerfilPessoa;
+import br.gov.capes.questionario.dominio.Pessoa;
+import br.gov.capes.questionario.dominio.RepositorioPessoas;
+import br.gov.capes.questionario.dominio.UnidadeOrganizacional;
+import br.gov.capes.questionario.dominio.VinculoOrganizacional;
+import br.gov.capes.questionario.dominio.enums.ErrosComuns;
+import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
+import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
+import br.gov.capes.questionario.repositorio.RepositorioCorreioEletronico;
+import br.gov.capes.questionario.repositorio.RepositorioIdentificadorRegistrado;
+import br.gov.capes.questionario.repositorio.RepositorioPerfilPessoa;
+import br.gov.capes.questionario.repositorio.RepositorioUnidadeOrganizacional;
+import br.gov.capes.seguranca.webservice.dto.Usuario;
+
+public class GerenciadorPerfilPessoa implements GerenciadorCRUD<PerfilPessoa, ParametroConsulta<PerfilPessoa>> {
+	
+	@Inject
+	private RepositorioPerfilPessoa repositorioPerfilPessoa;
+	
+	@Inject
+	private RepositorioCorreioEletronico repositorioCorreioEletronico;
+	
+	@Inject
+	private RepositorioIdentificadorRegistrado repositorioIdentificadorRegistrado;
+	
+	@Inject
+	private RepositorioPessoas repositorioPessoas;
+	
+	@Inject
+	private AutorizadorSeguranca autorizadorSeguranca;
+	
+	@Inject
+	private GerenciadorVinculoOrganizacional gerenciadorVinculoOrganizacional;
+	
+	@Inject
+	private RepositorioUnidadeOrganizacional repositorioUnidadeOrganizacional;
+	
+	public GerenciadorPerfilPessoa() { }
+	
+	@Transactional
+	public List<PerfilPessoa> consultarPerfilPessoaUnidadeOrganizacional(Long id) {
+		return repositorioPerfilPessoa.consultarPerfilPessoaUnidadeOrganizacional(id);
+	}
+	
+	@Transactional
+	@Override
+	public PerfilPessoa criarEntidade(PerfilPessoa perfilPessoa) {
+		return repositorioPerfilPessoa.criarEntidade(recuperarPerfilPessoa(perfilPessoa));
+	}
+	
+	@Transactional
+	public PerfilPessoa validarPessoaUnidadeOrganizacional(PerfilPessoa perfilPessoa) {
+		validarPerfilPessoa(perfilPessoa);
+		recuperarDadosPerfilPessoa(perfilPessoa);
+		return perfilPessoa;
+	}
+	
+	private void recuperarDadosPerfilPessoa(PerfilPessoa perfilPessoa) {
+		perfilPessoa.setCorreioEletronico(recuperarCorreioEletronico(perfilPessoa.getCorreioEletronico().getDescricaoCorreioEletronico()));
+		perfilPessoa.setIdentificadorRegistrado(recuperarIdentificadorRegistrado(perfilPessoa.getIdentificadorRegistrado().getDescricao()));
+	}
+	
+	private void validarPerfilPessoa(PerfilPessoa perfilPessoa) {
+		if(perfilPessoa.getCorreioEletronico().getDescricaoCorreioEletronico() != null) {
+			if(!validarCorreioEletronico(perfilPessoa.getCorreioEletronico().getDescricaoCorreioEletronico())) {
+				throw new ValidacaoNegocialException(ErrosComuns.UC006_E8);
+			}
+		}
+		if(perfilPessoa.getIdentificadorRegistrado().getDescricao() != null) {
+			if(!validarIdentificadorRegistrado(perfilPessoa.getIdentificadorRegistrado().getDescricao())) {
+				throw new ValidacaoNegocialException(ErrosComuns.UC015_E1);
+			}
+		} 
+	}
+	
+	private Boolean validarCorreioEletronico(String descricaoCorreioEletronico) {
+		return EmailValidator.getInstance().isValid(descricaoCorreioEletronico);
+	}
+	
+	private Boolean validarIdentificadorRegistrado(String indentificadorRegistrado) {
+		if (indentificadorRegistrado.matches("[0-9]*")) {
+			int soma = 0;
+			for (int i = 0; i < 9; i++) {
+				soma = soma + parseInt(indentificadorRegistrado.charAt(i)) * (10 - i);
+			}
+			int dv1 = 11 - (soma % 11);
+			if (dv1 == 10 || dv1 == 11) {
+				dv1 = 0;
+			}
+			if (dv1 != parseInt(indentificadorRegistrado.charAt(9))) {
+				return false;
+			}
+			soma = 0;
+			for (int i = 0; i < 9; i++) {
+				soma = soma + parseInt(indentificadorRegistrado.charAt(i)) * (11 - i);
+			}
+			soma = soma + dv1 * 2;
+			int dv2 = 11 - (soma % 11);
+			if (dv2 == 10 || dv2 == 11) {
+				dv2 = 0;
+			}
+			if (dv2 != parseInt(indentificadorRegistrado.charAt(10))) {
+				return false;
+			}
+			return true;
+		}
+		return false;
+	}
+	
+	private int parseInt(Character c) {
+		return Integer.parseInt(c.toString());
+	}
+	
+	private PerfilPessoa recuperarPerfilPessoa(PerfilPessoa perfilPessoa) {
+		perfilPessoa.setVinculoOrganizacional(recuperarVinculoOrganizacional(perfilPessoa.getVinculoOrganizacional()));
+		perfilPessoa.setCorreioEletronico(recuperarCorreioEletronico(perfilPessoa.getCorreioEletronico().getDescricaoCorreioEletronico()));
+		perfilPessoa.setDataUltimaAlteracao(recuperarDataUltimaAlteracao());
+		perfilPessoa.setIdentificadorRegistrado(recuperarIdentificadorRegistrado(perfilPessoa.getIdentificadorRegistrado().getDescricao()));
+		perfilPessoa.setPessoa(recuperarPessoa(perfilPessoa.getIdentificadorRegistrado().getDescricao()));
+		perfilPessoa.setUsuarioUltimaAlteracao(recuperarUsuarioLogado().getLogin());
+		return perfilPessoa;
+	}
+	
+	@Transactional
+	private CorreioEletronico recuperarCorreioEletronico(String descricaoCorreioEletronicoParameter) {
+		return repositorioCorreioEletronico.consultarCorreioEletronico(descricaoCorreioEletronicoParameter);
+	}
+	
+	@Transactional
+	private IdentificadorRegistrado recuperarIdentificadorRegistrado(String descricaoIdentificadorRegistradoParameter) {
+		return repositorioIdentificadorRegistrado.consultarIdentificadorRegistrado(descricaoIdentificadorRegistradoParameter);
+	}
+	
+	private LocalDateTime recuperarDataUltimaAlteracao() {
+		return new LocalDateTime();
+	}
+	
+	@Transactional
+	private Pessoa recuperarPessoa(String descricaoIdentificadorRegistradoParameter) {
+		return repositorioPessoas.recuperar(descricaoIdentificadorRegistradoParameter);
+	}
+	
+	private Usuario recuperarUsuarioLogado() {
+		return autorizadorSeguranca.getUsuarioLogado();
+	}
+	
+	// FIXME [REDMINE-00388] {001} -- "Verificar se o Vinculo Organizacional ja esta cadastrado"
+	@Transactional
+	private VinculoOrganizacional recuperarVinculoOrganizacional(VinculoOrganizacional vinculoOrganizacional) {
+		UnidadeOrganizacional unidadeOrganizacional = new UnidadeOrganizacional();
+		if(!isVinculoOrganizacionalCadastrado(vinculoOrganizacional.getId())) {
+			vinculoOrganizacional = gerenciadorVinculoOrganizacional.cadastrarVinculoOrganizacional(vinculoOrganizacionalFactory(vinculoOrganizacional));
+		} else {
+			unidadeOrganizacional = recuperarUnidadeOrganizacional(vinculoOrganizacional.getId());
+			vinculoOrganizacional.setUnidadeOrganizacional(unidadeOrganizacional);
+		}
+		return vinculoOrganizacional;
+	}
+	
+	// FIXME [REDMINE-00388] {001} -- "Verificar se ja existe um Vinculo Organizacional cadastrado"
+	@Transactional
+	private boolean isVinculoOrganizacionalCadastrado(Long id) {
+		return gerenciadorVinculoOrganizacional.consultarUnidadeOrganizacionalVinculada(id).size() > 0;
+	}
+	
+	private VinculoOrganizacional vinculoOrganizacionalFactory(VinculoOrganizacional vinculoOrganizacional) {
+		VinculoOrganizacional vinculoOrganizacionalFactory = new VinculoOrganizacional();
+			vinculoOrganizacionalFactory.setDataUltimaAlteracao(recuperarDataUltimaAlteracao());
+			vinculoOrganizacionalFactory.setUnidadeOrganizacional(recuperarUnidadeOrganizacional(vinculoOrganizacional.getId()));
+			vinculoOrganizacionalFactory.setUsuarioUltimaAlteracao(recuperarUsuarioLogado().getLogin());
+		return vinculoOrganizacionalFactory;
+	}
+	
+	@Transactional
+	private UnidadeOrganizacional recuperarUnidadeOrganizacional(Long id) {
+		return repositorioUnidadeOrganizacional.consultarUnidadeOrganizacional(id);
+	}
+
+	@Override
+	public List<PerfilPessoa> buscarPorParametro(ParametroConsulta<PerfilPessoa> parametro) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PerfilPessoa buscarEmEspecifico(Object id, String[] camposWhitelist) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public long contarPorParametro(ParametroConsulta<PerfilPessoa> parametro) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+	@Override
+	public boolean existePorParametro(ParametroConsulta<PerfilPessoa> parametro) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void excluirEntidade(PerfilPessoa entidade) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public PerfilPessoa alterarEntidade(PerfilPessoa entidade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public PerfilPessoa alterarEntidadeParcialmente(Object id, Map<String, Object> mapaEntidade) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}
+====================================================================================================================================
+package br.gov.capes.questionario.web.rest;
+
+import java.util.List;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.core.Response;
+
+import org.apache.commons.httpclient.HttpStatus;
+import org.jboss.logging.Logger;
+
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
+
+import br.gov.capes.componentes.jaxrs.Result;
+import br.gov.capes.componentes.jaxrs.Results;
+import br.gov.capes.questionario.dominio.ParametroConsulta;
+import br.gov.capes.questionario.dominio.PerfilPessoa;
+import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
+import br.gov.capes.questionario.gerenciador.GerenciadorCRUD;
+import br.gov.capes.questionario.gerenciador.GerenciadorPerfilPessoa;
+import br.gov.capes.questionario.web.rest.interceptor.RecursoProtegido;
+import br.gov.capes.questionario.web.rest.util.CRUDResource;
+
+@Api("/perfil-pessoa")
+@Path("/perfil-pessoa")
+@RequestScoped
+public class PerfilPessoaResource extends CRUDResource<PerfilPessoa, ParametroConsulta<PerfilPessoa>> {
+
+	private Logger LOGGER = Logger.getLogger(PerfilPessoaResource.class);
+
+	@Inject
+	protected Result result;
+	
+	@Inject
+	protected GerenciadorPerfilPessoa gerenciadorPerfilPessoa;
+	
+	@POST
+	@Path("/vinculaPerfilPessoaUnidadeOrganizacional")
+	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Responsável por persistir dados de Perfil da Pessoa", response = PerfilPessoa.class)
+	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Criação realizada com sucesso"),
+					@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+					@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegido
+	public Response criarEntidade(final List<PerfilPessoa> perfilPessoaList) {
+		try {
+			PerfilPessoa perfilPessoaPersistido = null;
+			for(PerfilPessoa perfilPessoaResult : perfilPessoaList) {
+				perfilPessoaPersistido = gerenciadorPerfilPessoa.criarEntidade(perfilPessoaResult);
+			}
+			return getResult().use(Results.representation()).from(perfilPessoaPersistido).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@POST
+	@Path("/validarPessoaUnidadeOrganizacional")
+	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Responsável por validar dados de um Perfil da Pessoa para cadastro posterior", response = PerfilPessoa.class)
+	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Criação realizada com sucesso"),
+					@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+					@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegido
+	public Response validarPessoaUnidadeOrganizacional(final PerfilPessoa perfilPessoa) {
+		if (perfilPessoa != null) {
+			try {
+				final PerfilPessoa perfilPessoaResult = gerenciadorPerfilPessoa.validarPessoaUnidadeOrganizacional(perfilPessoa);
+				return getResult().use(Results.representation()).from(perfilPessoaResult).serialize();
+			} catch (final ValidacaoNegocialException err) {
+				LOGGER.error(err, err);
+				return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+			} catch (final Exception err) {
+				LOGGER.error(err, err);
+				return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+			}
+		}
+		return Response.status(HttpStatus.SC_BAD_REQUEST).build();
+	}
+
+	public PerfilPessoaResource() {
+		super(PerfilPessoa.class);
+	}
+
+	@Override
+	protected GerenciadorCRUD<PerfilPessoa, ParametroConsulta<PerfilPessoa>> getGerenciador() {
+		return gerenciadorPerfilPessoa;
+	}
+
+}
+====================================================================================================================================
+
+# 03/07/2019
+    
+    https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=243&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+
+        1 Correção das demandas de Defeito
+        2 Implementação das demandas de Evolução
+    
+    - Demandas SPRINT 09
+            
+        1.0 [REDMINE-12450] [AGUARDANDO] - [QUESTIONARIO-CAPES] Desenvolvimento da Unidade Organizacional - Visualização
+        2.0 [REDMINE-12445] [FINALIZADO] - [QUESTIONARIO-CAPES] Tratamento complementar de 8408 / 8382 / 8399 / 11426 / 8413
+            2.1 [REDMINE-08408] [FINALIZADO] - [QUESTIONARIO-CAPES] Não contabilização dos usuários que apenas logaram na aplicação
+            2.2 [REDMINE-08382] [FINALIZADO] - [QUESTIONARIO-CAPES] Sistema não especifica qual campo é considerado de preenchimento obrigatório
+            2.3 [REDMINE-08399] [FINALIZADO] - [QUESTIONARIO-CAPES] Sistema está contabilizando a quantidade de pessoas baseando-se na quantidade de e-mail existente
+            2.4 [REDMINE-11426] [FINALIZADO] - [QUESTIONARIO-CAPES] Erro desconhecido ao importar publico alvo em lote
+            2.5 [REDMINE-08413] [FINALIZADO] - [QUESTIONARIO-CAPES] Campo "Período" exigindo obrigatoriedade de preenchimento, mas não sinalizado como obrigatório
+        3.0 [REDMINE-12436] [FINALIZADO] - [QUESTIONARIO-CAPES] Ajustar o campo de tipo de identificador para descrição do identificador
+        4.0 [REDMINE-12422] [FINALIZADO] - [QUESTIONARIO-CAPES] Importação de múltiplos registros por lote
+        5.0 [REDMINE-11929] [AGUARDANDO] - [QUESTIONARIO-CAPES] Vincular unidade organizacional ao questionário
+        6.0 [REDMINE-11728] [AGUARDANDO] - [QUESTIONARIO-CAPES] Desenvolvimento da Unidade Organizacional - Cadastrar, Pesquisar, Incluir Pessoa, Editar, Excluir
+        7.0 [REDMINE-08408] [FINALIZADO] - [QUESTIONARIO-CAPES] Não contabilização dos usuários que apenas logaram na aplicação
+        8.0 [REDMINE-11396] [FINALIZADO] - [QUESTIONARIO-CAPES] BACKEND: Tratamento QC_UC008_Gerar_Relatorios
+        
+        
+    - Commit's
+        
+        [REDMINE 08408] - [QUESTIONARIO-CAPES] Não contabilização dos usuários que apenas logaram na aplicação
+        [REDMINE 11396] - [QUESTIONARIO-CAPES] BACKEND: Tratamento QC_UC008_Gerar_Relatorios
+        [REDMINE 12436] - [QUESTIONARIO-CAPES] Ajustar o campo de tipo de identificador para descrição do identificador        
+        [REDMINE 12422] - [QUESTIONARIO-CAPES] Importação de múltiplos registros por lote
+    
+                 
+====================================================================================================================================
+
+    # Ambientes de Desenvolvimento
+        
+        - Arsenium          [PLDOC]
+        - Chromium          [?]
+        - Cyprium           [?]
+        - Ferrum            [MERGE de SPRINT para TRUNK]
+        - Mercurium         [TRUNK] -> [Correções de defeitos]
+        - Natrium           [REDMINE-00388_v3]
+        - Nihonium          [PLFIN]
+        - Plubum            [REDMINE-00388_v2]
+        - Stannium          [REDMINE-00388_v1]
+        - Thalium           [?]
+
+====================================================================================================================================
+RelatorioResource -> gerarRelatoriosQuestionario
+
+relatorioDetalhadaPublicoAlvo.jrxml
+
+SELECT pessoa_.NM_PESSOA AS NOME_PESSOA, publico_.ID_IDENTIFICADOR_REGISTRADO AS IDENTIFICADOR_REGISTRADO, questionario_.NM_QUESTIONARIO AS NOME_QUESTIONARIO, questionario_.SG_QUESTIONARIO AS SIGLA_QUESTIONARIO, tipo_publico_.NM_TIPO_PUBLICO_ALVO AS TIPO_PUBLICO_ALVO, identificador_registrado_.DS_IDENTIFICADOR_REGISTRADO AS DS_IDENTIFICADOR_REGISTRADO, correio_eletronico_.DS_CORREIO_ELETRONICO AS CORREIO_ELETRONICO, publico_alvo_.TP_IDENTIFICACAO_PUBLICO AS IDENTIFICACAO_PUBLICO, CASE WHEN (SELECT COUNT(*) FROM QUESTIONARIO.RESPOSTA resposta_ WHERE resposta_.ID_PREENCHIMENTO = preenchimento_.ID_PREENCHIMENTO) > 1 THEN 'Sim' ELSE 'Não' END AS IS_QUESTIONARIO_RESPONDIDO FROM QUESTIONARIO.PREENCHIMENTO preenchimento_ INNER JOIN QUESTIONARIO.PUBLICACAO publicacao_ ON publicacao_.ID_PUBLICACAO = preenchimento_.ID_PUBLICACAO INNER JOIN QUESTIONARIO.QUESTIONARIO questionario_ ON questionario_.ID_QUESTIONARIO = preenchimento_.ID_QUESTIONARIO INNER JOIN CORPORATIVO.PESSOA pessoa_ ON pessoa_.ID_PESSOA = preenchimento_.ID_PESSOA LEFT JOIN QUESTIONARIO.PUBLICO publico_ ON publico_.ID_PUBLICO = preenchimento_.ID_PUBLICO INNER JOIN CORPORATIVO.CORREIO_ELETRONICO correio_eletronico_ ON correio_eletronico_.ID_CORREIO_ELETRONICO = publico_.ID_CORREIO_ELETRONICO INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO identificador_registrado_ ON identificador_registrado_.ID_IDENTIFICADOR_REGISTRADO = publico_.ID_IDENTIFICADOR_REGISTRADO INNER JOIN QUESTIONARIO.DETALHE_PUBLICACAO detalhe_ ON detalhe_.ID_PUBLICACAO = publicacao_.ID_PUBLICACAO INNER JOIN QUESTIONARIO.PUBLICO_ALVO publico_alvo_ ON publico_alvo_.ID_PUBLICO_ALVO = DETALHE_.ID_PUBLICO_ALVO LEFT JOIN QUESTIONARIO.TIPO_PUBLICO_ALVO tipo_publico_ ON tipo_publico_.ID_TIPO_PUBLICO_ALVO = publico_alvo_.ID_TIPO_PUBLICO_ALVO WHERE questionario_.SG_QUESTIONARIO = 'QC' AND TO_CHAR(publicacao_.DT_PUBLICACAO, 'YYYY') = :ano AND questionario_.TP_SITUACAO = :situacao  AND questionario_.NM_QUESTIONARIO LIKE :questionario 
+====================================================================================================================================
+# [REDMINE 12422] - [QUESTIONARIO-CAPES] Importação de múltiplos registros por lote
+
+        - Cenário 1 - Registros sem cadastro na base da Capes
+        - Cenário 2 - Registros cadastrados na base da Capes, mas com E-MAIL's repetidos
+        - Cenário 3 - Registros cadastrados na base da Capes, mas com CPF's repetidos
+        - Cenário 4 - Registros cadastrados na base da Capes, sem dados repetidos
+====================================================================================================================================
+# Gerenciador de Faturas de Cartão de Crédito
+
+    - Objetivo: Permitir a composição de faturas de CC por período
+                Compõe lista de despesas fixas de um determinado mês de referência
+                Compõe painel de gerenciamento (Dashboard)
+    
+Instituição Financeira:                 Banco Santander do Brazil
+Número da Fatura:                       FATURA_0001
+Valor Total da Fatura:                  R$ 2.300,54
+Data de Fechamento da Fatura:           15/07/2019
+
+Itens da Fatura
+----------------------------------------------------------------------------
+
+Favorecido:             Supermercado Pravoce (Taguatinga Centro)
+Data Aquisição:         01/07/2019
+Categoria:              Alimentação
+Valor Total:            R$ 251,23
+
+Favorecido:             Banco Santander do Brasil
+Data Aquisição:         05/07/2019
+Categoria:              Tarifas Bancárias (Juros por atraso de pagamento)
+Valor Total:            R$ 12,87
+
+Favorecido:             Banco Santander do Brasil
+Data Aquisição:         05/07/2019
+Categoria:              Tarifas Bancárias (Débito Remanecente da Fatura Anterior)
+Valor Total:            R$ 560,00
+
+----------------------------------------------------------------------------
+Situação da Fatura:                     Pendente de Pagamento; Em Atrado; Paga; Paga Parcialmente
+Data Pagamento:                         20/07/2019
+
+====================================================================================================================================
+# Treinamentos
+
+    - Angular JS Pure
+    - Angular JS + Components
+    - Angular JS + Java
+    - Java + JPA (hibernate)
+    - Java + Criteria
+    - Java + Filas, Tópicos
+    - Java + - Estrutura de Dados
+    - Java + Tarefas Assíncronas
+    - Modelagem de Banco de Dados
+    - Administração de Banco de Dados (Oracle, Postgres)
+    - Java + Lambda
+    
+====================================================================================================================================
+
+====================================================================================================================================
+"Todos os animais são iguais, mas alguns animais são mais iguais que os outros" - George Orwell (se define como um socialista de convicções democráticas)
+====================================================================================================================================
+-- Logout Swagger
+    http://des.capes.gov.br/sso/slo
+====================================================================================================================================
+Usuário sem permissão para executar esse serviço
+====================================================================================================================================
+
+====================================================================================================================================
+    # [REDMINE-11401]
+    
+        - Alterar Descricão do serviço
+        - Alterar Objeto de retorno (response). Deve ser o mesmo do parametro de entrada
+    
+        - Respostas
+        
+            01 - (RespostaResource -> criarResposta) [GET] /respostas [OK]
+            
+            02 - () [POST] /respostas [OK]
+            
+            03 - () [GET] /{id}
+            
+            04 - () [DELTE] /{id}
+            
+            05 - () [GET] /respostas/buscarPreenchimentoComRespostas
+            
+            06 - () [GET] /respostas/contarPreenchimentoComRespostas
+            
+            07 - (RespostaResource -> enviarResposta) [POST] /enviar []
+            
+            08 - () [POST] /enviarSalvar [OK]
+            
+            09 - () [DELETE] /respostas/excluirRespostas/{idPreenchimento}/{idQuestionario}/{idPessoa}
+            
+            10 - () [GET] /respostas/pesquisarPorQuestionario
+                                
+            https://redmine.capes.gov.br/issues/12966
+            
+            11401 - manter resposta
+                
+                - Enviar            [AGUARDANDO]
+                - Enviar Salvar     [OK]
+            
+            11396 - relatorio
+            
+====================================================================================================================================
+Público Alvo 05/07/2019 (QC) (Interno) (Identificador Opcional) v1
+    - 00935766170                |testesoftware.722765@capes.gov.br 
+    - 04897639107                |testesoftware.3577161@capes.gov.br     
+    - 02735025144                |jqsilva@indracompany.com          
+    - 03089233169                |teste@gmail.com.br
+Questionário 05/07/2019 (QC) (Interno) (Identificador Opcional) v1
+
+- Tecnico ou Administrador erro de 400
+
+====================================================================================================================================
+// FIXME [REDMINE-11401] {} -- "Converte objeto em formato json"; "REMOVER ESSE TRECHO DE CODIGO APOS OS TESTE"
+     		ObjectMapper mapper = new ObjectMapper();
+     	    String jsonString = mapper.writeValueAsString(preenchimento);
+     	    System.out.println(jsonString);
+====================================================================================================================================
+# Questionário Capes
+
+    - Criar tarefas no redmine referente a unidade organizacional
+    
+====================================================================================================================================
+package br.gov.capes.questionario.web.rest;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response;
+
+import org.apache.commons.httpclient.HttpStatus;
+import org.jboss.logging.Logger;
+import org.joda.time.LocalDateTime;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
+
+import br.gov.capes.componentes.jaxrs.Results;
+import br.gov.capes.questionario.dominio.Preenchimento;
+import br.gov.capes.questionario.dominio.Resposta;
+import br.gov.capes.questionario.dominio.VisualizacaoPergunta;
+import br.gov.capes.questionario.dominio.dto.PreenchimentoDTO;
+import br.gov.capes.questionario.dominio.enums.TipoIdentificacaoPublico;
+import br.gov.capes.questionario.dominio.enums.TransacoesPermitidas;
+import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
+import br.gov.capes.questionario.dominio.filtros.FiltroPreenchimento;
+import br.gov.capes.questionario.dominio.filtros.FiltroResposta;
+import br.gov.capes.questionario.gerenciador.GerenciadorCRUD;
+import br.gov.capes.questionario.gerenciador.GerenciadorPreenchimento;
+import br.gov.capes.questionario.gerenciador.GerenciadorPublico;
+import br.gov.capes.questionario.gerenciador.GerenciadorResposta;
+import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
+import br.gov.capes.questionario.web.rest.interceptor.RecursoProtegido;
+import br.gov.capes.questionario.web.rest.interceptor.novo.PermissaoAcesso;
+import br.gov.capes.questionario.web.rest.interceptor.novo.RecursoProtegidoNovo;
+import br.gov.capes.questionario.web.rest.util.CRUDResource;
+
+@Api("/respostas")
+@Path("/respostas")
+@RequestScoped
+public class RespostaResource extends CRUDResource<Resposta, FiltroResposta> {
+
+	@Inject
+	protected GerenciadorResposta gerenciadorResposta;
+	
+	@Inject
+	protected GerenciadorPreenchimento gerenciadorPreenchimento;
+	
+
+	@Inject
+	protected GerenciadorPublico gerenciadorPublico;
+	
+	@Inject
+	protected AutorizadorSeguranca autorizadorSeguranca;
+	
+	private Logger LOGGER = Logger.getLogger(RespostaResource.class);
+
+
+	public RespostaResource() {
+		super(Resposta.class);
+	}
+
+	@Override
+	protected GerenciadorCRUD<Resposta, FiltroResposta> getGerenciador() {
+		return this.gerenciadorResposta;
+	}
+	
+	final String ENCERRADO = "R";
+	final String EM_ABERTO = "A";
+	final String ENVIADO = "E";
+
+	@GET
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas para os parametros passados", response = Resposta.class, responseContainer = "List")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_PESQUISAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response consulta(
+			@QueryParam("offset") @DefaultValue("0") final int offset,
+			@QueryParam("max") @DefaultValue("10") final int max,
+			@QueryParam("orderBy") @DefaultValue("") final String orderBy,
+			@QueryParam("asc") final boolean asc,
+			@QueryParam("fields") @DefaultValue("") final String camposString,
+			@QueryParam("type") @DefaultValue("list") final String tipoConsulta,
+			@QueryParam("nome") final String filtroNome,
+			@QueryParam("sigla") final String filtroSigla,
+			@QueryParam("dataInicio") final long dataInicio,
+			@QueryParam("dataFim") final long dataFim,
+			@QueryParam("statusQuestionario") final String statusQuestionario) {
+
+		Preenchimento filtro = new Preenchimento();
+        
+		final FiltroPreenchimento parametro = new FiltroPreenchimento(offset, max, orderBy ,asc, camposString, tipoConsulta, filtro, statusQuestionario);
+		if (dataFim != 0) {
+			parametro.setDataFim(new Date(dataFim));
+		}
+		if (dataInicio != 0) {
+			parametro.setDataInicio(new Date(dataInicio));
+		}
+        parametro.setSigla(filtroSigla);
+        parametro.setNome(filtroNome);
+        parametro.setUsuario(autorizadorSeguranca.getUsuarioLogado());
+        
+        if (tipoConsulta.equals("list")) {
+        	//gerenciadorPreenchimento.verificarDataFimVigenciaQuestionario(autorizadorSeguranca.getUsuarioLogado().getId());  		
+        	return getResult().use(Results.representation())
+                    .from(gerenciadorPreenchimento.buscarPorParametro(parametro))
+                    .serialize();
+		}else {
+			return getResult().use(Results.representation())
+                    .from(gerenciadorPreenchimento.contarPorParametro(parametro))
+                    .serialize();
+		}
+	}
+	
+	@GET
+	@Path("/pesquisarPorQuestionario")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas para os parametros passados", response = Resposta.class, responseContainer = "List")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public List<Resposta> consultarPorQuestionario(@QueryParam("idQuestionario") final long idQuestionario) {
+		Resposta resposta = new Resposta();
+		FiltroResposta filtroResposta = new FiltroResposta(resposta);
+        filtroResposta.setIdQuestionario(idQuestionario);         
+        filtroResposta.setUsuario(autorizadorSeguranca.getUsuarioLogado());
+        return  gerenciadorResposta.buscarRespostasPorQuestionario(filtroResposta);
+	}
+
+	@GET
+	@Path("/{id}")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera determinado questionário", response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response consulta(@PathParam("id") final long idResposta, @NotNull @QueryParam("fields") @DefaultValue("") final String camposString) {
+	  return null;
+	}
+
+	@DELETE
+	@Path("/{id}")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Apaga determinado Resposta da base de dados")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Exclusão realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegido
+	public Response excluirResposta(@PathParam("id") final Long idResposta) {
+
+
+		return Response.ok().build();
+	}
+
+	@POST
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Cria questinario passado no corpo da mensagem se for válido", response = VisualizacaoPergunta.class) // FIXME [REDMINE-11401] {} -- ""
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Criação realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_RESPONDER_QUESTIONARIO_DESCRICAO_TRANSACAO), 
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+			descricaoTransacao = TransacoesPermitidas.Constantes.TR_EDITAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response criarResposta(List<VisualizacaoPergunta> respostas) {
+     	try {
+     		
+     		// FIXME [REDMINE-11401] {} -- "Converte objeto em formato json"; "REMOVER ESSE TRECHO DE CODIGO APOS OS TESTE"
+     		ObjectMapper mapper = new ObjectMapper();
+     	    String jsonString = mapper.writeValueAsString(respostas);
+     	    System.out.println(jsonString);
+     		
+     		List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+
+     		if(respostas2!=null&&!respostas2.isEmpty()){
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				
+     				// FIXME [REDMINE-11401] {} -- ""
+     				if(respostas.get(0).getPublico().getDataUltimaAlteracao() == null) {
+     					respostas.get(0).getPublico().setDataUltimaAlteracao(LocalDateTime.now());
+     				}
+     				
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     				
+     			}
+     		}	
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+
+	}
+	
+	@POST
+	@Path("/enviar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Preenchimento.class) // FIXME [REDMINE-11401] {} -- "Alteracao do objeto de retorno"
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarResposta(Preenchimento preenchimento) {
+		try {
+			
+			// FIXME [REDMINE-11401] {} -- "Converte objeto em formato json"; "REMOVER ESSE TRECHO DE CODIGO APOS OS TESTE"
+     		ObjectMapper mapper = new ObjectMapper();
+     	    String jsonString = mapper.writeValueAsString(preenchimento);
+     	    System.out.println(jsonString);
+     	    
+			preenchimento.setDataFinalizacao(new LocalDateTime());
+			
+			if(gerenciadorPreenchimento.validarRespostasPorPreenchimento(preenchimento)) {
+				if (preenchimento.getPublico().getPublicoAlvo()
+						.getTipoIdentificacaoPublico() == TipoIdentificacaoPublico.P) {
+					gerenciadorPublico.alterarEntidade(preenchimento.getPublico());
+				}
+				preenchimento.setStatus(ENVIADO);
+				preenchimento = gerenciadorPreenchimento.alterarEntidade(preenchimento);				
+			}else{
+				return null;
+			}
+			
+			return getResult().use(Results.representation()).from(preenchimento).serialize();			
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@POST
+	@Path("/enviarSalvar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarSalvarResposta(List<VisualizacaoPergunta> respostas) {
+		try {
+			
+			// FIXME [REDMINE-11401] {} -- "Converte objeto em formato json"; "REMOVER ESSE TRECHO DE CODIGO APOS OS TESTE"
+     		ObjectMapper mapper = new ObjectMapper();
+     	    String jsonString = mapper.writeValueAsString(respostas);
+     	    System.out.println(jsonString);
+     	    
+			List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+     		     		
+     		if(respostas2!=null&&!respostas2.isEmpty()){
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     				
+     				Preenchimento preenchimento = respostas2.get(0).getResposta().get(0).getPreenchimento();
+     				preenchimento.setDataFinalizacao(new LocalDateTime());
+     				preenchimento.setStatus(ENVIADO);
+     				gerenciadorPreenchimento.alterarEntidade(preenchimento);
+     			}     			
+     		}
+			
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Path("/buscarPreenchimentoComRespostas")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas de um publico alvo", response = PreenchimentoDTO.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response buscarPreenchimentoComRespostas(
+			@QueryParam("offset") @DefaultValue("0") final int offset,
+			@QueryParam("max") @DefaultValue("0") final int max,
+			@QueryParam("nomePessoa") @DefaultValue("") final String nomePessoa,
+			@QueryParam("cpf") @DefaultValue("") final String cpf,
+			@QueryParam("idPublicacao") @DefaultValue("") final Long idPublicacao,
+			@QueryParam("idPublicoAlvo") @DefaultValue("") final Long idPublicoAlvo) {
+
+		List<PreenchimentoDTO> resultado = gerenciadorResposta.buscarPreenchimentoComRespostas(idPublicacao, idPublicoAlvo, nomePessoa, cpf, offset, max);
+		
+		return getResult().use(Results.representation()).from(resultado).serialize();
+	}
+	
+	@GET
+	@Path("/contarPreenchimentoComRespostas")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Conta as respostas de um publico alvo", response = Long.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response contarPreenchimentoComRespostas(@QueryParam("idPublicacao") @DefaultValue("") final Long idPublicacao,
+			@QueryParam("idPublicoAlvo") @DefaultValue("") final Long idPublicoAlvo) {
+
+		Long resultado = gerenciadorResposta.contarPreenchimentoComRespostas(idPublicacao, idPublicoAlvo);
+		
+		return getResult().use(Results.representation()).from(resultado).serialize();
+	}
+	
+	@DELETE
+	@Path("/excluirRespostas/{idPreenchimento}/{idQuestionario}/{idPessoa}")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Apaga determinado Resposta da base de dados")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Exclusão realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta"),
+			@ApiResponse(code = HttpStatus.SC_EXPECTATION_FAILED , message = "Exclusão não realizada")})
+	@RecursoProtegido
+	public Response excluirRespostas(@PathParam("idPreenchimento") final Long idPreenchimento,
+			@PathParam("idQuestionario") final Long idQuestionario,
+			@PathParam("idPessoa") final Long idPessoa) {
+		if (gerenciadorResposta.excluirRespostasAnteriores(idPessoa, idQuestionario,idPreenchimento)) {
+			return Response.ok().build();			
+		}else{
+			return Response.status(HttpStatus.SC_EXPECTATION_FAILED).build();
+		}
+
+	}
+}
+
+====================================================================================================================================
+GerenciadorPublico - >
+
+	private Boolean isPessoaSemLoginCapes(RegistroImportacaoPublicoDTO registroImportacaoPublicoDTO) {
+		Publico publicoBaseCapes = repositorioPublico.consultarPublicoBaseCapes(criarPublico(registroImportacaoPublicoDTO));
+		try {
+			Usuario usuarioPublico = autorizadorSeguranca.obterServicoSeguranca().buscaPermissoes(publicoBaseCapes.getPessoa().getId());
+			if (publicoBaseCapes == null || publicoBaseCapes.getPessoa() == null || publicoBaseCapes.getPessoa().getEmails() == null) {
+				if (usuarioPublico == null)
+					return true;
+			}
+		} catch (RemoteException e) {
+			e.printStackTrace();
+		}
+		return false;
+//		return consultarPublicoBaseCapes(criarPublico(registroImportacaoPublicoDTO)).getId() == null;
+//		return repositorioPublico.consultarCadastroPessoa(registroImportacaoPublicoDTO.getIdentificador(), registroImportacaoPublicoDTO.getEmail());
+	}
+    
+====================================================================================================================================
+-- RECUPERAR QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Questionário 08/07/2019 (QC) (Interno) (Identificador Obrigatório) v1%';
+
+-- TODOS OS PARTICIPANTES DO PUBLICO ALVO (POR PUBLICO ALVO)
+-- VERIFICAR INTEGRANTES DE UM DETERMINADO PUBLICO ALVO
+SELECT A.ID_PUBLICO_ALVO, a.DS_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+WHERE A.DS_PUBLICO_ALVO LIKE '%Público Alvo 18/06%'
+ORDER BY C.NM_PESSOA;
+
+-- RECUPERAR DETERMINADO PRREENCHIMENTOS
+SELECT     PREENCHIMENTO_.ID_QUESTIONARIO,
+           PERGUNTA_.ID_PERGUNTA,
+           RESPOSTA_.ID_RESPOSTA,
+           PREENCHIMENTO_.ID_PREENCHIMENTO,
+           PERGUNTA_IDIOMA_.TX_PERGUNTA,
+           RESPOSTA_.TX_SUBJETIVA,
+           RESPOSTA_.DT_RESPOSTA_INICIO,
+           RESPOSTA_.DT_RESPOSTA_FIM
+FROM QUESTIONARIO.RESPOSTA RESPOSTA_
+JOIN QUESTIONARIO.PERGUNTA PERGUNTA_ ON PERGUNTA_.ID_PERGUNTA = RESPOSTA_.ID_PERGUNTA
+JOIN QUESTIONARIO.PERGUNTA_IDIOMA PERGUNTA_IDIOMA_ ON PERGUNTA_IDIOMA_.ID_PERGUNTA = PERGUNTA_.ID_PERGUNTA
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PREENCHIMENTO = RESPOSTA_.ID_PREENCHIMENTO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PREENCHIMENTO_.ID_QUESTIONARIO
+AND QUESTIONARIO_.ID_QUESTIONARIO = 90 
+ORDER BY PREENCHIMENTO_.ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 90;
+
+SELECT * 
+FROM QUESTIONARIO.PERGUNTA_IDIOMA PERGUNTA_IDIOMA_
+JOIN QUESTIONARIO.PERGUNTA PERGUNTA_ ON PERGUNTA_.ID_PERGUNTA = PERGUNTA_IDIOMA_.ID_PERGUNTA
+WHERE PERGUNTA_.ID_QUESTIONARIO = 90;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA;
+====================================================================================================================================
+
+# Unidade Organizacional
+
+    - Verificar usuários já cadastrada
+    - Verificar Unidade Organizacional já cadastrada
+    - Inserir paginação
+    
+====================================================================================================================================
+
+    - Usuário com Permissão
+    
+        - 
+    
+    - Usuário sem Permisão
+
+
+====================================================================================================================================
+-- RECUPERAR QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Questionário 08/07/2019 (QC) (Interno) (Identificador Obrigatório) v1%';
+
+-- TODOS OS PARTICIPANTES DO PUBLICO ALVO (POR PUBLICO ALVO)
+-- VERIFICAR INTEGRANTES DE UM DETERMINADO PUBLICO ALVO
+SELECT A.ID_PUBLICO_ALVO, a.DS_PUBLICO_ALVO, B.ID_PESSOA, C.NM_PESSOA
+FROM QUESTIONARIO.PUBLICO_ALVO A
+JOIN QUESTIONARIO.PUBLICO B
+ON B.ID_PUBLICO_ALVO = A.ID_PUBLICO_ALVO
+JOIN CORPORATIVO.PESSOA C
+ON B.ID_PESSOA = C.ID_PESSOA
+WHERE A.DS_PUBLICO_ALVO LIKE '%Público Alvo 18/06%'
+ORDER BY C.NM_PESSOA;
+
+-- RECUPERAR DETERMINADO PRREENCHIMENTOS
+SELECT     PREENCHIMENTO_.ID_QUESTIONARIO,
+           PERGUNTA_.ID_PERGUNTA,
+           RESPOSTA_.ID_RESPOSTA,
+           PREENCHIMENTO_.ID_PREENCHIMENTO,
+           PERGUNTA_IDIOMA_.TX_PERGUNTA,
+           RESPOSTA_.TX_SUBJETIVA,
+           RESPOSTA_.DT_RESPOSTA_INICIO,
+           RESPOSTA_.DT_RESPOSTA_FIM
+FROM QUESTIONARIO.RESPOSTA RESPOSTA_
+JOIN QUESTIONARIO.PERGUNTA PERGUNTA_ ON PERGUNTA_.ID_PERGUNTA = RESPOSTA_.ID_PERGUNTA
+JOIN QUESTIONARIO.PERGUNTA_IDIOMA PERGUNTA_IDIOMA_ ON PERGUNTA_IDIOMA_.ID_PERGUNTA = PERGUNTA_.ID_PERGUNTA
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PREENCHIMENTO = RESPOSTA_.ID_PREENCHIMENTO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PREENCHIMENTO_.ID_QUESTIONARIO
+AND QUESTIONARIO_.ID_QUESTIONARIO = 90 
+ORDER BY PREENCHIMENTO_.ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 90;
+
+SELECT * 
+FROM QUESTIONARIO.PERGUNTA_IDIOMA PERGUNTA_IDIOMA_
+JOIN QUESTIONARIO.PERGUNTA PERGUNTA_ ON PERGUNTA_.ID_PERGUNTA = PERGUNTA_IDIOMA_.ID_PERGUNTA
+WHERE PERGUNTA_.ID_QUESTIONARIO = 90;
+
+SELECT * FROM QUESTIONARIO.ALTERNATIVA WHERE ID_PERGUNTA = 1181;
+
+SELECT * FROM QUESTIONARIO.RESPOSTA WHERE ID_PERGUNTA = 1181;
+
+SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ 
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PREENCHIMENTO_.ID_QUESTIONARIO
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 90;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA;
+
+====================================================================================================================================
+https://www.youtube.com/watch?v=NafjTyq3-hY&list=PLmbOTopfKPAYkQlWttCgO6LYs0ztmxUgu&index=11
+====================================================================================================================================
+# Verificar Merge com a Branch (Branch Sprint 08 -> Branch da TRUNK)
+    - Subir alterações não mergeadas (por erro)
+    - Alterar Entrada de Métodos para DTO para facilitar o teste
+# Verificar quais serviços devem ser testados definitivamente
+# Verificar se os serviços aos quais os não foram implementados devem ser implementados
+    - GET /respostas                                                                    (Implementado)
+    - POST /respostas                                                                   (Implementado)
+    - GET /respostas/{id}                                                               (Não Implementado)
+    - DELETE /respostas/{id}                                                            (Não Implementado)   
+    - GET /respostas/buscarPreenchimentoComRespostas                                    (Não Implementado)
+    - GET /respostas/contarPreenchimentoComRespostas                                    (Não Implementado)
+    - POST /respostas/enviar                                                            (Implementado)
+    - POST /respostas/enviarSalvar                                                      (Implementado)
+    - DELETE /respostas/excluirRespostas/{idPreenchimento}/{idQuestionario}/{idPessoa}  (Não Implementado)
+    - GET /respostas/pesquisarPorQuestionario                                          (Não Implementado)
+    
+    	// FIXME [REDMINE-11401] {} -- "Converte objeto em formato json"; "REMOVER ESSE TRECHO DE CODIGO APOS OS TESTE"
+ 		ObjectMapper mapper = new ObjectMapper();
+ 	    String jsonString = mapper.writeValueAsString(preenchimento);
+ 	    System.out.println(jsonString);        
+        
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
+====================================================================================================================================
+
 ====================================================================================================================================
 
 ====================================================================================================================================
