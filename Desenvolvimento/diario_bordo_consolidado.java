@@ -2565,13 +2565,14 @@ https://contentim.ru/how-to-activation-intellij-idea-license-server
 
     # Instalar MySQL
 
-        $ sudo apt-get install mysql-server mysql-client
+        sudo apt-get install mysql-server mysql-client
+        sudo mysql_secure_installation
 
     # Configuração MySQL
     
         -- Senha do Banco de Dados (Root)
 
-            -- PLATAFORMALANCAMENTO
+            -- plataforma
 
     # Comandos
 
@@ -20692,11 +20693,27 @@ https://www.youtube.com/watch?v=NafjTyq3-hY&list=PLmbOTopfKPAYkQlWttCgO6LYs0ztmx
  	    System.out.println(jsonString);        
         
 ====================================================================================================================================
+# PLFIN
 
+    [PLFIN-201907062354]
+    - Implementar 
 ====================================================================================================================================
+# Install PostgreSQL
 
+    sudo apt-get update
+    sudo apt-get install postgresql postgresql-contrib
 ====================================================================================================================================
+# Install Open Project (Ubuntu 16.04 Xenial)
 
+    sudo -i 
+    wget -qO- https://dl.packager.io/srv/opf/openproject/key | sudo apt-key add -
+    sudo apt-get install apt-transport-https
+    sudo wget -O /etc/apt/sources.list.d/openproject.list https://dl.packager.io/srv/opf/openproject/stable/9/installer/ubuntu/16.04.repo
+    apt-get update
+    apt-get install openproject
+    sudo openproject configure
+    
+    Fonte: https://www.openproject.org/download-and-installation/
 ====================================================================================================================================
 
 ====================================================================================================================================
