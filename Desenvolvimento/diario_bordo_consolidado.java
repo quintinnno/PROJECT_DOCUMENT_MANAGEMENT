@@ -27983,6 +27983,14 @@ public class RespostaResource extends CRUDResource<Resposta, FiltroResposta> {
         - "https://des.capes.gov.br/questionario-capes/docs/#!/respostas/enviarSalvarResposta"
 
 =======================================================================================================================================
+
+# Configurar autocomplete Eclipse
+
+     Windows menu -> Preferences -> Java -> Editor -> Content assist
+     
+     <=:._abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+     .abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
