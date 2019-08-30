@@ -27635,13 +27635,33 @@ https://youtu.be/RxCowluuZb4
 
 # QUESTIONARIO-CAPES (Solicitações Nírian)
 
-    - Publicação Alternativa (pior caso). O sistema consegue enviar e-mail todos os e-mail ?
+    - Publicação Alternativa (pior caso). O sistema consegue enviar e-mail todos os e-mail ? [Se fizermos a Publicação via Banco]
+    
     - Quantificar a volumetria que o sistema permite publicar atualmente
-    - Criar tarefas no Redmine sobre as alterações no código na Publicação, Notificação e Monitoramento conforme alinhado com  a Arquitetura
+    
+    - Capacidade de criação de Público via fonte de Dados
+    
+    - [OKAY] Criar tarefas no Redmine sobre as alterações no código na Publicação, Notificação e Monitoramento conforme alinhado com  a Arquitetura 
+        - https://redmine.capes.gov.br/issues/14541
+        
     - [OKAY] Verificar tarefas impeditivas para acompanhamento quais serão entregues. Todos os Redmine
+    
     - [OKAY] LDAP verificar com Wilton sobre os Login (indeferido)
+    
     - Informar todos os Prazos de finalização das demandas
-    - Entregar Pergunta do "Tipo Select" para teste interno em 30/08/2019 às 12:00
+    
+    - Entregar Pergunta do "Tipo Select" para teste interno em 30/08/2019 às 12:00    
+    
+    Executar teste de Publicacao de Arquivo
+    Executar teste de Criar Público Alvo com Fonte de Dados
+    
+    
+    # Variável
+    
+        - Apresentar Modal com as variáveis para persolizar as perguntas com as Fontes de Dados do Tipo Pergunta
+            - Recuperar valor da lista
+        - Carregar o campos de Pergunta com a variável
+        - Na tela de Resposta o sistema deve renderizar o valor da variável de acordo com o usuário Logado
 
 =======================================================================================================================================
 
@@ -27992,7 +28012,30 @@ public class RespostaResource extends CRUDResource<Resposta, FiltroResposta> {
      .abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ_
 
 =======================================================================================================================================
+
+    # Importar Fonte para o Linux 
+    
+        - Criar aqruivo "source_code.sh"
+
+            #!/usr/bin/env bash
+            cd Downloads
+            wget https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
+            if [ ! -d "~/.fonts" ] ; then
+                mkdir ~/.fonts
+            fi
+            unzip 1.050R-it.zip 
+            cp source-code-pro-*-it/OTF/*.otf ~/.fonts/
+            rm -rf source-code-pro* 
+            rm 1.050R-it.zip 
+            cd ~/
+            fc-cache -f -v
+            
+        - Executar como adminstrador 
+
 =======================================================================================================================================
+
+    # "172.18.221.164"
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
