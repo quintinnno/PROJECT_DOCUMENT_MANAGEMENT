@@ -19601,11 +19601,17 @@ unidadeOrganizacionalVincular.id
 //	    vm.unidadeOrganizacionalVincular.correioEletronico = null;
 //	    vm.unidadeOrganizacionalVincular.identificadorRegistrado = null;
 =======================================================================================================================================
-RespostaResource.java -> criarResposta()
 
-    ObjectMapper mapper = new ObjectMapper();
-    String jsonString = mapper.writeValueAsString(respostas);
-    System.out.println(jsonString);
+# QUESTIONARIO-CAPES
+
+    RespostaResource.java -> criarResposta()
+        
+        -----------------------------------------------------------------
+        com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+        String jsonString = mapper.writeValueAsString(respostas);
+        System.out.println(jsonString);
+        -----------------------------------------------------------------
+        
 =======================================================================================================================================
 https://www.brasiliadevfestival.com.br/
 =======================================================================================================================================
@@ -28030,12 +28036,257 @@ public class RespostaResource extends CRUDResource<Resposta, FiltroResposta> {
             cd ~/
             fc-cache -f -v
             
-        - Executar como adminstrador 
+        - Executar como adminstrador */
 
 =======================================================================================================================================
 
     # "172.18.221.164"
 
+=======================================================================================================================================
+
+# PLPOE
+
+    [PLPOE-20190902105239]
+        - Implementar funcionalidade de Persistência do Módulo de Registrar Ponto Eletrônico
+        
+    [PLPOE-20190902105832]
+        - Gerar mecanismo de Load personalizado para tarefas assíncronas de processamento
+        - https://www.pexels.com/blog/css-only-loaders/
+        
+    [PLPOE-20190902200210]
+        - Implementar funcionalidade de Relatórios
+
+=======================================================================================================================================
+
+# QUESTIONARIO-CAPES
+
+    - Finalizar demanda da Pergunta do "Tipo Select"
+
+=======================================================================================================================================
+
+# QUESTIONARIO-CAPES
+
+    + Configurar arquivo "sp.properties" no ambiente de "DESENVOLVIMENTO"
+
+    + Configurar arquivo "sp.properties" no ambiente de "TESTE"
+    
+    ----------------------------------------------------------------------------------------------------------------------------------
+    /home/indra/Desenvolvimento/Plubum/plubum_tool/plubum_tool_server/plubum_tool_server_jboss/arquivos/questionario-capes/sp.properties
+    ----------------------------------------------------------------------------------------------------------------------------------
+        #configuração do provedor de servicos    
+
+        provedorServico=questionario-capes.capes.gov.br
+        acsUrl=http://localhost:8080/questionario/acs
+
+        urlAutenticacao=http://teste.capes.gov.br/sso/sso
+        urlLogout=http://teste.capes.gov.br/sso/slo
+
+        arquivoCertificadoIDP=/home/indra/Desenvolvimento/Plubum/plubum_tool/plubum_tool_server/plubum_tool_server_jboss/arquivos/questionario-capes/seguranca.crt
+        classeAutorizadora=br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca
+
+        idp.oauth.url=http://teste.capes.gov.br/sso/oauth
+    ----------------------------------------------------------------------------------------------------------------------------------
+        
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Gerar release 
+        - Finalizar funcionalidade da questão do "Tipo Select"
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+    2019-09-02T12:02:33.251
+
+    https://redmine.capes.gov.br/issues/15045
+
+=======================================================================================================================================
+    
+    // FIXME
+	public int contarPublicoPorPublicoAlvo(Long idPublicoAlvo) {
+		StringBuilder hql = new StringBuilder("SELECT COUNT(*) AS contagem FROM QUESTIONARIO.PUBLICO p ");
+		hql.append("WHERE p.ID_PUBLICO_ALVO = :idPublicoAlvo ");
+		org.hibernate.Query query = session.createSQLQuery(hql.toString()).addScalar("contagem", LongType.INSTANCE);
+		query.setParameter("idPublicoAlvo", idPublicoAlvo);
+		return new Long((long) query.uniqueResult()).intValue();
+	}
+    
+=======================================================================================================================================
+
+/**
+	 * Método responsável por encaminhar o e-mail após criar o preenchimento.
+	 *  
+	 * @param detalhePublicacao
+	 * @param preenchimento
+	 * @param publico
+	 */
+	private void enviarEmail(DetalhePublicacao detalhePublicacao, Preenchimento preenchimento, Publico publico) {
+		String destinatario = "";
+		try {
+			String remetente = repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.remetente");
+
+			ModeloEmail modeloEmail = detalhePublicacao.getModeloEmail();
+
+			String assunto = modeloEmail.getNome();
+
+			destinatario = publico.getCorreioEletronico().getDescricaoCorreioEletronico();
+
+			String texto = formatarTextoModeloEmail(modeloEmail, publico, preenchimento);
+
+			servicoEmail.enviarEmail(destinatario, remetente, assunto, texto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "Não foi possível enviar e-mail para ";
+			throw new RuntimeException(msg + destinatario);
+		}
+	}
+    
+=======================================================================================================================================
+
+/**
+	 * Método responsável por encaminhar o e-mail após criar o preenchimento.
+	 *  
+	 * @param detalhePublicacao
+	 * @param preenchimento
+	 * @param publico
+	 */
+	private void enviarEmail(DetalhePublicacao detalhePublicacao, Preenchimento preenchimento, Publico publico) {
+		String destinatario = "";
+		try {
+			String remetente = repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.remetente");
+
+			ModeloEmail modeloEmail = detalhePublicacao.getModeloEmail();
+
+			String assunto = modeloEmail.getNome();
+
+			destinatario = publico.getCorreioEletronico().getDescricaoCorreioEletronico();
+
+			String texto = formatarTextoModeloEmail(modeloEmail, publico, preenchimento);
+
+			servicoEmail.enviarEmail(destinatario, remetente, assunto, texto);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "Não foi possível enviar e-mail para ";
+			throw new RuntimeException(msg + destinatario);
+		}
+	}
+    
+    private void realizarEnvioDeEmail(Publicacao publicacao, Boolean isRemocaoPublicaco, ModeloEmail modeloEmail){
+		
+		String destinatario = "";
+		String remetente = repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.remetente");
+					
+		try {
+			for (DetalhePublicacao detalhePublicacao : publicacao.getListaDetalhePublicacao()) {				
+				ModeloEmail modeloEmailAux = isRemocaoPublicaco?modeloEmail:detalhePublicacao.getModeloEmail();
+				
+				String assunto = modeloEmailAux.getNome();
+								
+				for (Publico publico : repositorioPublico.buscarPublicoPorPublicoAlvo(detalhePublicacao.getPublicoAlvo().getId())) {
+					
+					
+					Preenchimento preechimento = repositorioPreenchimento.buscarPreenchimentoPorPublico(publico.getId(), detalhePublicacao.getPublicacao().getId());
+										
+					destinatario = publico.getCorreioEletronico().getDescricaoCorreioEletronico();
+					
+					String texto = formatarTextoModeloEmail(modeloEmailAux,publico, preechimento);
+					
+	        		servicoEmail.enviarEmail(destinatario,remetente,assunto, texto);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			String msg = "Não foi possível enviar e-mail para ";
+			throw new RuntimeException(msg + destinatario);
+		}
+	}
+    
+    private String formatarTextoModeloEmail(ModeloEmail modeloEmail, Publico publico, Preenchimento preenchimento){
+		
+		String texto = modeloEmail.getModeloCapes();
+		
+		List<FonteDados> fontes = repositorioFonteDados.consultarFontesValidasPorModeloEmail(modeloEmail);
+		
+		for (FonteDados fonteDados : fontes) {
+			
+			Collection<ResultadoSqlDTO> resultado = repositorioFonteDados.consultaResuladoSql(fonteDados, 
+					publico.getIdentificadorRegistrado().getDescricao(), 1, 10);
+									
+			for (ResultadoSqlDTO resultadoSqlDTO : resultado) {					
+				for (ConsultaColunaTipoSqlDTO linha : resultadoSqlDTO.getLinha()) {
+					if (fonteDados.getNome().equals(LINK_SISTEMA)) {
+						
+						String url = linha.getValor().concat(preenchimento.getId().toString());
+						StringBuilder linkQuestionario = new StringBuilder();
+						linkQuestionario.append("<a href=\"");
+						linkQuestionario.append(url);
+						linkQuestionario.append("\" target=\"_blank\" >");
+						linkQuestionario.append("Link do questionário");
+						linkQuestionario.append("</a>");
+						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linkQuestionario.toString());
+					} else {
+						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linha.getValor());
+					}
+				}
+			}
+		}	
+		
+		return texto;
+	}
+    
+=======================================================================================================================================
+
+[REDMINE-15004] - Adequar query de publicação
+
+=======================================================================================================================================
+
+public void alterarEmail(Email email){
+		
+		DefaultHttpClient client = new DefaultHttpClient();
+		
+		StringBuilder url = new StringBuilder();
+		url.append(autorizadorSeguranca.obterUrlCadastroPessoa()).append("/pessoas/");
+		url.append(email.getIdPessoa()).append("/emails/").append(email.getId());
+		
+		HttpPut httpPut = new HttpPut(url.toString());
+		httpPut.setHeader("Accept", "application/json");
+		httpPut.setHeader("Content-type", "application/json");
+				
+		try {
+			httpPut.setEntity(new StringEntity(emailToJson(email)));
+			HttpResponse response = client.execute(httpPut);
+			
+			String content = EntityUtils.toString(response.getEntity());
+			
+			int statusCode = response.getStatusLine().getStatusCode();
+	        /*System.out.println("statusCode = " + statusCode);
+	        System.out.println("content = " + content);*/
+	        if(statusCode!=200){
+	        	throw new ValidacaoNegocialException(ErrosComuns.UC006_EX1);	        	        	
+	        }        
+	        			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ValidacaoNegocialException(ErrosComuns.UC006_EX1);
+		} 
+		
+	}
+    
+=======================================================================================================================================
+
+> git add * -f
+> git commit -m "[PLPOE-20190804030422]" -m "- Implementação dos Media Types do Resouce" -m "- Implementação do mapemaneto das classes de persistencia" -m "- Implementação das classes utilitárias" 
+
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
