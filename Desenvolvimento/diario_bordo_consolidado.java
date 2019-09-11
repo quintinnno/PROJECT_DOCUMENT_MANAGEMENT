@@ -7918,6 +7918,8 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 
     -- Ambiente de Homologação
         -- smb://samba-gns.capes.gov.br/java_homolog/questionario-capes/configuration
+        
+ smb://samba-gns.capes.gov.br/logs_teste/Java/questionario-capes
 
         User Capes: joseqj
         Domain:     FC
@@ -27432,6 +27434,38 @@ public class NotificadorQuartz implements Job { }
         - Cadastrar via Fonte de Dados as querys do tipo Pergunta select
         - Na tela de cadastrar pergunta (Manter Questionário) acrescentar um ícone para selecionar as variáveis do tipo Pergunta
             - Dessa forma o usuário deverá apenas esconher a variável para qualquer tipo de pergunta (Data, E-mail, Rótulo)
+        - Na tela de Visualizar Questionário o sistema deve-se renderizar o valor da Variável
+        - Na tela de Respondente deve-se renderizar o valor da Variável
+        
+        - Erros
+        
+            - Sistema não reconhece resultado da query SQL para o campo DH_ULTIMA_ALTERACAO (problema no tipo de dados)
+            
+        /questionario-responder
+        /questionario-visulizar
+        /questionario-editar
+        /api-visualizar-questionario-respostas
+        
+        INPUT_TEXT
+        EMAIL,
+        INPUT_NUMBER
+        LIST_BOX_MANY
+        LIST_BOX_ONE
+        DATA
+        PERIODO
+        SELECT
+        SELECT_MANY_ITEM
+        SELECT_ONE_ITEM
+        ROTULO
+        GRUPO
+        MATRIZ_SELECAO_UNICA
+        MATRIZ_SELECAO_MULTIPLA
+        
+        Garantir que a variável (nome da fonte de dados) seja única
+        O sistema deve procurar por qualquer pergunta que esteja com variável na pergunta
+        Buscar a variável da pergunra na fonte de dados
+        Realizar a consulta no banco com a query salva na fonte de dados
+            Utilizar na clausula where o "CORPORATIVO.PESSOA.ID_PESSOA" para renderizar o campo "CORPORATIVO.PESSOA.NM_PESSOA"
             
         glyphicon glyphicon-plus
         
@@ -28278,25 +28312,2342 @@ public void alterarEmail(Email email){
     
 =======================================================================================================================================
 
-> git add * -f
-> git commit -m "[PLPOE-20190804030422]" -m "- Implementação dos Media Types do Resouce" -m "- Implementação do mapemaneto das classes de persistencia" -m "- Implementação das classes utilitárias" 
+# PLPOE
+    > git add * -f
+    > git commit -m "[PLPOE-20190804030422]" -m "- Implementação dos Media Types do Resouce" -m "- Implementação do mapemaneto das classes de persistencia" -m "- Implementação das classes utilitárias" 
 
 =======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
-=======================================================================================================================================
+// FIXME [REDMINE-14504] {} -- "Implementa pergunta do Tipo Select"
+vm.modalApresentarValorPersonalizadoPergunta = () => {
+	  
+	  console.log("LIST: ");
+	  console.log(vm.fonteDadosPerguntaList);
+	  
+	  const modalExcluirOptions = { content: { header: { title: "{{('pergunta.cadastro.titulo.pergunta' | translate)}}", closeButton: false, },
+		    body: `
+		    <capes-isl-form>
+		    
+		    	{} {{$ctrl.escopo.fonteDadosPerguntaList}}
+		    
+		        <capes-isl-corpo-painel>
+
+			    	<capes-isl-select label="{{'pergunta.cadastro.variavel_pergunta' | translate}}"
+						  			  model="$ctrl.fonteDadosPerguntaModel.fonteDadosPergunta"
+          				  			  chave="$option.nome"
+          				  			  trackby="$option.id"
+          				  			  options="$ctrl.fonteDadosPerguntaList"
+          				  			  requerido="false" />
+		
+		        </capes-isl-corpo-painel>
+		        
+		      </capes-isl-painel>
+		      
+		    </capes-isl-form>
+		    `,
+		    footer: `
+		    <div>
+		      <div style="text-align: center;">
+		        <capes-isl-corpo-painel>
+		          <capes-isl-botao estilo="primary" click="$close(true)">{{'commons.selecionar' | translate}}</capes-isl-botao>
+		          <capes-isl-botao estilo="danger" click="$dismiss()">{{'commons.botao.cancelar' | translate}}</capes-isl-botao>
+		        </capes-isl-corpo-painel>
+		      </div>
+		    </div>
+		    `,
+		  },
+		  modalOptions: {
+		    controllerAs: '$ctrl',
+		    bindToController: true,
+		    controller() {
+		      this.escopo = this;
+		    },
+		    size: 'lg',
+		    keyboard: false,
+		    backdrop: 'static',
+		  },
+		};
+		
+		$capesModal
+		  .open(modalExcluirOptions)
+		  .then(() => {
+//		    vm.excluirVinculoOrganizacionalService(vm.vinculoOrganizacionalSelecionado.id);
+		  })
+		  .catch((razao) => {
+		    if (razao === 'backdrop click') {
+		      $window.history.back();
+		    }
+		  });
+	};
 =======================================================================================================================================
 
+# PLPOE
+
+    git status
+    git add * -f
+    git commit -m "[PLPOE-20190804030422]" -m "- Implementação das classes de teste de persistência"
+
+=======================================================================================================================================
+
+standalone.xml
+
+- Linha: 161
+
+<idle-timeout-minutes>15</idle-timeout-minutes>
+
+- Linha: 201
+
+<strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="60" instance-acquisition-timeout-unit="MINUTES"/>
+<strict-max-pool name="mdb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="60" instance-acquisition-timeout-unit="MINUTES"/>
+
+- Linha 327:
+
+<coordinator-environment default-timeout="3000"/>    
+
+=======================================================================================================================================
+
+    QUESTIONARIO 03/09/2019 (QC) V002
+
+=======================================================================================================================================
+
+    # LINKEDIN
+        
+        Jamile
+        Batista Alves
+        jamille.1948.alves@gmail.com  (7ja77misec77lle7)
+        g73yyqNnpib3CuN
+        
+=======================================================================================================================================
+
+    # JAVA 
+    
+        https://www.vogella.com/tutorials/JUnit/article.html
+
+=======================================================================================================================================
+
+package br.gov.capes.questionario.web.rest;
+
+import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
+
+import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.constraints.NotNull;
+import javax.ws.rs.DefaultValue;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+
+import org.apache.commons.httpclient.HttpStatus;
+import org.jboss.logging.Logger;
+import org.joda.time.LocalDateTime;
+
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+import com.wordnik.swagger.annotations.ApiResponse;
+import com.wordnik.swagger.annotations.ApiResponses;
+
+import br.gov.capes.componentes.jaxrs.Results;
+import br.gov.capes.questionario.dominio.Preenchimento;
+import br.gov.capes.questionario.dominio.Resposta;
+import br.gov.capes.questionario.dominio.VisualizacaoPergunta;
+import br.gov.capes.questionario.dominio.dto.PreenchimentoDTO;
+import br.gov.capes.questionario.dominio.enums.TipoIdentificacaoPublico;
+import br.gov.capes.questionario.dominio.enums.TransacoesPermitidas;
+import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
+import br.gov.capes.questionario.dominio.filtros.FiltroPreenchimento;
+import br.gov.capes.questionario.dominio.filtros.FiltroResposta;
+import br.gov.capes.questionario.gerenciador.GerenciadorCRUD;
+import br.gov.capes.questionario.gerenciador.GerenciadorPreenchimento;
+import br.gov.capes.questionario.gerenciador.GerenciadorPublico;
+import br.gov.capes.questionario.gerenciador.GerenciadorResposta;
+import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
+import br.gov.capes.questionario.web.rest.interceptor.RecursoProtegido;
+import br.gov.capes.questionario.web.rest.interceptor.novo.PermissaoAcesso;
+import br.gov.capes.questionario.web.rest.interceptor.novo.RecursoProtegidoNovo;
+import br.gov.capes.questionario.web.rest.util.CRUDResource;
+import br.gov.capes.seguranca.webservice.dto.Usuario;
+
+@Api("/respostas")
+@Path("/respostas")
+@RequestScoped
+public class RespostaResource extends CRUDResource<Resposta, FiltroResposta> {
+
+	@Inject
+	protected GerenciadorResposta gerenciadorResposta;
+	
+	@Inject
+	protected GerenciadorPreenchimento gerenciadorPreenchimento;
+	
+
+	@Inject
+	protected GerenciadorPublico gerenciadorPublico;
+	
+	@Inject
+	protected AutorizadorSeguranca autorizadorSeguranca;
+	
+	private Logger LOGGER = Logger.getLogger(RespostaResource.class);
+
+
+	public RespostaResource() {
+		super(Resposta.class);
+	}
+
+	@Override
+	protected GerenciadorCRUD<Resposta, FiltroResposta> getGerenciador() {
+		return this.gerenciadorResposta;
+	}
+	
+	final String ENCERRADO = "R";
+	final String EM_ABERTO = "A";
+	final String ENVIADO = "E";
+
+	@GET
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas para os parametros passados", response = Resposta.class, responseContainer = "List")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_PESQUISAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response consulta(
+			@QueryParam("offset") @DefaultValue("0") final int offset,
+			@QueryParam("max") @DefaultValue("10") final int max,
+			@QueryParam("orderBy") @DefaultValue("") final String orderBy,
+			@QueryParam("asc") final boolean asc,
+			@QueryParam("fields") @DefaultValue("") final String camposString,
+			@QueryParam("type") @DefaultValue("list") final String tipoConsulta,
+			@QueryParam("nome") final String filtroNome,
+			@QueryParam("sigla") final String filtroSigla,
+			@QueryParam("dataInicio") final long dataInicio,
+			@QueryParam("dataFim") final long dataFim,
+			@QueryParam("statusQuestionario") final String statusQuestionario) {
+
+		Preenchimento filtro = new Preenchimento();
+        
+		final FiltroPreenchimento parametro = new FiltroPreenchimento(offset, max, orderBy ,asc, camposString, tipoConsulta, filtro, statusQuestionario);
+		if (dataFim != 0) {
+			parametro.setDataFim(new Date(dataFim));
+		}
+		if (dataInicio != 0) {
+			parametro.setDataInicio(new Date(dataInicio));
+		}
+        parametro.setSigla(filtroSigla);
+        parametro.setNome(filtroNome);
+        parametro.setUsuario(autorizadorSeguranca.getUsuarioLogado());
+        
+        if (tipoConsulta.equals("list")) {
+        	//gerenciadorPreenchimento.verificarDataFimVigenciaQuestionario(autorizadorSeguranca.getUsuarioLogado().getId());  		
+        	return getResult().use(Results.representation())
+                    .from(gerenciadorPreenchimento.buscarPorParametro(parametro))
+                    .serialize();
+		}else {
+			return getResult().use(Results.representation())
+                    .from(gerenciadorPreenchimento.contarPorParametro(parametro))
+                    .serialize();
+		}
+	}
+	
+	@GET
+	@Path("/pesquisarPorQuestionario")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas para os parametros passados", response = Resposta.class, responseContainer = "List")
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public List<Resposta> consultarPorQuestionario(@QueryParam("idQuestionario") final long idQuestionario) {
+		Resposta resposta = new Resposta();
+		FiltroResposta filtroResposta = new FiltroResposta(resposta);
+        filtroResposta.setIdQuestionario(idQuestionario);         
+        filtroResposta.setUsuario(autorizadorSeguranca.getUsuarioLogado());
+        return  gerenciadorResposta.buscarRespostasPorQuestionario(filtroResposta);
+	}
+
+	@GET
+	@Path("/{id}")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera determinado questionário", response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response consulta(@PathParam("id") final long idResposta, @NotNull @QueryParam("fields") @DefaultValue("") final String camposString) {
+	  return null;
+	}
+
+	@POST
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Cria questinario passado no corpo da mensagem se for válido", response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Criação realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_RESPONDER_QUESTIONARIO_DESCRICAO_TRANSACAO), 
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+			descricaoTransacao = TransacoesPermitidas.Constantes.TR_EDITAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response criarResposta(List<VisualizacaoPergunta> respostas) {
+     	try {
+     		
+     		List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+     		     		
+     		if(respostas2!=null&&!respostas2.isEmpty()){
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     			}     			
+     		}	
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+
+	}
+	
+	@POST
+	@Path("/enviar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegidoNovo(permissoes = {
+			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarResposta(Preenchimento preenchimento) {
+		try {
+			preenchimento.setDataFinalizacao(new LocalDateTime());
+			
+			if(gerenciadorPreenchimento.validarRespostasPorPreenchimento(preenchimento)) {
+				if (preenchimento.getPublico().getPublicoAlvo()
+						.getTipoIdentificacaoPublico() == TipoIdentificacaoPublico.P) {
+					gerenciadorPublico.alterarEntidade(preenchimento.getPublico());
+				}
+				preenchimento.setStatus(ENVIADO);
+				preenchimento = gerenciadorPreenchimento.alterarEntidade(preenchimento);				
+			}else{
+				return null;
+			}
+			
+			return getResult().use(Results.representation()).from(preenchimento).serialize();			
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@POST
+	@Path("/enviarSalvar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+//	@RecursoProtegidoNovo(permissoes = {
+//			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+//					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarSalvarResposta(List<VisualizacaoPergunta> respostas, @Context HttpServletRequest request ) {
+		
+		try {
+			Usuario usuario = new Usuario();
+			usuario.setId(2536187L);
+			request.getSession().setAttribute("usuario",  usuario);
+			List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+     		     		
+     		if(respostas2!=null&&!respostas2.isEmpty()){
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     				
+     				Preenchimento preenchimento = respostas2.get(0).getResposta().get(0).getPreenchimento();
+     				preenchimento.setDataFinalizacao(new LocalDateTime());
+     				preenchimento.setStatus(ENVIADO);
+     				gerenciadorPreenchimento.alterarEntidade(preenchimento);
+     			}     			
+     		}
+			
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+	
+	@GET
+	@Path("/buscarPreenchimentoComRespostas")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Recupera respostas de um publico alvo", response = PreenchimentoDTO.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response buscarPreenchimentoComRespostas(
+			@QueryParam("offset") @DefaultValue("0") final int offset,
+			@QueryParam("max") @DefaultValue("0") final int max,
+			@QueryParam("nomePessoa") @DefaultValue("") final String nomePessoa,
+			@QueryParam("cpf") @DefaultValue("") final String cpf,
+			@QueryParam("idPublicacao") @DefaultValue("") final Long idPublicacao,
+			@QueryParam("idPublicoAlvo") @DefaultValue("") final Long idPublicoAlvo) {
+
+		List<PreenchimentoDTO> resultado = gerenciadorResposta.buscarPreenchimentoComRespostas(idPublicacao, idPublicoAlvo, nomePessoa, cpf, offset, max);
+		
+		return getResult().use(Results.representation()).from(resultado).serialize();
+	}
+	
+	@GET
+	@Path("/contarPreenchimentoComRespostas")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Conta as respostas de um publico alvo", response = Long.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@RecursoProtegido
+	public Response contarPreenchimentoComRespostas(@QueryParam("idPublicacao") @DefaultValue("") final Long idPublicacao,
+			@QueryParam("idPublicoAlvo") @DefaultValue("") final Long idPublicoAlvo) {
+
+		Long resultado = gerenciadorResposta.contarPreenchimentoComRespostas(idPublicacao, idPublicoAlvo);
+		
+		return getResult().use(Results.representation()).from(resultado).serialize();
+	}
+}
+
+
+=======================================================================================================================================
+
+Endpoint: http://localhost:8080
+Resource: /questionario/rest/respostas/enviarSalvar
+
+=======================================================================================================================================
+
+# QUESTIONARIO-CAPES [BANCO DE HOMOLOGACAO]
+
+/*
+	OBJETIVO: RECUPERAR TODAS AS PERGUNTAS DE UM DETERMINADO QUESTIONARIO
+*/
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Pibid Bolsistas de Iniciação à Docência BIDs%';
+
+SELECT PERGUNTA_.ID_PERGUNTA, PERGUNTA_IDIOMA_.TX_PERGUNTA
+-- SELECT *
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PERGUNTA PERGUNTA_ ON PERGUNTA_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.PERGUNTA_IDIOMA PERGUNTA_IDIOMA_ ON PERGUNTA_IDIOMA_.ID_PERGUNTA = PERGUNTA_.ID_PERGUNTA
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 104
+AND PERGUNTA_.ID_PERGUNTA IN(1519, 1520, 1522, 1524);
+
+/*
+	Prezado ${NOME_BID}, este questionário tem a finalidade de coletar informações a respeito das atividades que estão sendo desenvolvidas por você no PIBID
+	O prazo para o preenchimento do questionário é até o dia ${xx/xx/xxxx}
+	O Coordenador de Área de seu projeto é o(a)  Sr(a). ${NOME_CA} ?
+	Sua escola de atuação é o(a) ${NOME_ESCOLA} ?
+*/
+
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO_02_09_2019_QC_V001%';
+
+PUBLICO ALVO 02/09/2019 (Identificação Opcional) V0001
+
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE LOWER(PESSOA_.NM_PESSOA) LIKE LOWER('ROBERTA SILVA MILHOMEM');
+
+SELECT * 
+FROM CORPORATIVO.PESSOA PESSOA_ 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_ .ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '%04897639107%'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 188;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+
+
+
+# QUESTIONARIO-CAPES [BANCO DE DESENVOLVIMENTO]
+
+---
+-- CRIAR PUBLICO ALVO NO AMBIENTE DE HOMOLOGACAO DE 3000 PÚBLICOS COMPOSTOS DE 1000 PESSOAS
+-- SELECT * FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ORDER BY ID_PUBLICO_ALVO DESC;
+-- SELECT * FROM QUESTIONARIO.TIPO_PUBLICO_ALVO;
+-- SELECT * FROM QUESTIONARIO.PUBLICO;
+-- SELECT * FROM CORPORATIVO.TIPO_IDENTIFICADOR_REGISTRADO;
+-- SELECT * FROM CORPORATIVO.PESSOA ORDER BY ID_PESSOA DESC;
+
+-- CRIAR PUBLICO ALVO - 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001'
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001', 'O', 'CARGA_QUESTIONARIO', SYSDATE, 3);
+
+-- INCLUIR PUBLICO RESPONDENTE AO PUBLICO ALVO
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001'),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+--SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 1 AND 6218
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+----
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002', 'O', 'CARGA_QUESTIONARIO', SYSDATE, 3);
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002'),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 6218 AND 8035
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+----
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0003', 'O', 'CARGA_QUESTIONARIO', SYSDATE, 3);
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0003'),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+--SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8035 AND 8266
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+----
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0003', 'O', 'CARGA_QUESTIONARIO', SYSDATE, 3);
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_22_08_2019_IDENTIFICACAO_OBRIGATORIA_V001'),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+--SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 18587 AND 19105
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+----
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO_ALVO_21_08_2019_LOTE_10000_IDENTIFICACAO_OBRIGATORIA_V0004', 'O', 'CARGA_QUESTIONARIO', SYSDATE, 3);
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_10000_IDENTIFICACAO_OBRIGATORIA_V0004'),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18587
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+SELECT * 
+FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+JOIN CORPORATIVO.PESSOA PESSOA_  ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA
+WHERE PESSOA_.ID_PESSOA IN(2536050,2536187)
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S';
+
+-- SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE '%JOSE%QUINTINO%SILVA%JUNIOR%';
+-- SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001');
+-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001');
+-- -- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001');
+
+-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002');
+-- -- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002');
+
+-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0003');
+-- -- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0003');
+
+-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_10000_IDENTIFICACAO_OBRIGATORIA_V0004');
+-- -- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = (SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_21_08_2019_LOTE_10000_IDENTIFICACAO_OBRIGATORIA_V0004');
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PUBLICACAO;
+SELECT * FROM QUESTIONARIO.SITUACAO_OPERACAO;
+SELECT * FROM QUESTIONARIO.TIPO_NOTIFICACAO;
+SELECT * FROM QUESTIONARIO.CARGA_PUBLICO_ALVO;
+SELECT * FROM QUESTIONARIO.DETALHE_CARGA;
+SELECT * FROM QUESTIONARIO.PUBLICO PUBLICO_ WHERE PUBLICO_.ID_PUBLICO_ALVO = (SELECT ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE 'PUBLICO_ALVO_22_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001');
+
+-- DELETE QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO IS NOT NULL;
+-- DELETE QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IS NOT NULL;
+-- DELETE QUESTIONARIO.NOTIFICACAO_PUBLICACAO WHERE ID_NOTIFICACAO_PUBLICACAO IS NOT NULL;
+
+-- REMOVER PUBLICACAO QUESTIONARIO
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO 03/09/2019 (QC) V001%';
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE ID_PREENCHIMENTO IN(SELECT ID_PREENCHIMENTO FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015);
+SELECT ID_PUBLICACAO FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 1015;
+SELECT ID_DETALHE_PUBLICACAO FROM QUESTIONARIO.DETALHE_PUBLICACAO WHERE ID_PUBLICACAO IN(1251,1264,1185);
+
+SELECT * FROM QUESTIONARIO.RESPOSTA ORDER BY ID_RESPOSTA DESC;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PUBLICACAO;
+
+-- DELETE FROM QUESTIONARIO.DETALHE_PUBLICACAO WHERE ID_DETALHE_PUBLICACAO IN(1145,1194,1207);
+-- DELETE FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE ID_PREENCHIMENTO IN(SELECT ID_PREENCHIMENTO FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015);
+-- DELETE FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+-- DELETE FROM QUESTIONARIO.PUBLICACAO WHERE ID_PUBLICACAO IN(1251,1264,1185);
+-- DELETE QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO IS NOT NULL;
+-- DELETE QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IS NOT NULL;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE '%PUBLICO_ALVO_21_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0001%';
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 457;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 462;
+SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 1015;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 462 ORDER BY ID_PESSOA;
+
+-- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 462 AND ID_PESSOA BETWEEN 24143 AND 24542;
+-- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 462;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO ORDER BY DH_NOTIFICACAO DESC;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80;
+
+ID_SITUACAO_OPERACAO|DS_SITUACAO_OPERACAO|SG_SITUACAO_OPERACAO
+--------------------|--------------------|--------------------
+                   1|AGUARDANDO          |AG                  
+                   2|EM EXECUÇÃO         |EX                  
+                   3|COM ERRO            |ER                  
+                   4|CONCLUÍDO           |CO                  
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80;
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80 AND ID_SITUACAO_OPERACAO = 1;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80 AND ID_SITUACAO_OPERACAO = 2;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80 AND ID_SITUACAO_OPERACAO = 3;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 80 AND ID_SITUACAO_OPERACAO = 4;
+
+SELECT * FROM QUESTIONARIO.DETALHE_CARGA;
+SELECT * FROM QUESTIONARIO.CONEXAO;
+
+SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P' ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT QUESTIONARIO.PERGUNTA.ID_PERGUNTA FROM QUESTIONARIO.PERGUNTA WHERE QUESTIONARIO.PERGUNTA.ID_QUESTIONARIO = 11
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 1012;
+
+SELECT P.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA || ', PRÓ-REITOR DA '
+FROM CORPORATIVO.PESSOA P
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO EM ON EM.ID_PESSOA = P.ID_PESSOA AND EM.ID_FINALIDADE_ENDERECO = 5 AND EM.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN CORPORATIVO.PAPEL_PESSOA PA ON PA.ID_PESSOA = P.ID_PESSOA 
+INNER JOIN CORPORATIVO.RELACIONAMENTO_PESSOA RP ON RP.ID_SUB_PAPEL = PA.ID_PAPEL_PESSOA AND RP.ID_TIPO_RELACIONAMENTO = 11
+INNER JOIN CORPORATIVO.RELACIONAMENTO_OCORRENCIA OC ON OC.ID_RELACIONAMENTO = RP.ID_RELACIONAMENTO AND OC.DT_FIM_RELACIONAMENTO IS NULL
+INNER JOIN CORPORATIVO.PAPEL_PESSOA PIE ON RP.ID_SUPER_PAPEL = PIE.ID_PAPEL_PESSOA
+INNER JOIN CORPORATIVO.INSTITUICAO_ENSINO IES ON IES.ID_INSTITUICAO_ENSINO = PIE.ID_PESSOA;
+
+SELECT INSTITUICAO_ENSINO_.ID_INSTITUICAO_ENSINO, PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA
+-- SELECT *
+FROM CORPORATIVO.INSTITUICAO_ENSINO INSTITUICAO_ENSINO_
+JOIN CORPORATIVO.PESSOA_JURIDICA PESSOA_JURIDICA_  ON PESSOA_JURIDICA_.ID_PESSOA_JURIDICA = INSTITUICAO_ENSINO_.ID_INSTITUICAO_ENSINO
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PESSOA_JURIDICA_.ID_PESSOA_JURIDICA 
+WHERE PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA IS NOT NULL
+AND PESSOA_.ID_PAIS = 31
+AND LENGTH(PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA) > 20
+-- AND ROWNUM <= 10
+ORDER BY PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA DESC;
+
+-- RECUPERAR TODOS OS ALUNOS DE UMA DETERMINADA INTITUICAO DE ENSINO
+SELECT PESSOA_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA
+-- SELECT PESSOA_.NM_PESSOA, PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA
+-- SELECT * 
+FROM CORPORATIVO.INSTITUICAO_ENSINO INSTITUICAO_ENSINO_
+JOIN CORPORATIVO.TITULO_PESSOA TITULO_PESSOA_ ON TITULO_PESSOA_.ID_INSTITUICAO_ENSINO = INSTITUICAO_ENSINO_.ID_INSTITUICAO_ENSINO
+JOIN CORPORATIVO.PESSOA_JURIDICA PESSOA_JURIDICA_  ON PESSOA_JURIDICA_.ID_PESSOA_JURIDICA = INSTITUICAO_ENSINO_.ID_INSTITUICAO_ENSINO
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = TITULO_PESSOA_.ID_PESSOA_FISICA
+WHERE TITULO_PESSOA_.ID_AREA_CONHECIMENTO = 28
+AND LENGTH(PESSOA_JURIDICA_.NM_FANTASIA_PESSOA_JURIDICA) > 20
+AND PESSOA_.ID_PAIS = 31;
+
+-- EXCLUIR PERGUNTA
+SELECT * FROM QUESTIONARIO.MODELO_PERGUNTA ORDER BY ID_MODELO_PERGUNTA DESC;
+SELECT * FROM QUESTIONARIO.MODELO_ALTERNATIVA ORDER BY ID_MODELO_ALTERNATIVA DESC;
+SELECT * FROM QUESTIONARIO.MODELO_ALTERNATIVA_IDIOMA ORDER BY ID_MODELO_ALTERNATIVA_IDIOMA DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA ORDER BY ID_PERGUNTA DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+
+-- DELETE FROM QUESTIONARIO.MODELO_ALTERNATIVA_IDIOMA WHERE ID_MODELO_ALTERNATIVA_IDIOMA = 1159;
+-- DELETE FROM QUESTIONARIO.MODELO_ALTERNATIVA WHERE ID_MODELO_PERGUNTA IN(775);
+-- DELETE FROM QUESTIONARIO.PERGUNTA_IDIOMA WHERE ID_PERGUNTA IN(10050, 10049);
+-- DELETE FROM QUESTIONARIO.PERGUNTA WHERE ID_PERGUNTA IN(10049, 10050);
+-- DELETE FROM QUESTIONARIO.MODELO_PERGUNTA WHERE ID_MODELO_PERGUNTA IN(774,773);
+
+-- EXCLUIR FONTE DE DADOS
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT * FROM QUESTIONARIO.VINCULO_EMAIL_FONTE WHERE ID_FONTE_DADOS = 138;
+SELECT * FROM QUESTIONARIO.VINCULO_FONTE_ALTERNATIVA WHERE ID_FONTE_DADOS = 138;
+SELECT * FROM QUESTIONARIO.VINCULO_FONTE_MODELO_ALT WHERE ID_FONTE_DADOS = 138;
+
+-- DELETE FROM QUESTIONARIO.FONTE_DADOS WHERE ID_FONTE_DADOS = 138;
+
+/*
+	Prezado ${NOME_RESPONDENTE_QUESTIONARIO}, este questionário tem a finalidade de coletar informações a respeito das atividades que estão sendo desenvolvidas por você no PIBID
+	O prazo para o preenchimento do questionário é até o dia ${xx/xx/xxxx}
+	O Coordenador de Área de seu projeto é o(a)  Sr(a). ${NOME_CA} ?
+	Sua escola de atuação é o(a) ${NOME_ESCOLA} ?
+*/
+
+-- QUERY DINAMICA PARA A PERGUNTA "Prezado ${NOME_BID}, este questionário tem a finalidade de coletar informações a respeito das atividades que estão sendo desenvolvidas por você no PIBID"
+-- RECUPERAR NOME DO RESPONDENTE PARA TELA DE RESPOSTA
+
+-- SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE '%JOSE QUINTINO DA SILVA JUNIOR%';
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA ORDER BY ID_PERGUNTA DESC;
+
+SELECT PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND PESSOA_.ID_PESSOA = 2536187;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P' ORDER BY ID_FONTE_DADOS DESC;
+
+-- UPDATE QUESTIONARIO.FONTE_DADOS
+SET DS_FONTE_SQL = 'SELECT P.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA, IES.SG_INSTITUICAO_ENSINO AS PRO_REITOR, DS_CORREIO_ELETRONICO
+FROM CORPORATIVO.PESSOA P
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO EM ON EM.ID_PESSOA = P.ID_PESSOA AND EM.ID_FINALIDADE_ENDERECO = 5
+inner join CORPORATIVO.PAPEL_PESSOA PA ON PA.ID_PESSOA = P.iD_PESSOA 
+INNER JOIN CORPORATIVO.RELACIONAMENTO_PESSOA RP ON RP.ID_SUB_PAPEL = PA.ID_PAPEL_PESSOA AND RP.ID_TIPO_RELACIONAMENTO = 11
+INNER JOIN CORPORATIVO.RELACIONAMENTO_OCORRENCIA OC ON OC.ID_RELACIONAMENTO = RP.ID_RELACIONAMENTO AND OC.DT_FIM_RELACIONAMENTO IS NULL
+inner join CORPORATIVO.PAPEL_PESSOA PIE ON RP.ID_SUPER_PAPEL = PIE.ID_PAPEL_PESSOA
+INNER JOIN CORPORATIVO.INSTITUICAO_ENSINO IES ON IES.ID_INSTITUICAO_ENSINO = PIE.ID_PESSOA'
+WHERE ID_FONTE_DADOS = 139;
+
+-- UPDATE QUESTIONARIO.FONTE_DADOS
+SET DS_FONTE_SQL = 'SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6'
+WHERE ID_FONTE_DADOS = 139;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P';
+SELECT * FROM QUESTIONARIO.VINCULO_FONTE_ALTERNATIVA;
+
+-- DELETE FROM QUESTIONARIO.VINCULO_FONTE_ALTERNATIVA WHERE ID_VINCULO_FONTE_ALTERNATIVA = 1;
+-- DELETE FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P';
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+
+SELECT fonte_dados_ 
+FROM FonteDados fonte_dados_ 
+WHERE fonte_dados_.finalidadeFonte.descricao = :descricaoFonteDadosPergunta;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 457;
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 457;
+
+SELECT ID_PESSOA FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO = 39295;
+
+SELECT ID_PESSOA 
+FROM QUESTIONARIO.PUBLICO 
+WHERE ID_PUBLICO = 39295;
+
+SELECT PESSOA_.ID_PESSOA FROM CORPORATIVO.PESSOA PESSOA_ WHERE ID_PESSOA = 39295;
+
+SELECT publico_.ID_PESSOA FROM QUESTIONARIO.PUBLICO publico_ WHERE publico_.ID_PUBLICO = 7331;
+
+SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO 03/09/2019 (QC) V001%';
+
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PESSOA = 10441;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 460;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90;
+
+ID_SITUACAO_OPERACAO|DS_SITUACAO_OPERACAO|SG_SITUACAO_OPERACAO
+--------------------|--------------------|--------------------
+                   1|AGUARDANDO          |AG                  
+                   2|EM EXECUÇÃO         |EX                  
+                   3|COM ERRO            |ER                  
+                   4|CONCLUÍDO           |CO                  
+                   
+-- VERIFICAR AS NOTIFICACOES DO QUESTIONARIO "QUESTIONARIO_22_08_2019_QC_PERGUNTA_MODELO_V002"
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90 AND ID_SITUACAO_OPERACAO = 1; -- 8204
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90 AND ID_SITUACAO_OPERACAO = 2; -- 1429
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90 AND ID_SITUACAO_OPERACAO = 3; -- 0
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90 AND ID_SITUACAO_OPERACAO = 4; -- 371
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 90 AND ID_SITUACAO_OPERACAO = 2;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO = 90;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO 03/09/2019 (QC) V002%';
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1015;
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.DH_ULTIMA_ALTERACAO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND PESSOA_.ID_PESSOA = 2536187;
+
+SELECT  * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P' ORDER BY ID_FONTE_DADOS;
+
+UPDATE QUESTIONARIO.FONTE_DADOS 
+SET NM_FONTE_DADOS='${NOME_COORDENADOR}'
+WHERE ID_FONTE_DADOS=141;
+
+UPDATE QUESTIONARIO.FONTE_DADOS 
+SET NM_FONTE_DADOS='${DATA_TERMINO_BOLSA}'
+WHERE ID_FONTE_DADOS=142;
+
+UPDATE QUESTIONARIO.FONTE_DADOS 
+SET NM_FONTE_DADOS='${NOME_SUPERVISOR}'
+WHERE ID_FONTE_DADOS=143;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT * 
+FROM QUESTIONARIO.FONTE_DADOS FONTE_DADOS_
+WHERE FONTE_DADOS_.NM_FONTE_DADOS LIKE '%NOME_COORDENADOR%';
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND PESSOA_.ID_PESSOA = 2536187;
+ 
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6 AND PESSOA_.ID_PESSOA = 2536187;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA;
+
+DELETE FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IS NOT NULL;
+DELETE FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO_PESSOA IS NOT NULL;
+
+=======================================================================================================================================
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR MODELO DE EMAIL
+------------------------------------------------------------------------------------------------------------
+
+	-- SELECT * FROM QUESTIONARIO.MODELO_EMAIL ORDER BY ID_MODELO_EMAIL DESC;
+	
+	INSERT INTO QUESTIONARIO.MODELO_EMAIL (ID_MODELO_EMAIL, DS_MODELO_EMAIL, TP_FINALIDADE, TP_PUBLICO_MODELO, TX_MODELO_CAPES, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	VALUES(QUESTIONARIO.SQ_MODELO_EMAIL.NEXTVAL, 'MODELO E-MAIL 04/09/2019 [PUBLICACAO] [INTERNO] V001', 'P', 'I', 'O Questionário {nome_questionario} foi criado para testar Publicações com grandes volumes de dados.', 'REDMINE-14503', SYSDATE);
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR PUBLICO ALVO
+------------------------------------------------------------------------------------------------------------
+	-- SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+	-- SELECT * FROM QUESTIONARIO.TIPO_PUBLICO_ALVO;
+
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001', 'O', 'REDMINE-14503', SYSDATE, 1);
+
+------------------------------------------------------------------------------------------------------------
+-- # INSERIR PESSOAS AO PUBLICO ALVO
+------------------------------------------------------------------------------------------------------------
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT  QUESTIONARIO.SQ_PUBLICO.NEXTVAL, 
+	   	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001'),
+		PESSOA_.ID_PESSOA,
+		IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+		CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+		'REDMINE-14503',
+		SYSDATE,
+		'S',
+		NULL,
+		NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT  QUESTIONARIO.SQ_PUBLICO.NEXTVAL, 
+	   	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001'),
+		PESSOA_.ID_PESSOA,
+		IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+		CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+		'REDMINE-14503',
+		SYSDATE,
+		'S',
+		NULL,
+		NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F';
+
+	-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 472;
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR QUESTIONARIO
+------------------------------------------------------------------------------------------------------------
+
+	-- SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+INSERT INTO QUESTIONARIO.QUESTIONARIO (ID_QUESTIONARIO, NM_QUESTIONARIO, ID_TIPO_DOCUMENTO_EXIGIVEL, TX_FINALIDADE, DS_USUARIO_ALTERACAO, DH_ULTIMA_ALTERACAO, SG_QUESTIONARIO, DS_USUARIO_ULTIMA_ALTERACAO, TP_SITUACAO, ID_APLICACAO)
+VALUES(QUESTIONARIO.SQ_QUESTIONARIO.NEXTVAL, 'QUESTIONARIO 04/09/2019 V001', NULL, '', 'REDMINE-14503', SYSDATE, 'QC', NULL, 'PB', 1237);
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR PUBLICACAO
+------------------------------------------------------------------------------------------------------------
+	-- SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+	
+INSERT INTO QUESTIONARIO.PUBLICACAO ( ID_PUBLICACAO, ID_QUESTIONARIO, DT_INICIO, DT_FIM, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DT_PUBLICACAO, IN_PUBLICADO)
+VALUES( QUESTIONARIO.SQ_PUBLICACAO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), TIMESTAMP '2019-09-01 00:00:00.000000', TIMESTAMP '2019-09-30 00:00:00.000000', 'REDMINE-14503', SYSDATE, TIMESTAMP '2019-09-30 00:00:00.000000', 'S');
+
+-- CRIAR DETALHE PUBLICACAO
+
+	-- SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO ORDER BY ID_DETALHE_PUBLICACAO DESC;
+
+INSERT INTO QUESTIONARIO.DETALHE_PUBLICACAO(ID_DETALHE_PUBLICACAO, ID_MODELO_EMAIL, ID_PUBLICO_ALVO, ID_PUBLICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO) 
+VALUES(QUESTIONARIO.SQ_DETALHE_PUBLICACAO.NEXTVAL, 264, 472, 1274, 'REDMINE-14503', SYSDATE);
+
+-- CRIAR PREENCHIMENTO
+
+	-- SELECT * FROM QUESTIONARIO.PREENCHIMENTO ORDER BY ID_PREENCHIMENTO DESC;
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO(ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, SG_SISTEMA_ORIGEM, ID_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, ID_PUBLICACAO, CS_STATUS_PREENCHIMENTO, ID_PUBLICO)
+SELECT QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), PESSOA_.ID_PESSOA, NULL, NULL, TIMESTAMP '2019-08-26 00:00:00.000000', TIMESTAMP '2019-08-31 00:00:00.000000', NULL, SYSDATE, 'REDMINE-14503', NULL, 1274, 'A', PUBLICO_.ID_PUBLICO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F'
+AND PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472;
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO(ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, SG_SISTEMA_ORIGEM, ID_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, ID_PUBLICACAO, CS_STATUS_PREENCHIMENTO, ID_PUBLICO)
+SELECT QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), PESSOA_.ID_PESSOA, NULL, NULL, TIMESTAMP '2019-08-26 00:00:00.000000', TIMESTAMP '2019-08-31 00:00:00.000000', NULL, SYSDATE, 'REDMINE-14503', NULL, 1274, 'A', PUBLICO_.ID_PUBLICO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F'
+AND PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472;
+
+-- CRIAR NOTIFICACAO
+
+	-- SELECT * FROM QUESTIONARIO.NOTIFICACAO ORDER BY ID_NOTIFICACAO DESC;
+	-- SELECT * FROM QUESTIONARIO.TIPO_NOTIFICACAO;
+	-- DELETE FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IS NOT NULL;
+
+	INSERT INTO QUESTIONARIO.NOTIFICACAO(ID_NOTIFICACAO, ID_TIPO_NOTIFICACAO, ID_MODELO_EMAIL, NR_VINCULO_NOTIFICACAO, DH_NOTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	VALUES(QUESTIONARIO.SQ_NOTIFICACAO.NEXTVAL, 1, 264, 1274, SYSDATE, 'REDMINE-14503', SYSDATE);
+
+-- CRIAR NOTIFICACAO_PESSOA
+
+	-- SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA ORDER BY ID_NOTIFICACAO DESC;
+	-- SELECT * FROM QUESTIONARIO.SITUACAO_OPERACAO ORDER BY ID_SITUACAO_OPERACAO DESC;
+	-- DELETE FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO IS NOT NULL;
+	
+	INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA (ID_NOTIFICACAO_PESSOA, ID_NOTIFICACAO, ID_PESSOA, ID_SITUACAO_OPERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	SELECT  QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, 
+	   	101,
+		PESSOA_.ID_PESSOA,
+		1,
+		'REDMINE-14503',
+		SYSDATE
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA (ID_NOTIFICACAO_PESSOA, ID_NOTIFICACAO, ID_PESSOA, ID_SITUACAO_OPERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	SELECT  QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, 
+	   	101,
+		PESSOA_.ID_PESSOA,
+		1,
+		'REDMINE-14503',
+		SYSDATE
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F';
+
+
+ID_SITUACAO_OPERACAO|DS_SITUACAO_OPERACAO|SG_SITUACAO_OPERACAO
+--------------------|--------------------|--------------------
+                   1|AGUARDANDO          |AG                  
+                   2|EM EXECUÇÃO         |EX                  
+                   3|COM ERRO            |ER                  
+                   4|CONCLUÍDO           |CO                  
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101;
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 1;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 2;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 3;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 4;
+
+=======================================================================================================================================
+    
+    PUBLICO ALVO 05/09/2019 (INTERNO) (IDENTIFICACAO OBRIGATORIA) V001
+    QUESTIONARIO 05/09/2019 (QC) V001
+    
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Pergunta do Tipo Select
+            
+            - [FINALIZADO] Ao cadastrar uma determinada Fonte de Dados do Tipo Pergunta o sistema deverá salvar o nome da variável no formato ${<NOME_VARIAVEL_PERGUNTA>}
+            
+            - [AGUARDANDO] Ajustar, na tela cadastro de Fonte de Dados do tipo Pergunta, a mensagem "Para o correto funcionamento, a query de dados do tipo pergunta, deve retornar o ID e a descrição da alternativa vinculada à pergunta." para "<????>"
+            
+            - [AGUARDANDO] Ajustar na tela de cadastro de Perguntas do Questionario para que, ao editar, apenas o valor da variável seja substituida (e não o conteúdo da pergunta inteira)
+            
+            - [AGUARDANDO] Ajustar para a Query seja executada independentemente do formato cadastrado na Fonte de Dados
+        
+            - [AGUARDANDO] Gerar merge do código para a Trunk
+        
+        Modelo de E-mail 05/09/2019 (Publicação) (Interno) v1
+        PUBLICO ALVO 05/09/2019 (INTERNO) (IDENTIFICACAO OBRIGATORIA) V002
+        QUESTIONARIO 05/09/2019 (QC) V003
+        
+        - >> Publicar
+
+=======================================================================================================================================
+    
+    # COMMIT
+                
+        [REDMINE-14504] - Funcionamento de questão do tipo Select
+        - Implementa o funcionamento da Pergunta do Tipo Select
+
+=======================================================================================================================================
+
+final FonteDados dummy = new FonteDados();
+		dummy.setId(ID_MOCK_FONTE);
+		dummy.setFinalidadeFonte(MOCK_FINALIDADEFONTEDADOS);
+		dummy.setNome(MOCK_NOME_FONTE);
+        
+Mockito.when(gerenciadorFonteDados.alterarNomeFonteDadosTipoPergunta(fonteDummy)).thenReturn(fonteDummy);
+
+=======================================================================================================================================
+package br.gov.capes.questionario.gerenciador;
+
+import static org.mockito.Mockito.atLeastOnce;
+import static org.mockito.Mockito.verify;
+
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.naming.NamingException;
+
+import org.apache.commons.lang.SerializationUtils;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
+import org.powermock.core.classloader.annotations.PrepareForTest;
+import org.powermock.modules.junit4.PowerMockRunner;
+
+import br.gov.capes.questionario.dominio.FonteDados;
+import br.gov.capes.questionario.dominio.ParametroConsulta;
+import br.gov.capes.questionario.dominio.enums.FinalidadeFonteDados;
+import br.gov.capes.questionario.dominio.enums.SituacaoFonteDados;
+import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
+import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
+import br.gov.capes.questionario.repositorio.RepositorioFonteDados;
+import br.gov.capes.seguranca.webservice.dto.Usuario;
+
+@RunWith(PowerMockRunner.class)
+@PrepareForTest(SerializationUtils.class)
+public class GerenciadorFonteDadosTest {
+
+	private static String LOGIN_DUMMY_USUARIO = "000000";
+	private static Long ID_MOCK_FONTE = 1L;
+
+	@InjectMocks
+	GerenciadorFonteDados gerenciadorFonteDados;
+
+	@Mock
+	private GerenciadorVinculoEmailFonte gerenciadorVinculoEmailFonte;
+	
+	@Mock
+	private GerenciadorVinculoFonteAlternativa gerenciadorVinculoFonteAlternativa;
+	
+	@Mock
+	private GerenciadorVinculoFonteModeloAlternativa gerenciadorVinculoFonteModeloAlternativa;
+	
+	@Mock
+	GerenciadorFonteDados gerenciadorMock;
+
+	@Mock
+	private SerializationUtils serializationUtils;
+
+	@Mock
+	private RepositorioFonteDados repositorioFonteDados;
+
+	@Mock
+	private GerenciadorConexao gerenciadorConexao;
+
+	@Mock
+	private AutorizadorSeguranca autorizadorSeguranca;
+
+	private Usuario usuarioDummy;
+
+	private FonteDados fonteDummy;
+
+	@Before
+	public void resetState() {
+		gerenciadorFonteDados = new GerenciadorFonteDados();
+		usuarioDummy = novoUsuarioDummy();
+		fonteDummy = novaFonteDummy();
+		MockitoAnnotations.initMocks(this);
+		Mockito.when(autorizadorSeguranca.getUsuarioLogado()).thenReturn(usuarioDummy);
+	}
+
+	private Usuario novoUsuarioDummy() {
+		final Usuario dummy = new Usuario();
+		dummy.setLogin(LOGIN_DUMMY_USUARIO);
+		return dummy;
+	}
+
+	private FonteDados novaFonteDummy() {
+		final FonteDados dummy = new FonteDados();
+		dummy.setId(ID_MOCK_FONTE);
+		return dummy;
+	}
+
+	@Test
+	public void buscarPorParametroTest() {
+		ParametroConsulta<FonteDados> parametro = new ParametroConsulta<FonteDados>(fonteDummy);
+		gerenciadorFonteDados.buscarPorParametro(parametro);
+		Mockito.verify(repositorioFonteDados, Mockito.times(1)).buscarPorParametro(parametro);
+	}
+
+	@Test
+	public void contarPorParametroTest() {
+		ParametroConsulta<FonteDados> parametro = new ParametroConsulta<FonteDados>(fonteDummy);
+		gerenciadorFonteDados.contarPorParametro(parametro);
+		Mockito.verify(repositorioFonteDados, Mockito.times(1)).contarPorParametro(parametro);
+	}
+
+	@Test
+	public void buscarEmEspecificoTest() {
+		Mockito.when(repositorioFonteDados.buscarEmEspecifico(Mockito.any(), Mockito.any())).thenReturn(fonteDummy);
+		FonteDados buscarEmEspecifico = gerenciadorFonteDados.buscarEmEspecifico(ID_MOCK_FONTE,
+				new String[] { "nome" });
+		Assert.assertEquals(ID_MOCK_FONTE, buscarEmEspecifico.getId());
+	}
+
+	@Test
+	public void consultarFontesPorTipoFonteTest() {
+		gerenciadorFonteDados.consultarFontesValidasPorTipoFonte(FinalidadeFonteDados.A);
+		Mockito.verify(repositorioFonteDados, Mockito.times(1))
+				.consultarFontesValidasPorTipoFonte(FinalidadeFonteDados.A);
+	}
+
+	@Test
+	public void consultarFonteDadosPorNomeTest() {
+		Mockito.when(repositorioFonteDados.consultarFonteDadosPorNome(Mockito.any())).thenReturn(fonteDummy);
+		FonteDados consultarFonteDadosPorNome = gerenciadorFonteDados.consultarFonteDadosPorNome("NOME");
+		Assert.assertEquals(ID_MOCK_FONTE, consultarFonteDadosPorNome.getId());
+	}
+
+	@Test
+	public void existePorParametroTest() {
+		ParametroConsulta<FonteDados> parametro = new ParametroConsulta<FonteDados>(fonteDummy);
+		boolean existePorParametro = gerenciadorFonteDados.existePorParametro(parametro);
+		Assert.assertEquals(false, existePorParametro);
+	}
+
+	@Test
+	public void excluirEntidadeTest() {
+		gerenciadorFonteDados.excluirEntidade(fonteDummy);
+		verify(repositorioFonteDados, atLeastOnce()).excluirEntidade(fonteDummy);
+	}
+
+	@Test(expected = ValidacaoNegocialException.class)
+	public void excluirEntidadeExisteFonteTest() {
+		Mockito.when(gerenciadorVinculoEmailFonte.existePorFonte(Mockito.any())).thenReturn(true);
+		gerenciadorFonteDados.excluirEntidade(fonteDummy);
+	}
+
+	@Test
+	public void criarEntidadeTest() {
+		final FonteDados fonteDados = new FonteDados();
+		fonteDados.setId(ID_MOCK_FONTE);
+		fonteDados.setFinalidadeFonte(FinalidadeFonteDados.P);
+		fonteDados.setNome("NOME_FONTE_DADOS");
+		Mockito.when(repositorioFonteDados.criarEntidade(Mockito.any())).thenReturn(fonteDummy);
+		Mockito.doNothing().when(gerenciadorMock).verificaSeExisteNoBanco(Mockito.any());
+		Mockito.doNothing().when(gerenciadorMock).verificaSeQueryEValidaPorFinalidade(Mockito.any());
+		Mockito.when(gerenciadorMock.alterarNomeFonteDadosTipoPergunta(fonteDados)).thenReturn(fonteDummy);
+//		Mockito.when(gerenciadorFonteDados.alterarNomeFonteDadosTipoPergunta(fonteDados)).thenReturn(fonteDummy);
+		FonteDados fonte = new FonteDados();
+		fonte.setSituacaoFonte(SituacaoFonteDados.N);
+		FonteDados criarEntidade = gerenciadorFonteDados.criarEntidade(fonte);
+		Assert.assertEquals(ID_MOCK_FONTE, criarEntidade.getId());
+	}
+
+	@Test(expected = IllegalArgumentException.class)
+	public void criarEntidadeIllegalArgumentExceptionTest() {
+		gerenciadorFonteDados.criarEntidade(fonteDummy);
+	}
+
+	@Test(expected = ValidacaoNegocialException.class)
+	public void criarEntidadeValidacaoNegocialExceptionTest() {
+		Mockito.when(repositorioFonteDados.existePorParametro(Mockito.any())).thenReturn(true);
+		gerenciadorFonteDados.criarEntidade(new FonteDados());
+	}
+
+	@Test
+	public void alterarEntidadeDiferenteAntigaTest() {
+		Mockito.when(repositorioFonteDados.buscarEmEspecifico(Mockito.any(), Mockito.any()))
+				.thenReturn(new FonteDados("ANTIGA"));
+		Mockito.when(gerenciadorFonteDados.verificaSePodeExcluirAlterar(Mockito.any())).thenReturn(false);
+		Mockito.doNothing().when(gerenciadorMock).verificaSeExisteNoBanco(Mockito.any());
+		Mockito.doNothing().when(gerenciadorMock).verificaSeQueryEValidaPorFinalidade(Mockito.any());
+		FonteDados fonte = this.novaFonteDummy();
+		fonte.setSituacaoFonte(SituacaoFonteDados.N);
+		gerenciadorFonteDados.alterarEntidade(fonte);
+	}
+
+	@Test
+	public void seQueryValidaTest() throws NamingException, SQLException {
+		gerenciadorFonteDados.seQueryValida("query", "jndi", "P");
+	}
+
+	@Test
+	public void alterarEntidadeParcialmenteTest() {
+		Map<String, Object> mapa = new HashMap<>();
+		FonteDados alterarEntidadeParcialmente = gerenciadorFonteDados.alterarEntidadeParcialmente(ID_MOCK_FONTE, mapa);
+		Assert.assertEquals(null, alterarEntidadeParcialmente);
+	}
+
+	@Test
+	public void consultarTodasConexoesTest() {
+		gerenciadorFonteDados.consultarTodasConexoes();
+	}
+
+	@Test
+	public void consultaColunaTipoSqlTest() {
+		gerenciadorFonteDados.consultaColunaTipoSql(1l);
+	}
+
+	@Test
+	public void consultaResuladoSqlTest() {
+		gerenciadorFonteDados.consultaResuladoSql(1l, "00000000000", 1, 10);
+	}
+
+	@Test
+	public void consultaQtdResultadoSqlTest() {
+		gerenciadorFonteDados.consultaQtdResultadoSql(1l);
+	}
+
+}
+
+=======================================================================================================================================
+public int criarNotificacoesPessoasPorNotificacao(Notificacao notificacao) {
+		StringBuilder sql = new StringBuilder();
+		sql.append("INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA notificacaoPessoa_ "); 
+		sql.append("(ID_NOTIFICACAO,ID_PESSOA,ID_SITUACAO_OPERACAO,DS_USUARIO_ULTIMA_ALTERACAO,DH_ULTIMA_ALTERACAO) "); 
+		sql.append("SELECT :idNotificacao, preenchimento_.ID_PESSOA, ( "); 
+		sql.append("SELECT situacao.ID_SITUACAO_OPERACAO FROM QUESTIONARIO.SITUACAO_OPERACAO situacao WHERE situacao.SG_SITUACAO_OPERACAO = :sgSituacao " );
+		sql.append("), :usuarioUltimaAlteracao, SYSDATE ");
+		sql.append("FROM QUESTIONARIO.PREENCHIMENTO preenchimento_ "); 
+		sql.append("WHERE preenchimento_.ID_PUBLICACAO = :idPublicacao ");
+		
+		SQLQuery query = session.createSQLQuery(sql.toString());
+		query.setParameter("idNotificacao", notificacao.getId());
+		query.setParameter("sgSituacao", "AG");
+		query.setParameter("usuarioUltimaAlteracao", notificacao.getUsuarioUltimaAlteracao());
+		query.setParameter("idPublicacao", notificacao.getNumeroVinculoNotificacao());
+		
+		return query.executeUpdate();
+	}    
+=======================================================================================================================================
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR MODELO DE EMAIL
+------------------------------------------------------------------------------------------------------------
+
+	-- SELECT * FROM QUESTIONARIO.MODELO_EMAIL ORDER BY ID_MODELO_EMAIL DESC;
+	
+	INSERT INTO QUESTIONARIO.MODELO_EMAIL (ID_MODELO_EMAIL, DS_MODELO_EMAIL, TP_FINALIDADE, TP_PUBLICO_MODELO, TX_MODELO_CAPES, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	VALUES(QUESTIONARIO.SQ_MODELO_EMAIL.NEXTVAL, 'MODELO E-MAIL 04/09/2019 [PUBLICACAO] [INTERNO] V001', 'P', 'I', 'O Questionário {nome_questionario} foi criado para testar Publicações com grandes volumes de dados.', 'REDMINE-14503', SYSDATE);
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR PUBLICO ALVO
+------------------------------------------------------------------------------------------------------------
+	-- SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+	-- SELECT * FROM QUESTIONARIO.TIPO_PUBLICO_ALVO;
+
+INSERT INTO QUESTIONARIO.PUBLICO_ALVO (ID_PUBLICO_ALVO, DS_PUBLICO_ALVO, TP_IDENTIFICACAO_PUBLICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, ID_TIPO_PUBLICO_ALVO)
+VALUES(QUESTIONARIO.SQ_PUBLICO_ALVO.NEXTVAL, 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001', 'O', 'REDMINE-14503', SYSDATE, 1);
+
+------------------------------------------------------------------------------------------------------------
+-- # INSERIR PESSOAS AO PUBLICO ALVO
+------------------------------------------------------------------------------------------------------------
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT  QUESTIONARIO.SQ_PUBLICO.NEXTVAL, 
+	   	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001'),
+		PESSOA_.ID_PESSOA,
+		IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+		CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+		'REDMINE-14503',
+		SYSDATE,
+		'S',
+		NULL,
+		NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT  QUESTIONARIO.SQ_PUBLICO.NEXTVAL, 
+	   	(SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO LIKE 'PUBLICO ALVO 04/09/2019 [10000] [IDENTIFICACAO OBRIGATORIA] V001'),
+		PESSOA_.ID_PESSOA,
+		IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+		CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+		'REDMINE-14503',
+		SYSDATE,
+		'S',
+		NULL,
+		NULL
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F';
+
+	-- SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 472;
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR QUESTIONARIO
+------------------------------------------------------------------------------------------------------------
+
+	-- SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+INSERT INTO QUESTIONARIO.QUESTIONARIO (ID_QUESTIONARIO, NM_QUESTIONARIO, ID_TIPO_DOCUMENTO_EXIGIVEL, TX_FINALIDADE, DS_USUARIO_ALTERACAO, DH_ULTIMA_ALTERACAO, SG_QUESTIONARIO, DS_USUARIO_ULTIMA_ALTERACAO, TP_SITUACAO, ID_APLICACAO)
+VALUES(QUESTIONARIO.SQ_QUESTIONARIO.NEXTVAL, 'QUESTIONARIO 04/09/2019 V001', NULL, '', 'REDMINE-14503', SYSDATE, 'QC', NULL, 'PB', 1237);
+
+------------------------------------------------------------------------------------------------------------
+-- # CRIAR PUBLICACAO
+------------------------------------------------------------------------------------------------------------
+	-- SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+	
+INSERT INTO QUESTIONARIO.PUBLICACAO ( ID_PUBLICACAO, ID_QUESTIONARIO, DT_INICIO, DT_FIM, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DT_PUBLICACAO, IN_PUBLICADO)
+VALUES( QUESTIONARIO.SQ_PUBLICACAO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), TIMESTAMP '2019-09-01 00:00:00.000000', TIMESTAMP '2019-09-30 00:00:00.000000', 'REDMINE-14503', SYSDATE, TIMESTAMP '2019-09-30 00:00:00.000000', 'S');
+
+-- CRIAR DETALHE PUBLICACAO
+
+	-- SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO ORDER BY ID_DETALHE_PUBLICACAO DESC;
+
+INSERT INTO QUESTIONARIO.DETALHE_PUBLICACAO(ID_DETALHE_PUBLICACAO, ID_MODELO_EMAIL, ID_PUBLICO_ALVO, ID_PUBLICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO) 
+VALUES(QUESTIONARIO.SQ_DETALHE_PUBLICACAO.NEXTVAL, 264, 472, 1274, 'REDMINE-14503', SYSDATE);
+
+-- CRIAR PREENCHIMENTO
+
+	-- SELECT * FROM QUESTIONARIO.PREENCHIMENTO ORDER BY ID_PREENCHIMENTO DESC;
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO(ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, SG_SISTEMA_ORIGEM, ID_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, ID_PUBLICACAO, CS_STATUS_PREENCHIMENTO, ID_PUBLICO)
+SELECT QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), PESSOA_.ID_PESSOA, NULL, NULL, TIMESTAMP '2019-08-26 00:00:00.000000', TIMESTAMP '2019-08-31 00:00:00.000000', NULL, SYSDATE, 'REDMINE-14503', NULL, 1274, 'A', PUBLICO_.ID_PUBLICO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F'
+AND PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472;
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO(ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, SG_SISTEMA_ORIGEM, ID_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, ID_PUBLICACAO, CS_STATUS_PREENCHIMENTO, ID_PUBLICO)
+SELECT QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE 'QUESTIONARIO 04/09/2019 V001'), PESSOA_.ID_PESSOA, NULL, NULL, TIMESTAMP '2019-08-26 00:00:00.000000', TIMESTAMP '2019-08-31 00:00:00.000000', NULL, SYSDATE, 'REDMINE-14503', NULL, 1274, 'A', PUBLICO_.ID_PUBLICO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F'
+AND PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472;
+
+-- CRIAR NOTIFICACAO
+
+	-- SELECT * FROM QUESTIONARIO.NOTIFICACAO ORDER BY ID_NOTIFICACAO DESC;
+	-- SELECT * FROM QUESTIONARIO.TIPO_NOTIFICACAO;
+	-- DELETE FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IS NOT NULL;
+
+	INSERT INTO QUESTIONARIO.NOTIFICACAO(ID_NOTIFICACAO, ID_TIPO_NOTIFICACAO, ID_MODELO_EMAIL, NR_VINCULO_NOTIFICACAO, DH_NOTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	VALUES(QUESTIONARIO.SQ_NOTIFICACAO.NEXTVAL, 1, 264, 1274, SYSDATE, 'REDMINE-14503', SYSDATE);
+
+-- CRIAR NOTIFICACAO_PESSOA
+
+	-- SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA ORDER BY ID_NOTIFICACAO DESC;
+	-- SELECT * FROM QUESTIONARIO.SITUACAO_OPERACAO ORDER BY ID_SITUACAO_OPERACAO DESC;
+	-- DELETE FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO IS NOT NULL;
+	
+	INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA (ID_NOTIFICACAO_PESSOA, ID_NOTIFICACAO, ID_PESSOA, ID_SITUACAO_OPERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	SELECT  QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, 
+	   	101,
+		PESSOA_.ID_PESSOA,
+		1,
+		'REDMINE-14503',
+		SYSDATE
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA BETWEEN 8266 AND 18592
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%'
+AND PESSOA_.TP_PESSOA = 'F';
+
+INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA (ID_NOTIFICACAO_PESSOA, ID_NOTIFICACAO, ID_PESSOA, ID_SITUACAO_OPERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+	SELECT  QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, 
+	   	101,
+		PESSOA_.ID_PESSOA,
+		1,
+		'REDMINE-14503',
+		SYSDATE
+-- SELECT COUNT(*) 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(705191, 2536187)
+AND PESSOA_.TP_PESSOA = 'F';
+
+
+ID_SITUACAO_OPERACAO|DS_SITUACAO_OPERACAO|SG_SITUACAO_OPERACAO
+--------------------|--------------------|--------------------
+                   1|AGUARDANDO          |AG                  
+                   2|EM EXECUÇÃO         |EX                  
+                   3|COM ERRO            |ER                  
+                   4|CONCLUÍDO           |CO                  
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101;
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 1;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 2;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 3;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 AND ID_SITUACAO_OPERACAO = 4;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND ID_PESSOA = ${usuario_logado};
+
+"/home/indra/Documentos/001_REDMINE/044 Redmine 14504 - [DEB - 50 MIL] - Funcionamento de questão do tipo Select/02 Códigos"
+
+-- 
+SELECT
+    cpf,
+    nome_completo,
+    email_principal
+FROM
+    (
+    SELECT
+        ROW_NUMBER() OVER( PARTITION BY P.DS_IDENTIFICADOR_REGISTRADO ORDER BY P.DS_IDENTIFICADOR_REGISTRADO ) ordem_email,
+        P.DS_IDENTIFICADOR_REGISTRADO AS "CPF",
+        P.NM_PESSOA AS "NOME_COMPLETO",
+        (CE.DS_CORREIO_ELETRONICO) AS "EMAIL_PRINCIPAL" 
+    FROM
+        CORPORATIVO.IDENTIFICADOR_REGISTRADO IR
+    INNER JOIN CORPORATIVO.PESSOA P ON
+        IR.ID_PESSOA = P.ID_PESSOA
+    INNER JOIN FREIRE2.PESSOA_FREIRE PF ON P.ID_PESSOA = PF.ID_PESSOA
+    INNER JOIN CORPORATIVO.CORREIO_ELETRONICO ce ON
+        ce.ID_PESSOA = p.id_pessoa
+        AND in_principal_finalidade = 'S'
+    WHERE
+        IR.ID_TIPO_IDENTIFICADOR = 1 
+
+    )
+WHERE ROWNUM <= 3000;
+
+SELECT * 
+FROM CORPORATIVO.PESSOA PESSOA_ 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+-- WHERE NM_PESSOA LIKE '%NIRIAN%'; -- 1128037	NIRIAN MARTINS SILVEIRA DOS SANTOS
+WHERE PESSOA_.ID_PESSOA = 1128037
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;    
+=======================================================================================================================================
+
+    Preenchimento
+        id_pessoa
+        id_publico
+        id_questionario
+        id_publicacao        
+
+=======================================================================================================================================
+
+Preenchimento preenchimento = new Preenchimento();
+				Pessoa pessoa = new Pessoa();
+					pessoa.setId(publico.getPessoa().getId());
+					preenchimento.setQuestionario(questionario);
+					preenchimento.setPessoa(pessoa);
+					preenchimento.setDataInicio(new LocalDateTime(publicacao.getDataInicio().getTime()));
+					if(publicacao.getDataFim()!=null)
+						preenchimento.setDataFim(new LocalDateTime(publicacao.getDataFim().getTime()));
+					preenchimento.setNomeUsuarioUltimaAlteracao(autorizadorSeguranca.getUsuarioLogado().getLogin());
+					preenchimento.setDataUltimaAlteracao(new LocalDateTime());
+					preenchimento.setPublicacao(publicacao);
+					preenchimento.setDataFinalizacao(null);
+					preenchimento.setStatus(EM_ABERTO);
+					preenchimento.setPublico(publico);
+					preenchimento = repositorioPreenchimento.criarEntidade(preenchimento);
+                    
+public void criarPreenchimento(Long identificadorPublicacao, Long identificadorQuestionario, Long identificadorPublico) {
+
+=======================================================================================================================================
+// FIXME [REDMINE-15004] {A} -- "Adequar query de Publicação (Performance)"
+	public int criarPreenchimento(Publicacao publicacao, Questionario questionario, DetalhePublicacao detalhePublicacao, String identificadorUsuarioLogado) {
+		final String QUESTIONARIO_PREENCHIMENTO_SEQUENCE = " QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, ";
+		StringBuilder stringBuilder = new StringBuilder("INSERT INTO QUESTIONARIO.PREENCHIMENTO( ")
+			.append("ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, ID_PUBLICO, ID_PUBLICACAO, ID_ORIGEM, ")
+			.append("SG_SISTEMA_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, ")
+			.append("DS_HASH_PREENCHIMENTO, CS_STATUS_PREENCHIMENTO) ")
+			.append("SELECT " + QUESTIONARIO_PREENCHIMENTO_SEQUENCE + " PUBLICACAO_.ID_QUESTIONARIO, PUBLICO_.ID_PESSOA, ")
+			.append("PUBLICO_.ID_PUBLICO, PUBLICACAO_.ID_PUBLICACAO, :id_sistema_origem_parameter_, QUESTIONARIO_.SG_QUESTIONARIO, ")
+			.append("PUBLICACAO_.DT_INICIO, PUBLICACAO_.DT_FIM, :data_finalizacao_paramater_, :data_ultima_alteracao_paramater_, ")
+			.append(":identificador_registrado_usuario_logado_parameter_, :descricao_hash_preenchimento_parameter_, :status_preenchimento_paramater_ ")
+			.append("FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_ ")
+			.append("JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO ")
+			.append("JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO ")
+			.append("JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO ")
+			.append("JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO ")
+			.append("WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :id_publico_alvo_paramater_ ");
+		SQLQuery query = session.createSQLQuery(stringBuilder.toString());
+			query.setParameter("id_sistema_origem_parameter_", "NULL");
+			query.setParameter("data_finalizacao_paramater_", "NULL");
+			query.setParameter("data_ultima_alteracao_paramater_", "SYSDATE");
+			query.setParameter("identificador_registrado_usuario_logado_parameter_", identificadorUsuarioLogado);
+			query.setParameter("descricao_hash_preenchimento_parameter_", "NULL");
+			query.setParameter("status_preenchimento_paramater_", "A");
+			query.setParameter("id_publico_alvo_paramater_", detalhePublicacao.getPublicoAlvo().getId());
+		return query.executeUpdate();
+	}
+=======================================================================================================================================
+
+    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico
+    
+        + Funcionalidades
+            
+            - Permitir o Registro de Ponto Eletrônico Anti-fraude para usuários Interno e Externos com Rastreamento por GPS e mapa detalhado e tempo real e por Reconhecimento Facial
+            - Gerenciar as Jornadas de Trabalho Semanal, Flexível e Turnos
+            - Gerenciar e Administra Pedidos de Ausência, Abono ou Férias
+            - Integrações                
+                - O sistema deve integrar com Google, Facebook e Whatsapp
+            - Perfil de acesso
+                - Colaborador
+                - Gerente
+                - Coordenador
+                - Adminstrador
+                - Perfil de Ajuste
+            
+            Acompanhamento das entradas e saídas em tempo real
+            Saiba a localização do funcionário na hora do ponto
+            Aprove, ajuste, feche a folha
+            Relatórios
+            Indicadores de desempenho
+            Fechamento do mês em poucos clicks
+            Impressão de Folha de Ponto
+            Importe/Exporte AFD, AFDT
+
+            Relatório de Hora Extra / Faltante
+            Relatório de Faltas
+            Relatório de Ocorrências
+            Relatório de Atrasos
+            Relatório de Ajustes
+            Relatório de Espelho Ponto
+
+            Inserir/remover manualmente horas dos funcionários
+            Fator multiplicação
+            Utilizar Fase 1, Fase 2 e Fase 3
+            Relatórios personalizados
+
+            Registro de Ponto
+            Visualize os ponto registrados
+            Solicite/Visualize seus ajustes
+            Notificações para evitar hora extra
+            Visualizar Horas Extras/Faltantes
+            Visualize sua equipe em tempo real
+            Comprovante via e-mail
+            Registro por QR Code
+
+            Baixo Custo
+            Bata ponto através do Pin e Foto
+            É capturada uma foto do funcionário em cada registro
+
+            Registro de Ponto por reconhecimento
+            A foto é armazenada para auditoria
+
+            Registro de Ponto em um QRCode
+            Coloque um raio de distância em cada QRCode
+            Empresa pode gerar QRCode e colocar próximo a equipe
+            Tire uma foto de rosto para auditoria
+            Envia a localização em cada registro de ponto
+
+            Registro de ponto pelo computador
+            Acesso ao comprovante em qualquer computador
+            Solicite ajustes ao gestor
+            Saiba seu saldo de horas por período
+            Gestor visualiza quem está trabalhando em tempo real
+            Visualização de avisos enviados pela empresa
+
+            Todos os registros do funcionário
+            Exibe hora extra / faltante
+            Exibe os ajustes
+            Exibe as faltas/folgas
+            Funcionário pode assinar o recebimento
+
+            Todo registro de ponto é enviada a localizãção
+            Controle de reembolso
+            Registro de ponto pelo próprio celular
+
+            Reduza horas extras desnecessárias
+            Aviso do ínicio e término da jornada
+            Aviso ao gestor sobre faltas
+            Aviso ao gestor sobre ocorrências
+            Aviso ao gestor sobre horas extras
+
+            Controle de jornada semanal
+            Controle de jornada cíclica
+            Controle de jornada 12/36
+            Controle de folguistas
+            Jornada flexível
+            Intervalo pré assinalado
+
+        + Tecnologias
+            
+            - Frontend
+                
+                - HTML 5
+                - CSS 3
+                - ECMA 11
+                    - AngularJS
+                    
+            - Backend
+            
+                - Java EE 8
+                - Maven
+                - JPA
+                    - Hibernate
+
+=======================================================================================================================================
+
+    # Configuração de temas com o Eclipse
+    
+        -   DevStyle (includes Darkest Dark Theme), Genuitec, LLC
+
+=======================================================================================================================================
+
+    # COMMIT
+                
+        [REDMINE-15004] - Adequar query de publicação
+        
+        
+        
+        [REDMINE-14795] - Questão do tipo Select
+        
+        [REDMINE-15004] - [PUBLICAÇÃO] Adequar query de publicação
+        
+        [REDMINE-15006] - [NOTIFICAÇÃO] Adequar funcionamento (query + quantidade + paginação)
+        
+                
+        GESTAO-20190905000007
+        GESTAO-20190905000008
+        GESTAO-20190905000009
+        
+=======================================================================================================================================
+
+    # Serviço de Cadaastro de Documento (Perguntas do Tipo Arquivo)
+
+=======================================================================================================================================
+
+-- CRIAR PPREENCHIMENTOS
+
+	SELECT * FROM QUESTIONARIO.PREENCHIMENTO ORDER BY ID_PREENCHIMENTO DESC;
+	SELECT * FROM QUESTIONARIO.PUBLICO ORDER BY ID_PUBLICO DESC;
+	SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+
+	SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+-- INSERT INTO QUESTIONARIO.PREENCHIMENTO(ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, SG_SISTEMA_ORIGEM, ID_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, ID_PUBLICACAO, CS_STATUS_PREENCHIMENTO, ID_PUBLICO)
+
+	SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+	SELECT * FROM QUESTIONARIO.PUBLICO ORDER BY ID_PUBLICO DESC;
+	SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PUBLICO = 50302;
+	SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 1024;
+
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		1024, 
+		PESSOA_.ID_PESSOA, 
+		NULL, 
+		NULL, 
+		TIMESTAMP '2019-08-26 00:00:00.000000', 
+		TIMESTAMP '2019-08-31 00:00:00.000000', 
+		NULL, 
+		SYSDATE, 
+		'REDMINE-14503', 
+		NULL, 
+		1274, 
+		'A', 
+		PUBLICO_.ID_PUBLICO
+-- SELECT COUNT(*)
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472
+AND ;
+
+SELECT 	PUBLICO_.ID_PUBLICO AS IDPUBLICO, 
+		PUBLICO_.ID_PESSOA AS IDPESSOA
+FROM QUESTIONARIO.PUBLICO PUBLICO_ 
+WHERE PUBLICO_.ID_PUBLICO_ALVO = 472;
+-- QUERY PUBLICACAO (SISTEMA)
+
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO(	ID_PREENCHIMENTO, 
+										ID_QUESTIONARIO, 
+										ID_PESSOA,
+										ID_PUBLICO,
+										ID_PUBLICACAO, 
+										ID_ORIGEM, 
+										SG_SISTEMA_ORIGEM, 
+										DT_INICIO, 
+										DT_FIM, 
+										DT_FINALIZACAO, 
+										DH_ULTIMA_ALTERACAO, 
+										DS_USUARIO_ULTIMA_ALTERACAO, 
+										DS_HASH_PREENCHIMENTO, 
+										CS_STATUS_PREENCHIMENTO);
+
+SELECT *
+-- SELECT 1019, PUBLICACAO_.ID_QUESTIONARIO, PUBLICO_.ID_PESSOA, PUBLICO_.ID_PUBLICO, NULL, QUESTIONARIO_.SG_QUESTIONARIO, PUBLICACAO_.DT_INICIO, PUBLICACAO_.DT_FIM, NULL, SYSDATE, NULL, "A"
+-- SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = 472;
+
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO;
+SELECT * FROM QUESTIONARIO.PUBLICACAO;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO ORDER BY ID_PREENCHIMENTO DESC;
+
+SELECT
+    cpf,
+    nome_completo,
+    email_principal
+FROM
+    (
+    SELECT
+        ROW_NUMBER() OVER( PARTITION BY P.DS_IDENTIFICADOR_REGISTRADO ORDER BY P.DS_IDENTIFICADOR_REGISTRADO ) ordem_email,
+        P.DS_IDENTIFICADOR_REGISTRADO AS "CPF",
+        P.NM_PESSOA AS "NOME_COMPLETO",
+        (CE.DS_CORREIO_ELETRONICO) AS "EMAIL_PRINCIPAL" 
+    FROM
+        CORPORATIVO.IDENTIFICADOR_REGISTRADO IR
+    INNER JOIN CORPORATIVO.PESSOA P ON
+        IR.ID_PESSOA = P.ID_PESSOA
+    INNER JOIN FREIRE2.PESSOA_FREIRE PF ON P.ID_PESSOA = PF.ID_PESSOA
+    INNER JOIN CORPORATIVO.CORREIO_ELETRONICO ce ON
+        ce.ID_PESSOA = p.id_pessoa
+        AND in_principal_finalidade = 'S'
+    WHERE
+        IR.ID_TIPO_IDENTIFICADOR = 1 
+    )
+WHERE ROWNUM <= 3000;
+
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO( ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, ID_PUBLICO, ID_PUBLICACAO, ID_ORIGEM, SG_SISTEMA_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, CS_STATUS_PREENCHIMENTO) 
+
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		PUBLICACAO_.ID_QUESTIONARIO, 
+		PUBLICO_.ID_PESSOA, 
+		PUBLICO_.ID_PUBLICO, 
+		:id_sistema_origem_parameter_, 
+		QUESTIONARIO_.SG_QUESTIONARIO, 
+		:data_ultima_alteracao_paramater, 
+		PUBLICACAO_.DT_INICIO, 
+		PUBLICACAO_.DT_FIM, 
+		:data_finalizacao_paramater, 
+		SYSDATE, 
+		NULL, 
+		:status_preenchimento_
+-- SELECT COUNT(*)
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_ JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO 
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO 
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :identificador_publico_alvo_paramater;
+
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		PUBLICACAO_.ID_QUESTIONARIO, 
+		PUBLICO_.ID_PESSOA, 
+		PUBLICO_.ID_PUBLICO,
+		PUBLICACAO_.ID_PUBLICACAO,
+		:id_sistema_origem_parameter_, 
+		QUESTIONARIO_.SG_QUESTIONARIO,
+		PUBLICACAO_.DT_INICIO, 
+		PUBLICACAO_.DT_FIM, 
+		:data_finalizacao_paramater,
+		:data_ultima_alteracao_paramater,
+		:identificador_registrado_usuario_logado_,
+		:descricao_hash_preenchimento_, 
+		:status_preenchimento_
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :identificador_publico_alvo_paramater;
+
+	ID_PREENCHIMENTO, 
+	ID_QUESTIONARIO, 
+	ID_PESSOA, 
+	ID_PUBLICO, 
+	ID_PUBLICACAO, 
+	ID_ORIGEM, 
+	SG_SISTEMA_ORIGEM, 
+	DT_INICIO, 
+	DT_FIM, 
+	DT_FINALIZACAO, 
+	DH_ULTIMA_ALTERACAO, 
+	DS_USUARIO_ULTIMA_ALTERACAO, 
+	DS_HASH_PREENCHIMENTO, 
+	CS_STATUS_PREENCHIMENTO
+	
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		PUBLICACAO_.ID_QUESTIONARIO, 
+		PUBLICO_.ID_PESSOA, 
+		PUBLICO_.ID_PUBLICO, 
+		PUBLICACAO_.ID_PUBLICACAO, 
+		:id_sistema_origem_parameter_, 
+		QUESTIONARIO_.SG_QUESTIONARIO, 
+		PUBLICACAO_.DT_INICIO, 
+		PUBLICACAO_.DT_FIM, 
+		:data_finalizacao_paramater_, 
+		:data_ultima_alteracao_paramater_, 
+		:identificador_registrado_usuario_logado_parameter_, 
+		:descricao_hash_preenchimento_parameter_, 
+		:status_preenchimento_paramater_
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON
+DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON
+PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON
+PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON
+QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :id_publico_alvo_paramater_ ;
+
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO( ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, ID_PUBLICO, ID_PUBLICACAO, ID_ORIGEM, SG_SISTEMA_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, CS_STATUS_PREENCHIMENTO) 
+
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		PUBLICACAO_.ID_QUESTIONARIO, 
+		PUBLICO_.ID_PESSOA, 
+		PUBLICO_.ID_PUBLICO, 
+		PUBLICACAO_.ID_PUBLICACAO, 
+		:id_sistema_origem_parameter_, 
+		QUESTIONARIO_.SG_QUESTIONARIO, 
+		PUBLICACAO_.DT_INICIO, 
+		PUBLICACAO_.DT_FIM, 
+		:data_finalizacao_paramater_, 
+		:data_ultima_alteracao_paramater_, 
+		:identificador_registrado_usuario_logado_parameter_, 
+		:descricao_hash_preenchimento_parameter_, 
+		:status_preenchimento_paramater_
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON
+DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON
+PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON
+PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON
+QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :id_publico_alvo_paramater_;
+
+
+INSERT INTO QUESTIONARIO.PREENCHIMENTO( ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, ID_PUBLICO, ID_PUBLICACAO, ID_ORIGEM, SG_SISTEMA_ORIGEM, DT_INICIO, DT_FIM, DT_FINALIZACAO, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DS_HASH_PREENCHIMENTO, CS_STATUS_PREENCHIMENTO) 
+
+SELECT 	QUESTIONARIO.SQ_PREENCHIMENTO.NEXTVAL, 
+		PUBLICACAO_.ID_QUESTIONARIO, 
+		PUBLICO_.ID_PESSOA, 
+		PUBLICO_.ID_PUBLICO, 
+		PUBLICACAO_.ID_PUBLICACAO, 
+		:id_sistema_origem_parameter_, 
+		QUESTIONARIO_.SG_QUESTIONARIO, 
+		PUBLICACAO_.DT_INICIO, 
+		PUBLICACAO_.DT_FIM, 
+		:data_finalizacao_paramater_, 
+		:data_ultima_alteracao_paramater_, 
+		:identificador_registrado_usuario_logado_parameter_, 
+		:descricao_hash_preenchimento_parameter_, 
+		:status_preenchimento_paramater_
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON
+DETALHE_PUBLICACAO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON
+PUBLICO_ALVO_.ID_PUBLICO_ALVO = DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON
+PUBLICO_.ID_PUBLICO_ALVO = PUBLICO_ALVO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON
+QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+WHERE PUBLICO_ALVO_.ID_PUBLICO_ALVO = :id_publico_alvo_paramater_ ;
+
+=======================================================================================================================================
+
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO ORDER BY ID_DETALHE_PUBLICACAO DESC;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO;
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 472;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 472;
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 1041;
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE '%21_08_2%';
+
+SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 1041;
+
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ORDER BY ID_ACESSO_PREENCHIMENTO DESC;
+
+INSERT INTO QUESTIONARIO.ACESSO_PREENCHIMENTO (ID_ACESSO_PREENCHIMENTO, ID_PREENCHIMENTO, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+SELECT 	QUESTIONARIO.SQ_ACESSO_PREENCHIMENTO.NEXTVAL,
+		PREENCHIMENTO_.ID_PREENCHIMENTO,
+		SYSDATE,
+		'REDMINE-15012',
+		SYSDATE
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+WHERE PUBLICO_.ID_PUBLICO_ALVO = 457
+AND PREENCHIMENTO_.ID_QUESTIONARIO = 1041;
+
+SELECT COUNT(*)
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+WHERE PUBLICO_.ID_PUBLICO_ALVO = 457
+AND PREENCHIMENTO_.ID_QUESTIONARIO = 1041;
+
+=======================================================================================================================================
+
+    # [QUESTIONARIO-CAPES]
+    
+        + Correção de problemas no monitoramento
+        
+            - Erro na paginação de resultados
+                - Sistema não pagina os resultados
+                
+            - Melhorar usabilidade do campo select ao pesquisar o Questionário
+            
+            - Verificar se os quantificadores estão corectos
+            
+        + Gerar teste de composição de Público Alvo via Fonte de Dados
+
+=======================================================================================================================================
+
+    # QUESTIONATIO-CAPES
+    
+        + Dados de acesso dos ambientes
+        
+        ------------------------------------------------------------------------------------------------------------------------
+        -- # Sistema:   QUESTIONARIO-CAPES
+        -- # Ambiente:  TESTE
+        -- # URL:       ?
+        ------------------------------------------------------------------------------------------------------------------------
+        Name Connection:        PROJECT_QUESTIONARIO_CAPES_TESTE (http://teste.capes.gov.br/questionario-capes/)
+        Hostname:               exafdh-scan3.br1.ocm.s7186966.oraclecloudatcustomer.com
+        Number Port:            1521
+        Name Database:          pdb_teste.br1.ocm.s7186966.oraclecloudatcustomer.com
+        Username:               webquestionario
+        Password:               webquestionario
+        
+        ------------------------------------------------------------------------------------------------------------------------
+        -- # Sistema:   QUESTIONARIO-CAPES
+        -- # Ambiente:  DESENVOLVIMENTO
+        -- # URL:       ?
+        ------------------------------------------------------------------------------------------------------------------------
+        Name Connection:        PROJECT_FREIRE_DESENVOLVIMENTO
+        Hostname:               rac-dh.capes.gov.br
+        Number Port:            1521
+        Name Database:          FREIRE2
+        Username:               webfreire2
+        Password:               webfreire2
+
+=======================================================================================================================================
+
+    Questionário:           QUESTIONARIO_TESTE_STRESS_30_PERGUNTAS
+    Público Alvo:           PUBLICO_ALVO_26_08_2019_TESTE_STRESS_1000_IDENTIFICACAO_OBRIGATORIA_V002
+
+=======================================================================================================================================
+
+     public static void main(String[] args) throws IOException {
+    Scanner ler = new Scanner(System.in);
+    int i, n;
+ 
+    System.out.printf("Informe o número para a tabuada:\n");
+    n = ler.nextInt();
+ 
+    FileWriter arq = new FileWriter("d:\\tabuada.txt");
+    PrintWriter gravarArq = new PrintWriter(arq);
+ 
+    gravarArq.printf("+--Resultado--+%n");
+    for (i=1; i<=10; i++) {
+      gravarArq.printf("| %2d X %d = %2d |%n", i, n, (i*n));
+    }
+    gravarArq.printf("+-------------+%n");
+ 
+    arq.close();
+ 
+    System.out.printf("\nTabuada do %d foi gravada com sucesso em \"d:\\tabuada.txt\".\n", n);
+  }
+
+=======================================================================================================================================
+
+@POST
+	@Path("/enviarSalvar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	// FIXME [REDMINE-14896] {A} -- "Codigo comentado para viabilizar o teste de stress pela RSI. Essa acao deve ser revertida."
+//	@RecursoProtegidoNovo(permissoes = {
+//			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+//					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarSalvarResposta(List<VisualizacaoPergunta> respostas, @Context HttpServletRequest httpServletRequest) { // FIXME [REDMINE-14896] {N} -- "Essa alteracao deve ser revertida apos os testes."
+		try {
+			
+			List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+     		
+     		// FIXME [REDMINE-14896] {N} -- "Essa alteracao deve ser revertida apos os testes."
+     		Usuario usuario = new Usuario();
+     			usuario.setId(2536187L);
+     		httpServletRequest.getSession().setAttribute("usuario", usuario);
+     		
+     		com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            String jsonString = mapper.writeValueAsString(respostas);
+//            System.out.println(jsonString); 
+            
+            
+            // Gerar arquivo JSON em disco
+            FileWriter arquivoJSON = new FileWriter("/home/indra/Downloads/REDMINE_-_14503.json");
+            PrintWriter gravarArquivo = new PrintWriter(arquivoJSON);
+            	gravarArquivo.printf(jsonString);
+            	gravarArquivo.close();
+     		
+     		if(respostas2!=null&&!respostas2.isEmpty()){
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     				
+     				Preenchimento preenchimento = respostas2.get(0).getResposta().get(0).getPreenchimento();
+     				preenchimento.setDataFinalizacao(new LocalDateTime());
+     				preenchimento.setStatus(ENVIADO);
+     				gerenciadorPreenchimento.alterarEntidade(preenchimento);
+     			}     			
+     		}
+			
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}    
+    
+    --- 
+    A capacidade maxima de caracteres em um arquivo JSON é:     2.097.152
+    O arquivo gerado foi de:                                    2.534.859
+    ---
+    
+    "dataPublicacao": 1568073600000,
+
+    https://jsonformatter.org/
+    
+    Linha: 1447
+    
+=======================================================================================================================================
+
+"dataUltimaAlteracao":{"weekOfWeekyear":37,"chronology":{"zone":{"fixed":true,"id":"UTC"}},"weekyear":2019,"monthOfYear":9,"yearOfEra":2019,"yearOfCentury":19,"centuryOfEra":20,"millisOfSecond":0,"millisOfDay":58234000,"secondOfMinute":34,"minuteOfHour":10,"hourOfDay":16,"dayOfYear":253,"dayOfWeek":2,"dayOfMonth":10,"era":1,"year":2019,"fieldTypes":[{"durationType":{"name":"years"},"rangeDurationType":null,"name":"year"},{"durationType":{"name":"months"},"rangeDurationType":{"name":"years"},"name":"monthOfYear"},{"durationType":{"name":"days"},"rangeDurationType":{"name":"months"},"name":"dayOfMonth"},{"durationType":{"name":"millis"},"rangeDurationType":{"name":"days"},"name":"millisOfDay"}],"values":[2019,9,10,58234000],"fields":[{"rangeDurationField":null,"leapDurationField":{"unitMillis":86400000,"precise":true,"name":"days","type":{"name":"days"},"supported":true},"minimumValue":-292275054,"maximumValue":292278993,"lenient":false,"durationField":{"unitMillis":31556952000,"precise":false,"name":"years","type":{"name":"years"},"supported":true},"name":"year","type":{"durationType":{"name":"years"},"rangeDurationType":null,"name":"year"},"supported":true},{"rangeDurationField":{"unitMillis":31556952000,"precise":false,"name":"years","type":{"name":"years"},"supported":true},"leapDurationField":{"unitMillis":86400000,"precise":true,"name":"days","type":{"name":"days"},"supported":true},"minimumValue":1,"maximumValue":12,"lenient":false,"durationField":{"unitMillis":2629746000,"precise":false,"name":"months","type":{"name":"months"},"supported":true},"name":"monthOfYear","type":{"durationType":{"name":"months"},"rangeDurationType":{"name":"years"},"name":"monthOfYear"},"supported":true},{"rangeDurationField":{"unitMillis":2629746000,"precise":false,"name":"months","type":{"name":"months"},"supported":true},"minimumValue":1,"maximumValue":31,"unitMillis":86400000,"durationField":{"unitMillis":86400000,"precise":true,"name":"days","type":{"name":"days"},"supported":true},"lenient":false,"leapDurationField":null,"name":"dayOfMonth","type":{"durationType":{"name":"days"},"rangeDurationType":{"name":"months"},"name":"dayOfMonth"},"supported":true},{"range":86400000,"rangeDurationField":{"unitMillis":86400000,"precise":true,"name":"days","type":{"name":"days"},"supported":true},"maximumValue":86399999,"unitMillis":1,"durationField":{"unitMillis":1,"precise":true,"name":"millis","type":{"name":"millis"},"supported":true},"minimumValue":0,"lenient":false,"leapDurationField":null,"name":"millisOfDay","type":{"durationType":{"name":"millis"},"rangeDurationType":{"name":"days"},"name":"millisOfDay"},"supported":true}]}
+
+=======================================================================================================================================
+
+weekOfWeekyear":37,"chronology":
+
+=======================================================================================================================================
+
+@POST
+	@Path("/enviarSalvar")
+	@ApiOperation(
+			produces = "application/json,application/xml", consumes = "application/json,application/xml",
+			value = "Atualiza Resposta apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos",
+			response = Resposta.class)
+	@ApiResponses({
+			@ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
+			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	// FIXME [REDMINE-14896] {A} -- "Codigo comentado para viabilizar o teste de stress pela RSI. Essa acao deve ser revertida."
+//	@RecursoProtegidoNovo(permissoes = {
+//			@PermissaoAcesso(codigoCasoUso = TransacoesPermitidas.Constantes.CODIGO_CASO_DE_USO_MANTER_RESPOSTA, 
+//					descricaoTransacao = TransacoesPermitidas.Constantes.TR_ENVIAR_RESPOSTAS_DESCRICAO_TRANSACAO)})
+	public Response enviarSalvarResposta(List<VisualizacaoPergunta> respostas, @Context HttpServletRequest httpServletRequest) { // FIXME [REDMINE-14896] {N} -- "Essa alteracao deve ser revertida apos os testes."
+		try {
+			
+		List<VisualizacaoPergunta> respostas1 = respostas.stream().filter(resposta->resposta.getResposta()!=null&&!resposta.getResposta().isEmpty()).collect(Collectors.toList());
+     		
+     		List<VisualizacaoPergunta> respostas2 = respostas1.stream().filter(resposta->resposta.getResposta().get(0).getPreenchimento()!=null).collect(Collectors.toList());
+     		
+     		// FIXME [REDMINE-14896] {N} -- "Essa alteracao deve ser revertida apos os testes."
+     		Usuario usuario = new Usuario();
+     			usuario.setId(2536187L);
+     		httpServletRequest.getSession().setAttribute("usuario", usuario);
+     		
+     		com.fasterxml.jackson.databind.ObjectMapper mapper = new com.fasterxml.jackson.databind.ObjectMapper();
+            String jsonString = mapper.writeValueAsString(respostas);
+//            System.out.println(jsonString); 
+            
+//            Gson gson = new Gson();
+            Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'").create(); // Salvar nesse formato: 2019-09-02T12:02:33.251
+            String resultadoGSON = gson.toJson(respostas);
+//            System.out.println(resultadoGSON);
+            
+            FileWriter arquivoJSON = new FileWriter("/home/indra/Downloads/REDMINE_-_14503_DATA_ULTIMA_ALTERACAO_FORMATADA_" + new Date() + "_.json");
+            PrintWriter gravarArquivo = new PrintWriter(arquivoJSON);
+            
+//            String dataUltimaAlteracaoText = "\"dataUltimaAlteracao\":{\"weekOfWeekyear\":36,\"chronology\":{\"zone\":{\"fixed\":true,\"id\":\"UTC\"}},\"weekyear\":2019,\"monthOfYear\":9,\"yearOfEra\":2019,\"yearOfCentury\":19,\"centuryOfEra\":20,\"millisOfSecond\":0,\"millisOfDay\":58234000,\"secondOfMinute\":34,\"minuteOfHour\":10,\"hourOfDay\":16,\"dayOfYear\":253,\"dayOfWeek\":2,\"dayOfMonth\":10,\"era\":1,\"year\":2019,\"fieldTypes\":[{\"durationType\":{\"name\":\"years\"},\"rangeDurationType\":null,\"name\":\"year\"},{\"durationType\":{\"name\":\"months\"},\"rangeDurationType\":{\"name\":\"years\"},\"name\":\"monthOfYear\"},{\"durationType\":{\"name\":\"days\"},\"rangeDurationType\":{\"name\":\"months\"},\"name\":\"dayOfMonth\"},{\"durationType\":{\"name\":\"millis\"},\"rangeDurationType\":{\"name\":\"days\"},\"name\":\"millisOfDay\"}],\"values\":[2019,9,10,58234000],\"fields\":[{\"rangeDurationField\":null,\"leapDurationField\":{\"unitMillis\":86400000,\"precise\":true,\"name\":\"days\",\"type\":{\"name\":\"days\"},\"supported\":true},\"minimumValue\":-292275054,\"maximumValue\":292278993,\"lenient\":false,\"durationField\":{\"unitMillis\":31556952000,\"precise\":false,\"name\":\"years\",\"type\":{\"name\":\"years\"},\"supported\":true},\"name\":\"year\",\"type\":{\"durationType\":{\"name\":\"years\"},\"rangeDurationType\":null,\"name\":\"year\"},\"supported\":true},{\"rangeDurationField\":{\"unitMillis\":31556952000,\"precise\":false,\"name\":\"years\",\"type\":{\"name\":\"years\"},\"supported\":true},\"leapDurationField\":{\"unitMillis\":86400000,\"precise\":true,\"name\":\"days\",\"type\":{\"name\":\"days\"},\"supported\":true},\"minimumValue\":1,\"maximumValue\":12,\"lenient\":false,\"durationField\":{\"unitMillis\":2629746000,\"precise\":false,\"name\":\"months\",\"type\":{\"name\":\"months\"},\"supported\":true},\"name\":\"monthOfYear\",\"type\":{\"durationType\":{\"name\":\"months\"},\"rangeDurationType\":{\"name\":\"years\"},\"name\":\"monthOfYear\"},\"supported\":true},{\"rangeDurationField\":{\"unitMillis\":2629746000,\"precise\":false,\"name\":\"months\",\"type\":{\"name\":\"months\"},\"supported\":true},\"minimumValue\":1,\"maximumValue\":31,\"unitMillis\":86400000,\"durationField\":{\"unitMillis\":86400000,\"precise\":true,\"name\":\"days\",\"type\":{\"name\":\"days\"},\"supported\":true},\"lenient\":false,\"leapDurationField\":null,\"name\":\"dayOfMonth\",\"type\":{\"durationType\":{\"name\":\"days\"},\"rangeDurationType\":{\"name\":\"months\"},\"name\":\"dayOfMonth\"},\"supported\":true},{\"range\":86400000,\"rangeDurationField\":{\"unitMillis\":86400000,\"precise\":true,\"name\":\"days\",\"type\":{\"name\":\"days\"},\"supported\":true},\"maximumValue\":86399999,\"unitMillis\":1,\"durationField\":{\"unitMillis\":1,\"precise\":true,\"name\":\"millis\",\"type\":{\"name\":\"millis\"},\"supported\":true},\"minimumValue\":0,\"lenient\":false,\"leapDurationField\":null,\"name\":\"millisOfDay\",\"type\":{\"durationType\":{\"name\":\"millis\"},\"rangeDurationType\":{\"name\":\"days\"},\"name\":\"millisOfDay\"},\"supported\":true}]}";
+//            String textoRetirada = jsonString.toString().substring(dataUltimaAlteracaoText.indexOf(":")+1);
+//    		String resultado = gravarArquivo.toString().replace(gravarArquivo.toString(), "null");
+    		
+//            String dataUltimaAlteracaoText2 = "\"dataUltimaAlteracao\":{}";
+//            String textoRetirada2 = jsonString.toString().substring(dataUltimaAlteracaoText2.indexOf(":")+1);
+//     		gravarArquivo.toString().replace(textoRetirada2, "NULL");
+            
+//            	gravarArquivo.printf(jsonString);
+            gravarArquivo.printf(resultadoGSON);
+            	gravarArquivo.close(); 
+     		
+     		if(respostas2!=null&&!respostas2.isEmpty()){ 
+     			if (gerenciadorResposta.excluirRespostasAnteriores(autorizadorSeguranca.getUsuarioLogado().getId(), respostas.get(0).getPergunta().getQuestionario().getId(),
+     					respostas2.get(0).getResposta().get(0).getPreenchimento().getId())) {
+     				for (VisualizacaoPergunta visualizacaoPergunta : respostas){
+     					gerenciadorResposta.salvarRespostas(visualizacaoPergunta.getResposta());
+     				}
+     				
+     				gerenciadorPublico.alterarEntidade(respostas.get(0).getPublico());
+     				
+     				Preenchimento preenchimento = respostas2.get(0).getResposta().get(0).getPreenchimento();
+     				preenchimento.setDataFinalizacao(new LocalDateTime());
+     				preenchimento.setStatus(ENVIADO);
+     				gerenciadorPreenchimento.alterarEntidade(preenchimento);
+     			}     			
+     		}
+			
+			return getResult().use(Results.representation()).from(respostas).serialize();
+		} catch (final ValidacaoNegocialException err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
+		} catch (final Exception err) {
+			LOGGER.error(err, err);
+			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+		}
+	}
+
+=======================================================================================================================================
+
+=======================================================================================================================================
