@@ -30650,4 +30650,327 @@ weekOfWeekyear":37,"chronology":
 
 =======================================================================================================================================
 
+    # QUESTIONARIO-CAPES
+    
+        + Objetivo
+            
+            - Aprimorar conceitos de:
+            
+                - Abertura, Escrita, Edição, Formatação (Json, TXT, CVS), Deleção e Fechamento de Arquivos
+                - Manipular conteúdo de arquivo com a Classe String, Apache Text,  outros
+                - Formatar, alterar, selecionar texto com REGEX
+
+=======================================================================================================================================
+
+    # Configurar Proxy
+    
+        + Rede da Capes
+        
+            - Configurar Proxy
+                
+                - Ir em "Conexões de Rede" -> "Conexão Ethernet Automática"
+                - Ir em "Segurança 802.1X" 
+                    -> Habilitar "Usar protocolo de seguranca 5802.1X para esta conexão"
+                    -> Escolher em "Autenticação" a opção "EAP Protegido"
+                    
+                    proxyweb.capes.gov.br 8080
+        
+            PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+
+            http_proxy=http://joseqj:Kintino8@proxyweb.capes.gov.br:8080/
+            https_proxy=http://joseqj:Kintino8@proxyweb.capes.gov.br:8080/
+            ftp_proxy=http://joseqj:Kintino8@proxyweb.capes.gov.br:8080/
+            no_proxy=localhost, 127.0.0.0/8, ::1
+
+            Acquire {
+            HTTP::Proxy http://joseqj:Kintino8@proxyweb.capes.gov.br:8080;
+            FTP::Proxy http://joseqj:Kintino8@proxyweb.capes.gov.br:8080;
+            };
+
+            alias wget="wget --proxy-user=joseqj --proxy-Kintino8wd="
+            
+        + Rede da Indra
+        
+            - Configurar Proxy
+                
+                - Ir em "Conexões de Rede" -> "Conexão Ethernet Automática"
+                - Ir em "Segurança 802.1X" 
+                    -> Habilitar "Usar protocolo de seguranca 5802.1X para esta conexão"
+                    -> Escolher em "Autenticação" a opção "EAP Protegido (PEAP)"
+                    -> Em "Certificado de CA" deixar "Nenhum"
+                    -> Habilitar "Nenhum certificado é necessário"
+                    -> Em "Versão de PEAP" escolher "Automático"
+                    -> Em "Autenticação Interna" escolher "MSCHAPv2"
+                    -> Inserir nome do usuário "Nome de usuário" (jqsilva)
+                    -> Inserir "Senha" com (<senha_default>)
+                    
+                - Em "Configuração de Rede" inserir o "Método" como "Manual"
+                    - Inserir nos valores ""
+
+=======================================================================================================================================
+
+    # Java SE 7
+    
+        - Regular Expressions
+        
+            - Métodos
+            - Modificadores
+            - Metacaracteres
+            - Quantificadores
+            - Agrupadores
+
+            - O objetivo é pesquisar um "Padrão" dentro de uma "Texto" 
+            - Regex são sensíveis a maiúscula e minúscula
+            
+            - Modificadores
+            
+                (?i), Ignora maiúscula e minúscula (geral)
+                (?x), Comentários                  (apenas em Java) 
+                (?m), Comentários                  (geral)
+                (?s), Dottal                        (apenas em Java)
+                
+            - Metacaracteres (indica a ocorrência do padrão em uma cadeia de caracteres)
+            
+                -  .    - Qualquer caracteres   []
+                -  \d   - Digitos               [0-9]
+                - \D    - Não é digito          [^0-9]
+                - \s    - Espaços               [\t\n\x08\f\r]
+                - \S    - Não é espaços         [^\s]
+                - \w    - Letra                 [a-zA-Z_0-9]
+                - \W    - Não é letra           []
+                
+            - Quantificadores
+            
+                - X{n}      X, exatamente "n" vezes
+                - X{n,}     X, pelo menos "n" vezes
+                - X{n,m}    X, pelo menos "n", mas nao mais que "m" vezes
+                - X?        X, 0 ou 1 vez
+                - X*        X, 0 ou mais vezes    
+                - X+        X, a ou mais vezes
+                
+        - Metacaracteres de Fronteira
+        
+        - Agrupadores
+        
+            [...]               Agrupamento
+            [a-z]               Alcance
+            [a-e][i-u]          União
+            [a-z&&[aeiou]]      Intersecção
+            [^abc]              Exceção
+            [a-z&&[^m-p]]       Subtração
+            \x                  Fuga de literal
+            
+            Aula de Expressões Regulares: 28:20
+                    
+=======================================================================================================================================
+
+    # INDRA
+    
+        - Ajuste de JIRA
+        
+            - 08/2019
+                
+                01 REDMINE-13071 -> CCAPNSGA-9823
+                02 REDMINE-13072 -> CCAPNSGA-9824
+                03 REDMINE-13073 -> CCAPNSGA-9825
+                04 REDMINE-13080 -> CCAPNSGA-9826
+                05 REDMINE-12015 -> CCAPNSGA-9919
+                06 REDMINE-14089 -> CCAPNSGA-9921
+                07 REDMINE-14160 -> CCAPNSGA-9922
+                08 REDMINE-14188 -> CCAPNSGA-9923
+                09 REDMINE-14277 -> CCAPNSGA-9924
+                10 REDMINE-14091 -> CCAPNSGA-9928
+                11 REDMINE-14097 -> CCAPNSGA-9931
+                12 REDMINE-14107 -> CCAPNSGA-9936
+                13 REDMINE-14098 -> CCAPNSGA-9932 
+                14 REDMINE-14368 -> CCAPNSGA-10023
+                15 REDMINE-13351 -> CCAPNSGA-10024
+                16 REDMINE-14172 -> CCAPNSGA-10025
+                17 REDMINE-14183 -> CCAPNSGA-10026
+                18 REDMINE-14261 -> CCAPNSGA-10027
+                19 REDMINE-14262 -> CCAPNSGA-10028
+                20 REDMINE-14294 -> CCAPNSGA-10029
+                21 REDMINE-14295 -> CCAPNSGA-10030
+                22 REDMINE-14321 -> CCAPNSGA-10031
+                23 REDMINE-14900 -> CCAPNSGA-10032
+                24 REDMINE-14718 -> CCAPNSGA-10033
+                25 REDMINE-14541 -> CCAPNSGA-10034
+                26 REDMINE-14582 -> CCAPNSGA-10035
+                27 REDMINE-14795 -> CCAPNSGA-10036
+                28 REDMINE-14695 -> CCAPNSGA-10037
+                29 REDMINE-15045 -> CCAPNSGA-10038
+                
+            - 09/2019
+                
+                01 REDMINE-15031 -> CCAPNSGA-10039
+                02 REDMINE-15044 -> CCAPNSGA-10040
+                03 REDMINE-15188 -> CCAPNSGA-10041
+                04 REDMINE-15189 -> CCAPNSGA-10042
+                05 REDMINE-15340 -> CCAPNSGA-10043
+                06 REDMINE-15442 -> 
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Configurar sistema Questionário para rodar no Idea Intellij
+
+=======================================================================================================================================
+
+/* 
+	INSERIR PESSOAS A UM DETERMINADO PUBLICO ALVO 
+*/
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO_TESTE_STRESS_30_PERGUNTAS%';
+
+-- RECUPERAR TODOS OS PARTICIPANTES DE UM DETERMINADO PUBLICO ALVO
+
+SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 231;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 231;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE '%PUBLICO_ALVO_22_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002%';
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 118;
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 118;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 118 AND ID_PESSOA IN(3287270, 2860864, 3303933, 705191, 3320014);
+
+SELECT * FROM QUESTIONARIO.TIPO_PUBLICO_ALVO;
+
+-- UPDATE QUESTIONARIO.PUBLICO_ALVO
+SET ID_TIPO_PUBLICO_ALVO = 1
+WHERE ID_PUBLICO_ALVO = 118;
+
+COMMIT;
+
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE PESSOA_.NM_PESSOA LIKE '%PATRICK NASCIMENTO PEREIRA%'; -- 3287270
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE PESSOA_.NM_PESSOA LIKE '%ROBERTA SILVA MILHOMEM%'; -- 2860864
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE PESSOA_.NM_PESSOA LIKE '%JOSE QUINTINO DA SILVA JUNIOR%'; -- 3303933
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE PESSOA_.NM_PESSOA LIKE '%ALISSON CHAGAS SOUSA%'; -- 705191
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ WHERE PESSOA_.NM_PESSOA LIKE '%LUCAS MATHEUS DE SOUZA PEREIRA%'; -- 3320014
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(
+		 SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO 
+		 FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ 
+		 WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO 
+		 LIKE 'PUBLICO_ALVO_22_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002'
+	),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(3287270, 2860864, 3303933, 705191)
+AND PESSOA_.TP_PESSOA = 'F';
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, IN_ENVIO_IDENTIFICACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN)
+SELECT 
+	QUESTIONARIO.SQ_PUBLICO.NEXTVAL,
+	(
+		 SELECT PUBLICO_ALVO_.ID_PUBLICO_ALVO 
+		 FROM QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ 
+		 WHERE PUBLICO_ALVO_.DS_PUBLICO_ALVO 
+		 LIKE 'PUBLICO_ALVO_22_08_2019_LOTE_1000_IDENTIFICACAO_OBRIGATORIA_V0002'
+	),
+	PESSOA_.ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+	'CARGA_QUESTIONARIO',
+	SYSDATE,
+	'S',
+	NULL,
+	NULL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND PESSOA_.ID_PESSOA IN(3320014)
+AND PESSOA_.TP_PESSOA = 'F';
+
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO_TESTE_STRESS_30_PERGUNTAS%';
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 231 AND ID_PESSOA = 3287270;
+
+SELECT * FROM QUESTIONARIO.RESPOSTA WHERE ID_PREENCHIMENTO = 880415 ORDER BY ID_RESPOSTA ASC;
+
+-- ABRIR NOVAMENTE UM DETERMINADA RESPOSTA
+DELETE FROM QUESTIONARIO.RESPOSTA WHERE ID_PREENCHIMENTO = 880415;
+
+UPDATE QUESTIONARIO.PREENCHIMENTO
+SET CS_STATUS_PREENCHIMENTO = 'A',
+	DT_FINALIZACAO = NULL
+WHERE ID_PREENCHIMENTO = 880415;
+
+
+=======================================================================================================================================
+
+    #  QUESTIONARIO-CAPES
+            
+        -> [REDMINE-15460] - [QC_UC012_Manter Fonte de Dados] - Erro ao editar fonte de dados
+        
+        -> [REDMINE-15474] - [Corrigir] Tirar tipo "SELECT" da Combo na tela de Cadastro de Pergunta em um deteminado Questionário
+        
+        -> [REDMINE-15013] - [Corrigir] Voltar atualização de autenticação do SSO
+        
+        -> [REDMINE-15477] - [Corrigir] Alterar instruções ao cadastrar uma determinada pergunta do 'Tipo Select' na Fonte de Dados
+            - Alterar mensagem "Para o correto funcionamento, a query de dados do tipo pergunta, deve retornar o ID e a descrição da alternativa vinculada à pergunta." para "Para o correto funcionamento, a query de dados do Tipo Pergunta, deverá retornar o ID da PESSOA e o campo referente ao retorno da Query."
+        
+        -> [REDMINE-15479] [Corrigir] Ao criar um determinado Público Alvo do tipo "Fonte de Dados", o sistema não importa o Público Alvo e apresenta a mensagem "Erro Desconhecido" na tela
+        
+        -> [REDMINE-TTTTT] [Análise] Descrever procedimento para "Criar Conexões" com databases diversos (Questionário, Freire) via Fonte de Dados [E-mail]
+
+=======================================================================================================================================
+
+1. Sobre, "não estamos conseguindo editar uma fonte de dados de pergunta":
+
+1.1 Informo que estamos atendendo o REDMINE-15460 (https://redmine.capes.gov.br/issues/15460)
+
+2. Sobre, "precisamos criar as alternativas de conexões nos demais ambientes. Como fazer isso?"
+
+2.2 Informo que iremos descrever o procedimento para a realização dessa configuração para outros ambientes no REDMINE-14501 (https://redmine.capes.gov.br/issues/14501)
+
+3 Nota
+
+   3.1. Criamos o REDMINE-15474 - [QC_UC009_MANTER_PERGUNTA_INTERFACE_001_PERGUNTA] - Retirar da combo referente ao Tipo de Pergunta o valor "SELECT"
+   
+   3.2. Criamos o REDMINE-15477 - [QC_UC012_MANTER_FONTE_DADOS_INTERFACE_002_CADASTRAR_FONTE_DADOS_RG029] - Alterar no sistema a instrução do padrão da Query a ser cadastrada para Fontes de Dados do Tipo Pergunta
+   
+   3.3. Criamos o REDMINE-15479 - [QC_UC006_MANTER_PUBLICO_ALVO_A1_EI006] - Erro ao cadastrar um Público Alvo do Tipo Fonte de Dados
+
+=======================================================================================================================================
+
+    // FIXME [REDMINE-15479] {} -- ""
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        -> Alterações no Monitoramento: Alterações de Componente, Paginação
+            - /home/indra/Desenvolvimento/Thalium/thalium_tool/thalium_tool_ide
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
 =======================================================================================================================================
