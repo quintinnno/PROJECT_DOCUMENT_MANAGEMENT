@@ -29909,6 +29909,7 @@ SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 101 
 
 SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
 
+-- FONTE DE DADOS DO TIPO PERGUNTA
 SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
 FROM CORPORATIVO.PESSOA PESSOA_
 JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
@@ -30015,10 +30016,10 @@ public void criarPreenchimento(Long identificadorPublicacao, Long identificadorQ
             - Gerenciar as Jornadas de Trabalho Semanal, Flexível e Turnos
             - Gerenciar e Administra Pedidos de Ausência, Abono ou Férias
             - Integrações                
-                - O sistema deve integrar com Google, Facebook e Whatsapp
+                - O sistema deve integrar com Google (Login), Facebook (Login), SMS e Whatsapp (Envio de Mensagem)
             - Perfil de acesso
-                - Colaborador
-                - Gerente
+                - Colaborador           
+                - Gerente               
                 - Coordenador
                 - Adminstrador
                 - Perfil de Ajuste
@@ -30960,6 +30961,480 @@ WHERE ID_PREENCHIMENTO = 880415;
     
         -> Alterações no Monitoramento: Alterações de Componente, Paginação
             - /home/indra/Desenvolvimento/Thalium/thalium_tool/thalium_tool_ide
+            
+        -> Commit
+        
+            [REDMINE-15013] [AUTENTICAÇÃO SSO] - Retornar validação de autenticação no SSO.
+            
+            [REDMINE-15477] [QC_UC012_MANTER_FONTE_DADOS_INTERFACE_002_CADASTRAR_FONTE_DADOS_RG029] - Alterar no sistema a instrução do padrão da Query a ser cadastrada para Fontes de Dados do Tipo Pergunta
+            
+            [REDMINE-15477] [QC_UC012_MANTER_FONTE_DADOS_INTERFACE_002_CADASTRAR_FONTE_DADOS_RG029] - Alterar no sistema a instrução do padrão da Query a ser cadastrada para Fontes de Dados do Tipo Pergunta
+
+=======================================================================================================================================
+
+# QUESTIONARIO-CAPES
+
+    -> Investigar sobre o serviço de documento (para armazenamento documental)
+    -> O sistema InVOICE implementa esse serviço
+                                                                                                                             
+=======================================================================================================================================
+  // FIXME [REDMINE-15460] {A} -- "Corrigir erro ao tentar editar uma determinada Fonte de Dados"
+  vm.irParaAlteracao = (idFonte) => {
+	
+	// Validar se a Fonte de Dados ja esta vinculada com um determinado Modelo de E-mail ou Pergunta
+	vm.fonteDadosSelecionado = find(propEq('id', idFonte))(vm.listaFontes);
+	isVinculoFonteDados(vm.fonteDadosSelecionado);
+	
+//	 if(isVinculoFonteDados(vm.fonteDadosSelecionado)) {
+//		 CapesIslToaster.error('commons.mensagem.MSG015', { i18n: true });
+//	} else {
+//		$state.go('edita-fonte-dados', { id: idFonte, fluxo: 'ALT', });
+//	}
+	
+	/*
+	vm.fonteSelecionada = find(propEq('id', idFonte))(vm.listaFontes);
+	if(vm.fonteSelecionada.finalidadeFonte == 'M' || vm.fonteSelecionada.finalidadeFonte == 'P'){
+		CapesIslToaster.error('commons.mensagem.MSG015', { i18n: true });  
+	}else{
+		$state.go('edita-fonte-dados', {
+		    id: idFonte,
+		    fluxo: 'ALT',
+		});  
+	} 
+	*/
+  };
+=======================================================================================================================================
+
+    -> Questão de Tipo Select
+
+    https://redmine.capes.gov.br/issues/15462
+        O erro ocorre, pois o respondente não faz parte do Público Alvo
+
+=======================================================================================================================================
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Pessoal, vendo os testes da rsi, os reportes de defeito
+notei que no redmine  https://redmine.capes.gov.br/issues/15462, o questionário não lista a tela para responder quando uma variável de uma pergunta utilizando o select, não encontra como parte o idpessoa.
+ai não lista nem para responder, editar ou sequer visualizar o questionário.
+É preciso que seja tratada a excessão para que ao menos liste as demais questões...e sinalize um dado no lugar da variável como "NULO"...
+-------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------------------------------------------------------------
+Outro ponto: Estou tentando cadastrar o publico alvo com a query do time freire gerou, veja:
+
+SELECT  IR.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA, LOWER(CE.DS_CORREIO_ELETRONICO) AS DS_CORREIO_ELETRONICO
+FROM FREIRE2.DISCENTE D
+INNER JOIN FREIRE2.HISTORICO_DISCENTE H ON D.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.ID_TIPO_SITUACAO_DISCENTE = 1 AND H.IN_ATIVO = 'S'
+INNER JOIN FREIRE2.PESSOA_FREIRE PF ON D.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE
+INNER JOIN CORPORATIVO.PESSOA P ON PF.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON P.ID_PESSOA = CE.ID_PESSOA AND CE.IN_PRINCIPAL_FINALIDADE = 'S' AND CE.ID_FINALIDADE_ENDERECO = 5
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IR ON P.ID_PESSOA = IR.ID_PESSOA AND IR.ID_TIPO_IDENTIFICADOR = 1
+WHERE ROWNUM <= 43000
+GROUP BY PF.ID_PESSOA_FREIRE, D.ID_DISCENTE, IR.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA, CE.DS_CORREIO_ELETRONICO 
+
+Mão consigo executar pois fica sinalizando que deu erro..também utilizei a conexao freire, no ambiente de desenvolvimento, mesmo assim não funciona.
+-------------------------------------------------------------------------------------------------------------------------------------
+
+ -> O respondente deve estar no Público Alvo 
+
+Corrigir [https://redmine.capes.gov.br/issues/15462]
+
+=======================================================================================================================================
+
+    # Cerificação Java
+    
+        - Conteúdo
+
+=======================================================================================================================================
+
+    # Concurso Público
+    
+        - Previdência Social
+        
+            - Português
+            - Direito
+            - Informática
+
+=======================================================================================================================================
+// FIXME [REDMINE-15460] {N} -- "Corrigir erro ao tentar editar uma determinada Fonte de Dados"
+	public boolean verificarVinculoFonteDadosFinalidadeModeloEmail(Long idFonteDados) {
+		StringBuilder stringBuilder = new StringBuilder("SELECT vinculo_email_fonte_ ")
+			.append("FROM VinculoEmailFonte vinculo_email_fonte_ ")
+			.append("WHERE vinculo_email_fonte_.modeloEmail.id = :id_fonte_dados_parameter_ ");
+		Query query = em.createQuery(stringBuilder.toString());
+		query.setParameter("id_fonte_dados_parameter_", idFonteDados);
+		if (query.getResultList().size() != 0) {
+			return true;
+		}
+		return false;
+	}
+=======================================================================================================================================
+
+<property name="hibernate.show_sql" value="true" />
+<property name="hibernate.format_sql" value="true" />
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        -> COMMIT
+        
+            [REDMINE-15460] - [QC_UC012_Manter Fonte de Dados] - Erro ao editar fonte de dados
+            [REDMINE-15474] - [QC_UC009_MANTER_PERGUNTA_INTERFACE_001_PERGUNTA] - Retirar da combo referente ao Tipo de Pergunta o valor "SELECT"
+
+=======================================================================================================================================
+
+const verificarVinculoFonteDados = (id) =>
+  $http.get('rest/fonte-dados/verificarVinculoFonteDados', {
+    params: {
+      id: id,
+    },
+  });  
+  
+// FIXME [REDMINE-15460] {A} -- "Corrigir erro ao tentar editar uma determinada Fonte de Dados"
+	@GET
+	@Path("/verificarVinculoFonteDados")
+	@ApiOperation(produces = "application/json,application/xml", 
+				  consumes = "application/json,application/xml", 
+				  value = "Responsável por verificar se uma determinada Fonte de Dados possui vínculo com algum Modelo de E-mail ou Pergunta", 
+				  response = Boolean.class)
+	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+					@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
+					@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
+	@RecursoProtegido
+	public Response verificarVinculoFonteDados(@QueryParam("id") final String id) {
+		return getResult().use(Results.representation()).from(gerenciadorFonteDados.isFonteDadosPossuiVinculo(Long.parseLong(id))).serialize();
+	}
+
+=======================================================================================================================================
+// FIXME [REDMINE-15474] {N} -- "Retirar da combo referente ao Tipo de Pergunta o valor 'SELECT'"
+import { filter, propEq, reject } from 'ramda';
+
+function SelectTipoPerguntaCtrl(TipoPerguntas) {
+  'ngInject';
+
+  // FIXME [REDMINE-15474] {A} -- "Retirar da combo referente ao Tipo de Pergunta o valor 'SELECT'" 
+  TipoPerguntas.consultarTodas().then((perguntas) => {
+	  this.tipos = reject(propEq('id', 16))(perguntas);
+  });
+=======================================================================================================================================
+Ancha Es Castilla
+
+Si Crees Que Todo Cuanto Has Escuchado
+No Tiene Contigo Nada Que Ver
+Estas Amigo Equivocado
+Parate A Ver, Parate A Ver.
+
+Todos Soñamos Con Ser
+Un Caballero Y Tener
+Algo Por Lo Que Luchar
+Y Un Amor Que Defender.
+
+Si Tienes Un Ideal, Un Principio
+Defiendelo Y Aferrate A El
+Alguien Escribio Que La Vida Es Sueño
+Y Los Sueños, Sueños Son.
+
+Se Rebelde Como El Mar
+Se Noble Por Que Al Final
+De Esta Vida Llevarás
+Tu Libertad.
+
+No Importa Cuan Loco Te Crean Todos
+Mantente Firme, Mantente En Pie
+Buscar Tu Sitio, Encontrarte A Ti Mismo
+Es Tu Mision, Es La Razón
+
+Gritale Al Cielo Que No
+Quieres Ser Solo Uno Mas
+Ancha Es Castilla Y El Sol
+Tu Caminar Guiará.
+
+
+Ancha Es Castilla
+
+Se crês que tudo que tens escutado
+Não tem contigo nada a ver
+Estás, amigo, equivocado
+Pára-te a ver, pára-te a ver.
+
+Todos sonhamos em ser
+Um cavaleiro e ter
+Algo por que lutar
+E um amor que defender.
+
+Se tens um ideal, um princípio
+Defende-o e aferra-te a ele
+Alguém escreveu que a vida é sonho
+E os sonhos, sonhos são
+
+Sê rebelde como o mar
+Sê nobre porque no final
+Desta vida levarás
+Tua liberdade
+
+Não importa o quão louco te achem todos
+Mantém-te firme, mantém-te em pé
+Buscar teu lugar, encontrar-te a ti mesmo
+É tua missão, é a razão
+
+Grita ao céu que não
+Queres ser só um mais
+Larga é Castilha e o Sol
+Teu caminhar guiará
+=======================================================================================================================================
+// FIXME [REDMINE-15477] {A} -- "Alterar instruções ao cadastrar uma determinada pergunta do 'Tipo Select' na Fonte de Dados"
+
+vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do Tipo Pergunta, deverá retornar o ID da PESSOA e o campo referente ao retorno da Query.';
+=======================================================================================================================================
+USERNAME: alissons
+PASSWORD: ali009357
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Configurar SPY para apresentar os valores da Query
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Ao cadastrar uma determinada Pergunta, o sistema deve verificar se o "nome da variável" 
+            existe na Fonte de Dados do Tipo Pergunta
+            
+        - Validar formato da pergunta
+        
+        // FIXME [REDMINE-15462] {A} -- "[QC_UC007_Manter_resposta] - Tela 'Responder Questionário' não apresentada"
+        
+        /\$\{([\w]+)\}
+        
+        https://regex101.com/
+
+=======================================================================================================================================
+
+// FIXME [REDMINE-15462] {A} -- "[QC_UC007_Manter_resposta] - Tela 'Responder Questionário' não apresentada"
+  this.persistirPerguntaAlvo = () => { 
+    const payload = pick(['pergunta', 'perguntasIdioma'], this.perguntaConsulta);
+    
+    for(let i = 0 ; i < payload.perguntasIdioma.length ; i++) {
+    	if(payload.perguntasIdioma[i].texto.contains("${")) {
+    		// Verifica se o valor da variavel esta cadastrada no banco de dados
+    	console.log();
+    	}
+    }
+
+=======================================================================================================================================
+package br.plataformalancamento.pontoeletronico.test;
+
+public class ExpressoesRegularesTest {
+
+	public static void main(String[] args) {
+		// extrairEmail();
+		// extrairNomeVariavelDentroString();
+		// substituirDataUltimaAlteracao();
+		// verificacaoString();
+		verificacaoPadraoString();
+	}
+
+	@SuppressWarnings("unused")
+//	private static void extrairEmail() {
+//		String texto = "Joao <joao@email.com>";
+//		String regex = "\\<(?<meuGrupo>.*?)\\>";
+//		String retorno = "";
+//		Pattern pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE);
+//		Matcher comparator = pattern.matcher(texto);
+//		if (comparator.find(0)) {
+//			retorno = comparator.group("meuGrupo");
+//		}
+//		System.out.println(retorno);
+//	}
+
+//	private static void extrairNomeVariavelDentroString() {
+//		// String texto = "O nome do seu/sua Coordenador(a) é ${REGISTRO_PRIMEIRO_PONTO}
+//		// ?";
+//		String texto = "O nome do seu/sua Coordenador(a) é ${PONTO_ELETRONICO_DESAJUSTADO} ?";
+//		System.out.println(texto.substring(texto.indexOf("\"dataUltimaAlteracao\": {") + 0, texto.indexOf("}") + 2));
+//		
+//	}
+
+//	private static void substituirDataUltimaAlteracao() {
+//		String dataUltimaAlteracaoText = "";
+//		String textoRetirada = dataUltimaAlteracaoText.substring(dataUltimaAlteracaoText.indexOf("dataUltimaAlteracao")+1);
+//		String resultado = dataUltimaAlteracaoText.replace(textoRetirada, "null");
+//		System.out.println(resultado);
+//	}
+	
+	private static void verificacaoString() {
+		String padrao = "string";
+		String texto = "Nessa Frase tem uma string ?";
+		boolean isContem = padrao.matches(texto);
+		System.out.println("Tem registro: " + isContem);
+	}
+	
+	private static void verificacaoPadraoString() {
+//		System.out.println("Retorno: " + "@".matches("."));
+//		System.out.println("Retorno: " + "1".matches("\\d")); // Avaliar ocorrencia de 1 digito no texto
+//		System.out.println("Retorno: " + "A".matches("\\w")); // Avaliar ocorrencia de letras e numeros
+//		System.out.println("Retorno: " + "#".matches("\\w")); // Avaliar ocorrencia de caracteres especiais
+//		System.out.println("Retorno: " + " ".matches("\\s")); // Avaliar ocorrencia de espaços
+//		System.out.println("Retorno: " + "Pia".matches("...")); // Avaliar ocorrencia com mais de 1 caractere
+//		System.out.println("Retorno: " + "56".matches("\\d\\d")); // Avaliar ocorrencia de 2 digitos (deve validar a ocorrencia)
+//		System.out.println("Validar mascara de um CPF: " + "027.051.658-45".matches("\\d\\d\\d.\\d\\d\\d.\\d\\d\\d-\\d\\d")); // Validar CPF com mascara
+//		System.out.println("Validar mascara de um CPF (reduce): " + "027.051.658-45".matches("\\d{3}.\\d{3}.\\d{3}-\\d{2}")); // Validar CPF com mascara. Reduzir com Quantificadores
+//		System.out.println("Tem pelo menos dois digitos? " + "027155844545455".matches("\\d{2,}"));
+//		System.out.println("Tem pelo menos duas vezes, mas não mais de cinco vezes o numero de digitos? " + "02705".matches("\\d{2,5}"));
+//		System.out.println("Tem qualquer tipo de caractes ZERO ou UMA vez? " + "a".matches(".?"));
+//		System.out.println("Tem qualquer tipo de caractes ZERO ou mais vezes? " + "a@#".matches(".*"));
+//		System.out.println("Tem qualquer tipo de caractes ZERO ou mais vezes? " + "aaasasa".matches(".+"));
+//		System.out.println("Data no formato válida? " + "23/01/2019".matches("\\d{2}/\\d{2}/\\d{4}"));
+//		System.out.println("Saber se no texto se inicia com uma palavra especifica (PIER21) ? " + "PIER21".matches("^PIER.*"));
+//		System.out.println("Saber se no texto se inicia com uma palavra especifica (PIER21) ? " + "PIER21".matches(".*21$")); // Encerra com 21 ?
+//		System.out.println("Encontrar palavra em uma cadeia de caracteres: " + "asa adsad asd sd sd java saddsgdfghfg sjs fgf f".matches(".*java.*"));
+//		System.out.println("Encontrar palavra em uma cadeia de caracteres: " + "asa adsad asd sd sd java saddsgdfghfg sjs fgf f".matches("^asa.*f$"));
+//		System.out.println("Padrao OU: " + "Sim ou não sim".matches(".*sim|não.*"));
+//		System.out.println("Resultado: " + "a bac ada bra bra bra ba".matches(".*[a-z]"));
+//		System.out.println("Resultado: " + "5".matches(".*[0-9]"));
+		System.out.println("Resultado: " + "5".matches(".*[0-9]"));
+	}
+
+}
+
+=======================================================================================================================================
+
+    # PLPOE
+    
+        -> Realizar merge da branch "PLPOE-20190804030422" com a branch "MASTER"
+        
+            git checkout master
+            git merge PLPOE-20190804030422
+            
+            Corrigir conflitos no "git"
+
+=======================================================================================================================================
+String variavelFonteDadosPergunta = "${";
+		String nomeVariavelFonteDadosPergunta = "";
+		for(PerguntaIdioma perguntaIdioma : perguntaIdiomaHashSet) {
+			if(perguntaIdioma.getTexto().contains(variavelFonteDadosPergunta)) {
+				nomeVariavelFonteDadosPergunta = perguntaIdioma.getTexto().substring(perguntaIdioma.getTexto().indexOf("${"), perguntaIdioma.getTexto().indexOf("}")+1);
+				perguntaIdioma.setTexto(perguntaIdioma.getTexto().replace(nomeVariavelFonteDadosPergunta, gerenciadorFonteDados.recuperarValorVariavelPerguntaFonteDados(nomeVariavelFonteDadosPergunta)));
+			}
+		}
+=======================================================================================================================================
+    
+    https://redmine.capes.gov.br/issues/15104
+    
+=======================================================================================================================================
+
+
+233440GSp INDRA
+233440Gsp CAPES
+=======================================================================================================================================
+Preclusa - Esgotada
+Preclusão: No direito processual, a perda do direito de agir nos autos em face da perda da oportunidade, conferida por certo prazo.
+Aquiescência - Consentimento
+=======================================================================================================================================
+%{font-size:18pt}Nota%
+
+Para permitir o acesso do sistema Questionário a outros _schemas_ de banco de dados deve-se:
+
+1.  Criar um novo _datasources_ Alterar o arquivo *_standalone.xml_* no diretório *<path>/standalone/configuration/standalone.xml*
+
+<pre>
+<code class="xml">
+<datasources>
+<xa-datasource jndi-name="java:jboss/datasources/Freire2DS" pool-name="Freire2DS" enabled="true" use-java-context="true" spy="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:Oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>webfreire2</user-name>
+                        <password>webfreire2</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>30</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>               
+</datasources>
+</pre>
+</code>
+
+2. Inserir uma nova _Conexão_ na tabela *QUESTIONARIO.CONEXAO*
+
+<pre>
+<code class="sql">
+INSERT INTO QUESTIONARIO.CONEXAO (ID_CONEXAO, 
+NM_CONEXAO, 
+DS_JNDI, 
+DS_USUARIO_ULTIMA_ALTERACAO,
+DH_ULTIMA_ALTERACAO)
+VALUES(QUESTIONARIO.SQ_CONEXAO.NEXTVAL, 
+'CONEXÃO FREIRE2',
+'java:jboss/datasources/Freire2DS', 
+'REDMINE-15589',
+ SYSDATE); 
+</pre>
+</code>
+
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        - Criar CATI para execução do Passo 2 do REDMINE-15589 (https://redmine.capes.gov.br/issues/15589)
+
+=======================================================================================================================================
+
+    # LINUX MINT 19.1
+    
+        - Eclipse
+        
+            - Tema de cores
+            
+                - Wf--Rw
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
+
+=======================================================================================================================================
 
 =======================================================================================================================================
 
