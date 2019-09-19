@@ -194,14 +194,14 @@
             $ npm -v
             $ npm set registry http://npm.ci.capes.gov.br
 
-        export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
-        export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
+        export http_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
+        export https_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
                             
         export http_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
         export https_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
 
-        npm config set proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
-        npm config set https-proxy 'http://jqsilva:Kintino9@proxylatam.indra.es:8080'
+        npm config set proxy 'http://jqsilva:Kintino2@proxylatam.indra.es:8080'
+        npm config set https-proxy 'http://jqsilva:Kintino2@proxylatam.indra.es:8080'
 
         npm i   // Sem a pasta NodeModules na pasta front-end
         npm install -g grunt
@@ -214,9 +214,9 @@
 
                 Inserir no arquivo
 
-                    Acquire::http::proxy "http://jqsilva:Kintino9@proxylatam.indra.es:8080/";
-                    Acquire::https::proxy "https://jqsilva:Kintino9@proxylatam.indra.es:8080/";
-                    Acquire::ftp::proxy "ftp://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+                    Acquire::http::proxy "http://jqsilva:Kintino2@proxylatam.indra.es:8080/";
+                    Acquire::https::proxy "https://jqsilva:Kintino2@proxylatam.indra.es:8080/";
+                    Acquire::ftp::proxy "ftp://jqsilva:Kintino2@proxylatam.indra.es:8080/";
 
 
 ================================================================================================================
@@ -268,9 +268,9 @@
             rm -rf "$NVM_DIR"
             <Editar ultima Linha do ~BACHRC>     
 
-===================================================================================================================================================
+=======================================================================================================================================
 # CONFIGURAÇÃO DO WildFly 10
-===================================================================================================================================================   
+=======================================================================================================================================   
 
 > ./jboss-cli.sh --connect
 
@@ -284,8 +284,8 @@
         
     ## Procedimentos para acessar a Rede interna da Indra (Mint 18.1)
 
-        -- export http_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
-        -- export https_proxy="http://jqsilva:Kintino9@proxylatam.indra.es:8080"
+        -- export http_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
+        -- export https_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
     
         -- Para o acesso a rede interna da Indra Company se faz necessário realizar configurações
         
@@ -7078,7 +7078,7 @@ Defeito #393: [QUESTIONÁRIO CAPES] - Corrigir na tela de responder questionári
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16390
         + [RESOLVIDO]    https://mantisbt.capes.gov.br/mantisbt/view.php?id=16383
 
-===================================================================================================================================================
+=======================================================================================================================================
 Erro 0001
 
 [Resultado Obtido]
@@ -7102,7 +7102,7 @@ Melhoria 0001
     na grid o valor da ultima pesquisa.
 
     Usar como exemplo a tela 'modelo-email-pesquisa.html' que já tem esse mesmo comportamento
-===================================================================================================================================================
+=======================================================================================================================================
 
  /* FIXME [DESENVOLVIMENTO] -- */
   this.avisarCamposObrigatorios = (event) => {
@@ -7115,9 +7115,9 @@ Melhoria 0001
       return;
   };
 
-===================================================================================================================================================
+=======================================================================================================================================
 Alterar a mensagem da data de publicação
-===================================================================================================================================================
+=======================================================================================================================================
 
 
 https://www.w3schools.com/html/html5_webworkers.asp
@@ -7148,23 +7148,23 @@ Júnior, José Quintino
 +55 (061) 995 995 532
 
 
-===================================================================================================================================================
+=======================================================================================================================================
 contarUsuariosSemEnvioQuestionario - contarUsuarioSemEnvioQuestionario
-===================================================================================================================================================
+=======================================================================================================================================
 
 Para bater ponto deve-se, digitar a matricula e digitar "D"
 
-===================================================================================================================================================
+=======================================================================================================================================
 Controlar a sessão do Sistema, ao finalizar deve-se retornar para a página de Login (automaticamente)
-===================================================================================================================================================
+=======================================================================================================================================
 -Darquivos=/home/indra/Desenvolvimento/Chromium/chromium-tool/chromium-tool_server/chromium-tool-server-jbossEAP/jboss-eap-6.4/arquivos
-===================================================================================================================================================
+=======================================================================================================================================
 
-===================================================================================================================================================
+=======================================================================================================================================
 
-===================================================================================================================================================
+=======================================================================================================================================
 
-===================================================================================================================================================
+=======================================================================================================================================
 *[QUESTIONÁRIO CAPES]* 
 
 *[Mensagem do Demandante]*
@@ -7216,7 +7216,7 @@ pertecentem a um determinado Público Alvo do sistema, tiveram "problemas" no pr
 
 *[Considerações Finais]*
 
-===================================================================================================================================================
+=======================================================================================================================================
 *[QUESTIONÁRIO CAPES]*
 
 *[Mensagem do Demandante]*
@@ -7263,7 +7263,7 @@ pertecentem a um determinado Público Alvo do sistema, tiveram "problemas" no pr
 
 *[Considerações Finais]*
 
-===================================================================================================================================================
+=======================================================================================================================================
 
 *[QUESTIONÁRIO CAPES]*
 
@@ -7364,7 +7364,7 @@ pertecentem a um determinado Público Alvo do sistema, tiveram "problemas" no pr
 
 *[Considerações Finais]*
 
-===================================================================================================================================================
+=======================================================================================================================================
 
 Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
 Fonte de Dados 08/01/2019 (Fonte de Dados) (Público Alvo) (100) v1
@@ -7431,7 +7431,7 @@ ID_PESSOA|NM_PESSOA                    |DS_IDENTIFICADOR_REGISTRADO|DS_CORREIO_E
   2536050|PATRICK NASCIMENTO PEREIRA   |03089233169                |teste@gmail.com.br              
 ---------|-----------------------------|---------------------------|-----------------------------------
 
-===================================================================================================================================================
+=======================================================================================================================================
 
 wjferreira@indracompany.com
 cmgsilva@indracompany.com
@@ -7441,7 +7441,7 @@ pnascimento@indracompany.com
 1.1  Qual procedimento devo adotar com os valores pagos por mim na ausência de créditos referentes ao benefício ?
 
 
-===================================================================================================================================================
+=======================================================================================================================================
 # REMDIME 400
 
 [Objetivo]
@@ -7845,7 +7845,7 @@ Resultado:
 
 Registros encontrados: 300
 
-===================================================================================================================================================
+=======================================================================================================================================
 
 # Pesquisar sobre
     
@@ -7864,9 +7864,9 @@ Registros encontrados: 300
     - Stanium
     - Thalium
 
-===================================================================================================================================================
+=======================================================================================================================================
 # INDRA COMPANY - SCRIPTS ORACLE
-===================================================================================================================================================
+=======================================================================================================================================
 
 SELECT * FROM PARAMETRO.PARAMETRO_SISTEMA WHERE NM_PARAMETRO_SISTEMA LIKE '%questionario.siglasAplicacoes%';
 
@@ -7877,9 +7877,9 @@ INSERT INTO PARAMETRO.PARAMETRO_SISTEMA
 (ID_PARAMETRO_SISTEMA, NM_PARAMETRO_SISTEMA, DS_PARAMETRO_SISTEMA, DH_ULTIMA_ALTERACAO, DS_USUARIO_ULTIMA_ALTERACAO, NR_VERSAO)
 VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIONARIO', 1);
 
-===================================================================================================================================================
+=======================================================================================================================================
 # INSTALACAO DE SISTEMA OPERACIONAL LINUX MINT 19.0
-===================================================================================================================================================
+=======================================================================================================================================
 
     # Instalar Sistema Operacional
 
@@ -7909,9 +7909,9 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
         + Estimar o tempos restante 
         + Deixar a demanda com apenas 70 horas
 
-===================================================================================================================================================
+=======================================================================================================================================
 # ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES
-===================================================================================================================================================
+=======================================================================================================================================
     
     -- Deployments
         -- smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
@@ -7919,15 +7919,15 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
     -- Ambiente de Homologação
         -- smb://samba-gns.capes.gov.br/java_homolog/questionario-capes/configuration
         
- smb://samba-gns.capes.gov.br/logs_teste/Java/questionario-capes
-
+            smb://samba-gns.capes.gov.br/logs_teste/Java/questionario-capes
+ 
         User Capes: joseqj
         Domain:     FC
         Senha:      ||||||||||||||| 
 
-===================================================================================================================================================
+=======================================================================================================================================
 # REDMINE 392
-===================================================================================================================================================
+=======================================================================================================================================
 -- REDMINE_392_TIPO_MATRIZ_INCLUIR
 
 *[QUESTIONÁRIO CAPES]* 
@@ -8287,9 +8287,9 @@ QUESTIONARIO NMSS
 
         Público Alvo 13/03/2019 (QC) (Identificador Opcional) v1
 
-===================================================================================================================================================
+=======================================================================================================================================
 QUESTIONARIO CAPES
-===================================================================================================================================================
+=======================================================================================================================================
 
     + Realizar importação de 500 usuarios pela Fonte de Dados
     + Verificar Monitoramento (via código)
@@ -8310,9 +8310,9 @@ Nirian,
 2 O Lucioney irá abrir um chamado para a execução nos ambientes de Teste e Produção dos scripts.
 
 
-===================================================================================================================================================
+=======================================================================================================================================
 [INICIO] CORRECÃO DE PRODUCAO
-===================================================================================================================================================
+=======================================================================================================================================
 -- REFLETE PRODUCAO
 SELECT PR.ID_PREENCHIMENTO, MAX(PR.DH_ULTIMA_ALTERACAO) 
 FROM QUESTIONARIO.PREENCHIMENTO PR
@@ -9062,9 +9062,9 @@ ID_PESSOA|NM_PESSOA                         |DS_IDENTIFICADOR_REGISTRADO|DS_CORR
   2535905|IAGO FERNANDES BARBOSA CUNHA      |15997717720                |ifbarbosa@indracompany.com  
   2514081|WILTON MARINHO CARNEIRO DE SOUZA  |71987614100                |wmarinho@indracompany.com    
 
-===================================================================================================================================================
+=======================================================================================================================================
 [FIM] CORRECÃO DE PRODUCAO
-===================================================================================================================================================
+=======================================================================================================================================
 
 Bom dia, Nírian,
 
@@ -31081,6 +31081,8 @@ Corrigir [https://redmine.capes.gov.br/issues/15462]
         
             [REDMINE-15460] - [QC_UC012_Manter Fonte de Dados] - Erro ao editar fonte de dados
             [REDMINE-15474] - [QC_UC009_MANTER_PERGUNTA_INTERFACE_001_PERGUNTA] - Retirar da combo referente ao Tipo de Pergunta o valor "SELECT"
+			
+			[REDMINE-15462] - [QC_UC007_Manter_resposta] - Tela 'Responder Questionário' não apresentada
 
 =======================================================================================================================================
 
@@ -31417,33 +31419,845 @@ VALUES(QUESTIONARIO.SQ_CONEXAO.NEXTVAL,
                 - Wf--Rw
 
 =======================================================================================================================================
+/*
+	FONTE DE DADOS 10/09/2019 (PUBLICO ALVO) V001
+*/
+
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+-- SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO, CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE, CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO
+-- SELECT COUNT(*)
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 29159 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+OR (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND PESSOA_.TP_PESSOA = 'F';
+
+SELECT * FROM CORPORATIVO.TIPO_FINALIDADE_ENDERECO;
+
+AND PESSOA_.ID_PESSOA = 2536050
+AND PESSOA_.ID_PESSOA = 2536187
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+-- DELETE FROM QUESTIONARIO.FONTE_DADOS WHERE ID_FONTE_DADOS = 149;
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND ROWNUM < 3000;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA ORDER BY ID_PERGUNTA DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+
+SELECT *
+FROM QUESTIONARIO.PERGUNTA_IDIOMA
+WHERE TX_PERGUNTA LIKE '%${CoordenadorPolo%';
+
+SELECT * FROM QUESTIONARIO.MODELO_EMAIL ORDER BY ID_MODELO_EMAIL DESC;
+
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO ORDER BY ID_DETALHE_PUBLICACAO DESC;
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO WHERE ID_MODELO_EMAIL = 266;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO ORDER BY ID_NOTIFICACAO DESC;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE ID_MODELO_EMAIL = 266;
+
+SELECT * FROM QUESTIONARIO.VINCULO_EMAIL_FONTE ORDER BY ID_VINCULO_EMAIL_FONTE DESC;
+SELECT * FROM QUESTIONARIO.VINCULO_EMAIL_FONTE WHERE ID_MODELO_EMAIL = 266;
+SELECT * FROM QUESTIONARIO.VINCULO_EMAIL_FONTE WHERE ID_FONTE_DADOS = 154;
+
+/*
+	SELECT DS_PARAMETRO_SISTEMA as LINK_SISTEMA
+	FROM PARAMETRO.PARAMETRO_SISTEMA
+	WHERE NM_PARAMETRO_SISTEMA = 'questionario.urlSeguranca'
+	AND EXISTS (SELECT 1 FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR WHERE IR.DS_IDENTIFICADOR_REGISTRADO  = ? )
+*/
+
+SELECT * FROM QUESTIONARIO.TIPO_PERGUNTA ORDER BY ID_TIPO_PERGUNTA ASC;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P' ORDER BY ID_FONTE_DADOS DESC;
+
+-- UPDATE QUESTIONARIO.FONTE_DADOS
+SET NM_FONTE_DADOS = '${NOME_RESPONDENTE_QUESTIONARIO}'
+WHERE ID_FONTE_DADOS = 145;
+
+-- UPDATE QUESTIONARIO.FONTE_DADOS
+SET NM_FONTE_DADOS = '${NOME_RESPONDENTE_QUESTIONARIO______}'
+WHERE ID_FONTE_DADOS = 145;
+
+SELECT * FROM QUESTIONARIO.CONEXAO ORDER BY ID_CONEXAO;
+
+-- INSERT INTO QUESTIONARIO.CONEXAO (ID_CONEXAO, NM_CONEXAO, DS_JNDI, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+VALUES(QUESTIONARIO.SQ_CONEXAO.NEXTVAL, 'CONEXÃO FREIRE2', 'java:jboss/datasources/Freire2DS', 'REDMINE-15589', SYSDATE);
+
+UPDATE QUESTIONARIO.CONEXAO
+SET DS_JNDI = 'java:jboss/datasources/Freire2DS',
+	NM_CONEXAO = 'Conexão Freire'
+WHERE ID_CONEXAO = 6
+AND DS_USUARIO_ULTIMA_ALTERACAO = '15997717720';
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+UPDATE QUESTIONARIO.FONTE_DADOS
+SET NM_FONTE_DADOS = 'Fonte de dados 17/09/2019 (Freire) (Público Alvo) (Bolsistas de Iniciação à Docência) v001'
+WHERE ID_FONTE_DADOS = 157;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+
+DELETE FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 480;
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'NIRIAN MARTINS SILVEIRA DOS SANTOS';
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'PATRICK NASCIMENTO PEREIRA';
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'JOSE QUINTINO DA SILVA JUNIOR';
+
+-- VERIFICA SE UMA DETERMINADA PESSOA POSSUI 'LOGIN' NA BASE DA CAPES
+SELECT CASE WHEN COUNT(1) = 0 THEN 'O USUÁRIO NÃO POSSUE LOGIN NA CAPES' ELSE 'O USUÁRIO POSSUI LOGIN CONFIGURADO NA CAPES' END AS SITUACAO
+FROM (
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO
+	FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6 -- IDENTIFICADOR DO TIPO "LOGIN"
+	AND IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '%32363567749%' -- INFORMAR O CPF DO USUSARIO - "02735025144", "32363567749"
+	GROUP BY IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO 
+);
+
+=======================================================================================================================================
+ 
+ # QUESTIONARIO-CAPES
+ 
+    + Formatar arquivo "standalone.xml" habilitando o SPY (Apresenta o valor das querys realizadas)
+    
+######################################################################################################################################
+    <?xml version='1.0' encoding='UTF-8'?>
+
+<server xmlns="urn:jboss:domain:1.7">
+
+    <extensions>
+        <extension module="org.jboss.as.clustering.infinispan"/>
+        <extension module="org.jboss.as.connector"/>
+        <extension module="org.jboss.as.deployment-scanner"/>
+        <extension module="org.jboss.as.ee"/>
+        <extension module="org.jboss.as.ejb3"/>
+        <extension module="org.jboss.as.jaxrs"/>
+        <extension module="org.jboss.as.jdr"/>
+        <extension module="org.jboss.as.jmx"/>
+        <extension module="org.jboss.as.jpa"/>
+        <extension module="org.jboss.as.jsf"/>
+        <extension module="org.jboss.as.logging"/>
+        <extension module="org.jboss.as.mail"/>
+        <extension module="org.jboss.as.naming"/>
+        <extension module="org.jboss.as.pojo"/>
+        <extension module="org.jboss.as.remoting"/>
+        <extension module="org.jboss.as.sar"/>
+        <extension module="org.jboss.as.security"/>
+        <extension module="org.jboss.as.threads"/>
+        <extension module="org.jboss.as.transactions"/>
+        <extension module="org.jboss.as.web"/>
+        <extension module="org.jboss.as.webservices"/>
+        <extension module="org.jboss.as.weld"/>
+    </extensions>
+
+
+    <management>
+        <security-realms>
+            <security-realm name="ManagementRealm">
+                <authentication>
+                    <local default-user="$local" skip-group-loading="true"/>
+                    <properties path="mgmt-users.properties" relative-to="jboss.server.config.dir"/>
+                </authentication>
+                <authorization map-groups-to-roles="false">
+                    <properties path="mgmt-groups.properties" relative-to="jboss.server.config.dir"/>
+                </authorization>
+            </security-realm>
+            <security-realm name="ApplicationRealm">
+                <authentication>
+                    <local default-user="$local" allowed-users="*" skip-group-loading="true"/>
+                    <properties path="application-users.properties" relative-to="jboss.server.config.dir"/>
+                </authentication>
+                <authorization>
+                    <properties path="application-roles.properties" relative-to="jboss.server.config.dir"/>
+                </authorization>
+            </security-realm>
+        </security-realms>
+        <audit-log>
+            <formatters>
+                <json-formatter name="json-formatter"/>
+            </formatters>
+            <handlers>
+                <file-handler name="file" formatter="json-formatter" path="audit-log.log" relative-to="jboss.server.data.dir"/>
+            </handlers>
+            <logger log-boot="true" log-read-only="false" enabled="true">
+                <handlers>
+                    <handler name="file"/>
+                </handlers>
+            </logger>
+        </audit-log>
+        <management-interfaces>
+            <native-interface security-realm="ManagementRealm">
+                <socket-binding native="management-native"/>
+            </native-interface>
+            <http-interface security-realm="ManagementRealm">
+                <socket-binding http="management-http"/>
+            </http-interface>
+        </management-interfaces>
+        <access-control provider="simple">
+            <role-mapping>
+                <role name="SuperUser">
+                    <include>
+                        <user name="$local"/>
+                    </include>
+                </role>
+            </role-mapping>
+        </access-control>
+    </management>
+
+    <profile>
+        <subsystem xmlns="urn:jboss:domain:logging:1.5">
+            <console-handler name="CONSOLE">
+                <level name="DEBUG"/>
+                <formatter>
+                    <named-formatter name="COLOR-PATTERN"/>
+                </formatter>
+            </console-handler>
+            <periodic-rotating-file-handler name="FILE" autoflush="true">
+                <formatter>
+                    <named-formatter name="PATTERN"/>
+                </formatter>
+                <file relative-to="jboss.server.log.dir" path="server.log"/>
+                <suffix value=".yyyy-MM-dd"/>
+                <append value="true"/>
+            </periodic-rotating-file-handler>
+            <logger category="com.arjuna">
+                <level name="WARN"/>
+            </logger>
+            <logger category="org.apache.tomcat.util.modeler">
+                <level name="WARN"/>
+            </logger>
+            <logger category="org.jboss.as.config">
+                <level name="DEBUG"/>
+            </logger>
+            <logger category="sun.rmi">
+                <level name="WARN"/>
+            </logger>
+            <logger category="jacorb">
+                <level name="WARN"/>
+            </logger>
+            <logger category="jacorb.config">
+                <level name="ERROR"/>
+            </logger>
+            <logger category="jboss.jdbc.spy">
+                <level name="TRACE"/>
+            </logger>
+            <root-logger>
+                <level name="INFO"/>
+                <handlers>
+                    <handler name="CONSOLE"/>
+                    <handler name="FILE"/>
+                </handlers>
+            </root-logger>
+            <formatter name="PATTERN">
+                <pattern-formatter pattern="%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
+            </formatter>
+            <formatter name="COLOR-PATTERN">
+                <pattern-formatter pattern="%K{level}%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%E%n"/>
+            </formatter>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:datasources:1.2">
+            <datasources>
+                <datasource jndi-name="java:jboss/datasources/geocapesatual" pool-name="geocapesatual" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:postgresql://postgresql.hom.capes.gov.br:5432/geocapes?autoReconnect=true</connection-url>
+                    <driver>postgresql</driver>
+                    <security>
+                        <user-name>geocapes</user-name>
+                        <password>geocapes</password>
+                    </security>
+                </datasource>
+                <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
+                    <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1</connection-url>
+                    <driver>h2</driver>
+                    <security>
+                        <user-name>sa</user-name>
+                        <password>sa</password>
+                    </security>
+                </datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/segurancaDS" pool-name="segurancaDS" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>WEBSEGURANCA</user-name>
+                        <password>webseguranca</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/geocapesDS" pool-name="geocapesDS" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh01.capes.gov.br:1521/hom
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>WEBGEOCAPES</user-name>
+                        <password>webgeocapes</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/catalogotesesDS" pool-name="catalogotesesDS" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>50</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>web_tese</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <check-valid-connection-sql>SELECT 1 FROM DUAL</check-valid-connection-sql>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/bancoTesesDS" pool-name="bancoTesesDS" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>WEB_TESE</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/instituicoes-servicoDS" pool-name="instituicoes-servicoDS" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>50</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>webinstituicao</user-name>
+                        <password>123456</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/QuestionarioDS" pool-name="QuestionarioDS" enabled="true" use-java-context="true" spy="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:Oracle:thin:@oracledh01.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>webquestionario</user-name>
+                        <password>WebQuest321</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/cadastropessoas-oracle" pool-name="cadastropessoas-oracle" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:oracle:thin:@oracledh02.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>50</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>srv_corporativo</user-name>
+                        <password>SRV_CORPORATIVO_22</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>15</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <xa-datasource jndi-name="java:jboss/datasources/cadastropessoas-postgres" pool-name="cadastropessoas-postgres" enabled="true" use-ccm="false">
+                    <xa-datasource-property name="PortNumber">
+                        5432
+                    </xa-datasource-property>
+                    <xa-datasource-property name="ServerName">
+                        postgresql.des.capes.gov.br
+                    </xa-datasource-property>
+                    <xa-datasource-property name="DatabaseName">
+                        Dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    <driver>postgresql</driver>
+                    <new-connection-sql>select 1</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>true</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>srv_corporativo</user-name>
+                        <password>srv_corporativo22</password>
+                    </security>
+                    <validation>
+                        <check-valid-connection-sql>select 1</check-valid-connection-sql>
+                        <validate-on-match>true</validate-on-match>
+                        <background-validation>false</background-validation>
+                    </validation>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+                <drivers>
+                    <driver name="h2" module="com.h2database.h2">
+                        <xa-datasource-class>org.h2.jdbcx.JdbcDataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="postgresql" module="org.postgresql">
+                        <xa-datasource-class>org.postgresql.xa.PGXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="oracle" module="com.oracle.db">
+                        <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    </driver>
+                    <driver name="sybase" module="com.sybase">
+                        <xa-datasource-class>com.sybase.jdbc3.jdbc.SybXADataSource</xa-datasource-class>
+                    </driver>
+                </drivers>
+            </datasources>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:deployment-scanner:1.1">
+            <deployment-scanner path="deployments" relative-to="jboss.server.base.dir" scan-interval="5000"/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:ee:1.2">
+            <spec-descriptor-property-replacement>false</spec-descriptor-property-replacement>
+            <jboss-descriptor-property-replacement>true</jboss-descriptor-property-replacement>
+            <annotation-property-replacement>false</annotation-property-replacement>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:ejb3:1.5">
+            <session-bean>
+                <stateless>
+                    <bean-instance-pool-ref pool-name="slsb-strict-max-pool"/>
+                </stateless>
+                <stateful default-access-timeout="5000" cache-ref="simple"/>
+                <singleton default-access-timeout="5000"/>
+            </session-bean>
+            <pools>
+                <bean-instance-pools>
+                    <strict-max-pool name="slsb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
+                    <strict-max-pool name="mdb-strict-max-pool" max-pool-size="20" instance-acquisition-timeout="5" instance-acquisition-timeout-unit="MINUTES"/>
+                </bean-instance-pools>
+            </pools>
+            <caches>
+                <cache name="simple" aliases="NoPassivationCache"/>
+                <cache name="passivating" passivation-store-ref="file" aliases="SimpleStatefulCache"/>
+            </caches>
+            <passivation-stores>
+                <file-passivation-store name="file"/>
+            </passivation-stores>
+            <async thread-pool-name="default"/>
+            <timer-service thread-pool-name="default" default-data-store="default-file-store">
+                <data-stores>
+                    <file-data-store name="default-file-store" path="timer-service-data" relative-to="jboss.server.data.dir"/>
+                </data-stores>
+            </timer-service>
+            <remote connector-ref="remoting-connector" thread-pool-name="default"/>
+            <thread-pools>
+                <thread-pool name="default">
+                    <max-threads count="10"/>
+                    <keepalive-time time="100" unit="milliseconds"/>
+                </thread-pool>
+            </thread-pools>
+            <default-security-domain value="other"/>
+            <default-missing-method-permissions-deny-access value="true"/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:infinispan:1.5">
+            <cache-container name="web" aliases="standard-session-cache" default-cache="local-web" module="org.jboss.as.clustering.web.infinispan">
+                <local-cache name="local-web" batching="true">
+                    <file-store passivation="false" purge="false"/>
+                </local-cache>
+            </cache-container>
+            <cache-container name="hibernate" default-cache="local-query" module="org.jboss.as.jpa.hibernate:4">
+                <local-cache name="entity">
+                    <transaction mode="NON_XA"/>
+                    <eviction strategy="LRU" max-entries="10000"/>
+                    <expiration max-idle="100000"/>
+                </local-cache>
+                <local-cache name="local-query">
+                    <transaction mode="NONE"/>
+                    <eviction strategy="LRU" max-entries="10000"/>
+                    <expiration max-idle="100000"/>
+                </local-cache>
+                <local-cache name="timestamps">
+                    <transaction mode="NONE"/>
+                    <eviction strategy="NONE"/>
+                </local-cache>
+            </cache-container>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:jaxrs:1.0"/>
+        <subsystem xmlns="urn:jboss:domain:jca:1.1">
+            <archive-validation enabled="true" fail-on-error="true" fail-on-warn="false"/>
+            <bean-validation enabled="true"/>
+            <default-workmanager>
+                <short-running-threads>
+                    <core-threads count="50"/>
+                    <queue-length count="50"/>
+                    <max-threads count="50"/>
+                    <keepalive-time time="10" unit="seconds"/>
+                </short-running-threads>
+                <long-running-threads>
+                    <core-threads count="50"/>
+                    <queue-length count="50"/>
+                    <max-threads count="50"/>
+                    <keepalive-time time="10" unit="seconds"/>
+                </long-running-threads>
+            </default-workmanager>
+            <cached-connection-manager/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:jdr:1.0"/>
+        <subsystem xmlns="urn:jboss:domain:jmx:1.3">
+            <expose-resolved-model/>
+            <expose-expression-model/>
+            <remoting-connector/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:jpa:1.1">
+            <jpa default-datasource="" default-extended-persistence-inheritance="DEEP"/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:jsf:1.0"/>
+        <subsystem xmlns="urn:jboss:domain:mail:1.2">
+            <mail-session name="default" jndi-name="java:jboss/mail/Default">
+                <smtp-server outbound-socket-binding-ref="mail-smtp"/>
+            </mail-session>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:naming:1.4">
+            <remote-naming/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:pojo:1.0"/>
+        <subsystem xmlns="urn:jboss:domain:remoting:1.2">
+            <connector name="remoting-connector" socket-binding="remoting" security-realm="ApplicationRealm"/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:resource-adapters:1.1"/>
+        <subsystem xmlns="urn:jboss:domain:sar:1.0"/>
+        <subsystem xmlns="urn:jboss:domain:security:1.2">
+            <security-domains>
+                <security-domain name="other" cache-type="default">
+                    <authentication>
+                        <login-module code="Remoting" flag="optional">
+                            <module-option name="password-stacking" value="useFirstPass"/>
+                        </login-module>
+                        <login-module code="RealmDirect" flag="required">
+                            <module-option name="password-stacking" value="useFirstPass"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
+                <security-domain name="jboss-web-policy" cache-type="default">
+                    <authorization>
+                        <policy-module code="Delegating" flag="required"/>
+                    </authorization>
+                </security-domain>
+                <security-domain name="jboss-ejb-policy" cache-type="default">
+                    <authorization>
+                        <policy-module code="Delegating" flag="required"/>
+                    </authorization>
+                </security-domain>
+            </security-domains>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:threads:1.1"/>
+        <subsystem xmlns="urn:jboss:domain:transactions:1.5">
+            <core-environment>
+                <process-id>
+                    <uuid/>
+                </process-id>
+            </core-environment>
+            <recovery-environment socket-binding="txn-recovery-environment" status-socket-binding="txn-status-manager"/>
+            <coordinator-environment default-timeout="300"/>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:web:2.2" default-virtual-server="default-host" native="false">
+            <connector name="http" protocol="HTTP/1.1" scheme="http" socket-binding="http"/>
+            <virtual-server name="default-host" enable-welcome-root="true">
+                <alias name="localhost"/>
+                <alias name="example.com"/>
+            </virtual-server>
+        </subsystem>
+        <subsystem xmlns="urn:jboss:domain:weld:1.0"/>
+    </profile>
+
+    <interfaces>
+        <interface name="management">
+            <inet-address value="${jboss.bind.address.management:127.0.0.1}"/>
+        </interface>
+        <interface name="public">
+            <inet-address value="${jboss.bind.address:127.0.0.1}"/>
+        </interface>
+        <interface name="unsecure">
+            <inet-address value="${jboss.bind.address.unsecure:127.0.0.1}"/>
+        </interface>
+    </interfaces>
+
+    <socket-binding-group name="standard-sockets" default-interface="public" port-offset="${jboss.socket.binding.port-offset:0}">
+        <socket-binding name="management-native" interface="management" port="${jboss.management.native.port:9999}"/>
+        <socket-binding name="management-http" interface="management" port="${jboss.management.http.port:9990}"/>
+        <socket-binding name="management-https" interface="management" port="${jboss.management.https.port:9443}"/>
+        <socket-binding name="ajp" port="8009"/>
+        <socket-binding name="http" port="8080"/>
+        <socket-binding name="https" port="8443"/>
+        <socket-binding name="remoting" port="4447"/>
+        <socket-binding name="txn-recovery-environment" port="4712"/>
+        <socket-binding name="txn-status-manager" port="4713"/>
+        <outbound-socket-binding name="mail-smtp">
+            <remote-destination host="localhost" port="25"/>
+        </outbound-socket-binding>
+    </socket-binding-group>
+</server>
+
+######################################################################################################################################
+    
+=======================================================================================================================================
+
+    # QUESTIONARIO-CAPES
+    
+        -> Preencher Documentação
+        
+        
+            - http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20190808000003/Questionario - Especificacao_Tecnica_20190808000003_ FS.doc
+
+            - http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20190612000025/Questionario - Especificacao_Tecnica_20190612000025_ FS.doc
 
 =======================================================================================================================================
 
+
+No ambiente INDRA deve-se alterar o nas "Cofigurações de REDE"
+
+proxylatam.indra.es  8080
+
+/* 
+	localhost, 127.0.0.0/8, ::1, 172.19.*, 172.25.*, *.capes.gov.br, *.capes.gov.br/*, *.indra.es, *.indraweb.net, *.indracompany.com, *.mec.gov.br 
+*/
 =======================================================================================================================================
+
+	# QUESTIONARIO-CAPES
+	
+		-> Finalizar os chamados no Gestão
+		
+			  [OK] 20190612000025
+			  [OK] 20190808000003
+			  [OK] 20190808000004
+			  [OK] 20190808000005
 
 =======================================================================================================================================
 
-=======================================================================================================================================
+"Eu cheguei a conclusão que todos os meus sistemas são nervosos."
 
 =======================================================================================================================================
 
+	> Corrigimos o problema relatado. A solução estará disponível na proxima _release_.
+
 =======================================================================================================================================
+	
+	[DOCUMENTACAO] [REDMINE-13073] [MONITORAMENTO] - Vinculo Unidade Organizacional
+	[DOCUMENTACAO] [REDMINE-13072] [GERAR RELATÓRIOS] - Vinculo Unidade Organizacional		
+	[DOCUMENTACAO] [REDMINE-13080] [CONSULTAR NOTIFICACAO] - Vinculo Unidade Organizacional	
+	[DOCUMENTACAO] [REDMINE-13071] [MANTER QUESTIONÁRIOS] - Vinculo Unidade Organizacional	
 
 =======================================================================================================================================
 
-=======================================================================================================================================
+	# INDRA COMPANY
+	
+		http://indra.elearning.indra.info/ekp/servlet/ekp?TX=TABLISTSESSIONS
 
 =======================================================================================================================================
+QUESTIONARIO.QUESTIONARIO
+CONSULTA
+SIM
 
-=======================================================================================================================================
+QUESTIONARIO.VINCULO_QUESTIONARIO
+CONSULTA
+SIM
 
-=======================================================================================================================================
+QUESTIONARIO.VINCULO_ORGANIZACIONAL 
+CONSULTA
+SIM
 
-=======================================================================================================================================
+QUESTIONARIO.PERFIL_PESSOA
+CONSULTA
+SIM
 
-=======================================================================================================================================
+CORPORATIVO.UNIDADE_ORGANIZACIONAL
+CONSULTA
+SIM
 
+CORPORATIVO.PESSOA PESSOA
+CONSULTA
+SIM
 =======================================================================================================================================
 
 =======================================================================================================================================
