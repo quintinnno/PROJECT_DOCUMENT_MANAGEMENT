@@ -1441,11 +1441,20 @@
 ---------------------------------------------------------------------
 
     # INSTALAR 'POSTGRES'
-        $ sudo apt install postgresql postgresql-common
-    
+        
+        sudo apt install postgresql postgresql-common
         sudo apt install postgresql postgresql-common postgresql-contrib
+        
+    # ALTERAR SENHA DO POSTGRES
+    
+        - INFORMAR A SENHA
+            
+            sudo passwd postgres
+            su postgres
+            psql -c "ALTER USER postgres WITH PASSWORD '<NOVA_SENHA>'" -d template1
             
     # ACESSAR POSTGRES VIA TERMINAL
+    
         $ psql -h zincoh02.cnj.jus.br -U usuariohoml -d pje_cnj_prod  -p 5432
         $ psql -h 172.20.18.73 -U postgres -d pje_cnj_prod  -p 5432
         $ psql -h 172.20.18.73 -U postgres
@@ -1453,6 +1462,7 @@
             > \l                 // LISTAR TODOS OS DATABASES
 
     # REALIZAR DUMP DE UMA BASE DE DADOS
+    
         $ pg_dump pje_cnj_prod -h zincoh02.cnj.jus.br -U usuariohoml > /home/desenvolvimento/Documentos/PJE_CNJ_PROD_2018_10_001_DUMP.SQL
        
 ---------------------------------------------------------------------
@@ -1647,6 +1657,17 @@ https://contentim.ru/how-to-activation-intellij-idea-license-server
         sudo apt-get update
         sudo apt-get install oracle-java8-installer
         sudo apt-get install oracle-java8-set-default
+                       
+     ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
+
+        cd /etc/apt/sources.list.d
+        sudo rm -rf webupd8team-ubuntu-java-bionic.list
+        sudo rm -rf webupd8team-ubuntu-java-bionic.list.save
+        sudo rm -rf linuxuprising-ubuntu-java-bionic.list
+        sudo rm -rf linuxuprising-ubuntu-java-bionic.list.save
+        
+        sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
+        sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
          
     ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
 
@@ -1657,7 +1678,7 @@ https://contentim.ru/how-to-activation-intellij-idea-license-server
         $ sudo mv jdk1.8.0_201 /opt/java
         $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
         $ sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
-        $ java -version
+        $ java -version    
     
     ## INSTALAR JAVA (ORACLE)
         $ sudo add-apt-repository ppa:webupd8team/java
@@ -3036,6 +3057,9 @@ git push --set-upstream origin MACS1000
         
         $ git config --global user.email "repository.desenvolvimento@gmail.com"
         $ git config --global user.name "Desenvolvimento"
+                   
+        git config --global user.email "thallium@outlook.com.br"
+        git config --global user.name "Thallium Development"
 
     # ENDERECO PJE CNJ 
 
@@ -32888,9 +32912,57 @@ WHERE CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = :DESCRICAO_CORREIO_ELETRONICO)
 			- Quando a query não retorna nenhum valor, a tela do respondente do Questionario não é apresentada
 		
 =======================================================================================================================================
+
+    # https://api.tangerino.com.br/api/employer/swagger-ui.html#/employer-controller/authUsingPOST
+
 =======================================================================================================================================
+    
+    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico
+    
+        - Definir perfil de acesso
+            
+            - Diretor
+                - Acesso a funcionalidade relacionadas a diretoria e monitoramento 
+            
+            - Administrador
+                - Acesso total ao sistema
+            
+            - Coordenador de Recursos Humanos
+                - Acesso a funcionalidades de coordanação de colaboradores
+                    - Cadastros de funcionários
+                    - Autorização de acessos
+            
+            - Colaborador
+                - Acesso a funcionalidades de:
+                    - Registro de Ponto (Web, QR-Code, REP)
+                    - Ajustes de Ponto Eletrônico
+                    - Relatórios de Banco de Horas (Saldos e Débitos)                  
+
 =======================================================================================================================================
-=======================================================================================================================================
+
+    # LINUX (18.04)
+    
+        + Instalar idicador de Caps Look
+        
+            sudo add-apt-repository ppa:tsbarnes/indicator-keylock
+            sudo apt-get update
+            sudo apt-get install indicator-keylock
+            apt-get install indicator-keylock-ubuntu-mono
+            sudo apt-get install indicator-keylock-elementary
+            sudo apt-get install indicator-keylock-humanity
+            
+        + Instalar Idea Intellij Ultimate
+        
+            sudo snap install intellij-idea-ultimate --classic
+            
+=======================================================================================================================================   
+
+    + Computação
+    
+        - Tutorial Intellij
+        
+            - https://www.youtube.com/watch?v=yefmcX57Eyg
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
