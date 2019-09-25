@@ -32880,116 +32880,6 @@ WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = :DESCRICAO_IDENTIF
 FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
 WHERE CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = :DESCRICAO_CORREIO_ELETRONICO) AS ID_CORREIO_ELETRONICO
 
-=======================================================================================================================================
-
-10.000		43,892
-15.000		89,239
-20.000		88,502
-30.000		130,196
-40.000		171,920
-50.000		213,477
-
-=======================================================================================================================================
-
-	+ Stanium
-		- Ambiente de Desenvolvimento
-	
-	+ Natrium
-		- Ambiente de Teste
-	
-	+ Thalium
-		- Ajuste Monitoramento (REDMINE-15340)
-	
-	+ Plubum
-		- Ambiente de Desenvolvimento
-
-=======================================================================================================================================
-
-	# QUESTIONARIO-CAPES
-	
-		-> Tratar paginação na funcionalidade de Monitoramento
-		-> Tratar erro na pergunta do Tipo Select
-			- Quando a query não retorna nenhum valor, a tela do respondente do Questionario não é apresentada
-		
-=======================================================================================================================================
-
-    # https://api.tangerino.com.br/api/employer/swagger-ui.html#/employer-controller/authUsingPOST
-
-=======================================================================================================================================
-    
-    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico
-    
-        - Definir perfil de acesso
-            
-            - Diretor
-                - Acesso a funcionalidade relacionadas a diretoria e monitoramento 
-            
-            - Administrador
-                - Acesso total ao sistema
-            
-            - Coordenador de Recursos Humanos
-                - Acesso a funcionalidades de coordanação de colaboradores
-                    - Cadastros de funcionários
-                    - Autorização de acessos
-            
-            - Colaborador
-                - Acesso a funcionalidades de:
-                    - Registro de Ponto (Web, QR-Code, REP)
-                    - Ajustes de Ponto Eletrônico
-                    - Relatórios de Banco de Horas (Saldos e Débitos)                  
-
-=======================================================================================================================================
-
-    # LINUX (18.04)
-    
-        + Instalar idicador de Caps Look
-        
-            sudo add-apt-repository ppa:tsbarnes/indicator-keylock
-            sudo apt-get update
-            sudo apt-get install indicator-keylock
-            apt-get install indicator-keylock-ubuntu-mono
-            sudo apt-get install indicator-keylock-elementary
-            sudo apt-get install indicator-keylock-humanity
-            
-        + Instalar Idea Intellij Ultimate
-        
-            sudo snap install intellij-idea-ultimate --classic
-            
-=======================================================================================================================================   
-
-    + Computação
-    
-        + Intellij
-        
-            - https://www.youtube.com/watch?v=yefmcX57Eyg
-			
-		+ Javascript
-		
-			- https://clovisdasilvaneto.github.io/explorando-javascript-filter-reduce-map-every-some-e-foreach/
-			
-		+ JPA
-		
-			- https://www.youtube.com/watch?v=MGWJbaYdy-Y&list=PLZTjHbp2Y7812axMiHkbXTYt9IDCSYgQz
-			
-		+ Swagger
-		
-			- https://www.youtube.com/watch?v=qtHUwMqOYC0
-			
-		+ AngularJS
-		
-			- Paginação
-				
-				- http://jsfiddle.net/SAWsA/11/
-				- https://jasonwatmore.com/post/2016/01/31/angularjs-pagination-example-with-logic-like-google
-				- http://plnkr.co/edit/gJbMTzWQX0g5ClKcINqJ?p=preview
-				- https://www.ctasoftware.com.br/blog/paginacao-angularjs-dirpagination/
-				- dir-paginate / dir-pagination-controls
-				
-		+ Temas Linux
-		
-			- https://www.gnome-look.org/p/1256209/
-
-=======================================================================================================================================
 -- CRIAR PUBLICO ALVO COM PUBLICO CRIADO PELA FONTE DE DADOS
 
 SELECT * FROM QUESTIONARIO.PUBLICO ORDER BY ID_PUBLICO DESC;
@@ -33169,6 +33059,275 @@ WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = :DESCRICAO_IDENTIF
 FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
 WHERE CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = :DESCRICAO_CORREIO_ELETRONICO) AS ID_CORREIO_ELETRONICO
 
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE '';
+
+-- QUERY NATIVA PARA CADASTRAR PUBLICO
+SELECT '' AS ID_PUBLICO_ALVO,
+PESSOA_.ID_PESSOA, 
+IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO,
+CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO,
+'' AS DS_USUARIO_ULTIMA_ALTERACAO, 
+'' AS DH_ULTIMA_ALTERACAO, 
+'' AS IN_ENVIO_IDENTIFICACAO, 
+'' AS DH_LOGIN_INICIAL, 
+'' AS DH_ULTIMO_LOGIN
+FROM CORPORATIVO.PESSOA PESSOA_ 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN (
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 23950 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F'
+) FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF
+AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME_PESSOA
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL;
+
+INSERT INTO QUESTIONARIO.PUBLICO(	ID_PUBLICO, 
+									ID_PUBLICO_ALVO, 
+									ID_PESSOA, 
+									ID_IDENTIFICADOR_REGISTRADO, 
+									ID_CORREIO_ELETRONICO, 
+									IN_ENVIO_IDENTIFICACAO, 
+									DS_USUARIO_ULTIMA_ALTERACAO, 
+									DH_ULTIMA_ALTERACAO, 
+									DH_LOGIN_INICIAL, 
+									DH_ULTIMO_LOGIN ) 
+
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , :identificador_publico_alvo_parameter_, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, :in_envio_identificacao_, :identificador_registrado_usuario_logado_parameter_, SYSDATE, NULL, NULL 
+FROM CORPORATIVO.PESSOA PESSOA_ JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1 JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' INNER JOIN( SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+OR (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F') FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME_PESSOA WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME_PESSOA AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL 
+
+
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA;
+
+SELECT CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+FROM QUESTIONARIO.PUBLICO PUBLICO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = ID_PUBLICO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%' 
+WHERE ID_PUBLICO_ALVO = 498;
+
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 501;
+-- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 501;
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT     
+    IR.DS_IDENTIFICADOR_REGISTRADO AS CPF, 
+    P.NM_PESSOA, 
+    LOWER(CE.DS_CORREIO_ELETRONICO) AS DS_CORREIO_ELETRONICO 
+FROM FREIRE2.DISCENTE D
+INNER JOIN FREIRE2.HISTORICO_DISCENTE H ON D.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.ID_TIPO_SITUACAO_DISCENTE = 1 AND H.IN_ATIVO = 'S'
+INNER JOIN FREIRE2.PESSOA_FREIRE PF ON D.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE
+INNER JOIN CORPORATIVO.PESSOA P ON PF.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON P.ID_PESSOA = CE.ID_PESSOA AND CE.IN_PRINCIPAL_FINALIDADE = 'S' AND CE.ID_FINALIDADE_ENDERECO = 5
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IR ON P.ID_PESSOA = IR.ID_PESSOA AND IR.ID_TIPO_IDENTIFICADOR = 1
+WHERE ROWNUM <= 43000
+GROUP BY PF.ID_PESSOA_FREIRE, D.ID_DISCENTE, IR.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA, CE.DS_CORREIO_ELETRONICO
+
+
+
+-- TEMPO DE EXECUCAO NATIVA: 1M:53S (30.00 REGISTROS)
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , 498, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'CARGA_QUESTIONARIO', SYSDATE, NULL, NULL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN(
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 50024
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND (PESSOA_.ID_PESSOA = 2536187
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F') FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF
+AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL
+
+
+
+-- TEMPO DE EXECUCAO DE 40.00 REGISTROS: 2M:26S
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , 498, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'CARGA_QUESTIONARIO', SYSDATE, NULL, NULL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON
+IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON
+CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN( 
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 60178 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F') FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF 
+AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL 
+
+
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+
+SELECT COUNT(1)
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 34419 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F'
+
+=======================================================================================================================================
+
+10.000		43,892
+15.000		89,239
+20.000		88,502
+30.000		130,196
+40.000		171,920
+50.000		213,477
+
+=======================================================================================================================================
+
+	+ Stanium
+		- Ambiente de Desenvolvimento
+	
+	+ Natrium
+		- Ambiente de Teste
+	
+	+ Thalium
+		- Ajuste Monitoramento (REDMINE-15340)
+	
+	+ Plubum
+		- Ambiente de Desenvolvimento
+
+=======================================================================================================================================
+
+	# QUESTIONARIO-CAPES
+	
+		-> Tratar paginação na funcionalidade de Monitoramento
+		-> Tratar erro na pergunta do Tipo Select
+			- Quando a query não retorna nenhum valor, a tela do respondente do Questionario não é apresentada
+		
+=======================================================================================================================================
+
+    # https://api.tangerino.com.br/api/employer/swagger-ui.html#/employer-controller/authUsingPOST
+
+=======================================================================================================================================
+    
+    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico
+    
+        + Definir perfil de acesso
+            
+            - Diretor
+                - Acesso a funcionalidade relacionadas a diretoria e monitoramento 
+            
+            - Administrador
+                - Acesso total ao sistema
+            
+            - Coordenador de Recursos Humanos
+                - Acesso a funcionalidades de coordanação de colaboradores
+                    - Cadastros de funcionários
+                    - Autorização de acessos
+            
+            - Colaborador
+                - Acesso a funcionalidades de:
+                    - Registro de Ponto (Web, QR-Code, REP)
+                    - Ajustes de Ponto Eletrônico
+                    - Relatórios de Banco de Horas (Saldos e Débitos)                  
+
+=======================================================================================================================================
+
+    # LINUX (18.04)
+    
+        + Instalar idicador de Caps Look
+        
+            sudo add-apt-repository ppa:tsbarnes/indicator-keylock
+            sudo apt-get update
+            sudo apt-get install indicator-keylock
+            apt-get install indicator-keylock-ubuntu-mono
+            sudo apt-get install indicator-keylock-elementary
+            sudo apt-get install indicator-keylock-humanity
+            
+        + Instalar Idea Intellij Ultimate
+        
+            sudo snap install intellij-idea-ultimate --classic
+            
+=======================================================================================================================================   
+
+    + Computação
+    
+        + Intellij
+        
+            - https://www.youtube.com/watch?v=yefmcX57Eyg
+			
+		+ Javascript
+		
+			- https://clovisdasilvaneto.github.io/explorando-javascript-filter-reduce-map-every-some-e-foreach/
+			- https://indra.udemy.com/the-complete-javascript-course/learn/lecture/5869078?start=0#overview
+			
+		+ JPA
+		
+			- https://www.youtube.com/watch?v=MGWJbaYdy-Y&list=PLZTjHbp2Y7812axMiHkbXTYt9IDCSYgQz
+			
+		+ Swagger
+		
+			- https://www.youtube.com/watch?v=qtHUwMqOYC0
+			
+		+ AngularJS
+		
+			- Paginação
+				
+				- http://jsfiddle.net/SAWsA/11/
+				- https://jasonwatmore.com/post/2016/01/31/angularjs-pagination-example-with-logic-like-google
+				- http://plnkr.co/edit/gJbMTzWQX0g5ClKcINqJ?p=preview
+				- https://www.ctasoftware.com.br/blog/paginacao-angularjs-dirpagination/
+				- dir-paginate / dir-pagination-controls
+				
+		+ Temas Linux
+		
+			- https://www.gnome-look.org/p/1256209/
+
 =======================================================================================================================================
 
 10.000		43,892
@@ -33213,17 +33372,235 @@ WHERE CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = :DESCRICAO_CORREIO_ELETRONICO)
 		
 		-> Verificar comportamento das Perguntas do tipo Fonte de Dados
 		
+		-> Implementar consultar paginada ao acessar a Funcionalidade de Incluir Pessoa ao cadastrar um determinado Público Alvo
+		
 =======================================================================================================================================
 // FIXME [REDMINE-15479] {N} -- ""
     $state.go('pesquisa-publico-alvo');
     toastSucesso();
 =======================================================================================================================================
+
+	# 24/09/2019
+	
+		+ INDRA
+		
+			- Ajustar JIRA
+			
+			# INDRA
+    
+        - Ajuste de JIRA
+        
+            - 08/2019
+                
+                01 REDMINE-13071 -> CCAPNSGA-9823
+                02 REDMINE-13072 -> CCAPNSGA-9824
+                03 REDMINE-13073 -> CCAPNSGA-9825
+                04 REDMINE-13080 -> CCAPNSGA-9826
+                05 REDMINE-12015 -> CCAPNSGA-9919
+                06 REDMINE-14089 -> CCAPNSGA-9921
+                07 REDMINE-14160 -> CCAPNSGA-9922
+                08 REDMINE-14188 -> CCAPNSGA-9923
+                09 REDMINE-14277 -> CCAPNSGA-9924
+                10 REDMINE-14091 -> CCAPNSGA-9928
+                11 REDMINE-14097 -> CCAPNSGA-9931
+                12 REDMINE-14107 -> CCAPNSGA-9936
+                13 REDMINE-14098 -> CCAPNSGA-9932 
+                14 REDMINE-14368 -> CCAPNSGA-10023
+                15 REDMINE-13351 -> CCAPNSGA-10024
+                16 REDMINE-14172 -> CCAPNSGA-10025
+                17 REDMINE-14183 -> CCAPNSGA-10026
+                18 REDMINE-14261 -> CCAPNSGA-10027
+                19 REDMINE-14262 -> CCAPNSGA-10028
+                20 REDMINE-14294 -> CCAPNSGA-10029
+                21 REDMINE-14295 -> CCAPNSGA-10030
+                22 REDMINE-14321 -> CCAPNSGA-10031
+                23 REDMINE-14900 -> CCAPNSGA-10032
+                24 REDMINE-14718 -> CCAPNSGA-10033
+                25 REDMINE-14541 -> CCAPNSGA-10034
+                26 REDMINE-14582 -> CCAPNSGA-10035
+                27 REDMINE-14795 -> CCAPNSGA-10036
+                28 REDMINE-14695 -> CCAPNSGA-10037
+                29 REDMINE-15045 -> CCAPNSGA-10038
+                
+            - 09/2019
+                
+                01 REDMINE-15031 -> CCAPNSGA-10039
+                02 REDMINE-15044 -> CCAPNSGA-10040
+                03 REDMINE-15188 -> CCAPNSGA-10041
+                04 REDMINE-15189 -> CCAPNSGA-10042
+                05 REDMINE-15340 -> CCAPNSGA-10043
+                06 REDMINE-15442 -> CCAPNSGA-10044
+
+               07 REDMINE-15190 -> CCAPNSGA-10082
+               08 REDMINE-15474 -> CCAPNSGA-10083
+               09 REDMINE-15479 -> CCAPNSGA-10084
+               10 REDMINE-15477 -> CCAPNSGA-10085
+               11 REDMINE-XXXXX -> YYYYY
+               12 REDMINE-XXXXX -> YYYYY
+
+
+[PLPOE-20190924123203]
+- Substituir o código da branch [master] pelo da branch [PLPOE-20190804030422] sem perda do histórico
+
+git add *
+git commit -m "[PLPOE-20190924123203]" -m "- Substituir o código da branch [master] pelo da branch [PLPOE-20190804030422] sem perda do histórico"
+
+git checkout master
+ git pull --rebase
+git push
+git branch
+/*
+(no branch, rebasing master)
+*/
+git rebase --continue
+git push origin HEAD:PLPOE-20190804030422
+
+git add * 
+git commit -m "[PLPOE-20190924123203]" -m "- Substituir o código da branch [master] pelo da branch [PLPOE-20190804030422] sem perda do histórico"
+
+"Para muitos, nós, mulheres, somos a metade do céu, mas nós queremos ser a metade da Terra também"
+
+Desnudou o aparelhamento do estado, o foro de são paulo e seus braços, as mentiras dobre a Amazônia. Defendeu a soberania, a democracia e as liberdades.
+
 =======================================================================================================================================
+
+	# REDMINE-15477
+	
+		// FIXME [REDMINE-15477] {} -- "Validar alias em uma determinada Query"
+		
+		// FIXME [REDMINE-15479] {} -- "Corrigir valor do retorno da variável do tipo select"
+		
+		[CORRECAO] [REDMINE-14504] - [DEB - 50 MIL] - Funcionamento de questão do tipo Select
+
 =======================================================================================================================================
+
+	+ Beitar 
+		https://www.youtube.com/watch?v=sem2GMVBjik
+
 =======================================================================================================================================
+
+	[REDMINE-15477] - Alterar no sistema a instrução do padrão da Query a ser cadastrada para Fontes de Dados do Tipo Pergunta
+	- Verifica se os alias da query estão no padrão: "AS CPF", "AS NOME" e "AS EMAIL"
+
 =======================================================================================================================================
+this.persistirPerguntaAlvo = () => { 
+    const payload = pick(['pergunta', 'perguntasIdioma'], this.perguntaConsulta);
+    
+    for(let i = 0 ; i < payload.perguntasIdioma.length ; i++) {
+    	if(payload.perguntasIdioma[i].texto.includes("${")) {
+    		ManterPerguntasService.isPerguntaValida(payload.perguntasIdioma[i].texto).then(({ data: response }) => {
+    			if(!response) {
+    				return CapesIslToaster.error('commons.mensagem.MSG103', { i18n: true });
+    			} else {
+    				
+    				const promisePersistir = cadastrandoNovo
+    			      ? ManterPerguntasService.salvarPerguntaConsulta({ forcemodelo: this.forceModelo })(payload)
+    			      : ManterPerguntasService.alterarPerguntaConsulta({ forcemodelo: this.forceModelo })(
+    			          $stateParams.pergunta,
+    			          payload,
+    			        );
+
+    			    return promisePersistir
+    			      .then(({ data: { pergunta } }) => {
+    			        if (TipoPerguntas.isTipoPerguntaComAlternativa(pergunta.tipoPergunta)) {
+    			          $state.go('manter-alternativa', {
+    			            id: pergunta.id,
+    			            idQuestionario: $stateParams.idQuestionario,
+    			            postLoad: [logSucesso],
+    			            firstRedirect: !payload.pergunta.id,
+    			          });
+    			        } else {
+    			          $state.go('cadastrar-pergunta', {
+    			            idQuestionario: $stateParams.idQuestionario,
+    			            postLoad: [logSucesso],
+    			          });
+    			        }
+    			      })
+    			      .catch(tratarErroServidor);
+    			    
+    			}
+    		}).catch(tratarErroServidor);
+    	}
+    }
+    
+  };
 =======================================================================================================================================
+// FIXME [REDMINE-15479] {} -- "Alterar performance do retorno dos resultados na funcionalidade de 'Incluir Pessoa' em um Público Alvo"
+  this.persistirPerguntaAlvo = () => { 
+    const payload = pick(['pergunta', 'perguntasIdioma'], this.perguntaConsulta);
+    
+    for(let i = 0 ; i < payload.perguntasIdioma.length ; i++) {
+    	if(payload.perguntasIdioma[i].texto.includes("${")) {
+    		ManterPerguntasService.isPerguntaValida(payload.perguntasIdioma[i].texto).then(({ data: response }) => {
+    			if(!response) {
+    				return CapesIslToaster.error('commons.mensagem.MSG103', { i18n: true });
+    			} else {
+    				
+    				const promisePersistir = cadastrandoNovo
+    			      ? ManterPerguntasService.salvarPerguntaConsulta({ forcemodelo: this.forceModelo })(payload)
+    			      : ManterPerguntasService.alterarPerguntaConsulta({ forcemodelo: this.forceModelo })(
+    			          $stateParams.pergunta,
+    			          payload,
+    			        );
+
+    			    return promisePersistir
+    			      .then(({ data: { pergunta } }) => {
+    			        if (TipoPerguntas.isTipoPerguntaComAlternativa(pergunta.tipoPergunta)) {
+    			          $state.go('manter-alternativa', {
+    			            id: pergunta.id,
+    			            idQuestionario: $stateParams.idQuestionario,
+    			            postLoad: [logSucesso],
+    			            firstRedirect: !payload.pergunta.id,
+    			          });
+    			        } else {
+    			          $state.go('cadastrar-pergunta', {
+    			            idQuestionario: $stateParams.idQuestionario,
+    			            postLoad: [logSucesso],
+    			          });
+    			        }
+    			      })
+    			      .catch(tratarErroServidor);
+    			    
+    			}
+    		}).catch(tratarErroServidor);
+    	} else {
+    		const promisePersistir = cadastrandoNovo
+		      ? ManterPerguntasService.salvarPerguntaConsulta({ forcemodelo: this.forceModelo })(payload)
+		      : ManterPerguntasService.alterarPerguntaConsulta({ forcemodelo: this.forceModelo })(
+		          $stateParams.pergunta,
+		          payload,
+		        );
+
+		    return promisePersistir
+		      .then(({ data: { pergunta } }) => {
+		        if (TipoPerguntas.isTipoPerguntaComAlternativa(pergunta.tipoPergunta)) {
+		          $state.go('manter-alternativa', {
+		            id: pergunta.id,
+		            idQuestionario: $stateParams.idQuestionario,
+		            postLoad: [logSucesso],
+		            firstRedirect: !payload.pergunta.id,
+		          });
+		        } else {
+		          $state.go('cadastrar-pergunta', {
+		            idQuestionario: $stateParams.idQuestionario,
+		            postLoad: [logSucesso],
+		          });
+		        }
+		      })
+		      .catch(tratarErroServidor);
+    	}
+    }
+    
+  };
 =======================================================================================================================================
+	
+	# Music mode app
+	
+		$ cd /opt/chrome-beta/
+		$ ./google-chrome-beta --app=https://music.youtube.com/watch?v=5xn6UitXuBk&feature=share
+		
+		$ chromium-browser --app=http://streamsquid.com/
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
