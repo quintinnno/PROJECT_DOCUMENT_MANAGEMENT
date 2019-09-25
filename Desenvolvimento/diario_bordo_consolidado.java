@@ -32248,9 +32248,11 @@ proxylatam.indra.es  8080
 =======================================================================================================================================
 	
 	[DOCUMENTACAO] [REDMINE-13073] [MONITORAMENTO] - Vinculo Unidade Organizacional
-	[DOCUMENTACAO] [REDMINE-13072] [GERAR RELATÓRIOS] - Vinculo Unidade Organizacional		
-	[DOCUMENTACAO] [REDMINE-13080] [CONSULTAR NOTIFICACAO] - Vinculo Unidade Organizacional	
-	[DOCUMENTACAO] [REDMINE-13071] [MANTER QUESTIONÁRIOS] - Vinculo Unidade Organizacional	
+	[DOCUMENTACAO] [REDMINE-13072] [GERAR RELATÓRIOS] - Vinculo Unidade Organizacional
+	[DOCUMENTACAO] [REDMINE-13080] [CONSULTAR NOTIFICACAO] - Vinculo Unidade Organizacional
+	[DOCUMENTACAO] [REDMINE-13071] [MANTER QUESTIONÁRIOS] - Vinculo Unidade Organizacional
+	
+	[DOCUMENTACAO] [REDMINE-14504] [DEB - 50 MIL] - Funcionamento de questão do tipo Select
 
 =======================================================================================================================================
 
@@ -33240,6 +33242,7 @@ AND PESSOA_.TP_PESSOA = 'F'
 	
 	+ Plubum
 		- Ambiente de Desenvolvimento
+		- Refatorar Monitoramento
 
 =======================================================================================================================================
 
@@ -33255,7 +33258,9 @@ AND PESSOA_.TP_PESSOA = 'F'
 
 =======================================================================================================================================
     
-    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico
+	# PLPOE - Plataforma de Lançamento de Ponto Eletrônico (MOBILE)
+	
+    # PLPOE - Plataforma de Lançamento de Ponto Eletrônico (WEB)
     
         + Definir perfil de acesso
             
@@ -33602,7 +33607,30 @@ this.persistirPerguntaAlvo = () => {
 		$ chromium-browser --app=http://streamsquid.com/
 
 =======================================================================================================================================
+
+	<server>
+		<id>releases</id>
+		<username>iagofbc</username>
+		<password>842630iago</password>
+		<!-- <password>{t288PndyfUgHu9c6Ed67LwFPe4BNM4BZWzUQRm0xPoM=}</password> -->
+	</server>
+
 =======================================================================================================================================
+
+	GerenciadorFonteDados -> recuperarValorVariavelPerguntaFonteDados
+	
+	@Transactional
+	public String recuperarValorVariavelPerguntaFonteDados(String nomeVariavelFonteDadosPergunta) {
+		FonteDadosPerguntaDTO fonteDadosPerguntaDTO = this.repositorio.recuperarValorVariavelPerguntaFonteDados(recuperarFonteDados(nomeVariavelFonteDadosPergunta).getDescricaoFonteSql(), this.autorizadorSeguranca.getUsuarioLogado().getId());
+		
+		// FIXME [REDMINE-15479] {} -- "Corrigir valor do retorno da variável do tipo select"
+		if(fonteDadosPerguntaDTO.getNomeVariavelFonteDadosPergunta() == null) {
+			fonteDadosPerguntaDTO.setNomeVariavelFonteDadosPergunta(nomeVariavelFonteDadosPergunta);
+		}
+		
+		return fonteDadosPerguntaDTO.getNomeVariavelFonteDadosPergunta();
+	}
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
