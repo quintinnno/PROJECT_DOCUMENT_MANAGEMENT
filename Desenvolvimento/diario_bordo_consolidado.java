@@ -33652,12 +33652,14 @@ this.persistirPerguntaAlvo = () => {
 			
 				+ TB_CARTAO
 				
-					CODIGO
-					ID_BANDEIRA
-					ID_AGENCIA
-					NUMERO
-					
 				+ TB_FATURA
+					
+					CODIGO
+					ID_INSTITUICAO_FINANCEIRA
+					VALOR
+					DATA_ABERTURA
+					DATA_FECHAMENTO
+									
 				+ TB_BANCO
 				+ TB_CARTAO
 				+ TB_PARCELAMENTO
