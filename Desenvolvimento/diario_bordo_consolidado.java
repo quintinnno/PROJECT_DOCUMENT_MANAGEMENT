@@ -33176,8 +33176,6 @@ WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF
 AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME
 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL
 
-
-
 -- TEMPO DE EXECUCAO DE 40.00 REGISTROS: 2M:26S
 INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
 SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , 498, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'CARGA_QUESTIONARIO', SYSDATE, NULL, NULL
@@ -33631,6 +33629,141 @@ this.persistirPerguntaAlvo = () => {
 		return fonteDadosPerguntaDTO.getNomeVariavelFonteDadosPergunta();
 	}
 
+=======================================================================================================================================
+
+	+ PLFIN - Módulo de Gestão de Cartão de Crédito
+	
+		+ Mapeamento
+		
+			+ Tabelas
+				
+				+ TB_CONTRATO
+				+ TB_CONTA
+				+ TB_CARTAO
+				+ TB_CARTAO_CREDITO
+				+ TB_DEBITO
+				+ TB_FATURA
+				+ TB_BANCO
+				+ TB_PARCELAMENTO
+				+ TB_AQUISICAO
+				+ TB_TARIFA
+				
+			+ Estrutura	
+			
+				+ TB_CARTAO
+				
+					CODIGO
+					ID_BANDEIRA
+					ID_AGENCIA
+					NUMERO
+					
+				+ TB_FATURA
+				+ TB_BANCO
+				+ TB_CARTAO
+				+ TB_PARCELAMENTO
+				+ TB_AQUISICAO
+				+ TB_TARIFA					
+				
+=======================================================================================================================================
+
+	+ QUESTIONARIO-CAPES
+	
+		- Fechar chamados GESTAO de desenvolvimento
+		
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000007
+			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006
+
+=======================================================================================================================================
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , 501, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'CARGA_QUESTIONARIO', SYSDATE, NULL, NULL
+-- SELECT COUNT(*)
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON
+IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON
+CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN( 
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 18901 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+AND (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F') FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF 
+AND PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA_IDIOMA ORDER BY ID_PERGUNTA_IDIOMA DESC;
+SELECT * FROM QUESTIONARIO.PERGUNTA ORDER BY ID_PERGUNTA DESC;
+
+DELETE FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 1050;
+DELETE FROM QUESTIONARIO.PERGUNTA_IDIOMA WHERE ID_PERGUNTA_IDIOMA IN(10115,10114,10113);
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'P' ORDER BY ID_FONTE_DADOS DESC;
+
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND ROWNUM <= 0;
+
+SELECT COUNT(1) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 507;
+DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 507;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 504 ORDER BY ID_PUBLICO ASC;
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL, 505, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'CARGA_QUESTIONARIO', SYSDATE, NULL, NULL
+-- SELECT count(1)
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 70292 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+OR (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F';
+
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PESSOA IN(2536050,2536187) AND ID_PUBLICO_ALVO = 505;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%1.9.9G%';
+
+SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 1053;
+
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
