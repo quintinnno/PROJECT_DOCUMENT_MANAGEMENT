@@ -30953,7 +30953,7 @@ WHERE ID_PREENCHIMENTO = 880415;
         -> [REDMINE-15477] - [Corrigir] Alterar instruções ao cadastrar uma determinada pergunta do 'Tipo Select' na Fonte de Dados
             - Alterar mensagem "Para o correto funcionamento, a query de dados do tipo pergunta, deve retornar o ID e a descrição da alternativa vinculada à pergunta." para "Para o correto funcionamento, a query de dados do Tipo Pergunta, deverá retornar o ID da PESSOA e o campo referente ao retorno da Query."
         
-        -> [REDMINE-15479] [Corrigir] Ao criar um determinado Público Alvo do tipo "Fonte de Dados", o sistema não importa o Público Alvo e apresenta a mensagem "Erro Desconhecido" na tela
+        -> [REDMINE-15479] - Ao criar um determinado Público Alvo do tipo "Fonte de Dados", o sistema não importa o Público Alvo e apresenta a mensagem "Erro Desconhecido" na tela
         
         -> [REDMINE-TTTTT] [Análise] Descrever procedimento para "Criar Conexões" com databases diversos (Questionário, Freire) via Fonte de Dados [E-mail]
 
