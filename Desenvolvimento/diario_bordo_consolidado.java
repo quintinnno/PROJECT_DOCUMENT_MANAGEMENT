@@ -33631,7 +33631,7 @@ this.persistirPerguntaAlvo = () => {
 
 =======================================================================================================================================
 
-	+ PLFIN - Módulo de Gestão de Cartão de Crédito
+	+ PLFIN - Módulo de Gestão de Cartão de Crédito (Treinamento Algaworks de JPA)
 	
 		+ Mapeamento
 		
@@ -33648,36 +33648,68 @@ this.persistirPerguntaAlvo = () => {
 				+ TB_AQUISICAO
 				+ TB_TARIFA
 				
-			+ Estrutura	
+			+ Estrutura
 			
 				+ TB_CARTAO
 				
 				+ TB_FATURA
+				
+					+ DETALHAMENTO
 					
-					CODIGO
-					ID_INSTITUICAO_FINANCEIRA
-					VALOR
-					DATA_ABERTURA
-					DATA_FECHAMENTO
+						Fatura: 					FATURA 0059 BANCO SANTANDER (09/2019)
+						Instituição Financeira:		Banco Santander S.A
+						Data Recebimento:			10/09/2019
+						Data Vencimento:			15/09/2019
+						Data de Pagamento:			20/09/2019
+						Canal Recebimento:			E-mail (Notificação de Fatura Eletrônica)
+						Valor da Fatura:			R$ 3.584,21
+						Valor do Pagamento:			R$ 1.792,10 (1 parcela)
+						Valor do Parcelamento:		R$ 1.792,10 (2 parcela)
+						Situação:					Paga Parcialmente (1/2)
+						Movimentação do Período:
+
+							1 -  01/09/2019	 	Restaurante Fausto & Manuel (Asa Norte)  	Almoço 				R$ 34.89
+							2 -  05/09/2019	 	Lojas Americanas						  	Eletrônicos 		R$ 1.520.00
+					
+					+ MAPEAMENTO CICLO I		
+					
+						CODIGO
+						DESCRICAO_INSTITUICAO_FINANCEIRA
+						DESCRICAO_CANAL_RECEBIMENTO
+						DESCRICAO_SITUACAO_FATURA
+						DESCRICAO_MOVIMENTACAO_FINANCEIRA
+						DESCRICAO_FATURA
+						DATA_ABERTURA_FATURA
+						DATA_FECHAMENTO_DATA_FECHAMENTO
+						DATA_RECEBIMENTO
+						DATA_VENCIMENTO
+						DATA_PAGAMENTO					
+						VALOR_TOTAL
+						VALOR_PAGO
+						VALOR_PARCELADO	
+						
+					+ MAPEAMENTO CICLO II
+					
+						CODIGO
+						ID_INSTITUICAO_FINANCEIRA
+						ID_CANAL_RECEBIMENTO
+						ID_SITUACAO_FATURA
+						ID_MOVIMENTACAO_FINANCEIRA
+						DESCRICAO_FATURA
+						DATA_ABERTURA_FATURA
+						DATA_FECHAMENTO_DATA_FECHAMENTO
+						DATA_RECEBIMENTO
+						DATA_VENCIMENTO
+						DATA_PAGAMENTO					
+						VALOR_TOTAL
+						VALOR_PAGO
+						VALOR_PARCELADO					
 									
 				+ TB_BANCO
 				+ TB_CARTAO
 				+ TB_PARCELAMENTO
 				+ TB_AQUISICAO
-				+ TB_TARIFA					
-				
-=======================================================================================================================================
-
-	+ QUESTIONARIO-CAPES
-	
-		- Fechar chamados GESTAO de desenvolvimento
-		
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000007
-			http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006
+				+ TB_TARIFA
 
 =======================================================================================================================================
 INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
@@ -33746,7 +33778,138 @@ SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%1.9.9G%';
 SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 1053;
 
 =======================================================================================================================================
+
+	# 27/09/2019
+	
+	fonte-dados-cadastro.controller.js
+	
+		// FIXME [REDMINE-15479] {N} -- ""	
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo público Alvo, deve retornar uma lista de pessoas, contendo obrigatoriamente os dados: Identificador Registrado (AS CPF), Nome da Pessoa (AS NOME) e endereço de E-mail (AS EMAIL), nesta ordem.';
+	  
+	  
+	  'txtSubjetiva'
+	  
+	  + Datasource Freire2
+	  
+	  /*
+	  	<xa-datasource jndi-name="java:jboss/datasources/Freire2DS" pool-name="Freire2DS" enabled="true" use-java-context="true" spy="true" use-ccm="false">
+                    <xa-datasource-property name="URL">
+                        jdbc:Oracle:thin:@rac-dh.capes.gov.br:1521/dsnv
+                    </xa-datasource-property>
+                    <xa-datasource-class>oracle.jdbc.xa.client.OracleXADataSource</xa-datasource-class>
+                    <driver>oracle</driver>
+                    <new-connection-sql>SELECT 1 FROM DUAL</new-connection-sql>
+                    <transaction-isolation>TRANSACTION_READ_COMMITTED</transaction-isolation>
+                    <xa-pool>
+                        <min-pool-size>1</min-pool-size>
+                        <max-pool-size>10</max-pool-size>
+                        <prefill>true</prefill>
+                        <flush-strategy>FailingConnectionOnly</flush-strategy>
+                        <is-same-rm-override>false</is-same-rm-override>
+                        <interleaving>false</interleaving>
+                        <no-tx-separate-pools>true</no-tx-separate-pools>
+                        <pad-xid>false</pad-xid>
+                        <wrap-xa-resource>false</wrap-xa-resource>
+                    </xa-pool>
+                    <security>
+                        <user-name>webfreire2</user-name>
+                        <password>webfreire2</password>
+                    </security>
+                    <validation>
+                        <valid-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleValidConnectionChecker"/>
+                        <validate-on-match>false</validate-on-match>
+                        <background-validation>false</background-validation>
+                        <stale-connection-checker class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleStaleConnectionChecker"/>
+                        <exception-sorter class-name="org.jboss.jca.adapters.jdbc.extensions.oracle.OracleExceptionSorter"/>
+                    </validation>
+                    <timeout>
+                        <idle-timeout-minutes>30</idle-timeout-minutes>
+                    </timeout>
+                    <statement>
+                        <share-prepared-statements>false</share-prepared-statements>
+                    </statement>
+                </xa-datasource>
+	  */
+	  
+	  private Boolean verificarAliasFonteDadosPublicoAlvo(String queryFonteDadosPublicoAlvo) {
+		final String ALIAS_CPF = "AS CPF,";
+		final String ALIAS_NOME = "AS NOME,";
+		final String ALIAS_EMAIL = "AS EMAIL";
+		final String QUERY = queryFonteDadosPublicoAlvo.toUpperCase();
+		if (QUERY.contains(ALIAS_CPF) && QUERY.toUpperCase().contains(ALIAS_NOME) && QUERY.contains(ALIAS_EMAIL)) {
+			return true;
+		}
+		return false;
+	}	  
+
+
+	+ QUESTIONARIO-CAPES
+	
+		- Fechar chamados GESTAO de desenvolvimento
+		
+			[OKAY] 		 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000007 - REDMINE-14504
+			[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005 - REDMINE-14896
+			[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010 - REDMINE-15012
+			[EXECUCAO] 		http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009 - REDMINE-15006
+			[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008 - REDMINE-15004
+			[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006 - REDMINE-14501
+		
+		+ Passos
+		
+			- Acessar o Gestão no chamado de codificação
+			- Elaborar e versionar os seguintes documentos:
+				1 Documento de Especificação Técnica
+				2 Evidência de Teste
+				
+		+ Passos
+		
+			- Criar pasta "CHAMADO_20190905000005" no diretório "${<PATH>}/trunk/documentos/documentos_nao_padronizados"
+			
+	+ TAREFAS
+	
+		- Gerar release 
+		- Levantar REDMINE com alterações necessárias para subir uma versão no ambiente de homologação 
+	
+	
+	+ REDMINE-14718 https://redmine.capes.gov.br/issues/14718
+		
+	Ronaldo, 
+
+	Estoy gerando uma versão agora (
+
 =======================================================================================================================================
+indra@indra:~$ ifconfig
+enp1s0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 172.18.221.164  netmask 255.255.255.0  broadcast 172.18.221.255
+        inet6 fe80::8878:b835:e7d1:268e  prefixlen 64  scopeid 0x20<link>
+        ether 58:20:b1:0c:b4:e0  txqueuelen 1000  (Ethernet)
+        RX packets 87250  bytes 21677997 (21.6 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 95311  bytes 104451046 (104.4 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 14343  bytes 55761427 (55.7 MB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 14343  bytes 55761427 (55.7 MB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+indra@indra:~$
+
+
+	# Maquina da Roberta
+	
+		- Protocol: RDP - 
+		- 172.25.30.246
+		- joseqj
+		- <defalt>
+		- FC
+		- Custom: 1400 X 1050
+		- True color 32
+		- Desenvolvimento
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
