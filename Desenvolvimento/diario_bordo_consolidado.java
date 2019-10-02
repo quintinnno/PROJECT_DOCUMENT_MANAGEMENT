@@ -33318,6 +33318,11 @@ AND PESSOA_.TP_PESSOA = 'F'
 			- https://www.youtube.com/watch?v=qtHUwMqOYC0
 			
 		+ AngularJS
+        
+            - Treinamento
+            
+                - Próxima aula
+                    -> https://www.udemy.com/course/java-p-web-v/learn/lecture/6269716#content
 		
 			- Paginação
 				
