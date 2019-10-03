@@ -33923,12 +33923,454 @@ indra@indra:~$
 		- True color 32
 		- Desenvolvimento
 =======================================================================================================================================
+
+	# sudo /etc/apt/apt.conf
+
+		+ Capes
+
+	Acquire::http::proxy "http://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
+	Acquire::https::proxy "https://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
+	Acquire::ftp::proxy "ftp://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
+
+		+ Indra
+
+	Acquire::http::proxy "http://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+	Acquire::https::proxy "https://jqsilva:Kintino9@proxylatam.indra.es:8080/";
+	Acquire::ftp::proxy "ftp://jqsilva:Kintino9@proxylatam.indra.es:8080/";	
+	
+	Fonte? https://www.vivaolinux.com.br/dica/Configurando-aptget-com-proxy/
+
 =======================================================================================================================================
+
+	# QUESTIONARIO-CAPES
+		
+		+ Defeitos repostados
+		
+			1 Ao criar um determinado Público Alvo o sistema trouxe apena um de dois
+			2 Falar com o Marcus Feliciano sobre o Padrão das querys do tipo Pergunta			
+			
+SELECT DS_IDENTIFICADOR_REGISTRADO AS CPF, NM_PESSOA AS NOME, CE.DS_CORREIO_ELETRONICO AS EMAIL FROM CORPORATIVO.PESSOA CP
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CP.ID_PESSOA = CE.ID_PESSOA
+WHERE DS_IDENTIFICADOR_REGISTRADO in ('00295491329', '89626850191')
+AND CE.IN_PRINCIPAL_FINALIDADE = 'S';
+
 =======================================================================================================================================
+
+	-> https://redmine.capes.gov.br/issues/16053
+	-> https://redmine.capes.gov.br/issues/16052
+
+// FIXME [REDMINE-16052] {} -- "[Defeito] O sistema deve permitir a exclusão de uma determinada Fonte de Dados sem Vínculo (recém criada)"
+
+
+	# COMMIT
+	
+		[REDMINE-16052] [Fonte De Dados] - Sistema não exclui fonte de dados com a finalidade PERGUNTA recém criada
+
 =======================================================================================================================================
+import { merge, find, propEq } from 'ramda';
+
+export const name = 'FonteDadosPesquisaCtrl';
+
+const campos = ['situacaofonte', 'nome', 'conexao', 'finalidadeFonte'];
+
+export default function FonteDadosPesquisaCtrl(
+  $stateParams,
+  $state,
+  $rootScope,
+  $modal,
+  $capesModal,
+  $window,
+  $q,
+  FonteDadosService,
+  CapesIslToaster,
+) {
+  'ngInject';
+
+  const vm = this;
+
+  vm.listaFinalidadeFonte = FonteDadosService.listaFinalidadeFonte;
+  vm.listaConexoes = {};
+
+  vm.formPesquisa = {
+    nome: $stateParams.nome,
+    finalidadeFonte: $stateParams.finalidadeFonte,
+    conexao: $stateParams.conexao,
+  };
+
+  vm.onInvalid = () => {
+    CapesIslToaster.error('commons.mensagem.MSG004', { i18n: true });
+  };
+
+  vm.exibicaoPesquisa = {
+    items: [],
+    pagina: $stateParams.pagina == null ? 1 : $stateParams.pagina,
+    orderBy: $stateParams.orderBy ? String($stateParams.orderBy) : null,
+    asc: $stateParams.asc && $stateParams.asc !== 'false',
+    total: 0,
+    MAX_POR_PAGINA: 10,
+  };
+
+  vm.limparForm = () => {
+    vm.formPesquisa = {};
+  };
+
+  function toastSucesso() {
+    CapesIslToaster.success('commons.mensagem.MSG003', { i18n: true });
+  }
+
+  function avisarErro(res) {
+    const { data: { error, mensagem } } = res;
+
+    if (error && mensagem) {
+      CapesIslToaster.error(mensagem, { i18n: true });
+      return res;
+    } else {
+      CapesIslToaster.error('commons.erros.desconhecido', { i18n: true });
+    }
+
+    throw res;
+  }
+
+  function atualizarConsulta(resultados) {
+    vm.listaFontes = resultados[0].data;
+    vm.exibicaoPesquisa.items = resultados[0].data;
+    vm.exibicaoPesquisa.total = resultados[1].data;
+    return resultados;
+  }
+
+  function verificarSemResultados(resultados) {
+    const lista = resultados[0].data;
+
+    if (lista.length <= 0) {
+      CapesIslToaster.error('commons.mensagem.MSG002', { i18n: true });
+    }
+    return resultados;
+  }
+
+  vm.pesquisarForm = function pesquisarForm(optionsConsulta) {
+    const optionsConsultaCount = merge(optionsConsulta, { type: 'count' });
+
+    const promisesConsulta = [
+      FonteDadosService.consultarPorParametro(['id', 'nome', 'finalidadeFonte', 'descricaoFonteSql', 'situacaoFonte', 'conexao', 'dataUltimaAlteracao'], optionsConsulta),
+      FonteDadosService.consultarPorParametro(campos, optionsConsultaCount),
+    ];
+    return $q
+      .all(promisesConsulta)
+      .then(verificarSemResultados)
+      .then(atualizarConsulta)
+      .catch(avisarErro);
+  };
+
+  vm.pesquisarFontes = function pesquisarFontes() {
+    $rootScope.$broadcast('resetarPaginacao');
+    const paginaInicial = 1;
+    vm.filtroNome = vm.formPesquisa.nome;
+    vm.filtroFinalidade = vm.formPesquisa.finalidadeFonte ? vm.formPesquisa.finalidadeFonte.id : null;
+    vm.filtroConexao = vm.formPesquisa.conexao ? vm.formPesquisa.conexao.id : null;
+    vm.exibicaoPesquisa.asc = 'true';
+    vm.exibicaoPesquisa.orderBy = 'dataUltimaAlteracao';
+
+    const optionsConsulta = {
+      offset: vm.exibicaoPesquisa.MAX_POR_PAGINA * (paginaInicial - 1),
+      max: vm.exibicaoPesquisa.MAX_POR_PAGINA,
+      orderBy: vm.exibicaoPesquisa.orderBy,
+      asc: vm.exibicaoPesquisa.asc,
+      pagina: paginaInicial,
+      nome: vm.filtroNome,
+      finalidadeFonte: vm.filtroFinalidade,
+      conexao: vm.filtroConexao,
+    };
+
+    return vm.pesquisarForm(optionsConsulta);
+  };
+
+  vm.atualizarPagina = (paginaSelecionada) => {
+    const optionsConsulta = {
+      offset: vm.exibicaoPesquisa.MAX_POR_PAGINA * (paginaSelecionada - 1),
+      max: vm.exibicaoPesquisa.MAX_POR_PAGINA,
+      orderBy: vm.exibicaoPesquisa.orderBy,
+      asc: vm.exibicaoPesquisa.asc,
+      pagina: paginaSelecionada,
+      nome: vm.filtroNome,
+      finalidadeFonte: vm.filtroFinalidade,
+      conexao: vm.filtroConexao,
+    };
+    vm.exibicaoPesquisa.pagina = paginaSelecionada;
+    vm.pesquisarForm(optionsConsulta);
+  };
+
+  vm.redefinirOrdem = (asc, orderBy) => {
+    vm.exibicaoPesquisa.orderBy = orderBy;
+    vm.exibicaoPesquisa.asc = asc;
+
+    const optionsConsulta = {
+      offset: vm.exibicaoPesquisa.MAX_POR_PAGINA * (vm.exibicaoPesquisa.pagina - 1),
+      max: vm.exibicaoPesquisa.MAX_POR_PAGINA,
+      orderBy: vm.exibicaoPesquisa.orderBy,
+      asc: vm.exibicaoPesquisa.asc,
+      pagina: vm.exibicaoPesquisa.pagina,
+      nome: vm.filtroNome,
+      finalidadeFonte: vm.filtroFinalidade,
+      conexao: vm.filtroConexao,
+    };
+
+    vm.pesquisarForm(optionsConsulta);
+  };
+
+  vm.irParaNovo = () => {
+    $state.go('cadastro-fonte-dados');
+  };
+
+  vm.irParaAlteracao = (idFonte) => {
+	vm.fonteDadosSelecionado = find(propEq('id', idFonte))(vm.listaFontes);
+	verificarVinculoFonteDados(vm.fonteDadosSelecionado);
+  };
+  
+  const verificarVinculoFonteDados = (fonteDadosSelecionado) => {
+	  FonteDadosService.verificarVinculoFonteDados(fonteDadosSelecionado.id).then(({ data: response }) => {
+		  if(response) {
+			return CapesIslToaster.error('commons.mensagem.MSG015', { i18n: true });
+		  } else {
+			return $state.go('edita-fonte-dados', { id: fonteDadosSelecionado.id, fluxo: 'ALT', });
+		}
+	  }).catch(avisarErro);
+  };
+  
+  vm.irParaReplica = (idFonte) => {
+    $state.go('replicar-fonte-dados', {
+      id: idFonte,
+      fluxo: 'REP',
+    });
+  };
+
+  vm.irVisualizarConsultaSql = (idFonte) => {
+    $state.go('visualizar-consulta-sql', { id: idFonte, origem: 'PESQUISA', cpf: vm.cpf });
+  };
+
+  vm.irVisualizarConsultaPorFinalidade = (idFonte) => {
+    const fonte = find(propEq('id', idFonte))(vm.exibicaoPesquisa.items);
+    if (fonte.finalidadeFonte === 'M') {
+      vm.abreModalConsulta(idFonte);
+    } else {
+      vm.irVisualizarConsultaSql(idFonte);
+    }
+  };
+
+  vm.abrirModalExclusao = (idFonte) => {
+    vm.fonteSelecionada = find(propEq('id', idFonte))(vm.listaFontes);
+    vm.finalidadeSelecionado = find(propEq('id', vm.fonteSelecionada.finalidadeFonte))(vm.listaFinalidadeFonte);
+    vm.mudaMsgFinalidade(vm.finalidadeSelecionado);
+    const modalVisualizaOptions = {
+      content: {
+        header: {
+          title: "{{('fonte_dados.excluir.titulo' | translate)}}",
+          closeButton: false,
+        },
+        body: `
+        <capes-isl-form>
+            <capes-isl-corpo-painel>
+
+              <capes-isl-input-text
+                label="{{'fonte_dados.label.fonte_dados' | translate}}"
+                ng-model="$ctrl.escopo.fonteSelecionada.nome"
+                tamanho-campo="255"
+                desabilitado="true"/>
+
+              <capes-isl-input-text
+                label="{{'fonte_dados.label.conexao' | translate}}"
+                ng-model="$ctrl.escopo.fonteSelecionada.conexao.descricao"
+                tamanho-campo="255"
+                desabilitado="true"/>
+
+              <capes-isl-radiogroup
+                label="{{'fonte_dados.cadastrar.label.finalidade' | translate}}"
+                ng-model="$ctrl.escopo.finalidadeSelecionado"
+                options="$ctrl.escopo.listaFinalidadeFonte"
+                chave="$option.descricao"
+                inline="true"
+                desabilitado="true"
+                change-model="$ctrl.mudaMsgFinalidade(value)"
+                trackby="$option.id"
+                help-hint="{{'fonte_dados.cadastrar.hint.finalidade' | translate}}"
+                />
+
+                <div class="col-md-12"
+                  style="padding-bottom: 20px; padding-top: 10px;">
+
+                  <div class="col-md-12" style="text-align: center; background-color: darkgray; padding: 10px ">
+                      <span style="color: black; font-size: medium;">
+                          <div class="glyphicon glyphicon-info-sign"/>
+                          {{$ctrl.escopo.msgFinalidade}}
+                      </span>
+                  </div>
+
+                </div>
+
+              <capes-isl-textarea
+                label="{{'fonte_dados.label.consulta.sql' | translate}}"
+                ng-model="$ctrl.escopo.fonteSelecionada.descricaoFonteSql"
+                maxlength="4000"
+                rows="8"
+                desabilitado="true"/>
+
+            </capes-isl-corpo-painel>
+          </capes-isl-painel>
+        </capes-isl-form>
+        `,
+        footer: `
+        <div class="center">
+        <capes-isl-label>{{'fonte_dados.excluir.label.confirmacao'| translate}}</capes-isl-label>
+        <br>
+            <capes-isl-corpo-painel>
+              <capes-isl-botao estilo="primary" click="$close(true)">{{'commons.botao.sim' | translate}}</capes-isl-botao>
+              <capes-isl-botao estilo="danger" click="$dismiss()">{{'commons.botao.nao' | translate}}</capes-isl-botao>
+            </capes-isl-corpo-painel>
+          </div>
+        `,
+      },
+      modalOptions: {
+        controllerAs: '$ctrl',
+        bindToController: true,
+        controller() {
+          this.escopo = vm;
+        },
+        size: 'lg',
+        keyboard: false,
+        backdrop: 'static',
+      },
+    };
+
+    $capesModal
+      .open(modalVisualizaOptions)
+      .then(() => {
+    	  // FIXME [REDMINE-16052] {} -- "[Defeito] O sistema deve permitir a exclusão de uma determinada Fonte de Dados sem Vínculo (recém criada)"
+    	  // if(vm.fonteSelecionada.finalidadeFonte == 'M' || vm.fonteSelecionada.finalidadeFonte == 'P') {
+//    		  FonteDadosService.verificarVinculoFonteDados(vm.fonteSelecionada.id).then(({ data: response }) => {
+//    			  if(response) {
+//    				return CapesIslToaster.error('commons.mensagem.MSG053', { i18n: true });
+//    			  }
+//    	  }else{
+    		vm.excluirFonteDeDados(vm.fonteSelecionada.id);
+//    	  }
+      })
+      .catch((razao) => {
+        if (razao === 'backdrop click') {
+          $window.history.back();
+        }
+      });
+  };
+
+  // FIXME [REDMINE-16052] {} -- "[Defeito] O sistema deve permitir a exclusão de uma determinada Fonte de Dados sem Vínculo (recém criada)"
+  vm.excluirFonteDeDados = (id) => {
+	FonteDadosService.verificarVinculoFonteDados(id).then(({ data: response }) => {
+		if(response) {
+			return CapesIslToaster.error('commons.mensagem.MSG053', { i18n: true });
+		} else {
+			FonteDadosService.excluir(id).then(() => vm.pesquisarFontes().then(() => toastSucesso()), ).catch(avisarErro);
+		}
+	}).catch(avisarErro);
+  };
+
+  vm.mudaMsgFinalidade = (finalidadeFonte) => {
+    if (finalidadeFonte.id === 'P') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo pergunta, deve retornar uma lista de valores que serão insumo de uma pergunta para uma resposta.';
+    } else if (finalidadeFonte.id === 'A') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo público alvo, deve retornar uma lista de pessoas, contendo os seguintes dados: Identificador, Nome e E-mail.';
+    } else if (finalidadeFonte.id === 'M') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo modelo de e-mail, deve retornar uma lista de variáveis globais cadastradas na base para o Modelo de E-mail.';
+    }
+  };
+
+  function atualizarComboConexao({ data: resultados }) {
+    vm.listaConexoes = resultados;
+    return resultados;
+  }
+
+  const fecthConexoes = () => {
+    FonteDadosService.consultarTodasConexoes()
+    .then(atualizarComboConexao)
+    .catch(avisarErro);
+  };
+
+  vm.abreModalConsulta = (id) => {
+    const modal = {
+      content: {
+        header: {
+          title: "{{('fonte_dados.modal.cpf.titulo' | translate)}}",
+          closeButton: false,
+        },
+        body: `
+          <capes-isl-form submit="$ctrl.escopo.irVisualizarConsultaSql($ctrl.escopo.id )" invalid="$ctrl.escopo.onInvalid()">
+            <capes-isl-painel >
+              <capes-isl-corpo-painel>
+                <capes-isl-input-number
+                  label="{{'fonte_dados.pesquisar.label.cpf' | translate}}"
+                  ng-model="$ctrl.escopo.cpf"
+                  tamanho-campo="11"
+                  requerido="true" />
+              </capes-isl-corpo-painel>
+            </capes-isl-painel>
+
+            <capes-isl-corpo-painel>
+              <capes-isl-botao estilo="danger" id-botao="botaoVoltar" click="$dismiss()">{{'commons.botao.voltar' | translate}}</capes-isl-botao>
+              <capes-isl-botao estilo="primary" tipo="submit" >{{'commons.botao.consultar' | translate}}</capes-isl-botao>
+            </capes-isl-corpo-painel>
+          </capes-isl-form>
+
+        `,
+      },
+      modalOptions: {
+        controllerAs: '$ctrl',
+        bindToController: true,
+        controller() {
+          this.escopo = vm;
+          this.escopo.id = id;
+        },
+        size: 'lg',
+        keyboard: false,
+        backdrop: 'static',
+      },
+    };
+    $capesModal
+      .open(modal)
+      .then()
+      .catch();
+  };
+
+  const iniciar = () => {
+    $stateParams.postLoad.forEach(fn => fn.call());
+    fecthConexoes();
+    vm.pesquisarFontes();
+  };
+
+  iniciar();
+}
 =======================================================================================================================================
+  // FIXME [REDMINE-16052] {} -- "[Defeito] O sistema deve permitir a exclusão de uma determinada Fonte de Dados sem Vínculo (recém criada)"
+  vm.irParaExclusao = (idFonte) => {
+	vm.fonteDadosSelecionado = find(propEq('id', idFonte))(vm.listaFontes);
+	verificarVinculoFonteDados(vm.fonteDadosSelecionado);
+  };
 =======================================================================================================================================
+
+	# QUESTIONARIO-CAPES
+	
+		+ Defeitos
+		
+			1 O sistema não permite a EXCLUSÃO de uma determinada Fonte de Dados (recém criada) do tipo Pergunta
+			
+			2 Alterar texto informativo ao cadastrar uma determinada Fonte de Dados (tipo Pergunta, tipo Público Alvo) para facilitar a entrada de dados do tipo Query
+			  
+			3 Retirar condição da Finalidade do Correio Eletrônico do tipo "Contato"
+			
+			4 Implementar validação para não permitir o cadastro de Fonte de Dados (do tipo pergunta), sem o alias da tabela "CORPORATIVO.PESSOA" igual a "P"
+			
+			5 Ajustar mensagens para instruir melhor o usuário sobre as regras para inserção de querys para as Fontes de Dados do tipo Pergunta e Público Alvo
+
 =======================================================================================================================================
+
+	GerenciadorFonteDados -> criarEntidade
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
