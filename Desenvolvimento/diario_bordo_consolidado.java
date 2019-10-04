@@ -213,6 +213,10 @@
             sudo gedit apt.conf
 
                 Inserir no arquivo
+				
+					Acquire::http::proxy "http://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
+					Acquire::https::proxy "https://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
+					Acquire::ftp::proxy "ftp://joseqj:Kintino8@proxyweb.capes.gov.br:8080/";
 
                     Acquire::http::proxy "http://jqsilva:Kintino2@proxylatam.indra.es:8080/";
                     Acquire::https::proxy "https://jqsilva:Kintino2@proxylatam.indra.es:8080/";
@@ -30149,8 +30153,6 @@ public void criarPreenchimento(Long identificadorPublicacao, Long identificadorQ
                 
         [REDMINE-15004] - Adequar query de publicação
         
-        
-        
         [REDMINE-14795] - Questão do tipo Select
         
         [REDMINE-15004] - [PUBLICAÇÃO] Adequar query de publicação
@@ -33311,8 +33313,8 @@ AND PESSOA_.TP_PESSOA = 'F'
 			
 		+ JPA
 			
-			- https://www.youtube.com/watch?v=OZX_ZCATQcQ&list=PLcxA6SshISoZRLFXtKfseWa4-4y9YuMLv
-			- https://www.youtube.com/watch?v=MGWJbaYdy-Y&list=PLZTjHbp2Y7812axMiHkbXTYt9IDCSYgQz
+			- [Jorge Luis Bavaresco] https://www.youtube.com/watch?v=OZX_ZCATQcQ&list=PLcxA6SshISoZRLFXtKfseWa4-4y9YuMLv
+			- [Algaworks] https://www.youtube.com/watch?v=MGWJbaYdy-Y&list=PLZTjHbp2Y7812axMiHkbXTYt9IDCSYgQz
 			
 		+ Swagger
 		
@@ -33325,7 +33327,7 @@ AND PESSOA_.TP_PESSOA = 'F'
                 - Próxima aula
                     -> https://www.udemy.com/course/java-p-web-v/learn/lecture/6269716#content
 		
-			- Paginação
+			- Paginação AngularJS
 				
 				- http://jsfiddle.net/SAWsA/11/
 				- https://jasonwatmore.com/post/2016/01/31/angularjs-pagination-example-with-logic-like-google
@@ -33663,20 +33665,35 @@ this.persistirPerguntaAlvo = () => {
 				
 					+ DETALHAMENTO
 					
-						Fatura: 					FATURA 0059 BANCO SANTANDER (09/2019)
-						Instituição Financeira:		Banco Santander S.A
-						Data Recebimento:			10/09/2019
-						Data Vencimento:			15/09/2019
-						Data de Pagamento:			20/09/2019
-						Canal Recebimento:			E-mail (Notificação de Fatura Eletrônica)
-						Valor da Fatura:			R$ 3.584,21
-						Valor do Pagamento:			R$ 1.792,10 (1 parcela)
-						Valor do Parcelamento:		R$ 1.792,10 (2 parcela)
-						Situação:					Paga Parcialmente (1/2)
-						Movimentação do Período:
+						- TB_FATURA
+					
+							Fatura: 					FATURA 0059 BANCO SANTANDER (09/2019)
+							Instituição Financeira:		Banco Santander S.A
+							Data Recebimento:			10/09/2019
+							Data Vencimento:			15/09/2019
+							Data de Pagamento:			20/09/2019
+							Canal Recebimento:			E-mail (Notificação de Fatura Eletrônica)
+							Valor da Fatura:			R$ 3.584,21
+							Valor do Pagamento:			R$ 1.792,10 (1 parcela)
+							Valor do Parcelamento:		R$ 1.792,10 (2 parcela)
+							Situação:					Paga Parcialmente (1/2)
+							Movimentação do Período:
 
-							1 -  01/09/2019	 	Restaurante Fausto & Manuel (Asa Norte)  	Almoço 				R$ 34.89
-							2 -  05/09/2019	 	Lojas Americanas						  	Eletrônicos 		R$ 1.520.00
+								1 -  01/09/2019	 	Restaurante Fausto & Manuel (Asa Norte)  	Almoço 				R$ 34.89
+								2 -  05/09/2019	 	Lojas Americanas						  	Eletrônicos 		R$ 1.520.00
+								
+						- TB_MOVIMENTACAO_FINANCEIRA
+						
+							Favorecido:					Banco Santader S.A
+							Produto / Serviço:			Fatura de Pagamento Mensal
+							Data Aquisição:				10/10/2019
+							Parcelas:					01/10
+							Fonte de Pagamento:			Conta Carteira
+							Tipo de Pagamento:			Pagamento em casa lotérica
+							Canal de Pagamento:			Pagamento em caixa
+							Responsável pagamento:		Jamille Alves
+							Nota Fiscal:				02154554548-45454
+							Valor do Extrato:			R$ 60.00
 						
 					+ MAPEAMENTO CICLO II
 					
@@ -33705,7 +33722,6 @@ this.persistirPerguntaAlvo = () => {
 							ID_PESSOA  (TB_PESSOA)
 							ID_PRODUTO_SERVICO
 							ID_PARCELAMENTO
-							ID_PRODUTO_SERVICO
 							ID_FONTE_PAGAMENTO  (TB_PESSOA)
 							ID_TIPO_PAGAMENTO
 							ID_CANAL_PAGAMENTO
@@ -33955,16 +33971,23 @@ WHERE DS_IDENTIFICADOR_REGISTRADO in ('00295491329', '89626850191')
 AND CE.IN_PRINCIPAL_FINALIDADE = 'S';
 
 =======================================================================================================================================
-
+	
 	-> https://redmine.capes.gov.br/issues/16053
 	-> https://redmine.capes.gov.br/issues/16052
+	-> https://redmine.capes.gov.br/issues/16066
 
 // FIXME [REDMINE-16052] {} -- "[Defeito] O sistema deve permitir a exclusão de uma determinada Fonte de Dados sem Vínculo (recém criada)"
-
+// FIXME [REDMINE-16066] {} -- ""
 
 	# COMMIT
 	
 		[REDMINE-16052] [Fonte De Dados] - Sistema não exclui fonte de dados com a finalidade PERGUNTA recém criada
+		
+		[REDMINE-16053] [Fonte De Dados] - Cadastro duplicado - Sistema não emite qualquer comportamento
+		
+		[CORRECAO] [REDMINE-15479] [QC UC006 MANTER PUBLICO ALVO A1 EI006] - Erro ao cadastrar um Público Alvo do Tipo Fonte de Dados
+		
+		[REDMINE-16066] Indisponibilidade do Questionário com perguntas originalizadas da fonte de dados
 
 =======================================================================================================================================
 import { merge, find, propEq } from 'ramda';
@@ -34357,21 +34380,87 @@ export default function FonteDadosPesquisaCtrl(
 	
 		+ Defeitos
 		
-			1 O sistema não permite a EXCLUSÃO de uma determinada Fonte de Dados (recém criada) do tipo Pergunta
-			
-			2 Alterar texto informativo ao cadastrar uma determinada Fonte de Dados (tipo Pergunta, tipo Público Alvo) para facilitar a entrada de dados do tipo Query
+			-> [FINALIZADO] O sistema não permite a EXCLUSÃO de uma determinada Fonte de Dados (recém criada) do tipo Pergunta
 			  
-			3 Retirar condição da Finalidade do Correio Eletrônico do tipo "Contato"
+			-> [AGUARDANDO] Retirar condição da Finalidade do Correio Eletrônico do tipo "Contato"
 			
-			4 Implementar validação para não permitir o cadastro de Fonte de Dados (do tipo pergunta), sem o alias da tabela "CORPORATIVO.PESSOA" igual a "P"
+			-> [AGUARDANDO] Implementar validação para não permitir o cadastro de Fonte de Dados (do tipo pergunta), sem o alias da tabela "CORPORATIVO.PESSOA" igual a "P"
 			
-			5 Ajustar mensagens para instruir melhor o usuário sobre as regras para inserção de querys para as Fontes de Dados do tipo Pergunta e Público Alvo
+			-> [AGUARDANDO] Ajustar mensagens para instruir melhor o usuário sobre as regras para inserção de querys para as Fontes de Dados do tipo Pergunta e Público Alvo
+			
+			-> [AGUARDANDO]	Implementar REDMINE-15340 - Ajuste na tela de monitoramento
+			
+			-> [AGUARDANDO]	
+			
+			-> [AGUARDANDO]	
+			
+			-> [AGUARDANDO]		
+			
+			
+			Boa tarde, Nírian,
+
+"Conseguiu explicar para o Jailson e o Marcos a forma adequada para os testes e gerar a query?"
+
+Sim. Ontem conversei com o Jailson e ele conseguiu prosseguir com os testes (após os ajustes das querys).
+
+Com o Marcus conversei com ele ontem e hoje pela manhã aí na Capes. Ele disse que precisaria "conversar" con alguém (Taty se não me engano) sobre alguma pendência que ainda existe a respeito das origem das querys. Ficamos acordados de que amanhã (03/10/2019) pela manhã, iremos finalizar esse alinhamento.
+
+# Feito:
+
+Hoje versionei o código das demandas, a saber:
+
+- REDMINE-16053 (Sistema não emite qualquer comportamento com cadastro duplicados)
+- REDMINE-16052 (Sistema não exclui fonte de dados com a finalidade PERGUNTA recém criada)
+- Realizamos ajustes no texto informativo ao cadastrar uma determinada Fonte de Dados do tipo "Pergunta" e "Público Alvo"
+- Realizamos ajustes na funcionalidade da Fonte de Dados do tipo Público Alvo para a correção do erro repostado por ti ontem sobre a exclusão do registro referente ao "OSMAR CAETANO SILVA JUNIOR".
+
+# Aguardando
+
+- Corrigir a validação de: ao cadastrar uma Fonte de Dados (tipo Pergunta), deve-se garantir a entrada do alias (AS PESSOA_) correcto (evitando o erro semelhante ao  relatado no REDMINE-16066)
+* 04/10/2019 
+	
+	- Criar mensagem "A query da Fonte de Dados informada não possuí o alias \"PESSOA_\""
 
 =======================================================================================================================================
 
 	GerenciadorFonteDados -> criarEntidade
+	
+	// FIXME [REDMINE-16053] {A} -- "istema não emite qualquer comportamento quando o Cadastro é duplicado"
+	
+	// FIXME [REDMINE-15479] {N} -- "Alterar informativos de cadastro de Fonte de Dados"
+	
+		- Ajustes no texto informativo ao cadastrar uma determinada Fonte de Dados do tipo "Pergunta" e "Público Alvo"
+		- Ajustes na funcionalidade da Fonte de Dados do tipo Público Alvo para a correção do erro
 
 =======================================================================================================================================
+
+# fonte-dados-cadastro.js
+
+// FIXME [REDMINE-15479] {N} -- "Alterar informativos de cadastro de Fonte de Dados"
+  vm.mudaMsgFinalidade = (finalidadeFonte) => {
+    if (finalidadeFonte.id === 'P') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo Pergunta, deverá retornar o ID da Pessoa (AS P_) e o campo referente ao retorno da consulta.';
+    } else if (finalidadeFonte.id === 'A') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo Público Alvo, deve retornar uma lista de pessoas, contendo obrigatoriamente os dados: Identificador Registrado (AS CPF), Nome da Pessoa (AS NOME) e endereço de E-mail (AS EMAIL), nesta ordem.';
+    } else if (finalidadeFonte.id === 'M') {
+      vm.msgFinalidade = 'Para o correto funcionamento, a query de dados do tipo modelo de e-mail, deve retornar apenas uma coluna com o resultado do parâmetro de consulta informado na query para o “Modelo de E-mail”. A query deve conter como parâmetro de busca o “CPF”, que deverá ser representado pelo símbolo “?”.';
+    }
+  };
+  
+# fonte-dados-cadastro.html
+  
+  <!-- // FIXME [REDMINE-15479] {N} -- "Corrige erro ''txtSubjetiva'' " -->
+        <capes-isl-radiogroup label="{{'fonte_dados.cadastrar.label.finalidade' | translate}}" 
+        					  ng-model="$ctrl.finalidadeFonte" 
+        					  options="$ctrl.listaFinalidadeFonte" 
+        					  chave="$option.descricao" 
+        					  inline="true" 
+        					  change-model="$ctrl.mudaMsgFinalidade(value)" 
+        					  trackby="$option.id" 
+        					  requerido="true" 
+        					  txt-subjetiva="$ctrl.txtSubjetiva" 
+        					  help-hint="{{'fonte_dados.cadastrar.hint.finalidade' | translate}}" />
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
