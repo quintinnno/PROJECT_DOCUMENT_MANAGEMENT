@@ -40580,6 +40580,9 @@ git rebase PLTRP-20191016185229
 
 git commit -m "[PLTRP-20191017102210]" -m "- Implementar funcionalidade de pesquisa de dados" -m "- Implementar funcionalidade de remoção de dados" -m "- Implementar refactory da classe de testes" -m "- Implementar classes: controller, service, repository, base repository" -m "- Implementar a exclusão do sistema de versionamento das classes no diretório target"
 
+git config --global user.email "thallium@outlook.com.br"
+git config --global user.name "Thallium"
+        
 git config --global user.email "arsenicum@outlook.com.br"
 git config --global user.name "Arsenicum"
 
@@ -40604,7 +40607,37 @@ git push --set-upstream origin PLTRP-20191017112606
 
 # Implementar a compressão de arquivos e diretórios (.zip, .7, etc)
 
-=======================================================================================================================================
+// Corrige erro: "Error: The following untracked working tree files would be overwritten by merge:"
+git fetch --all
+git reset --hard origin/{{your branch name}}
+
+[PLTRP-20191019215823]
+- Implementar mapeamento do modelo referente a tabela "TB_INSTITUICAO_FINANCEIRA"
+- Implementar a retirada de códificação comentada
+- Implementar a configuração "pom.xml" substituindo "<packaging>war</packaging>" por "<packaging>jar</packaging>"
+- Implementar a refatoração da classe "EntityManagerConnectionTest" para apenas testar a conexão
+- Implementar classe de teste referente a classe repository "FaturaRepositoryTest"
+- Implementar classe de teste referente a classe repository "InstituicaoFinanceiraRepositoryTest"
+
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191019215823
+git add * -f
+git commit -a -m $'[PLTRP-20191019215823]\n- Implementar mapeamento do modelo referente a tabela "TB_INSTITUICAO_FINANCEIRA"\n- Implementar a retirada de códificação comentada\n- Implementar a configuração "pom.xml" substituindo "<packaging>war</packaging>" por "<packaging>jar</packaging>"\n- Implementar a refatoração da classe "EntityManagerConnectionTest" para apenas testar a conexão\n- Implementar classe de teste referente a classe repository "FaturaRepositoryTest"\n- Implementar classe de teste referente a classe repository "InstituicaoFinanceiraRepositoryTest"\n'
+git push --set-upstream origin PLTRP-20191019215823
+-- arsenicum@outlook.com.br
+
+// Resolver problema "Seu ramo está à frente de 'origin/master' por 1 submissão."
+
+
+- Implementar configuração do gitignore para a ignorar os arquivos "*.iml"
+- Implementar findAll() e findOne() com JPQL
+
+[PLTRP-20191020165635]
+- Implementar 
+
+5=======================================================================================================================================
 
 	-> No Gestao deve-se ser criado notas de: "Em Execução" quando se cria o chamado e Em "HOmologação" quando se finaliza
 	
