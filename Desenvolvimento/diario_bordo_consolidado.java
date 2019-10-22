@@ -40600,9 +40600,27 @@ git push --set-upstream origin PLTRP-20191017112606
 [PLTRP-20191018111142]
 - Implementar ajustes de configuração do Maven
 - Configurar .gitignore
-- Realizar rebase da branch "PLTRP-20191017112606" para a branch "origin/master"
+
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191018111142
+git add * -f
+git commit -a -m $'[PLTRP-20191018111142]\n- Implementar ajustes de configuração do Maven\n- Configurar .gitignore\n'
+git push --set-upstream origin PLTRP-20191018111142
 
 # Implementar a compressão de arquivos e diretórios (.zip, .7, etc)
+
+Erro "Your branch is ahead of 'origin/master' by 2 commits"
+
+// Verificar quais commits estao a frente
+git rebase -i origin/master
+
+// Commitar as alteracoes locais
+git push origin
+
+// Atualizar branch local com a branch master
+git reset --hard origin/master
 
 =======================================================================================================================================
 
@@ -40950,6 +40968,7 @@ http://localhost:8080/questionario/monitoring
 
 <!-- https://mvnrepository.com/artifact/net.bull.javamelody/javamelody-core -->
 <dependency>
+
 	<groupId>net.bull.javamelody</groupId>
 	<artifactId>javamelody-core</artifactId>
 	<version>1.60.0</version>
@@ -40971,9 +40990,48 @@ http://localhost:8080/questionario/monitoring
 </datasource>
 
 =======================================================================================================================================
+[OKAY] 		 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000007 - REDMINE-14504
+[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005 - REDMINE-14896
+[AGUARDANDO] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010 - REDMINE-15012
+[AGUARDANDO]	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009 - REDMINE-15006
+[VERSIONAR] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008 - REDMINE-15004
+[VERSIONAR] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006 - REDMINE-14501
 =======================================================================================================================================
+20190905000008	[QUESTIONARIOS] - REDMINE 15004		EM EXECUÇÃO		43d 	2h	17/10/2019 14:18
+20190524000008	[QUESTIONÁRIOS] - REDMINE 397		EM HOMOLOGAÇÃO	147d 	3h	30/09/2019 17:33
+20190524000009	[QUESTIONÁRIOS] - REDMINE 398		EM HOMOLOGAÇÃO	147d 	3h	30/09/2019 17:31
+20190701000126	[QUESTIONÁRIOS] - REDMINE 12436		EM HOMOLOGAÇÃO	108d 	18h	30/09/2019 17:30
+20190612000021	[QUESTIONÁRIOS] - REDMINE 12177		EM HOMOLOGAÇÃO	127d 	19h	30/09/2019 17:29
+20190905000005	[QUESTIONARIOS] - REDMINE 14896		ABERTO			43d 	2h	23/09/2019 09:35
+20190905000010	[QUESTIONARIOS] - REDMINE 15012		ATRIBUÍDO		43d 	1h	23/09/2019 09:33
+20190905000009	[QUESTIONARIOS] - REDMINE 15006		ATRIBUÍDO		43d 	1h	23/09/2019 09:33
+20190905000006	[QUESTIONÁRIOS] - REDMINE 14501		ATRIBUÍDO		43d 	2h	23/09/2019 09:31
+20190509000040	[QUESTIONÁRIOS] - REDMINE 388		EM EXECUÇÃO
 =======================================================================================================================================
+
+Release Notes
+
+Versão X.X.X
+
+Data geração de release
+
+New
+Improvements
+Bug Fixes
+
 =======================================================================================================================================
+
+	# Sobre o Universitário Sertanejo
+		
+		https://www.youtube.com/watch?v=XzLn-8OId9I	
+
+=======================================================================================================================================
+
+	# COMMIT
+	
+[DOCUMENTACAO] [REDMINE-15006] [QUESTIONARIOS ] - NOTIFICAÇÃO - Adequar funcionamento (query + quantidade + paginação)
+- Versionamento do documento "Evidências de Teste" referente ao chamado GESTAO-20190905000009
+
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
