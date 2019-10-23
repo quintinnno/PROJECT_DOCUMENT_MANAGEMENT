@@ -40580,6 +40580,9 @@ git rebase PLTRP-20191016185229
 
 git commit -m "[PLTRP-20191017102210]" -m "- Implementar funcionalidade de pesquisa de dados" -m "- Implementar funcionalidade de remoção de dados" -m "- Implementar refactory da classe de testes" -m "- Implementar classes: controller, service, repository, base repository" -m "- Implementar a exclusão do sistema de versionamento das classes no diretório target"
 
+git config --global user.email "thallium@outlook.com.br"
+git config --global user.name "Thallium"
+        
 git config --global user.email "arsenicum@outlook.com.br"
 git config --global user.name "Arsenicum"
 
@@ -40611,16 +40614,8 @@ git push --set-upstream origin PLTRP-20191018111142
 
 # Implementar a compressão de arquivos e diretórios (.zip, .7, etc)
 
-Erro "Your branch is ahead of 'origin/master' by 2 commits"
-
-// Verificar quais commits estao a frente
-git rebase -i origin/master
-
-// Commitar as alteracoes locais
-git push origin
-
-// Atualizar branch local com a branch master
-git reset --hard origin/master
+<<<<<<< HEAD
+=======
 
 =======================================================================================================================================
 
@@ -40996,6 +40991,7 @@ http://localhost:8080/questionario/monitoring
 [AGUARDANDO]	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009 - REDMINE-15006
 [VERSIONAR] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008 - REDMINE-15004
 [VERSIONAR] 	http://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006 - REDMINE-14501
+<<<<<<< HEAD
 =======================================================================================================================================
 20190905000008	[QUESTIONARIOS] - REDMINE 15004		EM EXECUÇÃO		43d 	2h	17/10/2019 14:18
 20190524000008	[QUESTIONÁRIOS] - REDMINE 397		EM HOMOLOGAÇÃO	147d 	3h	30/09/2019 17:33
@@ -41021,10 +41017,39 @@ Bug Fixes
 
 =======================================================================================================================================
 
+=======
+=======================================================================================================================================
+20190905000008	[QUESTIONARIOS] - REDMINE 15004		EM EXECUÇÃO		43d 	2h	17/10/2019 14:18
+20190524000008	[QUESTIONÁRIOS] - REDMINE 397		EM HOMOLOGAÇÃO	147d 	3h	30/09/2019 17:33
+20190524000009	[QUESTIONÁRIOS] - REDMINE 398		EM HOMOLOGAÇÃO	147d 	3h	30/09/2019 17:31
+20190701000126	[QUESTIONÁRIOS] - REDMINE 12436		EM HOMOLOGAÇÃO	108d 	18h	30/09/2019 17:30
+20190612000021	[QUESTIONÁRIOS] - REDMINE 12177		EM HOMOLOGAÇÃO	127d 	19h	30/09/2019 17:29
+20190905000005	[QUESTIONARIOS] - REDMINE 14896		ABERTO			43d 	2h	23/09/2019 09:35
+20190905000010	[QUESTIONARIOS] - REDMINE 15012		ATRIBUÍDO		43d 	1h	23/09/2019 09:33
+20190905000009	[QUESTIONARIOS] - REDMINE 15006		ATRIBUÍDO		43d 	1h	23/09/2019 09:33
+20190905000006	[QUESTIONÁRIOS] - REDMINE 14501		ATRIBUÍDO		43d 	2h	23/09/2019 09:31
+20190509000040	[QUESTIONÁRIOS] - REDMINE 388		EM EXECUÇÃO
+=======================================================================================================================================
+
+Release Notes
+
+Versão X.X.X
+
+Data geração de release
+
+New
+Improvements
+Bug Fixes
+
+=======================================================================================================================================
+
+>>>>>>> d982833e7a70f59b43739bf900cfd7d8bad071b6
 	# Sobre o Universitário Sertanejo
 		
 		https://www.youtube.com/watch?v=XzLn-8OId9I	
 
+<<<<<<< HEAD
+=======
 =======================================================================================================================================
 
 	# COMMIT
@@ -41032,6 +41057,327 @@ Bug Fixes
 [DOCUMENTACAO] [REDMINE-15006] [QUESTIONARIOS ] - NOTIFICAÇÃO - Adequar funcionamento (query + quantidade + paginação)
 - Versionamento do documento "Evidências de Teste" referente ao chamado GESTAO-20190905000009
 
+>>>>>>> d982833e7a70f59b43739bf900cfd7d8bad071b6
+=======================================================================================================================================
+
+	# COMMIT
+	
+[DOCUMENTACAO] [REDMINE-15006] [QUESTIONARIOS ] - NOTIFICAÇÃO - Adequar funcionamento (query + quantidade + paginação)
+- Versionamento do documento "Evidências de Teste" referente ao chamado GESTAO-20190905000009
+
+=======================================================================================================================================
+// Corrige erro: "Error: The following untracked working tree files would be overwritten by merge:"
+git fetch --all
+git reset --hard origin/{{your branch name}}
+
+[PLTRP-20191019215823]
+- Implementar mapeamento do modelo referente a tabela "TB_INSTITUICAO_FINANCEIRA"
+- Implementar a retirada de códificação comentada
+- Implementar a configuração "pom.xml" substituindo "<packaging>war</packaging>" por "<packaging>jar</packaging>"
+- Implementar a refatoração da classe "EntityManagerConnectionTest" para apenas testar a conexão
+- Implementar classe de teste referente a classe repository "FaturaRepositoryTest"
+- Implementar classe de teste referente a classe repository "InstituicaoFinanceiraRepositoryTest"
+
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191018111142
+git add * -f
+git commit -a -m $'[PLTRP-20191018111142]\n- Implementar ajustes de configuração do Maven\n- Configurar .gitignore\n'
+git push --set-upstream origin PLTRP-20191018111142
+
+>>>>>>> d982833e7a70f59b43739bf900cfd7d8bad071b6
+Erro "Your branch is ahead of 'origin/master' by 2 commits"
+
+// Verificar quais commits estao a frente
+git rebase -i origin/master
+
+// Commitar as alteracoes locais
+git push origin
+
+// Atualizar branch local com a branch master
+git reset --hard origin/master
+
+*******************************************************************
+********************[PLTRP-20191022111505]*************************
+*******************************************************************
+[PLTRP-20191022111505]
+- Implementar hibernate validator para as classes de modelo
+- Implementar ajustes no arquivo "pom.xml" atualizando as dependências do hibernate
+- Implementar refactory na classe "TB_FATURA" removendo o campo "NOME_INSTITUICAO_FINANCEIRA" pelo "ID_INSTITUICAO_FINANCEIRA" da tabela "TB_INSTITUICAO_FINANCEIRA"
+- Implementar refactory na modelagem da tabela "TB_INSTITUICAO_FINANCEIRA" alterando o nome do campo "NOME" por "NOME_FANTASIA"
+- Implementar refactory na modelagem da tabela "TB_INSTITUICAO_FINANCEIRA" inserindo o campo "RAZAO_SOCIAL" do tipo VARCHAR
+- Implementar ajustes do Hibernate Validador para as classes de domínio
+- Implementar refactory das classes de teste com as alterações implementadas
+*******************************************************************
+*******************COMMIT [PLTRP-20191022111505]*******************
+*******************************************************************
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191022111505
+git add * -f
+git commit -a -m $'[PLTRP-20191022111505]\n- Implementar hibernate validator para as classes de modelo\n- Implementar ajustes no arquivo "pom.xml" atualizando as dependências do hibernate\n- Implementar refactory na classe "TB_FATURA" removendo o campo "NOME_INSTITUICAO_FINANCEIRA" pelo "ID_INSTITUICAO_FINANCEIRA" da tabela "TB_INSTITUICAO_FINANCEIRA"\n- Implementar refactory na modelagem da tabela "TB_INSTITUICAO_FINANCEIRA" alterando o nome do campo "NOME" por "NOME_FANTASIA"\n- Implementar refactory na modelagem da tabela "TB_INSTITUICAO_FINANCEIRA" inserindo o campo "RAZAO_SOCIAL" do tipo VARCHAR\n- Implementar ajustes do Hibernate Validador para as classes de domínio\n- Implementar refactory das classes de teste com as alterações implementadas\n'
+git push --set-upstream origin PLTRP-20191022111505
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+*******************************************************************
+*******************COMMIT [PLTRP-20191022111505]*******************
+*******************************************************************
+
+=======================================================================================================================================
+
+*******************************************************************
+********************[PLTRP-20191023123411]*************************
+*******************************************************************
+[PLTRP-20191023123411]
+- Implementar padrão de projeto Singleton para as classes de persistência quanto a conexão com Banco de Dados
+- Implementar classes do tipo factory para teste de dados
+- Implementar interface com as operações básicas do persistência
+- Implementar classes de serviço para as entidades de persistência
+*******************************************************************
+*******************COMMIT [PLTRP-20191023123411]*******************
+*******************************************************************
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191023123411
+git add * -f
+git commit -a -m $'[PLTRP-20191023123411]\n- Implementar padrão de projeto Singleton para as classes de persistência quanto a conexão com Banco de Dados\n- Implementar classes do tipo factory para teste de dados\n- Implementar interface com as operações básicas do persistência\n- Implementar classes de serviço para as entidades de persistência\n'
+git push --set-upstream origin PLTRP-20191023123411
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+*******************************************************************
+*******************COMMIT [PLTRP-20191023123411]*******************
+*******************************************************************
+
+=======================================================================================================================================
+
+[PLTRP-20191023122436]
+- Implementar carga básica para a tabela "TB_CONTINENTE"
+
+[PLTRP-20191023131454]
+- Implementar carga básica para a tabela "TB_PAIS"
+
+[PLTRP-20191023111505]
+- Implementar modelagem referente a tabela "TB_PESSOA"
+- Implementar modelagem referente a tabela "TB_PAIS"
+- Implementar modelagem referente a tabela "TB_PESSOA_FISICA"
+- Implementar modelagem referente a tabela "TB_PESSOA_JURIDICA"
+- Implementar modelagem referente a tabela "TB_TIPO_NATUREZA_JURIDICA_PESSOA"
+- Implementar modelagem referente a tabela "TB_NATUREZA_JURIDICA_PESSOA"
+- Implementar modelagem referente a tabela "TB_TELEFONE"
+- Implementar modelagem referente a tabela "TB_REDE_SOCIAL"
+- Implementar modelagem referente a tabela "TB_PAPEL_PESSOA_SISTEMA"
+- Implementar modelagem referente a tabela "TB_ENDERECO_PESSOA"
+- Implementar modelagem referente a tabela "TB_DOCUMENTO_PESSOA"
+- Implementar modelagem referente a tabela "TB_CORREIO_ELETRONICO"
+- Implementar modelagem referente a tabela "TB_TIPO_IDENTIFICADOR_REGISTRADO"
+- Implementar modelagem referente a tabela "TB_IDENTIFICADOR_REGISTRADO"
+- Implementar refactory no modelagem da tabela "TB_INSTITUICAO_FINANCEIRA" incluindo novos campos
+
+# TB_PESSOA
+	CODIGO
+	ID_PAIS
+	ID_TIPO_PESSOA [FISICA, JURIDICA]
+	ID_IDENTIFICADOR_REGISTRADO
+	ID_CORREIO_ELETRONICO
+	ID_DOCUMENTO
+	ID_ENDERECO
+	ID_REDE_SOCIAL
+	ID_TELEFONE
+	ID_PAPEL_SISTEMA
+	
+# TB_PESSOA_FISICA
+	CODIGO
+	ID_PESSOA	
+
+[PLTRP-20191023120424]
+- Implementar mapeamento referente a tabela "TB_PESSOA"
+- Implementar mapeamento referente a tabela "TB_PESSOA_FISICA"
+- Implementar mapeamento referente a tabela "TB_PESSOA_JURIDICA"
+- Implementar refactory no mapeamento da classe "InstituicaoFianceiraModel" (incluir mais campos de acordo com a tabela)
+
+[PLTRP-2019XXXXXXXXXX]
+- Implementar mapeamento referente a tabela "TB_NATUREZA_JURIDICA_PESSOA"
+- Implementar mapeamento referente a tabela "TB_TIPO_NATUREZA_JURIDICA_PESSOA"
+- Implementar mapeamento referente a tabela "TB_TELEFONE"
+- Implementar mapeamento referente a tabela "TB_REDE_SOCIAL"
+- Implementar mapeamento referente a tabela "TB_PAPEL_PESSOA_SISTEMA"
+- Implementar mapeamento referente a tabela "TB_ENDERECO_PESSOA"
+- Implementar mapeamento referente a tabela "TB_DOCUMENTO_PESSOA"
+- Implementar mapeamento referente a tabela "TB_CORREIO_ELETRONICO"
+- Implementar mapeamento referente a tabela "TB_IDENTIFICADOR_REGISTRADO"
+- Implementar mapeamento referente a tabela "TB_TIPO_IDENTIFICADOR_REGISTRADO"
+
+[PLTRP-2020XXXXXXXXXX]
+- Implementar a compressão de arquivos e diretórios (.zip, .7, etc)
+=======================================================================================================================================
+
+# BERESHIT
+
+	- Zep Tap - Início da criação
+	- Conicidência
+	- Rebecca L. Cann - DNA mitocondrial
+	- Kippur - Kaparah ou expiações (um conjunto de processos expiatórios; expelir, mandar embora)
+	- Expiação não é dia de Teshuvah, mas dia de expiação (que tem haver com a morte)
+	- Elohim - Forças, emanações, potências ou sefirot (pela Kabalah)
+	- 22 Cartas - 22 caminhos da áárvore da vida. Rodeh - sefirah que vibra no Yom Kippur
+	
+# Supertição
+
+# Coincidência Matemática
+
+# Maldição
+
+# Astrologia
+
+# Horóspico
+
+# Homeopatia
+
+# Técnica dos cinco pontos (KI)
+
+# Dim Mak
+
+# Kabalah versus Chakras (Vedas)
+
+# Shidur
+
+=======================================================================================================================================
+[DOCUMENTACAO] [REDMINE-00388] [QUESTIONÁRIO CAPES] - Aprimorar perfil para acesso aos questionários
+=======================================================================================================================================
+/* 
+	@AUTHOR			Thallium
+	@TAREFA			PLPOE-20190804030349
+	@OBJETIVO		Configurar Banco de Dados db_plpoe_desenvolvimento
+	@HOTS			localhost
+	@PORT			5432
+	@DATABASE		db_plpoe_desenvolvimento
+	@USERNAME		postgres
+	@PASSWORD		plataforma
+*/
+
+-- DESCONECTA TODOS OS USUARIOS DE UM BANCO POSTGRES
+SELECT PID, PG_TERMINATE_BACKEND(PID) FROM PG_STAT_ACTIVITY WHERE PID <> PG_BACKEND_PID();
+
+-- EXCLUIR DATABASE "db_plpoe_desenvolvimento"
+DROP DATABASE IF EXISTS db_plpoe_desenvolvimento;
+
+﻿-- CRIAR DATABASE db_plpoe_desenvolvimento
+CREATE DATABASE db_plpoe_desenvolvimento 
+WITH OWNER = postgres
+ENCODING = 'UTF8'
+TABLESPACE = pg_default
+LC_COLLATE = 'pt_BR.UTF-8'
+LC_CTYPE = 'pt_BR.UTF-8'
+CONNECTION LIMIT = -1;
+
+-- RETORNA TODAS AS TABELAS DE UM DETERMINADO BANCO DE DADOS
+SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_SCHEMA = 'public' AND TABLE_CATALOG = 'db_plpoe_desenvolvimento';
+=======================================================================================================================================
+/* 
+	@AUTHOR			Thallium
+	@TAREFA			PLPOE-20190804041547
+	@OBJETIVO		Criar estrutura da tabela "TB_PONTO_ELETRONICO"
+	@SEQUENCE		Criar sequence "SEQUENCE_TB_PONTO_ELETRONICO" da tabela
+	@TABLE			Criar tabela "TB_PONTO_ELETRONICO"
+*/
+
+-- CRIAR SEQUENCE "SEQUENCE_TB_PONTO_ELETRONICO"
+CREATE SEQUENCE SEQUENCE_TB_PONTO_ELETRONICO;
+
+-- CRIAR TABLE "TB_PONTO_ELETRONICO"
+CREATE TABLE PUBLIC.TB_PONTO_ELETRONICO(
+  CODIGO 						INTEGER 							NOT NULL DEFAULT NEXTVAL('SEQUENCE_TB_PONTO_ELETRONICO'::REGCLASS), 		-- INDENTIFICADOR ÚNICO DA TABELA
+  HORA_PRIMEIRA_ENTRADA 		TIMESTAMP WITHOUT TIME ZONE, 																   					-- REPRESENTA O REGISTRO DE PONTO ELETRÔNICO PARA A PRIMEIRA ENTRADA NA JORNADA DE TRABALHO
+  HORA_PRIMEIRA_SAIDA 			TIMESTAMP WITHOUT TIME ZONE, 																					-- REPRESENTA O REGISTRO DE PONTO ELETRÔNICO PARA A PRIMEIRA SAÍDA (ALMOÇO) PARA NA JORNADA DE TRABALHO.
+  HORA_SEGUNDA_ENTRADA 			TIMESTAMP WITHOUT TIME ZONE,
+  HORA_SEGUNDA_SAIDA 			TIMESTAMP WITHOUT TIME ZONE,
+  EXPEDIENTE_DIARIO_TOTAL 		TIMESTAMP WITHOUT TIME ZONE,
+  CREDITO_DIARIO_TOTAL 			TIMESTAMP WITHOUT TIME ZONE,
+  DEBITO_DIARIO_TOTAL 			TIMESTAMP WITHOUT TIME ZONE,
+  SALDO_HORA_TOTAL 				TIME WITHOUT TIME ZONE,
+  OBSERVAOCAO_REGISTRO 			CHARACTER(200)
+) WITH ( OIDS = FALSE );
+
+-- EXCLUIR TABELA "TB_PONTO_ELETRONICO"
+DROP TABLE PUBLIC.TB_PONTO_ELETRONICO;
+
+-- ALTERAR TABELA "TB_PONTO_ELETRONICO"
+ALTER TABLE PUBLIC.TB_PONTO_ELETRONICO OWNER TO POSTGRES;
+
+-- COMENTARIO DA TABELA
+COMMENT ON TABLE PUBLIC.TB_PONTO_ELETRONICO 						IS 'RESPONSÁVEL POR ARMAZENAR OS DADOS REFERENTES A REGISTRO DIÁRIO DE PONTO ELETRÔNICO (REP)';
+
+-- COMENTARIO DAS COLUNAS
+COMMENT ON COLUMN PUBLIC.TB_PONTO_ELETRONICO.CODIGO 				IS 'INDENTIFICADOR ÚNICO DA TABELA';
+COMMENT ON COLUMN PUBLIC.TB_PONTO_ELETRONICO.HORA_PRIMEIRA_ENTRADA 	IS 'REPRESENTA O REGISTRO DE PONTO ELETRÔNICO PARA A PRIMEIRA ENTRADA NA JORNADA DE TRABALHO';
+COMMENT ON COLUMN PUBLIC.TB_PONTO_ELETRONICO.HORA_PRIMEIRA_SAIDA 	IS 'REPRESENTA O REGISTRO DE PONTO ELETRÔNICO PARA A PRIMEIRA SAÍDA (ALMOÇO) PARA NA JORNADA DE TRABALHO';
+
+-- EXCLUIR COLUNA "OBSERVACAO_REGISTRO"
+ALTER TABLE public.TB_PONTO_ELETRONICO DROP COLUMN OBSERVACAO_REGISTRO;
+
+-- INSERIR COLUNA "OBSERVACAO_REGISTRO"
+ALTER TABLE public.TB_PONTO_ELETRONICO ADD COLUMN OBSERVACAO_REGISTRO character(200);
+
+-- RETORNA OS TIPOS DE DADOS DE UMA DETERMINADA TABELA
+SELECT COLUMN_NAME, DATA_TYPE, CHARACTER_MAXIMUM_LENGTH FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'TB_PONTO_ELETRONICO';
+
+-- CODIGO GERADO AUTOMATICAMENTE
+/*
+-- Table: public.tb_ponto_eletronico
+
+-- DROP TABLE public.tb_ponto_eletronico;
+
+CREATE TABLE public.tb_ponto_eletronico
+(
+  codigo integer NOT NULL DEFAULT nextval('sequence_tb_ponto_eletronico'::regclass),
+  hora_primeira_entrada timestamp without time zone,
+  hora_primeira_saida timestamp without time zone,
+  hora_segunda_entrada timestamp without time zone,
+  hora_segunda_saida timestamp without time zone,
+  expediente_diario_total timestamp without time zone,
+  credito_diario_total timestamp without time zone,
+  debito_diario_total timestamp without time zone,
+  saldo_hora_total time without time zone,
+  observaocao_registro character(200)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE public.tb_ponto_eletronico
+  OWNER TO postgres;
+
+*/
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
+=======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
 =======================================================================================================================================
