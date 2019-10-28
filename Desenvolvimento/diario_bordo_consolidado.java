@@ -41477,8 +41477,163 @@ COMMIT;
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %C(bold blue)<%an>%Creset' --abbrev-commit
+
+*******************************************************************
+********************[PLTRP-20191025123548]*************************
+*******************************************************************
+[PLTRP-20191025123548]
+- Implementar modelagem e executar o script de create das tabelas, a saber, TB_PESSOA, TB_PESSOA_JURIDICA e TB_PESSOA_FISICA
+*******************************************************************
+*******************COMMIT [PLTRP-20191025123548]*******************
+*******************************************************************
+git checkout master
+git fetch
+git pull
+git checkout -b PLTRP-20191025123548
+git add * -f
+git commit -a -m $'[PLTRP-20191025123548]\n\n- Implementar modelagem e executar o script de create das tabelas, a saber, TB_PESSOA, TB_PESSOA_JURIDICA e TB_PESSOA_FISICA\n'
+git push --set-upstream origin PLTRP-20191025123548
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+*******************************************************************
+*******************COMMIT [PLTRP-20191025123548]*******************
+*******************************************************************
+
+[Close] https://github.com/repositoryarsenicum/PLTRP/issues/3
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+[PLTRP-20191025160713]
+- Implementar mapeamento das tabelas TB_PESSOA, TB_PESSOA_FISICA e TB_PESSOA_JURIDICA
+- Inserir constraint nas tabelas TB_PESSOA, TB_PESSOA_FISICA e TB_PESSOA_JURIDICA
+- Implementar rename no script "PLFCC" para "PLTRP-20191016185229"
+
+git add * -f
+git commit -a -m $'[PLTRP-20191025160713]\n\n- Implementar mapeamento das tabelas TB_PESSOA, TB_PESSOA_FISICA e TB_PESSOA_JURIDICA\n- Inserir constraint nas tabelas TB_PESSOA, TB_PESSOA_FISICA e TB_PESSOA_JURIDICA\n- Implementar rename no script "PLFCC" para "PLTRP-20191016185229"'
+git push --set-upstream origin PLTRP-20191025160713
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT * FROM PUBLIC.TB_PESSOA;
+
+SELECT * 
+FROM PUBLIC.TB_PESSOA PESSOA_
+JOIN PUBLIC.TB_PESSOA_FISICA TB_PESSOA_FISICA_ ON TB_PESSOA_FISICA_.CODIGO = PESSOA_.CODIGO;
+
+SELECT * 
+FROM PUBLIC.TB_PESSOA PESSOA_
+JOIN PUBLIC.TB_PESSOA_JURIDICA PESSOA_JURIDICA_ ON PESSOA_JURIDICA_.CODIGO = PESSOA_.CODIGO;
+
+DROP TABLE PUBLIC.TB_INSTITUICAO_FINANCEIRA CASCADE;
+DROP TABLE PUBLIC.TB_FATURA CASCADE;
+DROP TABLE PUBLIC.TB_PESSOA_FISICA CASCADE;
+DROP TABLE PUBLIC.TB_PESSOA_JURIDICA CASCADE;
+DROP TABLE PUBLIC.TB_PESSOA CASCADE;
+
+-- EXCLUIR SEQUENCES DO BANCO DE DADOS
+DROP SEQUENCE PUBLIC.SEQUENCE_TB_PESSOA CASCADE;
+DROP SEQUENCE PUBLIC.SEQUENCE_TB_PESSOA_JURIDICA CASCADE;
+DROP SEQUENCE PUBLIC.SEQUENCE_TB_PESSOA_FISICA CASCADE;
+
+-- CRIAR SEQUENCE
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA INCREMENT 1;
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA_FISICA INCREMENT 1;
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA_JURIDICA INCREMENT 1;
+
+-- CRIAR SEQUENCE SQ_TB_CATEGORIA_PRODUTO
+CREATE 	SEQUENCE SEQUENCE_TB_PESSOA INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+CREATE 	SEQUENCE SEQUENCE_TB_PESSOA_FISICA INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+CREATE 	SEQUENCE SEQUENCE_TB_PESSOA_JURIDICA INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA						INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA_FISICA 				INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+-- CREATE SEQUENCE SEQUENCE_TB_PESSOA_JURIDICA 				INCREMENT 1 MINVALUE 1 MAXVALUE 9223372036854775807 START 1 CACHE 1;
+
+-- COMMENT ON SEQUENCE SEQUENCE_TB_PESSOA 					IS 'SEQUENCIA DE AUTOINCREMENT DA TABELA';
+-- COMMENT ON SEQUENCE SEQUENCE_TB_PESSOA_FISICA 			IS 'SEQUENCIA DE AUTOINCREMENT DA TABELA';
+-- COMMENT ON SEQUENCE SEQUENCE_TB_PESSOA_JURIDICA			IS 'SEQUENCIA DE AUTOINCREMENT DA TABELA';
+
+-- CRIAR TABLE "PUBLIC.TB_PESSOA"
+CREATE TABLE PUBLIC.TB_PESSOA(
+  CODIGO 						INTEGER 							NOT NULL DEFAULT NEXTVAL('SEQUENCE_TB_PESSOA'::REGCLASS),
+  NOME 							VARCHAR(75)							NOT NULL,
+  NOME_FONETICO					VARCHAR(75)								NULL
+) WITH ( OIDS = FALSE );
+
+-- CRIAR TABLE "PUBLIC.TB_PESSOA_FISICA"
+CREATE TABLE PUBLIC.TB_PESSOA_FISICA(
+  CODIGO 						INTEGER 							NOT NULL DEFAULT NEXTVAL('SEQUENCE_TB_PESSOA_FISICA'::REGCLASS),
+  RG							VARCHAR(15)								NULL,
+  CPF							VARCHAR(11)								NULL,
+  DATA_NASCIMENTO				TIMESTAMP WITHOUT TIME ZONE				NULL
+) WITH ( OIDS = FALSE );
+
+-- CRIAR TABLE "PUBLIC.TB_PESSOA_JURIDICA"
+CREATE TABLE PUBLIC.TB_PESSOA_JURIDICA(
+  CODIGO 						INTEGER 							NOT NULL DEFAULT NEXTVAL('SEQUENCE_TB_PESSOA_JURIDICA'::REGCLASS),
+  INSCRICAO_ESTADUAL			VARCHAR(20)								NULL,
+  CNPJ							VARCHAR(20)							NOT NULL
+) WITH ( OIDS = FALSE );
+
+-- CRIA INDICE EXCLUSIVO PARA OS CAMPOS DA TABELA "TB_PESSOA"
+CREATE UNIQUE INDEX CONCURRENTLY INDEX_TB_PESSOA_NOME ON PUBLIC.TB_PESSOA (NOME);
+
+-- CRIA INDICE EXCLUSIVO PARA OS CAMPOS DA TABELA "TB_PESSOA_FISICA"
+CREATE UNIQUE INDEX CONCURRENTLY INDEX_TB_PESSOA_FISICA_RG ON PUBLIC.TB_PESSOA_FISICA (RG);
+CREATE UNIQUE INDEX CONCURRENTLY INDEX_TB_PESSOA_FISICA_CPF ON PUBLIC.TB_PESSOA_FISICA (CPF);
+
+-- CRIA INDICE EXCLUSIVO PARA OS CAMPOS DA TABELA "TB_PESSOA_JURIDICA"
+CREATE UNIQUE INDEX CONCURRENTLY INDEX_TB_PESSOA_JURIDICA_INSCRICAO_ESTADUAL ON PUBLIC.TB_PESSOA_JURIDICA (INSCRICAO_ESTADUAL);
+CREATE UNIQUE INDEX CONCURRENTLY INDEX_TB_PESSOA_JURIDICA_CNPJ ON PUBLIC.TB_PESSOA_JURIDICA (CNPJ);
+
+-- COMENTARIO DA TABELA "TB_PESSOA"
+COMMENT ON TABLE PUBLIC.TB_PESSOA 									IS 'RESPONSÁVEL POR ARMAZENAR OS DADOS REFERENTES AOS DADOS DA PESSOA';
+
+-- COMENTARIO DA TABELA "TB_PESSOA"
+COMMENT ON TABLE PUBLIC.TB_PESSOA_FISICA	 						IS 'RESPONSÁVEL POR ARMAZENAR OS DADOS REFERENTES AOS DADOS DA PESSOA FISICA';
+
+-- COMENTARIO DA TABELA "TB_PESSOA"
+COMMENT ON TABLE PUBLIC.TB_PESSOA_JURIDICA	 						IS 'RESPONSÁVEL POR ARMAZENAR OS DADOS REFERENTES AOS DADOS DA PESSOA JURIDICA';
+
+-- COMENTARIO DAS COLUNAS DA TABELA "TB_PESSOA"
+COMMENT ON COLUMN PUBLIC.TB_PESSOA.CODIGO 							IS 'INDENTIFICADOR ÚNICO DA TABELA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA.NOME								IS 'REPRESENTA O NOME DE UMA PESSOA FISICA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA.NOME_FONETICO					IS 'REPRESENTA O NOME FONETICO';
+
+-- COMENTARIO DAS COLUNAS DA TABELA "TB_PESSOA_FISICA"
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_FISICA.CODIGO 					IS 'INDENTIFICADOR ÚNICO DA TABELA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_FISICA.RG						IS 'REPRESENTA O REGISTRO GERAL DE UMA DETERMIANDA PESSOA FISICA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_FISICA.CPF						IS 'REPRESENTA O CADASTRO DE PESSOA FISICA DE UMA DETERMINADA PESSOA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_FISICA.DATA_NASCIMENTO			IS 'REPRESENTA A DATA DE DATA DE NASCIMENTO DE UMA DETERMINADA PESSOA';
+
+-- COMENTARIO DAS COLUNAS DA TABELA "TB_PESSOA_JURIDICA"
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_JURIDICA.CODIGO 					IS 'INDENTIFICADOR ÚNICO DA TABELA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_JURIDICA.INSCRICAO_ESTADUAL		IS 'REPRESENTA O NUMERO DA INSCRICAO ESTADUAL DE UMA DETERMINADA PESSOA JURIDICA';
+COMMENT ON COLUMN PUBLIC.TB_PESSOA_JURIDICA.CNPJ					IS 'REPRESENTA O NUMERO DO CADASTRO NACIONAL DE PESSOA JURIDICA';
+
+
+-- ADICIONAR CONTRAINT DE PRIMARY KEY
+ALTER TABLE PUBLIC.TB_PESSOA ADD CONSTRAINT PK_TB_PESSOA_CODIGO PRIMARY KEY (CODIGO);
+ALTER TABLE PUBLIC.TB_PESSOA_FISICA ADD CONSTRAINT PK_TB_PESSOA_FISICA_CODIGO PRIMARY KEY (CODIGO);
+ALTER TABLE PUBLIC.TB_PESSOA_JURIDICA ADD CONSTRAINT PK_TB_PESSOA_JURIDICA_CODIGO PRIMARY KEY (CODIGO);
+
+-- ADICIONAR CONTRAINT DE FOREIGN KEY
+ALTER TABLE PUBLIC.TB_PESSOA_FISICA ADD CONSTRAINT FK_TB_PESSOA_FISICA_IN_TB_PESSOA FOREIGN KEY (CODIGO) REFERENCES TB_PESSOA(CODIGO);
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+[PLTRP-20191027035814]
+- Implementar modelagem e mapeamento da tabela TB_ENDERECO, TB_TIPO_ENDERECO, TB_CIDADE.
+
+git add * -f
+git commit -a -m $'[PLTRP-20191027035814]\n\n- Implementar modelagem e mapeamento da tabela TB_ENDERECO, TB_TIPO_ENDERECO, TB_CIDADE.\n\n'
+git push --set-upstream origin PLTRP-20191027035814
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
