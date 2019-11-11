@@ -196,6 +196,9 @@
 
         export http_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
         export https_proxy="http://jqsilva:Kintino2@proxylatam.indra.es:8080"
+							
+		export http_proxy="http://jqsilva:Kintino3@proxylatam.indra.es:8080"
+        export https_proxy="http://jqsilva:Kintino3@proxylatam.indra.es:8080"
                             
         export http_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
         export https_proxy="http://jqsilva:Kintino1@proxylatam.indra.es:8080"
@@ -351,7 +354,8 @@
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jbossEAP/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss-eap/arquivos/
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
-            -Darquivos=/home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos                          
+            -Darquivos=/home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos
+			-Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
                             
                             
 -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
@@ -7942,21 +7946,14 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-    
-    -- Deployments
-        -- smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
+smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
+smb://samba-gns.capes.gov.br/java_homolog/questionario-capes/configuration
+smb://samba-gns.capes.gov.br/logs_teste/Java/questionario-capes
+smb://samba-gns.capes.gov.br/logs_producao/Java/questionario-capes/jboss
 
-    -- Ambiente de Homologação
-        -- smb://samba-gns.capes.gov.br/java_homolog/questionario-capes/configuration
-        
-            smb://samba-gns.capes.gov.br/logs_teste/Java/questionario-capes
- 
- 			smb://samba-gns.capes.gov.br/logs_producao/Java/questionario-capes/jboss
- 
-        User Capes: joseqj
-        Domain:     FC
-        Senha:      ||||||||||||||| 
-
+User Capes: joseqj
+Domain:     FC
+Senha:      |||||||||||||||
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # REDMINE 392
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -7974,7 +7971,7 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 
 *[Resultado Esperado]*
 
-> Que seja possível cadastrar uma pergunta do *Tipo Matriz*.  
+> Que seja possível cadastrar uma pergunta do *Tipo Matriz*.
 
 *[UC Afetados]*
 
@@ -7989,7 +7986,7 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
 *[Análise]*
 
 *[Impacto]*
-
+Você realmente viu o vídeo base de sua analogia
 *[Arquivos (Classes) Afetadas]*
 
 *[Tabelas de Banco de Dados Afetados]*
@@ -20369,8 +20366,67 @@ A evidência de correção pode ser verificada no arquivo %{color:red}REDMINE_12
 
 Essa alteração estará disponível na versão 1.9.2 do Sistema Questionário Capes
 
-<pre><code class="json"> 
+<pre><code class="json">
+DECLARE 
+    tmp                 NUMBER(10); 
+    v_usuario           varchar2(50);
+    v_nome_fonte        varchar2(50);
+    v_sql               varchar2(2000);
+BEGIN 
+    v_usuario    := 'GESTAO_20190207000032';
+    v_nome_fonte := 'link_sistema';
+    v_sql        := '            
+                select   ''http://'' ||
+                       lower( (  
+                            select
+                                case ( select global_name from global_name )
+                                     when ''DSNV'' then ''des''
+                                     when ''PROD'' then ''questionarios''
+                                     when ''PRODDG'' then ''questionarios''
+                                 else
+                                    global_name
+                                 end
+                             from global_name            
+                       )) ||  ''.capes.gov.br/questionario-capes/questionarios?idPreenchimento='' link 
+                from dual
+                where exists ( SELECT 1 FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR WHERE IR.DS_IDENTIFICADOR_REGISTRADO  = ? )
+            ';    
+    
+    SELECT Count(q1.ID_FONTE_DADOS) 
+    INTO   tmp 
+    FROM   QUESTIONARIO.FONTE_DADOS q1 
+    WHERE  Upper(q1.nm_fonte_dados) LIKE Upper('link_sistema');
+     
+    IF tmp = 0 THEN 
+        INSERT INTO QUESTIONARIO.FONTE_DADOS
+        ( ID_FONTE_DADOS,  NM_FONTE_DADOS,  TP_FONTE_DADOS,  DS_FONTE_SQL,  ST_VALIDADA,  DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO,  ID_CONEXAO )
+        VALUES( 
+            QUESTIONARIO.SQ_FONTE_DADOS.nextval, 
+            v_nome_fonte,
+            'M',
+            v_sql,
+            'S',
+            v_usuario,
+            sysdate,
+            ( select id_conexao from questionario.conexao where nm_conexao like '%QuestionarioDS%' ) 
+        );
+    ELSE
+	
+		SELECT q1.ID_FONTE_DADOS 
+		INTO   tmp 
+		FROM   QUESTIONARIO.FONTE_DADOS q1 
+		WHERE  Upper(q1.nm_fonte_dados) LIKE Upper('link_sistema');	
+		
+		UPDATE QUESTIONARIO.FONTE_DADOS SET 
+			DS_FONTE_SQL = v_sql,
+			DS_USUARIO_ULTIMA_ALTERACAO = v_usuario,
+			DH_ULTIMA_ALTERACAO = SYSDATE
+		WHERE ID_FONTE_DADOS = tmp;
+		
+    END IF; 
+END; 
 
+COMMIT;
 </code></pre>
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Gerenciador de Despesas Financeiras Variáveis
@@ -40624,64 +40680,7 @@ git push --set-upstream origin PLTRP-20191018111142
 	-> No Gestao deve-se ser criado notas de: "Em Execução" quando se cria o chamado e Em "HOmologação" quando se finaliza
 	
 	-> No gestão inserir na nota que não houve alteração no caso de uso e nem no Documento de Interface
-
-======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-- 08/2019
-                
-                01 REDMINE-13071 -> CCAPNSGA-9823
-                02 REDMINE-13072 -> CCAPNSGA-9824
-                03 REDMINE-13073 -> CCAPNSGA-9825
-                04 REDMINE-13080 -> CCAPNSGA-9826
-                05 REDMINE-12015 -> CCAPNSGA-9919
-                06 REDMINE-14089 -> CCAPNSGA-9921
-                07 REDMINE-14160 -> CCAPNSGA-9922
-                08 REDMINE-14188 -> CCAPNSGA-9923
-                09 REDMINE-14277 -> CCAPNSGA-9924
-                10 REDMINE-14091 -> CCAPNSGA-9928
-                11 REDMINE-14097 -> CCAPNSGA-9931
-                12 REDMINE-14107 -> CCAPNSGA-9936
-                13 REDMINE-14098 -> CCAPNSGA-9932 
-                14 REDMINE-14368 -> CCAPNSGA-10023
-                15 REDMINE-13351 -> CCAPNSGA-10024
-                16 REDMINE-14172 -> CCAPNSGA-10025
-                17 REDMINE-14183 -> CCAPNSGA-10026
-                18 REDMINE-14261 -> CCAPNSGA-10027
-                19 REDMINE-14262 -> CCAPNSGA-10028
-                20 REDMINE-14294 -> CCAPNSGA-10029
-                21 REDMINE-14295 -> CCAPNSGA-10030
-                22 REDMINE-14321 -> CCAPNSGA-10031
-                23 REDMINE-14900 -> CCAPNSGA-10032
-                24 REDMINE-14718 -> CCAPNSGA-10033
-                25 REDMINE-14541 -> CCAPNSGA-10034
-                26 REDMINE-14582 -> CCAPNSGA-10035
-                27 REDMINE-14795 -> CCAPNSGA-10036
-                28 REDMINE-14695 -> CCAPNSGA-10037
-                29 REDMINE-15045 -> CCAPNSGA-10038
-                
-            - 09/2019
-                
-                01 REDMINE-15031 -> CCAPNSGA-10039
-                02 REDMINE-15044 -> CCAPNSGA-10040
-                03 REDMINE-15188 -> CCAPNSGA-10041
-                04 REDMINE-15189 -> CCAPNSGA-10042
-                05 REDMINE-15340 -> CCAPNSGA-10043
-                06 REDMINE-15442 -> CCAPNSGA-10044
-                07 REDMINE-15190 -> CCAPNSGA-10082
-                08 REDMINE-15474 -> CCAPNSGA-10083
-                09 REDMINE-15479 -> CCAPNSGA-10084
-                10 REDMINE-15477 -> CCAPNSGA-10085
-                11 REDMINE-XXXXX -> YYYYY
-                12 REDMINE-XXXXX -> YYYYY
-                13 REDMINE-XXXXX -> YYYYY
-                14 REDMINE-XXXXX -> YYYYY
-                15 REDMINE-XXXXX -> YYYYY
-                16 REDMINE-XXXXX -> YYYYY
-                17 REDMINE-XXXXX -> YYYYY
-                18 REDMINE-XXXXX -> YYYYY
-                19 REDMINE-XXXXX -> YYYYY
-                20 REDMINE-XXXXX -> YYYYY
-                21 REDMINE-XXXXX -> YYYYY
-				
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 Discente: 61556							D: 71
 Supervisores: 5419						D: 0
@@ -41711,7 +41710,7 @@ Estamos tendo um problema em produção. A gestora recebe o e-mail de publicaç�
 
 Consegue testar depois ?
 
-Fiz uma publicação para testar se, ao utilizar o programa Outlook , o programa converte o uma parte do link de "idPreenchimento" para "idpreenchimento". 
+Fiz uma publicação para testar se, ao utilizar o programa Outlook , o programa converte o uma parte do link de "idPreenchimento" para "idpreenchimento".
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -41727,6 +41726,207 @@ Após a correção o sistema passou a apresentar o link do sistema com "idPreenc
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+<<<<<<< HEAD
+O sistema apresenta uma instabilidade ao tentar Finalizar os Preenchimentos.
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+CATI-019102910001481 — [QUESTIONARIOS] - Diff do banco de Produção contra o de Teste
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+silvia.rodrigues@capes.gov.br 
+2022-6439
+CPCF>CGPC>DED
+7º andar
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+#configuração do provedor de servicos    
+
+provedorServico=questionario-capes.capes.gov.br
+acsUrl=http://localhost:8080/questionario/acs
+
+urlAutenticacao=http://des.capes.gov.br/sso/sso
+urlLogout=http://des.capes.gov.br/sso/slo
+
+arquivoCertificadoIDP=/home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos/questionario-capes/seguranca.crt
+classeAutorizadora=br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca
+
+idp.oauth.url=http://des.capes.gov.br/sso/oauth
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+http://localhost:3001/questionario/visualizar-questionario?idPreenchimento=721589
+
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=721589
+
+http://des.capes.gov.br/sso/sso?SAMLRequest=nZPBjtowEIZfJfI9xAlsCRZhRVmtirRts5DtoTevM1ksOXbqcVj69nUSaHNoEerFB3tm%2FpnvHy%2FvT7UKjmBRGp2ReEJJAFqYUuq3jLwUj2FK7ldL5LVq2Lp1B72DHy2gC3yeRtY%2FZKS1mhmOEpnmNSBzgu3Xn59YMqGsscYZYRQJ1ohgnRfaGI1tDXYP9igFvOyeMnJwrmFRpIzg6mDQsZSmNOq1fAa30kRcIAkejRXQd5KRiisEEmwfMkJpNaV8WoWcz0U4S%2B54mN5NRVguFvNkVsbzMvngIzHniPIIf3IRW9hqdFy7jCQ0XoQxDae0iBcsSRlNJ3S2%2BE6C%2FDzFR6kHNtdGfh2CkH0qijzMv%2B4LEny7MPYB5EK0V7e3s%2BQXgmQ1JhMK3gBOhvPNHCevdhmNFQa9pGFffMntQ26UFD9HssntHipl3jcWuPMMnW2hd6Tm7nqB7kaWYdWHsqZjgQ60I8E%2B73p6brmSlQSbkW03I4l%2Bt3xeOCh70%2F3qODi5%2F%2Bp9Y%2BrG48LOBThx4c4%2BsHHljfKQd1CNFG725GqYYKIr7a%2B7HXw3tux2CoSfrLBcY2OsG1z7az%2Br4e1fQFYXw8efdPUL&RelayState=http%3A%2F%2Flocalhost%3A8080%2Fquestionario%2Fvisualizar-questionario%3FidPreenchimento%3D721589
+
+http://localhost:8080/questionario/#/visualizar-questionario-respostas/?visualizarQuestionario=true&idPreenchimento=721589
+
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=586973
+
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=586973
+
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=147361
+
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=147335
+
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=586973
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=586973
+
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=586973
+http://localhost:8080/questionario/visualizar-questionario?idPreenchimento=586973
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+https://des.capes.gov.br/sso/sso?SAMLRequest=nZNdb5swFIb%2FCvI9YGhSBStQZamqReo2ltBd7M4xh9YS2MzHpNm%2Fn4FkY2oXRbvhwufjPed5D8u7Y1N7BzAotUpJFFDigRK6lOo5JU%2FFg78gd9kSeVO3bNXZF7WFHx2g9VydQjYEUtIZxTRHiUzxBpBZwXarT48sDihrjbZa6Jp4K0Qw1gmttcKuAbMDc5ACnraPKXmxtkUWhiVgIHjrvs%2F6EOxNOMi5Im6k9odIyAUS70EbAcNIKal4jUC8zX1KgIq4ipLI57di789gtvD5Yjbzb27nSVLSRRVT7jIx54jyAH9qETvYKLRc2ZTENEr8iPo3tIgpmycsngc0od%2BJl5%2FW%2BSDVCOnS7vsxCdnHosj9%2FMuuIN63M2yXQM5oB3VzPVR%2BRkmyt3z%2B4rcMpwqjXtyyz67l5j7XtRQ%2FJ7Lx9WbWtX5dG%2BDWMbSmg8GRhtvLDfoXWfrVkMrangVaUJZ4u7yf6WvHa1lJMCnZ9DuS8PfIp8uDcjDd3ZCFo%2F2v2de6aR0u7F2AIxf25AObdl7XDvIWqonC1Z5cTBNM9K3dc3%2BDr9qU%2FU2BcJsVhitstbGja%2B%2FOk42xfwHJzoZP%2F9bsFw%3D%3D&RelayState=https%3A%2F%2Fdes.capes.gov.br%2Fquestionario-capes%2F%23%2Fvisualizar-questionario-respostas%2F%3FvisualizarQuestionario%3Dtrue%26idPreenchimento%3D586973
+
+https://sso.capes.gov.br/sso/sso?SAMLRequest=nZPdbqMwEIVfBfmen1BIUitQZVNVG6nbZRPai945Zmgtgc16TJq%2B%2FRpIdlmpjaLe2sdnZr4zXtwc6srZg0ahZEImXkAckFwVQr4k5DG%2Fc%2BfkJl0gq6uGLlvzKjfwuwU0jn0nkfYXCWm1pIqhQCpZDUgNp9vlj3saegFttDKKq4o4S0TQxhZaKYltDXoLei84PG7uE%2FJqTIPU93t3q2FaKPQ4awC9F7X3dvr%2FK59xJM6d0hz6vhJSsgqBOOvbhMzjWRBPi9iN59OZGxVR4F6zWexGMYsKXgLbscIqMWOIYg%2F%2F3iK2sJZomDQJCYPJtTsJ3KsgDwMaz%2BlV5M3C6TNxsuNM34QcSJ0DsBtESL%2FneeZmP7c5cZ5OxK2AnPj21fXlZNmJJ0k%2Fp7bwx%2BZDqbChD9ZtfZupSvD3UcXw8jCrSr2tNDBj8RndQh9Gzcx5g%2B5EFG7ZS2nTYUAD0hBnm3U9%2FWpZJUoBOiHrbjzi%2F235uHlQ9HnbHTJwMF%2FqfaXqxpLCLgA4MG6OEdCx86qyfDdQjipcHMdZGae8s7bH3fq9KV106wTcTpZrJrFR2gypfdhPOtx9BiQ9BT7%2Brekf&RelayState=https%3A%2F%2Fquestionarios.capes.gov.br%2Fquestionarios%2F
+
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=586973
+http://questionarios.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=745337
+
+<input type="hidden" name="relayState" value="https://questionarios.capes.gov.br/questionarios/"/>									   
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Recomendo você fazer um estudo. Daí nos diga em que espectro o senhor se encontra.  O prefere o Individualismo ou comunitarismo e prefere o intervencionismo ou multilateralismo na política externa, prefere o pacifismo ou militância,  acha melhor o liberalismo ou protecionismo é a favro do multiculturalismo ou prefere o nacionalismo, acha mais eficiente oc entralismo ou federalismo ?
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+[PLTRP-20191028115517]
+
+Implementar modelagem de Carga Básica para a tabela TB_CONTINENTE.
+Implementar modelagem de Carga Básica para a tabela TB_PAIS.
+
+git add * -f
+git commit -a -m $'[PLTRP-20191028115517]\n\n- Implementar Carga Básica para a tabela TB_CONTINENTE.\n- Implementar Carga Básica para a tabela TB_PAIS.\n\n'
+git push --set-upstream origin PLTRP-20191028115517
+Username: "arsenicum@outlook.com.br"
+Password: "**********************"
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+2019103110000486  -  [QUESTIONÁRIOS] - Restart das maquinas jboss 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+- O cara que não entende de política e vai no G20 e faz o maior acordo econômico da história do Brasil.
+- Assume a liderança do MERCOSUL com 9 meses de governo.
+- Aprova uma reforma que todos os governos anteriores falharam, sem negociata de cargos.
+- O assassino que nunca matou alguém.
+- O ditador que sempre exerceu cargo eletivo.
+- O homofóbico que recebe beijos e abraços de homossexuais
+- O nazista que empunha a bandeira de israel, que defende e dá palestras na comunidade judaica e é ovacionado.
+- O racista que tem um negro como melhor amigo há vários anos(Helio Bolsonaro)
+- O violento que levou purpurinas, ovos, cuspe na cara e por fim uma FACADA no abdômem e nunca reagiu e agrediu alguém fisicamente
+- O mentiroso que só diz verdades que doem
+- O louco que defende que bandido seja tratado como Bandido
+- O estuprador que é contra o estupro e o aborto
+- O radical que defende que o cidadão tenha o direito de defender sua familia e sua propriedade
+- O burro, que inteligentemente, admite quando não entende de determinado assunto
+- O unico corrupto que NÃO tem processo por corrupção em 28 anos atuando no ambiente mais corrupto do mundo
+- O candidato dos ricos que fez a campanha mais pobre da história e o mais atacado por todos
+- O político mais burro, pois anuncia seus principais ministros, não deixando margens para negociatas no segundo turno
+- O prepotente que ousa dizer que não negocia cargos com partidos em troca de tempo de Tv	
+
+Democracia? Que democracia, A Superma corte faz o que quer, ignora a Carta Magna para beneficiar bandidos (por quais você tem tanta estima). Defender a "Democracia" é apenas um modismo e desculpa para continuarem a mamar do país. Vão as ruas "defender" a democracia? Certamente irão se queimar.
+   
+"Temos que acabar com esse mito de que o AI-5 da ditadura é responsabilidade de um grupo de militares ou das Forças Armadas. É claro que as Forças Armadas tiveram papel fundamental, mas o AI-5 teve apoio civil, de pessoas, de ministros, de juristas que redigiram o AI-5, que deram fundamentações (...)" - Tarso Genro (Ex-ministro da (inJustiça) #USTRAVIVE
+
+https://www1.folha.uol.com.br/poder/2008/12/478771-intelectuais-ajudaram-a-formatar-projeto-da-ditadura-diz-tarso-genro.shtml
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# DESENVOLVIMENTO
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=587028
+
+IP: Máquina Roberta
+
+- 172.25.30.246
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Link para redirecionamento para a tela de respostas
+http://questionarios.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=745337
+http://questionarios.capes.gov.br/questionarios/visualizar-questionario?idPreenchimento=745337
+
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=587131
+
+# Seguranca Service Desenvolvimento
+http://des.capes.gov.br/seguranca-services/SegurancaService?wsdl
+
+# Seguranca Service Produção
+http://interno.capes.gov.br/seguranca-services/SegurancaService?wsdl
+
+201931101000486
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Nírian,
+
+Para correção do erro de redirecionamento do link se faz necessário uma alteração no arquivo "sp.properties" em produção alterando a chave "acsUrl" para o valor "https://des.capes.gov.br/questionarios/acs". Nas duas máquinas.
+
+Após essas alterações também se faz necessário o restart da aplicação.
+
+Conversei com o Daniel agora a pouco para tentar negociar essa alteração antes mesmo da abertura do chamado para esse fim.
+
+[Eliminar Questionario de ID = 67]
+[Alinhar as configurações de DTHP de forma igual]
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+Estamos com um problema por conta da configuração do arquivo "sp.properties" na chave "acsUrl". Como o contexto da aplicação em produção está como "https://questionarios.capes.gov.br/questionarios/" e no arquivo está como "questionario-capes" em alguns pontos do sistemas estamos enfrentado problemas.
+
+Queria saber se seria possível, alterarmos no arquivo "sp.properties" em Produção, na chave "acsUrl" para o valor "https://des.capes.gov.br/questionarios/acs", nas duas máquinas. E depois restartar o jBoss.
+
+Vou comunicar a Nírian para abrir o chamado.
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# SAMBA:
+smb://samba-gns.capes.gov.br/
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+14:59:00,018 INFO  [br.gov.capes.questionario.quartz.NotificadorQuartz] (DefaultQuartzScheduler_Worker-6) Inciando processamento de notifica??es... 
+14:59:00,023 INFO  [stdout] (DefaultQuartzScheduler_Worker-6) Conex?o estabelecida.
+14:59:00,098 INFO  [br.gov.capes.questionario.repositorio.RepositorioNotificacaoPessoa] (DefaultQuartzScheduler_Worker-6) Tarefa finalizada.
+14:59:00,553 INFO  [org.hibernate.dialect.Dialect] (DefaultQuartzScheduler_Worker-6) HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+14:59:00,565 INFO  [org.hibernate.dialect.Dialect] (DefaultQuartzScheduler_Worker-6) HHH000400: Using dialect: org.hibernate.dialect.Oracle10gDialect
+14:59:00,574 INFO  [stdout] (DefaultQuartzScheduler_Worker-6) URL: http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=587205
+14:59:00,574 INFO  [stdout] (DefaultQuartzScheduler_Worker-6) LINK: <a href="http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=587205" target="_blank" >LINK DO QUESTIONARIO</a>
+14:59:00,575 INFO  [stdout] (DefaultQuartzScheduler_Worker-6) TEXTO: <p><span>Prezado Usu?rio(a), JOSE QUINTINO DA SILVA JUNIOR</span></p><p><span>Esta ? uma mensagem inicial cadastrada no do Sistema Question?rio e que dever? ser alterada, conforme sua necessidade.</span></p><p><span>D?vidas ou questionamentos, contacte o gestor do sistema question?rio.</span></p><p></p><p>Acesse:??<a href="http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=587205" target="_blank" >LINK DO QUESTIONARIO</a></p><p></p><p><span>Atenciosamente,</span></p>
+14:59:01,447 INFO  [stdout] (DefaultQuartzScheduler_Worker-6) Conex?o estabelecida.
+14:59:01,494 INFO  [br.gov.capes.questionario.repositorio.RepositorioNotificacaoPessoa] (DefaultQuartzScheduler_Worker-6) Tarefa finalizada.
+14:59:01,494 INFO  [br.gov.capes.questionario.quartz.NotificadorQuartz] (DefaultQuartzScheduler_Worker-6) Notifica??es processadas.
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+# Produção
+
+1 - [Erro] Não consegue excluir a publicação o sistema a mesagem "Erro desconhecido do Sistema".
+2 - [Erro] A duplicidade do e-mail ao fazer qualquer Notificação (Publicação, Prorrogação, et cetara).
+
+# Homologação
+
+3 - Em Homologação não aparece o e-mail e ora aparece o e-mail errado.
+4 - Não consegue publicar no sistema Questionário, pois uma Publicação .....
+
+=======
 [PLTRP-20191028115517]
 - Implementar modelagem de Carga Básica para a tabela TB_CONTINENTE.
 - Implementar modelagem de Carga Básica para a tabela TB_PAIS.
@@ -41736,38 +41936,1038 @@ git commit -a -m $'[PLTRP-20191028115517]\n\n- Implementar modelagem de Carga B�
 git push --set-upstream origin PLTRP-20191028115517
 Username: "arsenicum@outlook.com.br"
 Password: "**********************"
+>>>>>>> 7b3dc45a690287b94928e81284006473c339e371
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# DISCURO MOURÃO
+
+	> https://www.youtube.com/watch?v=IpeLUyGXsPw
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# ORACLE
+
+-- RECUPERAR CONSTRAINT PELO NOME DA TABELA
+SELECT * FROM ALL_CONSTRAINTS WHERE UPPER(TABLE_NAME) = UPPER('NOTIFICACAO_PESSOA') AND CONSTRAINT_TYPE IN ('P','R') ORDER BY CONSTRAINT_NAME ASC;
+
+-- RECUPERAR CONSTRAINTS PELO NOME
+SELECT OWNER, CONSTRAINT_NAME, TABLE_NAME, R_CONSTRAINT_NAME FROM ALL_CONSTRAINTS WHERE CONSTRAINT_NAME LIKE '%FK_NOTIFICACAO_PUBLICACAO_1%';
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+for (ResultadoSqlDTO resultadoSqlDTO : resultado) {
+				for (ConsultaColunaTipoSqlDTO linha : resultadoSqlDTO.getLinha()) {
+					if (fonteDados.getNome().equals(LINK_SISTEMA)) {
+						
+						String url = linha.getValor().concat(preenchimento.getId().toString());
+						StringBuilder linkQuestionario = new StringBuilder();
+						linkQuestionario.append("<a href=\"");
+						linkQuestionario.append(url);
+						linkQuestionario.append("\" target=\"_blank\" >");
+						linkQuestionario.append("LINK DO QUESTIONARIO");
+						linkQuestionario.append("</a>");
+						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linkQuestionario.toString());
+						
+						// FIXNE [REDMINE-XXXXX] {} -- ""
+						System.out.println("URL: " + url);
+						System.out.println("LINK: " + linkQuestionario);
+						System.out.println("TEXTO: " + texto);
+						
+					} else {
+						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linha.getValor());
+					}
+				}
+			}
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# 04/11/2019
+
+	+ [DEFEITO] O sistema não permite excluir uma determinada Publicação
+	smb://samba-gns.capes.gov.br/logs_producao/Java/questionario-capes/jboss
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Jose, o arquivo do sp.properties de produção vai ser requisitado como GMUD emergencial para hoje.
+
+Temos algum reporte sobre a questão de notificações duplicadas, considerando a nova maquina que subiu para dar vasão ao volume de questionários previstos?
+
+Para hoje então, temos:
+	- Aplicar a GMUD emergencial de ajuste do SP.Properties
+	- Tratar a duplicação de notificações e impactos decorrente de nova máquina no ambiente de produção (o caso está reproduzido também em homologação).
+	-  Tratar o problema de gerenciamento de notificaçoes, o qual não está listando adequadamente em homologação (com risco também em produção), os CPFs e correspondentes emails.
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Estudos
+	
+		-> Aula de Hebraico
+		-> Aula de Árabe
+		-> Aula de Inglês
+		-> Aula de Espanhol
+		-> Aula de Certificação Java 8 I
+		
+		"Tov shem me shem me tov. Yom mamavet yom mivado." - "Melhor o dia da morte do que o dia do nascimento."
+		
+		"Verdade ou mentira, qualquer coisa pode ser provada na Bíblia."
+		
+		"Podemos facilmente perdoar uma criança que tem medo do escuro; mas a real tragédia da vida é quando os homens têm medo da luz." Platão
+		
+		https://www.theworldnewsmedia.org/forums/topic/34809-os-judeus-acreditavam-na-imortalidade-da%C2%A0alma/?tab=comments#comment-46888
+			
+		Aviad Ashwal
+		Tzfanya Arusi
+		Yosi Seri
+		Al-Mursid Al-Kafi: The Lexicon of 
+		Tanhum Ben Yosef Hayerushalmi	
+		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Alisson, no ambiente de Produção o sistema está enviando e-mails duplicados por conta das duas instâncias do balançeador.
+Sabe se 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Mentecapto - Alienado, sem razão
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Boa tarde,
+
+Uma dúvida. Ao implementar o mecanismo de balanceamento da aplicação existe algum estratégia para o gerenciamento de rotinas, como por exemplo, o envio de e-mail, via configuração do Vhost ou isso é tratado apenas via aplicação ?
+
+Nesse caso estamos alterando o arquivo "sp.properties" inserindo uma flag para com valor true em uma instância e uma valor false em outra quanto ao envio de e-mail.
+
+Alisson, boa tarde,
+
+Em produção (após a entrada da outra instância da aplicação), o sistema está duplicando o envio de e-mail, pois em cada instância o sistema realiza a rotina. Conhece alguma estratégia para o sistema executar apenas uma vez a rotina ?
+
+Estou alterando o arquivo "sp.properties" inserindo uma flag com valor true em uma instância e false em outra. Com base nisso consigo garantir que a rotina será executada apenas em uma máquina. O problema que me veio a mente e que se uma máquina cair (com flag true) o sistema não notificará.
+
+Outra estratégia seria tentar "lockar" as operações de Banco de Dados e avaliar a execução da query
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# QUESTIONARIO-CAPES
+
+	+ Program Arguments
+	
+		-mp "/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/modules" -jaxpmodule javax.xml.jaxp-provider -jaxpmodule javax.xml.jaxp-provider org.jboss.as.standalone -b localhost --server-config=standalone.xml -Djboss.server.base.dir=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone 
+	
+	+ VM Arguments
+	
+		"-Dprogram.name=JBossTools: Red Hat JBoss EAP 6.1+" -server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/arquivos 
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+-Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+
+-server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+
+-server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+
+./standalone.sh -server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+
+./standalone.sh -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+./standalone.sh -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossB/arquivos
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# LISTAR PROCESSSOS JAVA
+
+	ps -A | grep java
+	pgrep -fL java
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Tens razão em boa parte de seu discurso. Também torço para que o Brasil tenha um rumo ao almejado progresso. Bem, sobre o ponto de vossa pergunta. O fator motivador tem uma estreita relação com a divergência entre aparência e essencia do Presidente do partido. 
+
+"Inconsistências entre discurso e prática são um problema grave em um partido criado para ser diferente. Não se pode falar de ‘chegar ao poder para diminuir o poder’ quando a prática dentro do partido é exatamente o oposto" - Roberto Motta (fundador do Partido Novo junto com Amoêdo)
+
+Com relação aos politicos do Novo, em grande parte, tem minha admiração. É o caso do Marcel van Hattem e do Salles. Os demais (talvez por não ter tempo de acompanhá-los) ainda são 'a direita da esquerda'.
+
+Para alimentar o discurso de ódio contra o Johnny Bravo e tentar (apenas tentar) incriminá-lo mais uma vez. Esse tipo de coisa é, historicamente, modus operandi no meio progressita.
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Apesar de minha conjectura espero que nada de ruim ocorra com essa testemunha. Que os fatos sejam apurados e que a justiça prevaleça. Que venham as próximas fake news...
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+	# 05/11/2019
+	
+		-> Atualizar JIRA
+		-> Atualizar REDMINE
+		-> Gerar release v1.9.15
+		-> Implementar correção do REDMINE-16775 - Salvar notificação de vencimento
+		-> Implementar correção do REDMINE-16776 - URL de notificação não aciona a opção direta de resposta ao Questionário
+		-> Implementar correção do REDMINE-16777 - Ao tentar parametrizar a Notificação de Vencimento o sistema não salva e apresenta mensagem de erro desconhecido
+		-> Implementar correção do REDMINE-16888 - Remover publicação no mesmo dia de vencimento (Erro desconhecido)
+		-> Implementar correção do REDMINE-16889 - Notificações está em duplicidade
+		
+		
+		
+		# REDMINE-16888 - Ao tentar remover uma determinada publicação no mesmo dia do vencimento o sistema apresenta mensagem com "Erro Desconhecido"
+		- Implementar ajuste no método de consulta de "GerenciadorPublico -> excluirEntidade()" quanto ao método "gerenciadorAcessoPreenchimento.excluirAcessoPreenchimento(recuperarPreenchimento(entidade.getId()));", para que o sistema não gaste tempo de processamento realizando muitas consultas. Deve excluir direto.
+		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+http://www.quartz-scheduler.org/documentation/quartz-2.3.0/quick-start.html
+https://stackoverflow.com/questions/35292420/quartz-2-2-multi-scheduler-and-disallowconcurrentexecution
+https://github.com/mike10004/myschedule/blob/master/myschedule-web-config/src/main/resources/myschedule/web/templates/schedulerconfigs/oracle-quartz.properties
+https://www.ibm.com/developerworks/java/library/j-quartz/
+https://juliuskrah.com/tutorial/2017/10/06/persisting-dynamic-jobs-with-quartz-and-spring/
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# SCHEDULER PROPERTIES 
+org.quartz.scheduler.instanceName=QuestionarioScheduler
+org.quartz.scheduler.instanceId=AUTO
+
+# THREADPOOL
+org.quartz.threadPool.class = org.quartz.simpl.SimpleThreadPool
+org.quartz.threadPool.makeThreadsDaemons = true
+org.quartz.threadPool.threadCount: 20
+org.quartz.threadPool.threadPriority: 5
+
+# JOBSTORE
+org.quartz.jobStore.class=org.quartz.impl.jdbcjobstore.JobStoreTX
+org.quartz.jobStore.driverDelegateClass=org.quartz.impl.jdbcjobstore.oracle.OracleDelegate
+org.quartz.jobStore.useProperties=true
+org.quartz.jobStore.misfireThreshold=25000
+org.quartz.jobStore.tablePrefix=QRTZ_
+org.quartz.jobStore.isClustered=false 
+org.quartz.jobStore.dataSource = dsnv
+
+# DATASOURCE
+org.quartz.dataSource.myDS.driver=oracle.jdbc.pool.OracleDataSource
+org.quartz.dataSource.myDS.URL=jdbc:oracle:thin:@oracledh01.capes.gov.br:1521:dsnv
+org.quartz.dataSource.myDS.user=webquestionario
+org.quartz.dataSource.myDS.password=WebQuest321
+org.quartz.dataSource.myDS.maxConnections=5
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Arthur,
+
+No sistema que você está trabalhando atualmente utiliza Quartz ? O Questionário em Produção (depois que criaram mais uma máquina de cluster), está duplicando os e-mails ao rodar o 'agendador' (NotificacaoQuartz), pois o sistema está rodando de forma autonoma em instâncias diferentes.
+
+Lendo a documentação vi que para gerenciar nós de cluster o Quartz precisa usar um armazenamento de JOBS e Triggers. Só que com uma estrutura de 21 tabelas no banco usando JDBCJobStore. 
+
+Sabe se existe algo mais 'razoável' do que ter que criar esse "monstro" ?
+
+Daniel, boa tarde,
+
+Sabe se existe algum mecanismo que possa ser configurado no balanceador que gerencie as instâncias de jobs sem ter fazer intervenção na aplicação ?
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																
 																																	   
+# Marcar reunião com algum arquiteto para verificar qual a melhor solução para a resolver o problema do Cluster em Homologação e Produção
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+ # SENHA QUESTIONARIOS
+ 
+ 	-> 9c4rtp
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# COMMIT 
+
+	[MERGE] [REDMINE-16932] [NOTIFICAÇÃO] - Visualização de lista de notificações em desacordo
+	[MERGE] [REDMINE-16888] [2º PASSO REMOÇÃO DE PUBLICAÇÃO] -Remover publicação no mesmo dia de vencimento - Lista erro conhecimento
+	[REDMINE-16889] [DUPLICIDADE DE NOTIFICAÇÃO] - Notificação em duplicidade
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+http://www.daat.ac.il/daat/mahshevt/hovot/tohen-2.htm
+http://dafyomireview.com/article.php?docid=384
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Shalom (Shalem, shelemah) = Plenitude, Completo, Cheio, Repleto
+Ma shilomcha - Esta tudo bem (como está a sua paz)
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+https://jira.indra.es/browse/CCAPNSGA-10242
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Erro Encontrado ao realizar uma Publicação. Ocorreu, pois foram feitas duas tentativas de Publicação com Públicos de 20.000
+
+13:33:24,266 WARN  [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (http-localhost/127.0.0.1:8080-1) SQL Error: 2049, SQLState: 42000
+13:33:24,267 ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper] (http-localhost/127.0.0.1:8080-1) ORA-02049: ocorreu timeout: transação distribuída aguardando bloqueio
+
+13:33:24,277 INFO  [org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl] (http-localhost/127.0.0.1:8080-1) HHH000010: On release of batch it still contained JDBC statements
+13:33:24,440 ERROR [br.gov.capes.questionario.web.rest.PublicacaoResource] (http-localhost/127.0.0.1:8080-1) javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1387) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1310) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1316) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:999) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.jboss.as.jpa.container.AbstractEntityManager.flush(AbstractEntityManager.java:439) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at br.gov.capes.questionario.repositorio.RepositorioPublicacao.criarEntidade(RepositorioPublicacao.java:92) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarEntidade(GerenciadorPublicacao.java:128) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource.criarPublicacao(PublicacaoResource.java:182) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:32) [classes:]
+	at sun.reflect.GeneratedMethodAccessor85.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldClientProxy.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldClientProxy.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847) [jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-2.jar:1.0.2.Final-redhat-2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28) [jaxrs-serializer-1.0.11.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169) [jboss-as-web-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:82) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:124) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:189) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:59) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3236) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3138) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3468) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:140) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:395) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:387) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:304) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:349) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1195) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:996) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	... 74 more
+Caused by: java.sql.SQLSyntaxErrorException: ORA-02049: ocorreu timeout: transação distribuída aguardando bloqueio
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:396)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:879)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:505)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:223)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:531)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:207)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1044)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1328)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3593)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:3674)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:1354)
+	at org.jboss.jca.adapters.jdbc.WrappedPreparedStatement.executeUpdate(WrappedPreparedStatement.java:493)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:186) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	... 86 more
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
++ EQM
+
+	https://www.youtube.com/watch?v=Z_yBm-i_veM&feature=youtu.be
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# JIRA
+
+			+ 08/2019
+                
+                01 REDMINE-13071 -> CCAPNSGA-9823
+                02 REDMINE-13072 -> CCAPNSGA-9824
+                03 REDMINE-13073 -> CCAPNSGA-9825
+                04 REDMINE-13080 -> CCAPNSGA-9826
+                05 REDMINE-12015 -> CCAPNSGA-9919
+                06 REDMINE-14089 -> CCAPNSGA-9921
+                07 REDMINE-14160 -> CCAPNSGA-9922
+                08 REDMINE-14188 -> CCAPNSGA-9923
+                09 REDMINE-14277 -> CCAPNSGA-9924
+                10 REDMINE-14091 -> CCAPNSGA-9928
+                11 REDMINE-14097 -> CCAPNSGA-9931
+                12 REDMINE-14107 -> CCAPNSGA-9936
+                13 REDMINE-14098 -> CCAPNSGA-9932 
+                14 REDMINE-14368 -> CCAPNSGA-10023
+                15 REDMINE-13351 -> CCAPNSGA-10024
+                16 REDMINE-14172 -> CCAPNSGA-10025
+                17 REDMINE-14183 -> CCAPNSGA-10026
+                18 REDMINE-14261 -> CCAPNSGA-10027
+                19 REDMINE-14262 -> CCAPNSGA-10028
+                20 REDMINE-14294 -> CCAPNSGA-10029
+                21 REDMINE-14295 -> CCAPNSGA-10030
+                22 REDMINE-14321 -> CCAPNSGA-10031
+                23 REDMINE-14900 -> CCAPNSGA-10032
+                24 REDMINE-14718 -> CCAPNSGA-10033
+                25 REDMINE-14541 -> CCAPNSGA-10034
+                26 REDMINE-14582 -> CCAPNSGA-10035
+                27 REDMINE-14795 -> CCAPNSGA-10036
+                28 REDMINE-14695 -> CCAPNSGA-10037
+                29 REDMINE-15045 -> CCAPNSGA-10038
+                
+            + 09/2019
+                
+                01 REDMINE-15031 -> CCAPNSGA-10039
+                02 REDMINE-15044 -> CCAPNSGA-10040
+                03 REDMINE-15188 -> CCAPNSGA-10041
+                04 REDMINE-15189 -> CCAPNSGA-10042
+                05 REDMINE-15340 -> CCAPNSGA-10043
+                06 REDMINE-15442 -> CCAPNSGA-10044
+                07 REDMINE-15190 -> CCAPNSGA-10082
+                08 REDMINE-15474 -> CCAPNSGA-10083
+                09 REDMINE-15479 -> CCAPNSGA-10084
+                10 REDMINE-15477 -> CCAPNSGA-10085
+                11 REDMINE-XXXXX -> YYYYY
+                12 REDMINE-XXXXX -> YYYYY
+                13 REDMINE-XXXXX -> YYYYY
+                14 REDMINE-XXXXX -> YYYYY
+                15 REDMINE-XXXXX -> YYYYY
+                16 REDMINE-XXXXX -> YYYYY
+                17 REDMINE-XXXXX -> YYYYY
+                18 REDMINE-XXXXX -> YYYYY
+                19 REDMINE-XXXXX -> YYYYY
+                20 REDMINE-XXXXX -> YYYYY
+                21 REDMINE-XXXXX -> YYYYY
+			
+			+ 10/2019
+			
+				01 REDMINE-XXXXX -> YYYYY
+                02 REDMINE-XXXXX -> YYYYY
+                03 REDMINE-XXXXX -> YYYYY
+                04 REDMINE-XXXXX -> YYYYY
+                05 REDMINE-XXXXX -> YYYYY
+                06 REDMINE-XXXXX -> YYYYY
+                07 REDMINE-XXXXX -> YYYYY
+                08 REDMINE-XXXXX -> YYYYY
+                09 REDMINE-XXXXX -> YYYYY
+                10 REDMINE-XXXXX -> YYYYY
+                11 REDMINE-XXXXX -> YYYYY
+			
+            + 11/2019
+                
+                01 REDMINE-16776 -> CCAPNSGA-10257
+                02 REDMINE-16888 -> CCAPNSGA-10258
+                03 REDMINE-16889 -> CCAPNSGA-10259
+                04 REDMINE-16932 -> CCAPNSGA-10260
+				05 REDMINE-17001 -> CCAPNSGA-10271
+				
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+glyphicon glyphicon-font
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Sobre "Quanto ao script, para ser executado em produção, como podemos afirmar que funcionará? Ja realizamos alguns ajustes e até o momento temos qual é a causa raiz?"
+
+No processo de composição do link do Questionário gerado. O sistema, apesar de levar em consideração a chave acsUrl do arquivo "sp.properties", tem como último passo consultar o valor da URL dinâmica com base no último script executado em Produção. O script estava equivocado. Atualmente possuí valor ".capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=", mas o correto seria, ".capes.gov.br/questionarios/visualizar-questionario?idPreenchimento=".
+
+Essa intervenção deve surtir efeito para gerar corretamente o link.
+
+Sobre "E qual das implementações via código é apenas uma solução de contorno, pq não está uniforme nos ambientes?"
+
+O sistema está consolidado na versão 1.9.15 quanto a codificação.
+
+Além dos erros relatados ontem encontramos erros no fluxo do Manter Questionário (UC003 - Manter Questionário). O sistema não salva o questionário. Estamos tratando.
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+TAREFA 1
+
+[DEFEITO] Problemas nos ícones do sistema (REDMINE-16944).
+
+TAREFA 2
+
+[DEFEITO] No ambiente de Homologação o sistema não permite selecionar o modelo de e-mail para remoção de publicação.
+
+TAREFA 3
+
+[DEFEITO] Erro de não inclusão do perfil de "publico alvo" ao trabalhar com fonte de dados de publico alvo. (?)
+
+TAREFA 4
+
+[DEFEITO] Erro no sistema ao utilizar uma pergunta select (não lista o questionário)
+
+TAREFA 5
+
+[DEFEITO] CPF 48043125104 - Erro no cadastro de unidade organizacional não foi liberado, usuário na esta na base da CAPES (?)
+
+TAREFA 6
+
+[DEFEITO] No fluxo do Manter Questionário (UC003 - Manter Questionário), o sistema não salva o questionário quando criado via ação de "Replicar Questionário"
+
+TAREFA 7
+
+[DEFEITO] No ambiente de Homologação o sistema não está encaminhando e-mail para a Nírian (nmsantos@latam.stefanini.com).
+
+TAREFA 8
+
+[DEFEITO] O sistema não está limitando a apresentação de Questionários, Relatórios, Monitoramento, Notificações et cetera,  de acordo com a Unidade Organizacional correspondente.
+
+TAREFA 9
+
+[ANÁLISE] No ambiente de Homologação, o sistema está encaminhado dois e-mails (e-mails duplicados) toda vez ao notificar, publicar, prorrogar, et cetera
+
+TAREFA 10
+
+[ANÁLISE] Extrair das querys do Marcus Feliciano as querys para gerar as perguntas do Questionário da DED
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+<button class="btn btn-default btn-font-up" onclick="docFontSize('up')" title="" data-toggle="tooltip" data-placement="top" data-original-title="Aumentar Fonte"><i class="glyphicon glyphicon-font"></i></button>
+
+<button class="btn btn-default btn-font-up" onclick="docFontSize('up')" title="" data-toggle="tooltip" data-placement="top" data-original-title="Aumentar Fonte"><i class="glyphicon glyphicon-font"></i></button>
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+	// FIXME [REDMINE-XXXXX] {ALTERACAO} -- ""
+//	@GET
+//	@ApiOperation(produces = "application/json,application/xml",
+//	              consumes = "application/json,application/xml",
+//	              value = "Recupera as fontes de dados por tipo fonte",
+//	              response = FinalidadeFonteDados.class,
+//	              responseContainer = "List")
+//	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+//					@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+//	@Produces({ MediaType.APPLICATION_JSON })
+//	@RecursoProtegido
+//	@Path("/consultarModelosPorFinalidade")
+//	public Response consultarModelosPorFinalidade(@QueryParam("finalidade") final String finalidade) {
+//		return getResult().use(Results.representation()).from(this.gerenciadorModeloEmail.consultarModelosPorFinalidade(finalidade)).serialize();
+//	}
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+package br.gov.capes.questionario.dominio.enums;
+
+//FIXME [REDMINE-XXXXX] {A} -- ""
+public enum FinalidadeModeloEmail {
+	
+	P("P","Publicar"), R("R","Remover Publicação"), O("O","Prorrogar"), N("N","Notificar Publicação");
+
+	private final String codigo;
+	private final String descricao;
+
+	private FinalidadeModeloEmail(final String codigo, final String descricao) {
+		this.codigo = codigo;
+		this.descricao = descricao;
+	}
+
+	@Override
+	public String toString() {
+		return this.name();
+	}
+
+	public String getCodigo() {
+		return codigo;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+	
+}
+
+// FIXME [REDMINE-XXXXX] {A} -- ""
+	@SuppressWarnings("unchecked")
+	public List<ModeloEmail> consultarModelosPorFinalidade(final FinalidadeModeloEmail finalidadeModeloEmail) {
+		StringBuilder stringBuilder = new StringBuilder("SELECT modelo_email_ ")
+			.append("FROM ModeloEmail modelo_email_ ")
+			.append("WHERE modelo_email_.finalidadeModelo = :codigoParameter ");
+		Query query = em.createQuery(stringBuilder.toString());
+			query.setParameter("codigoParameter", FinalidadeModeloEmail.valueOf(finalidadeModeloEmail.getCodigo()));
+		return query.getResultList();
+	}
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+ # TEMA
+ 
+ No contexto do sistema Questionários temos uma rotina 
+ 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+13:06:25,995 ERROR [org.apache.catalina.core.ContainerBase.[jboss.web].[default-host].[/questionario].[br.gov.capes.questionario.web.rest.JaxRsActivator]] (http-localhost/127.0.0.1:8080-3) JBWEB000236: Servlet.service() for servlet br.gov.capes.questionario.web.rest.JaxRsActivator threw exception: java.lang.IllegalStateException
+	at org.apache.catalina.connector.ResponseFacade.reset(ResponseFacade.java:301) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletResponseWrapper.reset(HttpServletResponseWrapper.java:119) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.writeFailure(SynchronousDispatcher.java:443) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.executeExceptionMapper(SynchronousDispatcher.java:348) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.unwrapException(SynchronousDispatcher.java:372) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.handleWriterException(SynchronousDispatcher.java:414) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.handleException(SynchronousDispatcher.java:237) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.handleWriteResponseException(SynchronousDispatcher.java:221) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:531) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847) [jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-2.jar:1.0.2.Final-redhat-2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28) [jaxrs-serializer-1.0.11.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169) [jboss-as-web-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
+	
+	// FIXME [REDMINE-XXXXX] {EXCLUSAO} -- ""
+	// FIXME [REDMINE-XXXXX] {ALTERACAO} -- ""
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+1 No âmbito do sistema Questionários temos uma rotina que realizar Notificações.
+2 Recentimente tivemos uma GMUD ao qual foi solicitado inserir mais um nó ao cluster (temos dois servidores atualmente)
+3 Tivemos um comportamento (relacionado a item 1), no qual ele processa as notificações em duplicidade (em decorrência do item 2)
+4 O sistema executa, por exemplo, o envio de e-mails em duplicidade (abertura do defeito foi nesse contexto)
+5 Em um primeiro momento verificamos na documentação que a anotação @DisallowConcurrentExecution, que segundo a documentação, "Uma anotação que marca uma classe Job como aquela que não deve ter várias instâncias executadas simultaneamente (...)"
+6 Vimos entretanto que o sistema não trabalhou indendentemente nas instâncias no ambiente com cluster
+7 Vimos algumas outras alternativas
+
+7.1 Trabalhar inserindo uma flag em um arquivo ".properties" para executar em uma instância em detrimento de outras.
+7.2 Bloquear a(s) tabela(s) (lock), para garantir apenas um processamento.
+7.3 Trabalhar com o Quartz com o JDBCJobStore. 
+
+8 Sobre os items de solução levantados temos:
+
+8.1 O item (7.1) executará apenas em uma instância
+8.2 O item (7.2) tememos algum efeito colateral
+8.3 O item (7.3) exige a configuração incluíndo a criação de tabelas (com o padrão prefixo "_QRTZ", por padrão), para gerenciamento via banco de dados
+
+9 Gostaríamos de saber como esse tipo de solução e tratada na CAPES, se existem outras alternativas ou se essas alternativas aapresentadas se tornam viáveis
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-XXXXX] {ALTERACAO} -- ""
+	@GET
+	@ApiOperation(produces = "application/json,application/xml", 
+				  consumes = "application/json,application/xml", 
+				  value = "Recupera um determinado Modelo de E-mail com base em sua Finalidade.", 
+				  response = ModeloEmail.class)
+	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
+					@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
+	@Produces({ MediaType.APPLICATION_JSON })
+	@RecursoProtegidoNovo
+	@Path("consultarModelosPorFinalidade")
+	public Response consultarModelosPorFinalidade(@QueryParam("finalidade") final String finalidade) {
+		if(finalidade != null) {
+			try {
+				return getResult().use(Results.representation()).from(gerenciadorModeloEmail.consultarModelosPorFinalidade(FinalidadeModeloEmail.valueOf(finalidade))).serialize();
+			} catch (final ValidacaoNegocialException err) {
+				LOGGER.error(err, err);
+				return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getValidacaoNegociao()).build();
+			} catch (final Exception err) {
+				LOGGER.error(err, err);
+				return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
+			}
+		}
+		return Response.status(HttpStatus.SC_BAD_REQUEST).build();
+	}
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# TAREFAS PRIORIZADAS
+
+	1 [REDMINE-17001] - Sistem não está criando a permissão no SADMIN para um determinado Público Alvo criado via Fonte de Dados
+	2 [REDMINE-16889] - Sistema envia e-mail para as Notificações em duplicidade (devido as duas intâncias da aplicação no balanceador)
+	3 [REDMINE-17002] - Sistema não está exibindo um derterminado Questionário que possua perguntas do tipo: texto e rótulo
+	4 [REDMINE-XXXXX] - 
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+09:17:26,215 ERROR [org.jboss.resteasy.resteasy_jaxrs.i18n] (ajp-/172.19.150.188:8009-403) RESTEASY000100: Failed executing GET /questionarios/null: org.jboss.resteasy.spi.BadRequestException: RESTEASY001275: Failed processing arguments of public javax.ws.rs.core.Response br.gov.capes.questionario.web.rest.QuestionarioResource.consulta(long,java.lang.String)
+	at org.jboss.resteasy.core.MethodInjectorImpl.injectArguments(MethodInjectorImpl.java:152)
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:160)
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216)
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125)
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.event(JBossWebContext.java:91)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.invoke(JBossWebContext.java:72)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.ajp.AjpProcessor.process(AjpProcessor.java:490)
+	at org.apache.coyote.ajp.AjpProtocol$AjpConnectionHandler.process(AjpProtocol.java:420)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_60]
+Caused by: java.lang.NumberFormatException: For input string: "null"
+	at java.lang.NumberFormatException.forInputString(NumberFormatException.java:65) [rt.jar:1.8.0_60]
+	at java.lang.Long.parseLong(Long.java:589) [rt.jar:1.8.0_60]
+	at java.lang.Long.valueOf(Long.java:803) [rt.jar:1.8.0_60]
+	at org.jboss.resteasy.util.StringToPrimitive.stringToPrimitiveBoxType(StringToPrimitive.java:19)
+	at org.jboss.resteasy.core.StringParameterInjector.extractValue(StringParameterInjector.java:281)
+	at org.jboss.resteasy.core.PathParamInjector.inject(PathParamInjector.java:117)
+	at org.jboss.resteasy.core.MethodInjectorImpl.injectArguments(MethodInjectorImpl.java:137)
+	... 31 more
+	
+09:48:39,717 ERROR [br.gov.capes.questionario.web.rest.PerguntaResource] (ajp-/172.19.150.188:8009-187) java.lang.IndexOutOfBoundsException: Index: 0, Size: 0: java.lang.IndexOutOfBoundsException: Index: 0, Size: 0
+	at java.util.ArrayList.rangeCheck(ArrayList.java:653) [rt.jar:1.8.0_60]
+	at java.util.ArrayList.get(ArrayList.java:429) [rt.jar:1.8.0_60]
+	at br.gov.capes.questionario.gerenciador.GerenciadorVisualizacaoPergunta.buscaPorQuestionarioResposta(GerenciadorVisualizacaoPergunta.java:77)
+	at br.gov.capes.questionario.web.rest.PerguntaResource.consultarVisualizacaoPerguntaPorParametro(PerguntaResource.java:148)
+	at br.gov.capes.questionario.web.rest.PerguntaResource$Proxy$_$$_WeldSubclass.consultarVisualizacaoPerguntaPorParametro(PerguntaResource$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.GeneratedMethodAccessor839.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at br.gov.capes.questionario.web.rest.interceptor.novo.RecursoProtegidoInterceptorNovo.validaSeRecursoProtegido(RecursoProtegidoInterceptorNovo.java:64)
+	at sun.reflect.GeneratedMethodAccessor696.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.web.rest.PerguntaResource$Proxy$_$$_WeldSubclass.consultarVisualizacaoPerguntaPorParametro(PerguntaResource$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.PerguntaResource$Proxy$_$$_WeldClientProxy.consultarVisualizacaoPerguntaPorParametro(PerguntaResource$Proxy$_$$_WeldClientProxy.java)
+	at sun.reflect.GeneratedMethodAccessor838.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168)
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216)
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125)
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.event(JBossWebContext.java:91)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.invoke(JBossWebContext.java:72)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.ajp.AjpProcessor.process(AjpProcessor.java:490)
+	at org.apache.coyote.ajp.AjpProtocol$AjpConnectionHandler.process(AjpProtocol.java:420)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_60]
+	
+
+09:48:00,806 ERROR [br.gov.capes.questionario.web.rest.interceptor.novo.RecursoProtegidoInterceptorNovo] (ajp-/172.19.150.188:8009-258) java.lang.IllegalArgumentException: org.hibernate.QueryParameterException: could not locate named parameter [statusQuestionarioParameter]: java.lang.IllegalArgumentException: org.hibernate.QueryParameterException: could not locate named parameter [statusQuestionarioParameter]
+	at org.hibernate.ejb.QueryImpl.setParameter(QueryImpl.java:377)
+	at org.jboss.as.jpa.container.TypedQueryNonTxInvocationDetacher.setParameter(TypedQueryNonTxInvocationDetacher.java:135)
+	at br.gov.capes.questionario.repositorio.RepositorioPreenchimento.montarFiltroBusca(RepositorioPreenchimento.java:466)
+	at br.gov.capes.questionario.repositorio.RepositorioPreenchimento.buscarPorParametro(RepositorioPreenchimento.java:398)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPreenchimento.buscarPorParametro(GerenciadorPreenchimento.java:63)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPreenchimento$Proxy$_$$_WeldSubclass.buscarPorParametro(GerenciadorPreenchimento$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.GeneratedMethodAccessor835.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPreenchimento$Proxy$_$$_WeldSubclass.buscarPorParametro(GerenciadorPreenchimento$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.RespostaResource.consulta(RespostaResource.java:120)
+	at br.gov.capes.questionario.web.rest.RespostaResource$Proxy$_$$_WeldSubclass.consulta(RespostaResource$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.GeneratedMethodAccessor697.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at br.gov.capes.questionario.web.rest.interceptor.novo.RecursoProtegidoInterceptorNovo.validaSeRecursoProtegido(RecursoProtegidoInterceptorNovo.java:64)
+	at sun.reflect.GeneratedMethodAccessor696.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.web.rest.RespostaResource$Proxy$_$$_WeldSubclass.consulta(RespostaResource$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.RespostaResource$Proxy$_$$_WeldClientProxy.consulta(RespostaResource$Proxy$_$$_WeldClientProxy.java)
+	at sun.reflect.GeneratedMethodAccessor698.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168)
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216)
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125)
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.event(JBossWebContext.java:91)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.invoke(JBossWebContext.java:72)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.ajp.AjpProcessor.process(AjpProcessor.java:490)
+	at org.apache.coyote.ajp.AjpProtocol$AjpConnectionHandler.process(AjpProtocol.java:420)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_60]
+Caused by: org.hibernate.QueryParameterException: could not locate named parameter [statusQuestionarioParameter]
+	at org.hibernate.engine.query.spi.ParameterMetadata.getNamedParameterDescriptor(ParameterMetadata.java:100)
+	at org.hibernate.engine.query.spi.ParameterMetadata.getNamedParameterExpectedType(ParameterMetadata.java:106)
+	at org.hibernate.internal.AbstractQueryImpl.determineType(AbstractQueryImpl.java:466)
+	at org.hibernate.internal.AbstractQueryImpl.setParameter(AbstractQueryImpl.java:436)
+	at org.hibernate.ejb.QueryImpl.setParameter(QueryImpl.java:371)
+	... 65 more	
+	
+15:22:17,086 ERROR [br.gov.capes.questionario.web.rest.QuestionarioResource] (ajp-/172.19.150.188:8009-261) java.lang.NullPointerException: java.lang.NullPointerException
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario.vincularUnidadeOrganizacionalQuestionario(GerenciadorQuestionario.java:114)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario$Proxy$_$$_WeldSubclass.vincularUnidadeOrganizacionalQuestionario(GerenciadorQuestionario$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario.criarEntidade(GerenciadorQuestionario.java:83)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorQuestionario$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario.salvarComReplica(GerenciadorQuestionario.java:159)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario$Proxy$_$$_WeldSubclass.salvarComReplica(GerenciadorQuestionario$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133)
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57)
+	at sun.reflect.GeneratedMethodAccessor148.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.gerenciador.GerenciadorQuestionario$Proxy$_$$_WeldSubclass.salvarComReplica(GerenciadorQuestionario$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.QuestionarioResource.criarQuestionario(QuestionarioResource.java:216)
+	at br.gov.capes.questionario.web.rest.QuestionarioResource$Proxy$_$$_WeldSubclass.criarQuestionario(QuestionarioResource$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:32)
+	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source) [:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.web.rest.QuestionarioResource$Proxy$_$$_WeldSubclass.criarQuestionario(QuestionarioResource$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.QuestionarioResource$Proxy$_$$_WeldClientProxy.criarQuestionario(QuestionarioResource$Proxy$_$$_WeldClientProxy.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_60]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_60]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_60]
+	at java.lang.reflect.Method.invoke(Method.java:497) [rt.jar:1.8.0_60]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168)
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216)
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125)
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.event(JBossWebContext.java:91)
+	at org.jboss.modcluster.container.jbossweb.JBossWebContext$RequestListenerValve.invoke(JBossWebContext.java:72)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.ajp.AjpProcessor.process(AjpProcessor.java:490)
+	at org.apache.coyote.ajp.AjpProtocol$AjpConnectionHandler.process(AjpProtocol.java:420)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+	at java.lang.Thread.run(Thread.java:745) [rt.jar:1.8.0_60]
+		
+# Java. Criar anottation para imprimir logger
+
+https://stackoverflow.com/questions/12130653/custom-annotation-as-interceptor-for-a-method-logging
+https://github.com/vbauer/herald
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Questionário: Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 2 - nov/2019)
+Público Alvo: CPCF_Teste_Assistente_Docência_2019 (Interno)
+Público Alvo: Assistentes_a_Docência_novembro_2019 (Fonte de Dados)
+
+Caso de Teste
+
+ Publicar Questionario
+ Excluir pessoas do Publico Alvo
+
+
+Existem algumas incongruências no Questionário "Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 2 - nov/2019)".
+
+Suspeitavamos que o erro tinha ligação com o Público Alvo, pois um dos erros no servidor da entender que um determinado usuário não pertence ao Publico Alvo, mas verificamos que no banco de produção os respondentes estão vinculados ao Público Alvo (Assistentes_a_Docência_novembro_2019).
+
+Outra situação estranha e que o sistema tem o total de 158 Públicos Alvo, mas possuí 164 Preenchimentos para o mesmo Questionário.
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-16889] {A} -- ""
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
