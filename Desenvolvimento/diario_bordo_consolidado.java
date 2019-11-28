@@ -7946,7 +7946,7 @@ VALUES('questionario.siglasAplicacoes', 'QC,SCBA', SYSDATE, 'CARGA_DADOS_QUESTIO
         + Deixar a demanda com apenas 70 horas
 
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES
+# ACESSO AOS AMBIENTES DE DESENVOLVIMENTO DO QUESTIONARIO-CAPES REMOTAMENTE
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 smb://samba-gns.capes.gov.br/java_desenv/questionario-capes/deployments
 smb://samba-gns.capes.gov.br/java_homolog/questionario-capes/configuration
@@ -20370,66 +20370,6 @@ A evidência de correção pode ser verificada no arquivo %{color:red}REDMINE_12
 Essa alteração estará disponível na versão 1.9.2 do Sistema Questionário Capes
 
 <pre><code class="json">
-DECLARE 
-    tmp                 NUMBER(10); 
-    v_usuario           varchar2(50);
-    v_nome_fonte        varchar2(50);
-    v_sql               varchar2(2000);
-BEGIN 
-    v_usuario    := 'GESTAO_20190207000032';
-    v_nome_fonte := 'link_sistema';
-    v_sql        := '            
-                select   ''http://'' ||
-                       lower( (  
-                            select
-                                case ( select global_name from global_name )
-                                     when ''DSNV'' then ''des''
-                                     when ''PROD'' then ''questionarios''
-                                     when ''PRODDG'' then ''questionarios''
-                                 else
-                                    global_name
-                                 end
-                             from global_name            
-                       )) ||  ''.capes.gov.br/questionario-capes/questionarios?idPreenchimento='' link 
-                from dual
-                where exists ( SELECT 1 FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IR WHERE IR.DS_IDENTIFICADOR_REGISTRADO  = ? )
-            ';    
-    
-    SELECT Count(q1.ID_FONTE_DADOS) 
-    INTO   tmp 
-    FROM   QUESTIONARIO.FONTE_DADOS q1 
-    WHERE  Upper(q1.nm_fonte_dados) LIKE Upper('link_sistema');
-     
-    IF tmp = 0 THEN 
-        INSERT INTO QUESTIONARIO.FONTE_DADOS
-        ( ID_FONTE_DADOS,  NM_FONTE_DADOS,  TP_FONTE_DADOS,  DS_FONTE_SQL,  ST_VALIDADA,  DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO,  ID_CONEXAO )
-        VALUES( 
-            QUESTIONARIO.SQ_FONTE_DADOS.nextval, 
-            v_nome_fonte,
-            'M',
-            v_sql,
-            'S',
-            v_usuario,
-            sysdate,
-            ( select id_conexao from questionario.conexao where nm_conexao like '%QuestionarioDS%' ) 
-        );
-    ELSE
-	
-		SELECT q1.ID_FONTE_DADOS 
-		INTO   tmp 
-		FROM   QUESTIONARIO.FONTE_DADOS q1 
-		WHERE  Upper(q1.nm_fonte_dados) LIKE Upper('link_sistema');	
-		
-		UPDATE QUESTIONARIO.FONTE_DADOS SET 
-			DS_FONTE_SQL = v_sql,
-			DS_USUARIO_ULTIMA_ALTERACAO = v_usuario,
-			DH_ULTIMA_ALTERACAO = SYSDATE
-		WHERE ID_FONTE_DADOS = tmp;
-		
-    END IF; 
-END; 
-
-COMMIT;
 </code></pre>
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Gerenciador de Despesas Financeiras Variáveis
@@ -26007,6 +25947,8 @@ https://redmine.capes.gov.br/issues/14295
 
 [REDMINE-14089] - [QC - UC015 - Manter Unidade Organizacional] B1 + RNG049 - Pesquisar Unidade Organizacional
 [REDMINE-14295] - [QC - EI003 - Manter Questionário] Interface 026 - RA "C" - campo desabilitado para seleção
+
+[REDMINE-17003] [ASSOCIAR PESSOA A UNIDADE ORGANIZACIONAL] - Erro em homologação de que pessoa não está na base da CAPES
 
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿======
 Sinat Hinon - Odio Gratuíto
@@ -42081,7 +42023,9 @@ Outra estratégia seria tentar "lockar" as operações de Banco de Dados e avali
 	
 	+ VM Arguments
 	
-		"-Dprogram.name=JBossTools: Red Hat JBoss EAP 6.1+" -server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/arquivos 
+		"-Dprogram.name=JBossTools: Red Hat JBoss EAP 6.1+" -server -Xms1024m -Xmx1024m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/arquivos
+		
+-Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_tool/stanium_tool_service/stanium_tool_service_jbossEAP/arquivos
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
@@ -44973,9 +44917,6 @@ FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_
 JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = IDENTIFICADOR_REGISTRADO_.ID_PESSOA
 WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '%00079597025%';
 
-
-
-
 SELECT PESSOA_.ID_PESSOA AS PESSOA_, 'JAIME PAZ ZAMORA' 
 -- SELECT count(1)
 FROM CORPORATIVO.PESSOA PESSOA_
@@ -44988,8 +44929,6 @@ AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 18690 AND CORREIO_ELETRONICO_.DS_CORREI
 OR (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6)
 OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6)
 AND PESSOA_.TP_PESSOA = 'F';
-
-
 
 SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA
 FROM CORPORATIVO.PESSOA PESSOA_
@@ -45054,7 +44993,6 @@ from (
     order by cpf, LOWER( CE.DS_CORREIO_ELETRONICO )
 )
 where ordem_email = 1
-
 
 SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
 FROM CORPORATIVO.PESSOA PESSOA_
@@ -45460,6 +45398,231 @@ AND (PESSOA_.ID_PESSOA = 30420 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS 
 -- OR (PESSOA_.ID_PESSOA = 1128037 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
 AND PESSOA_.TP_PESSOA = 'F';
 
+# PRODUCAO
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Relatório de Acompanhamento das Atividades do Assistente à Docência - Sistema UAB (v. 2 - nov/2019)%';
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 55;
+
+SELECT * 
+FROM QUESTIONARIO.PUBLICACAO
+WHERE ID_QUESTIONARIO = 55;
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 55 AND ID_PUBLICACAO = 50;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 55 AND ID_PUBLICACAO = 63;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE '%Assistentes_a_Docência_novembro_2019_v3%';
+
+SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON PUBLICO_ALVO_.ID_PUBLICO_ALVO = PUBLICO_.ID_PUBLICO_ALVO
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55 
+AND PREENCHIMENTO_.ID_PUBLICACAO = 63
+AND PUBLICO_ALVO_.ID_PUBLICO_ALVO = 86
+AND PUBLICACAO_.IN_PUBLICADO = 'S';
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 55 AND CS_STATUS_PREENCHIMENTO = 'R';
+
+SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'A'
+AND PREENCHIMENTO_.ID_PUBLICACAO = 63;
+
+SELECT *
+-- SELECT PESSOA_.ID_PESSOA, PREENCHIMENTO_.ID_PREENCHIMENTO, PESSOA_.NM_PESSOA
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'A'
+AND PREENCHIMENTO_.ID_PUBLICACAO = 63
+AND PESSOA_.ID_PESSOA IN(1619425,935830,1840373,1969820,1838319);
+
+ID_PREENCHIMENTO|ID_QUESTIONARIO|ID_PESSOA|SG_SISTEMA_ORIGEM|ID_ORIGEM|DT_INICIO          |DT_FIM             |DT_FINALIZACAO     |DH_ULTIMA_ALTERACAO|DS_USUARIO_ULTIMA_ALTERACAO|DS_HASH_PREENCHIMENTO|ID_PUBLICACAO|CS_STATUS_PREENCHIMENTO|ID_PUBLICO|ID_PESSOA|NM_PESSOA                                  |TP_PESSOA|ID_PAIS|ID_PESSOA_SYBASE|DS_USUARIO_ULTIMA_ALTERACAO|DH_ULTIMA_ALTERACAO|NR_VERSAO|DS_IDENTIFICADOR_REGISTRADO|ID_TIPO_IDENTIFICADOR|ID_PAIS_EXPEDIDOR|NM_PESSOA_FISCAL                           
+----------------|---------------|---------|-----------------|---------|-------------------|-------------------|-------------------|-------------------|---------------------------|---------------------|-------------|-----------------------|----------|---------|-------------------------------------------|---------|-------|----------------|---------------------------|-------------------|---------|---------------------------|---------------------|-----------------|-------------------------------------------
+          746555|             55|   935830|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3055|   935830|THAINARA SILVA ALMEIDA                     |F        |     31|                |02034660552                |2019-08-14 13:55:47|        3|02034660552                |                    1|               31|THAINARA SILVA ALMEIDA                     
+          746542|             55|  1619425|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3042|  1619425|CLAUDIANE DIAS COSTA                       |F        |     31|                |89626850191                |2019-11-08 10:26:04|       11|00752040375                |                    1|               31|CLAUDIANE DIAS COSTA                       
+          746655|             55|  1838319|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3155|  1838319|DIOGENES HENRIQUE RODRIGUES DA SILVA       |F        |     31|                |76192547300                |2019-10-04 20:32:55|       14|76192547300                |                    1|               31|DIOGENES HENRIQUE RODRIGUES DA SILVA       
+          746592|             55|  1840373|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3092|  1840373|MARIA SOCORRO ALVES PATRICIO MOURA         |F        |     31|                |89626850191                |2019-11-08 10:21:11|       17|14053730325                |                    1|               31|MARIA SOCORRO ALVES PATRICIO MOURA         
+          746597|             55|  1969820|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3097|  1969820|DANIELE FRAGOSO MARTINS DE OLIVEIRA E SOUSA|F        |     31|                |cati 2018081010000978      |2019-06-15 12:03:59|        8|21347443835                |                    1|               31|DANIELE FRAGOSO MARTINS DE OLIVEIRA E SOUSA
+
+SELECT *
+-- SELECT PREENCHIMENTO_.ID_PESSOA, PREENCHIMENTO_.ID_PREENCHIMENTO
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55
+AND PREENCHIMENTO_.ID_PUBLICACAO = 63
+AND PREENCHIMENTO_.ID_PREENCHIMENTO IN(746555,746542,746655,746592,746597);
+
+ID_PREENCHIMENTO|ID_QUESTIONARIO|ID_PESSOA|SG_SISTEMA_ORIGEM|ID_ORIGEM|DT_INICIO          |DT_FIM             |DT_FINALIZACAO     |DH_ULTIMA_ALTERACAO|DS_USUARIO_ULTIMA_ALTERACAO|DS_HASH_PREENCHIMENTO|ID_PUBLICACAO|CS_STATUS_PREENCHIMENTO|ID_PUBLICO
+----------------|---------------|---------|-----------------|---------|-------------------|-------------------|-------------------|-------------------|---------------------------|---------------------|-------------|-----------------------|----------
+          746555|             55|   935830|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3055
+          746542|             55|  1619425|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3042
+          746655|             55|  1838319|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3155
+          746592|             55|  1840373|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3092
+          746597|             55|  1969820|QC               |         |2019-11-12 00:00:00|2019-11-29 00:00:00|2019-11-27 00:00:00|2019-11-27 16:29:49|02034660552                |                     |           63|A                      |      3097
+
+UPDATE QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+SET PREENCHIMENTO_.DT_FINALIZACAO = NULL
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55
+AND PREENCHIMENTO_.ID_PUBLICACAO = 63
+AND PREENCHIMENTO_.ID_PREENCHIMENTO IN(746555,746542,746655,746592,746597);
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_;
+
+SELECT 
+	PREENCHIMENTO_.ID_PREENCHIMENTO,
+	PREENCHIMENTO_.ID_QUESTIONARIO,
+	PREENCHIMENTO_.DT_INICIO,
+	PREENCHIMENTO_.DT_FIM,
+	PREENCHIMENTO_.DT_FINALIZACAO,
+	PREENCHIMENTO_.DH_ULTIMA_ALTERACAO,
+	PREENCHIMENTO_.ID_PUBLICACAO,
+	PREENCHIMENTO_.ID_PUBLICO,
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA
+-- SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55 
+AND PREENCHIMENTO_.ID_PUBLICACAO IN(50,63)
+-- AND PREENCHIMENTO_.ID_PUBLICACAO IN(63)
+-- AND PREENCHIMENTO_.ID_PUBLICACAO IN(50)
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'R';
+;
+
+SELECT 
+	PREENCHIMENTO_.ID_PREENCHIMENTO,
+	PREENCHIMENTO_.ID_QUESTIONARIO,
+	PREENCHIMENTO_.DT_INICIO,
+	PREENCHIMENTO_.DT_FIM,
+	PREENCHIMENTO_.DT_FINALIZACAO,
+	PREENCHIMENTO_.DH_ULTIMA_ALTERACAO,
+	PREENCHIMENTO_.ID_PUBLICACAO,
+	PREENCHIMENTO_.ID_PUBLICO,
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA
+-- SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 55 
+-- AND PREENCHIMENTO_.ID_PUBLICACAO IN(50,63)
+AND PREENCHIMENTO_.ID_PUBLICACAO IN(63)
+-- AND PREENCHIMENTO_.ID_PUBLICACAO IN(50)
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'R';
+
+2019112710000992
+
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO;
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO;
+SELECT * FROM QUESTIONARIO.PUBLICO;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO;
+SELECT * FROM QUESTIONARIO.PUBLICACAO;
+
+-- VERIFICAR PUBLICACOES ATIVAS
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 55
+AND PUBLICACAO_.IN_PUBLICADO = 'S';
+
+-- RECUPERAR PREENCHIMENTOS DE UM DETERMINADO QUESTINARIO
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 55
+AND PUBLICACAO_.IN_PUBLICADO = 'S';
+
+SELECT * 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '02034660552';
+
+SELECT * 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '02735025144';
+
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+WHERE PUBLICACAO_.IN_PUBLICADO = 'S'
+AND PREENCHIMENTO_.ID_PESSOA = '3303933';
+
+# DESENVOLVIMENTO
+
+SELECT * FROM QUESTIONARIO.MODELO_EMAIL WHERE TP_FINALIDADE = 'R';
+
+UPDATE QUESTIONARIO.MODELO_EMAIL
+SET TP_PUBLICO_MODELO = 'I'
+WHERE TP_FINALIDADE = 'R';
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%QUESTIONARIO 05/09/2019 (QC) V003%';
+
+-- RECUPERAR PREENCHIMENTOS DE UM DETERMINADO QUESTINARIO
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 1024
+AND PUBLICACAO_.IN_PUBLICADO = 'S';
+
+UPDATE QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+SET PREENCHIMENTO_.DT_FINALIZACAO = NULL,
+	PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'A'
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 1024
+AND PREENCHIMENTO_.ID_PUBLICACAO = 1280
+AND PREENCHIMENTO_.ID_PREENCHIMENTO IN(229055,229056,229057);
+
+SELECT * 
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ ON PREENCHIMENTO_.ID_PUBLICACAO = PUBLICACAO_.ID_PUBLICACAO
+WHERE QUESTIONARIO_.ID_QUESTIONARIO = 1
+AND PUBLICACAO_.IN_PUBLICADO = 'S'
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'R'
+AND PREENCHIMENTO_.ID_PESSOA = 2536187;
+
+# HOMOLOGACAO
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'A' AND ID_CONEXAO = 3;
+
+SELECT
+	CP.DS_IDENTIFICADOR_REGISTRADO AS CPF,
+	CP.NM_PESSOA AS NOME,
+	CE.DS_CORREIO_ELETRONICO AS EMAIL
+FROM PROCESSO.PROCESSO_PESSOA PP
+INNER JOIN CORPORATIVO.PESSOA CP ON CP.ID_PESSOA = PP.ID_PESSOA
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IR ON CP.ID_PESSOA = IR.ID_PESSOA AND IR.ID_TIPO_IDENTIFICADOR = 1
+LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = PP.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+INNER JOIN PROCESSO.PROCESSO_PESSOA PP_IES ON PP.ID_PROCESSO = PP_IES.ID_PROCESSO AND PP_IES.TP_PARTE = 3
+INNER JOIN CORPORATIVO.INSTITUICAO_ENSINO IES ON IES.ID_INSTITUICAO_ENSINO = PP_IES.ID_PESSOA
+INNER JOIN PROCESSO.PROCESSO P ON PP.ID_PROCESSO = P.ID_PROCESSO
+INNER JOIN PROCESSO.PROCESSO_BOLSA PB ON PP.ID_PROCESSO = PB.ID_PROCESSO
+LEFT JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = PP.ID_PESSOA 
+INNER JOIN FREIRE2.IES_COORDENADOR D ON D.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE
+WHERE 1 = 1
+	AND PP.TP_PARTE = 1
+	AND PP.TP_SITUACAO_PARTE = 1
+	AND PB.ID_MODALIDADE_BOLSA = 216
+	AND P.ID_EDITAL = 3826
+    AND  CP.DS_IDENTIFICADOR_REGISTRADO IN ('02282648986','55751237668','83306382353','07328864818','42154359191','31072968053','88536947934','01086905636','94574871504','00552129720');
+   
+-- REMOVER PUBLICOS DO PUBLICO ALVO
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 64;
+
+DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 64;
+
+SELECT * FROM QUESTIONARIO.MODELO_EMAIL ORDER BY ID_MODELO_EMAIL DESC;
+SELECT * FROM QUESTIONARIO.MODELO_EMAIL WHERE TP_FINALIDADE = 'R';
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -45538,98 +45701,7 @@ public enum InternetProtocolExecutionJobEnum {
 		this.enderecoContexto = enderecoContexto;
 	}
 	
-}
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# JIRA
-
-			+ 08/2019
-                
-                01 REDMINE-13071 -> CCAPNSGA-9823
-                02 REDMINE-13072 -> CCAPNSGA-9824
-                03 REDMINE-13073 -> CCAPNSGA-9825
-                04 REDMINE-13080 -> CCAPNSGA-9826
-                05 REDMINE-12015 -> CCAPNSGA-9919
-                06 REDMINE-14089 -> CCAPNSGA-9921
-                07 REDMINE-14160 -> CCAPNSGA-9922
-                08 REDMINE-14188 -> CCAPNSGA-9923
-                09 REDMINE-14277 -> CCAPNSGA-9924
-                10 REDMINE-14091 -> CCAPNSGA-9928
-                11 REDMINE-14097 -> CCAPNSGA-9931
-                12 REDMINE-14107 -> CCAPNSGA-9936
-                13 REDMINE-14098 -> CCAPNSGA-9932 
-                14 REDMINE-14368 -> CCAPNSGA-10023
-                15 REDMINE-13351 -> CCAPNSGA-10024
-                16 REDMINE-14172 -> CCAPNSGA-10025
-                17 REDMINE-14183 -> CCAPNSGA-10026
-                18 REDMINE-14261 -> CCAPNSGA-10027
-                19 REDMINE-14262 -> CCAPNSGA-10028
-                20 REDMINE-14294 -> CCAPNSGA-10029
-                21 REDMINE-14295 -> CCAPNSGA-10030
-                22 REDMINE-14321 -> CCAPNSGA-10031
-                23 REDMINE-14900 -> CCAPNSGA-10032
-                24 REDMINE-14718 -> CCAPNSGA-10033
-                25 REDMINE-14541 -> CCAPNSGA-10034
-                26 REDMINE-14582 -> CCAPNSGA-10035
-                27 REDMINE-14795 -> CCAPNSGA-10036
-                28 REDMINE-14695 -> CCAPNSGA-10037
-                29 REDMINE-15045 -> CCAPNSGA-10038
-                
-            + 09/2019
-                
-                01 REDMINE-15031 -> CCAPNSGA-10039
-                02 REDMINE-15044 -> CCAPNSGA-10040
-                03 REDMINE-15188 -> CCAPNSGA-10041
-                04 REDMINE-15189 -> CCAPNSGA-10042
-                05 REDMINE-15340 -> CCAPNSGA-10043
-                06 REDMINE-15442 -> CCAPNSGA-10044
-                07 REDMINE-15190 -> CCAPNSGA-10082
-                08 REDMINE-15474 -> CCAPNSGA-10083
-                09 REDMINE-15479 -> CCAPNSGA-10084
-                10 REDMINE-15477 -> CCAPNSGA-10085
-                11 REDMINE-XXXXX -> YYYYY
-                12 REDMINE-XXXXX -> YYYYY
-                13 REDMINE-XXXXX -> YYYYY
-                14 REDMINE-XXXXX -> YYYYY
-                15 REDMINE-XXXXX -> YYYYY
-                16 REDMINE-XXXXX -> YYYYY
-                17 REDMINE-XXXXX -> YYYYY
-                18 REDMINE-XXXXX -> YYYYY
-                19 REDMINE-XXXXX -> YYYYY
-                20 REDMINE-XXXXX -> YYYYY
-                21 REDMINE-XXXXX -> YYYYY
-			
-			+ 10/2019
-			
-				01 REDMINE-XXXXX -> YYYYY
-                02 REDMINE-XXXXX -> YYYYY
-                03 REDMINE-XXXXX -> YYYYY
-                04 REDMINE-XXXXX -> YYYYY
-                05 REDMINE-XXXXX -> YYYYY
-                06 REDMINE-XXXXX -> YYYYY
-                07 REDMINE-XXXXX -> YYYYY
-                08 REDMINE-XXXXX -> YYYYY
-                09 REDMINE-XXXXX -> YYYYY
-                10 REDMINE-XXXXX -> YYYYY
-                11 REDMINE-XXXXX -> YYYYY
-			
-            + 11/2019
-                
-                01 REDMINE-16776 -> CCAPNSGA-10257
-                02 REDMINE-16888 -> CCAPNSGA-10258
-				03 REDMINE-16889 -> CCAPNSGA-10259
-                04 REDMINE-16932 -> CCAPNSGA-10260
-				05 REDMINE-17001 -> CCAPNSGA-10271				
-				06 REDMINE-17094 -> CCAPNSGA-10288
-				07 REDMINE-17095 -> CCAPNSGA-10287
-				08 REDMINE-17002 -> CCAPNSGA-10302
-				08 REDMINE-17002 -> CCAPNSGA-10302
-				10 REDMINE-17329 -> CCAPNSGA-10311
-				11 REDMINE-17442 -> CCAPNSGA-10323
-				12 REDMINE-XXXXX -> CCAPNSGA-YYYYY
-				13 REDMINE-XXXXX -> CCAPNSGA-YYYYY
-								
+}								
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -45708,6 +45780,55 @@ AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 18690 AND CORREIO_ELETRONICO_.DS_CORREI
 OR (PESSOA_.ID_PESSOA = 2536187 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6)
 OR (PESSOA_.ID_PESSOA = 2536050 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6)
 AND PESSOA_.TP_PESSOA = 'F';
+
+-- VERIFICA SE UMA DETERMINADA PESSOA POSSUI 'LOGIN' NA BASE DA CAPES
+SELECT CASE WHEN COUNT(1) = 0 THEN 'O USUÁRIO NÃO POSSUE LOGIN NA CAPES' ELSE 'O USUÁRIO POSSUI LOGIN CONFIGURADO NA CAPES' END AS SITUACAO
+FROM (
+SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO
+	FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+	AND IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO LIKE '%48043125104%'
+	GROUP BY IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO 
+);
+
+SELECT *
+FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA 
+WHERE PESSOA_.DS_IDENTIFICADOR_REGISTRADO = '48043125104'
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5;
+
+SELECT *
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = '48043125104'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;
+
+SELECT *
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = '48043125104'
+-- AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S';
+
+-- 09967138670
+-- 48043125104
+SELECT * FROM (
+	SELECT *
+	FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = '09967138670'
+	AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+	AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+	-- AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+);
+
+SELECT * FROM CORPORATIVO.TIPO_IDENTIFICADOR_REGISTRADO;
+SELECT * FROM CORPORATIVO.TIPO_FINALIDADE_ENDERECO;
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -46747,6 +46868,8 @@ https://www.myjewishlearning.com/article/the-shulhan-arukh/
 https://www.mishnetorah.co.il/why-maimonides_en/
 http://www.hsje.org/
 https://farhi.org/genealogy/index.html
+https://www.jardindelatorah.net/septieme-cours-sur-lois-de-shemirat-halashone-arourin-k1h3-maledictions-rav-perets-bouhnik/
+http://www.riototal.com.br/comunidade-judaica/juda7c8.htm
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -46852,33 +46975,157 @@ arquivos
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+"-Dprogram.name=JBossTools: Red Hat JBoss EAP 6.1+" -server -Xms1024m -Xmx1024m -XX:MaxPermSize=256m -Dorg.jboss.resolver.warning=true -Djava.net.preferIPv4Stack=true -Dsun.rmi.dgc.client.gcInterval=3600000 -Dsun.rmi.dgc.server.gcInterval=3600000 -Djboss.modules.system.pkgs=org.jboss.byteman -Djava.awt.headless=true "-Dorg.jboss.boot.log.file=/home/indra/Desenvolvimento/Vanadium/vanadium_tool/vanadium_tool_server/vanadium_tool_server_jbossEAP6/standalone/log/boot.log" "-Dlogging.configuration=file:/home/indra/Desenvolvimento/Vanadium/vanadium_tool/vanadium_tool_server/vanadium_tool_server_jbossEAP6/standalone/configuration/logging.properties" "-Djboss.home.dir=/home/indra/Desenvolvimento/Vanadium/vanadium_tool/vanadium_tool_server/vanadium_tool_server_jbossEAP6" -Dorg.jboss.logmanager.nocolor=true -Djboss.bind.address.management=localhost -Darquivos=/home/indra/Desenvolvimento/Vanadium/vanadium_tool/vanadium_tool_server/vanadium_tool_server_jbossEAP6/arquivos
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# JIRA
 
+			+ 08/2019
+                
+                01 REDMINE-13071 -> CCAPNSGA-9823
+                02 REDMINE-13072 -> CCAPNSGA-9824
+                03 REDMINE-13073 -> CCAPNSGA-9825
+                04 REDMINE-13080 -> CCAPNSGA-9826
+                05 REDMINE-12015 -> CCAPNSGA-9919
+                06 REDMINE-14089 -> CCAPNSGA-9921
+                07 REDMINE-14160 -> CCAPNSGA-9922
+                08 REDMINE-14188 -> CCAPNSGA-9923
+                09 REDMINE-14277 -> CCAPNSGA-9924
+                10 REDMINE-14091 -> CCAPNSGA-9928
+                11 REDMINE-14097 -> CCAPNSGA-9931
+                12 REDMINE-14107 -> CCAPNSGA-9936
+                13 REDMINE-14098 -> CCAPNSGA-9932 
+                14 REDMINE-14368 -> CCAPNSGA-10023
+                15 REDMINE-13351 -> CCAPNSGA-10024
+                16 REDMINE-14172 -> CCAPNSGA-10025
+                17 REDMINE-14183 -> CCAPNSGA-10026
+                18 REDMINE-14261 -> CCAPNSGA-10027
+                19 REDMINE-14262 -> CCAPNSGA-10028
+                20 REDMINE-14294 -> CCAPNSGA-10029
+                21 REDMINE-14295 -> CCAPNSGA-10030
+                22 REDMINE-14321 -> CCAPNSGA-10031
+                23 REDMINE-14900 -> CCAPNSGA-10032
+                24 REDMINE-14718 -> CCAPNSGA-10033
+                25 REDMINE-14541 -> CCAPNSGA-10034
+                26 REDMINE-14582 -> CCAPNSGA-10035
+                27 REDMINE-14795 -> CCAPNSGA-10036
+                28 REDMINE-14695 -> CCAPNSGA-10037
+                29 REDMINE-15045 -> CCAPNSGA-10038
+                
+            + 09/2019
+                
+                01 REDMINE-15031 -> CCAPNSGA-10039
+                02 REDMINE-15044 -> CCAPNSGA-10040
+                03 REDMINE-15188 -> CCAPNSGA-10041
+                04 REDMINE-15189 -> CCAPNSGA-10042
+                05 REDMINE-15340 -> CCAPNSGA-10043
+                06 REDMINE-15442 -> CCAPNSGA-10044
+                07 REDMINE-15190 -> CCAPNSGA-10082
+                08 REDMINE-15474 -> CCAPNSGA-10083
+                09 REDMINE-15479 -> CCAPNSGA-10084
+                10 REDMINE-15477 -> CCAPNSGA-10085
+                11 REDMINE-XXXXX -> YYYYY
+                12 REDMINE-XXXXX -> YYYYY
+                13 REDMINE-XXXXX -> YYYYY
+                14 REDMINE-XXXXX -> YYYYY
+                15 REDMINE-XXXXX -> YYYYY
+                16 REDMINE-XXXXX -> YYYYY
+                17 REDMINE-XXXXX -> YYYYY
+                18 REDMINE-XXXXX -> YYYYY
+                19 REDMINE-XXXXX -> YYYYY
+                20 REDMINE-XXXXX -> YYYYY
+                21 REDMINE-XXXXX -> YYYYY
+			
+			+ 10/2019
+			
+				01 REDMINE-XXXXX -> YYYYY
+                02 REDMINE-XXXXX -> YYYYY
+                03 REDMINE-XXXXX -> YYYYY
+                04 REDMINE-XXXXX -> YYYYY
+                05 REDMINE-XXXXX -> YYYYY
+                06 REDMINE-XXXXX -> YYYYY
+                07 REDMINE-XXXXX -> YYYYY
+                08 REDMINE-XXXXX -> YYYYY
+                09 REDMINE-XXXXX -> YYYYY
+                10 REDMINE-XXXXX -> YYYYY
+                11 REDMINE-XXXXX -> YYYYY
+			
+            + 11/2019
+                
+                01 REDMINE-16776 -> CCAPNSGA-10257
+                02 REDMINE-16888 -> CCAPNSGA-10258
+				03 REDMINE-16889 -> CCAPNSGA-10259
+                04 REDMINE-16932 -> CCAPNSGA-10260
+				05 REDMINE-17001 -> CCAPNSGA-10271				
+				06 REDMINE-17094 -> CCAPNSGA-10288
+				07 REDMINE-17095 -> CCAPNSGA-10287
+				08 REDMINE-17002 -> CCAPNSGA-10302
+				08 REDMINE-17002 -> CCAPNSGA-10302
+				10 REDMINE-17329 -> CCAPNSGA-10311
+				11 REDMINE-17442 -> CCAPNSGA-10323
+				12 REDMINE-17466 -> CCAPNSGA-10325
+				13 REDMINE-17003 -> CCAPNSGA-10326
+				14 REDMINE-17525 -> CCAPNSGA-10328
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# UDEMY
+
+	+ Treinamento de React Native
+		
+		-> https://indra.udemy.com/course/react-native-the-practical-guide/learn/lecture/13914812#overview
+		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-17003] {UPDATE} -- ""
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-17003] {UPDATE} -- "Deve retornar o e-mail Principal de um determinado usuario."
+	public CorreioEletronico consultarIdentificadorRegistradoPessoa(String identificadorRegistrado) {
+		try {
+			StringBuilder stringBuilder = new StringBuilder("SELECT correio_eletronico_ ")
+				.append("FROM CorreioEletronico correio_eletronico_ ")
+				.append("WHERE correio_eletronico_.pessoa.identificadorRegistrado = :identificador_registrado_ ")
+				.append("AND correio_eletronico_.indicadorPrincipalFinalidade = 'S' ")
+				.append("AND correio_eletronico_.finalidadeEndereco = 5 ");
+			Query query = entityManager.createQuery(stringBuilder.toString());
+				query.setParameter("identificador_registrado_", identificadorRegistrado);
+			return (CorreioEletronico) query.getSingleResult();
+		} catch(NoResultException noResultException) {
+			throw new ValidacaoNegocialException(ErrosComuns.UC015_E3);
+		}
+	}
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT usuario 
+FROM Usuario usuario
+JOIN usuario.pessoa pessoa
+WHERE usuario.senha = :senha
+AND pessoa.matricula = :matricula
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+	# QUERYS FREIRE
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+		- https://redmine.capes.gov.br/issues/15104
+		
+		
+%{font-size:18pt}Nota%
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+h3. Deixamos registrado que em virtude das alterações impostas pelo atendimento do [[REDMINE-17002]] que as _querys_ (para a composição de _Pergunta do tipo Select_), devem possuir o _alias_ para o campo referente ao *"ID_PESSOA"* foi definido para *“CODIGO_PESSOA_”* em detrimento do valor anterior “PESSOA_”.
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+h3. Exemplo: 
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+> *%{color:blue}SELECT%* PP.ID_PESSOA *%{color:green}AS%* *%{color:red}_CODIGO_PESSOA_%*, CP.NM_PESSOA *%{color:green}FROM%* PROCESSO.PROCESSO_PESSOA PP
 
+
+h3. Inserimos nota no [[REDMINE-15104]] referente as alterações realizadas no atendimento desse defeito.
+		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
