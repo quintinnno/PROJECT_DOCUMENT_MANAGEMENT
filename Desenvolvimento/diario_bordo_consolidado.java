@@ -24941,217 +24941,6 @@ export default function PublicoAlvoService($http) {
 }
 
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-package br.gov.capes.questionario.web.rest;
-
-import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
-import javax.validation.constraints.NotNull;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.DefaultValue;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Response;
-
-import org.apache.commons.httpclient.HttpStatus;
-import org.jboss.logging.Logger;
-
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-import com.wordnik.swagger.annotations.ApiResponse;
-import com.wordnik.swagger.annotations.ApiResponses;
-
-import br.gov.capes.componentes.jaxrs.Result;
-import br.gov.capes.componentes.jaxrs.Results;
-import br.gov.capes.questionario.dominio.ParametroConsulta;
-import br.gov.capes.questionario.dominio.PublicoAlvo;
-import br.gov.capes.questionario.dominio.Questionario;
-import br.gov.capes.questionario.dominio.dto.PublicoAlvoDTO;
-import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
-import br.gov.capes.questionario.dominio.filtros.FiltroPublicoAlvo;
-import br.gov.capes.questionario.gerenciador.GerenciadorCRUD;
-import br.gov.capes.questionario.gerenciador.GerenciadorPublicoAlvo;
-import br.gov.capes.questionario.web.rest.interceptor.RecursoProtegido;
-import br.gov.capes.questionario.web.rest.util.CRUDResource;
-
-@Api("/publico-alvo")
-@Path("/publico-alvo")
-@RequestScoped
-public class PublicoAlvoResource extends CRUDResource<PublicoAlvo, ParametroConsulta<PublicoAlvo>> {
-
-	private Logger LOGGER = Logger.getLogger(PublicoAlvoResource.class);
-
-	@Inject
-	protected Result result;
-
-	@Inject
-	protected GerenciadorPublicoAlvo gerenciadorPublicoAlvo;
-
-	@Override
-	protected GerenciadorCRUD<PublicoAlvo, ParametroConsulta<PublicoAlvo>> getGerenciador() {
-		return this.gerenciadorPublicoAlvo;
-	}
-
-	public PublicoAlvoResource() {
-		super(PublicoAlvo.class);
-	}
-
-	@GET
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Recupera publico alvo para os parametros passados", response = PublicoAlvo.class, responseContainer = "list")
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
-	@RecursoProtegido
-	public Response consultarPorParametro(@QueryParam("offset") @DefaultValue("0") final int offset,
-			@QueryParam("max") @DefaultValue("0") final int max,
-			@QueryParam("orderBy") @DefaultValue("") final String orderBy, @QueryParam("asc") final boolean asc,
-			@QueryParam("fields") @DefaultValue("") final String camposString,
-			@QueryParam("type") @DefaultValue("list") final String tipoConsulta,
-			@QueryParam("tipoPublico") final Long tipoPublico,
-			@QueryParam("descricaoPublico") @DefaultValue("") final String descricaoPublico) {
-
-		final FiltroPublicoAlvo parametro = new FiltroPublicoAlvo(offset, max, orderBy, asc, camposString, tipoConsulta, new PublicoAlvo(descricaoPublico, tipoPublico));
-		parametro.definirOrdenacao(orderBy, asc);
-		return this.respostaPeloParametro(parametro);
-	}
-
-	@GET
-	@Path("/{id}")
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Recupera determinado publico", response = PublicoAlvo.class)
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
-	@RecursoProtegido
-	public Response buscarEmEspecifico(@PathParam("id") final long id,
-			@NotNull @QueryParam("fields") @DefaultValue("") final String camposString) {
-
-		final String[] camposASeremProjetados = ParametroConsulta.quebrarCamposProjecao(camposString);
-
-		final PublicoAlvo resultado = getGerenciador().buscarEmEspecifico(id, camposASeremProjetados);
-
-		return getResult().use(Results.representation()).from(resultado)
-				.exclude(camposASeremProjetados.length > 0 ? CAMPOS_ENTIDADE : new String[] {})
-				.include(camposASeremProjetados.length > 0 ? camposASeremProjetados : new String[] {}).serialize();
-	}
-
-	@GET
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Recupera todos públicos alvo", response = PublicoAlvo.class)
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
-	@RecursoProtegido
-	@Path("/consultarTodosPublicosAlvo")
-	public Response consultarTodosPublicosAlvo() {
-		return getResult().use(Results.representation()).from(this.gerenciadorPublicoAlvo.consultarTodosPublicosAlvo())
-				.serialize();
-	}
-
-	@GET
-	@Path("/validarPublicoAlvoPublicado/{id}")
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Recupera todos públicos alvo", response = Boolean.class)
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
-	@RecursoProtegido
-	public Response validarPublicoAlvoPublicado(@PathParam("id") Long id) {
-		try {
-			return getResult().use(Results.representation()).from(gerenciadorPublicoAlvo.validarPublicoAlvoPublicado(new PublicoAlvo(id))).serialize();
-		} catch (final ValidacaoNegocialException err) {
-			LOGGER.error(err, err);
-			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
-		} catch (final Exception err) {
-			LOGGER.error(err, err);
-			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).entity(err).build();
-		}		
-	}
-	
-	@POST
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Cria publico alvo se for válido", response = Questionario.class)
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Criação realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
-			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
-	@RecursoProtegido
-	public Response criarPublicoAlvo(final PublicoAlvo entidade) {
-		if (entidade != null) {
-			try {
-				final PublicoAlvo persistido = getGerenciador().criarEntidade(entidade);
-				return getResult().use(Results.representation()).from(persistido).serialize();
-			} catch (final ValidacaoNegocialException err) {
-				LOGGER.error(err, err);
-				return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
-			} catch (final Exception err) {
-				LOGGER.error(err, err);
-				return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
-			}
-		}
-
-		return Response.status(HttpStatus.SC_BAD_REQUEST).build();
-	}
-
-	@PUT
-	@Path("/{id}")
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Atualiza questionario apenas com os campos passados no corpo da mensagem se válidos. Obs.: Alteração de relacionamentos não são garantidos", response = Questionario.class)
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Atualização realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
-			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
-	@RecursoProtegido
-	public Response alterarEntidade(final PublicoAlvo publicoAlvoTransiente) {
-
-		if (publicoAlvoTransiente != null) {
-			try {
-				final PublicoAlvo publicoAlvo = gerenciadorPublicoAlvo.alterarEntidade(publicoAlvoTransiente);
-				return getResult().use(Results.representation()).from(publicoAlvo).serialize();
-			} catch (final ValidacaoNegocialException err) {
-				LOGGER.error(err, err);
-				return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
-			} catch (final Exception err) {
-				LOGGER.error(err, err);
-				return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).build();
-			}
-		}
-
-		return Response.status(HttpStatus.SC_BAD_REQUEST).build();
-	}
-
-	@DELETE
-	@Path("/{id}")
-	@ApiOperation(produces = "application/json,application/xml", consumes = "application/json,application/xml", value = "Apaga determinado publico alvo da base de dados")
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Exclusão realizada com sucesso"),
-			@ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor"),
-			@ApiResponse(code = HttpStatus.SC_BAD_REQUEST, message = "Erro negocial ou requisição incorreta") })
-	@RecursoProtegido
-	public Response excluirPublicoAlvo(@PathParam("id") final Long id) {
-
-		try {
-			getGerenciador().excluirEntidade(new PublicoAlvo(id));
-		} catch (final ValidacaoNegocialException err) {
-			LOGGER.error(err, err);
-			return Response.status(HttpStatus.SC_BAD_REQUEST).entity(err.getTipoErro()).build();
-		} catch (final Exception err) {
-			LOGGER.error(err, err);
-			return Response.status(HttpStatus.SC_INTERNAL_SERVER_ERROR).entity(err).build();
-		}
-
-		return Response.ok().build();
-	}
-	
-	// FIXME [REDMINE-00388] {A} -- ""
-	@GET
-	@Path("/consultarQuestionarioPublicoAlvo/{idQuestionario}")
-	@ApiOperation(produces = "application/json,application/xml", 
-				  consumes = "application/json,application/xml", 
-				  value = "Responsável por recuperar um determinado Púvblico Alvo pelo identificador do Questionário passado por parâmetro", 
-				  response = PublicoAlvoDTO.class, 
-				  responseContainer = "list")
-	@ApiResponses({ @ApiResponse(code = HttpStatus.SC_OK, message = "Consulta realizada com sucesso"),
-			        @ApiResponse(code = HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "Erro interno do servidor") })
-	@RecursoProtegido
-	public Response consultarQuestionarioPublicoAlvo(@PathParam("idQuestionario") final Long identificadorQuestionario) {
-		return getResult().use(Results.representation()).from(gerenciadorPublicoAlvo.consultarQuestionarioPublicoAlvo(identificadorQuestionario)).serialize();
-	}
-
-}
-
-======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 <capes-isl-pagina>
 	
   <!-- FIXME [REDMINE-00388] {A} -- "Deve editar os dados da pessoa" -->
@@ -40447,6 +40236,123 @@ AND PERGUNTA_.ID_PERGUNTA IN(1519, 1520, 1522, 1524);
 	Sua escola de atuação é o(a) ${NOME_ESCOLA} ?
 */
 
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO ORDER BY ID_DETALHE_PUBLICACAO DESC;
+SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+
+SELECT * FROM QUESTIONARIO.SITUACAO_OPERACAO;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO ORDER BY ID_NOTIFICACAO DESC;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA ORDER BY ID_NOTIFICACAO_PESSOA DESC;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_SITUACAO_OPERACAO = 3;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_PESSOA = 3270719;
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_SITUACAO_OPERACAO = 1;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_SITUACAO_OPERACAO = 2;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_SITUACAO_OPERACAO = 3;
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 75 AND ID_SITUACAO_OPERACAO = 4;
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 816747 AND ID_PUBLICACAO = 89;
+
+-- UPDATE QUESTIONARIO.NOTIFICACAO
+SET NR_VINCULO_NOTIFICACAO = 88
+WHERE ID_NOTIFICACAO = 73
+AND NR_VINCULO_NOTIFICACAO = 87;
+
+SELECT COUNT(*) AS AGUARDANDO FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1;
+SELECT COUNT(*) AS EXECUCAO FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 2;
+SELECT COUNT(*) AS ERRO FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 3;
+SELECT COUNT(*) AS CONCLUIDO FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 4;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 2;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 3;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 4;
+
+-- UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+SET NOTIFICACAO_PESSOA_.ID_SITUACAO_OPERACAO = 1
+WHERE NOTIFICACAO_PESSOA_.ID_NOTIFICACAO IN(75);
+
+SELECT * FROM QUESTIONARIO.FONTE_DADOS ORDER BY ID_FONTE_DADOS DESC;
+SELECT * FROM QUESTIONARIO.FONTE_DADOS WHERE TP_FONTE_DADOS = 'A' ORDER BY ID_FONTE_DADOS DESC;
+      
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO LIKE '%04806595160%'
+      
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 3270719 WHERE 
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 78;
+
+SELECT COUNT(*) FROM (
+	SELECT NOTIFICACAO_PESSOA_.ID_PESSOA
+	FROM QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+	WHERE NOTIFICACAO_PESSOA_.ID_NOTIFICACAO = 78
+	HAVING COUNT(*) > 1
+	GROUP BY NOTIFICACAO_PESSOA_.ID_PESSOA
+);
+
+	SELECT NOTIFICACAO_PESSOA_.ID_PESSOA
+	FROM QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+	WHERE NOTIFICACAO_PESSOA_.ID_NOTIFICACAO = 78
+	HAVING COUNT(*) > 1
+	GROUP BY NOTIFICACAO_PESSOA_.ID_PESSOA;
+	
+	
+-- IDENTIFICADOR REGISTRADO, ID_PESSOA
+-- ID_NOTIFICAO, ID_NOTIFICACAO_PESSOA
+-- ID_PUBLICACAO, ID_QUESTIONARIO
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1 ORDER BY DH_ULTIMA_ALTERACAO DESC;
+
+SELECT NOTIFICACAO_PESSOA_.ID_NOTIFICACAO
+FROM QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_ 
+JOIN QUESTIONARIO.NOTIFICACAO  NOTIFICACAO_ ON NOTIFICACAO_.ID_NOTIFICACAO = NOTIFICACAO_PESSOA_.ID_NOTIFICACAO
+WHERE NOTIFICACAO_PESSOA_.ID_SITUACAO_OPERACAO = 1
+HAVING COUNT(*) > 1
+GROUP BY NOTIFICACAO_PESSOA_.ID_NOTIFICACAO
+ORDER BY NOTIFICACAO_PESSOA_.ID_NOTIFICACAO;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IN(12,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54);
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO IN(12,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54);
+SELECT NR_VINCULO_NOTIFICACAO FROM QUESTIONARIO.NOTIFICACAO WHERE ID_NOTIFICACAO IN(12,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54) GROUP BY NR_VINCULO_NOTIFICACAO;
+
+SELECT
+	NOTIFICACAO_.ID_NOTIFICACAO,
+	TIPO_NOTIFICACAO_.DS_TIPO_NOTIFICACAO,
+	MODELO_EMAIL_.ID_MODELO_EMAIL,
+	MODELO_EMAIL_.DS_MODELO_EMAIL
+	--DETALHE_PUBLICACAO_.ID_PUBLICACAO
+-- SELECT *
+FROM QUESTIONARIO.NOTIFICACAO NOTIFICACAO_ 
+JOIN QUESTIONARIO.TIPO_NOTIFICACAO TIPO_NOTIFICACAO_ ON TIPO_NOTIFICACAO_.ID_TIPO_NOTIFICACAO = NOTIFICACAO_.ID_TIPO_NOTIFICACAO
+JOIN QUESTIONARIO.MODELO_EMAIL MODELO_EMAIL_ ON MODELO_EMAIL_.ID_MODELO_EMAIL = NOTIFICACAO_.ID_MODELO_EMAIL
+-- JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_MODELO_EMAIL = MODELO_EMAIL_.ID_MODELO_EMAIL
+WHERE ID_NOTIFICACAO IN(12,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54);
+
+SELECT 
+	DETALHE_PUBLICACAO_.ID_PUBLICACAO, DETALHE_PUBLICACAO_.ID_PUBLICO_ALVO
+-- SELECT *
+FROM QUESTIONARIO.MODELO_EMAIL MODELO_EMAIL_ 
+JOIN QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_ ON DETALHE_PUBLICACAO_.ID_MODELO_EMAIL = MODELO_EMAIL_.ID_MODELO_EMAIL
+WHERE MODELO_EMAIL_.ID_MODELO_EMAIL IN(30,24,35,5,36,40);
+
+-- PESSOAS AFETADAS
+SELECT 
+	NOTIFICACAO_PESSOA_.ID_NOTIFICACAO_PESSOA,
+	NOTIFICACAO_PESSOA_.ID_NOTIFICACAO,
+	NOTIFICACAO_PESSOA_.ID_PESSOA
+FROM QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = NOTIFICACAO_PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.NOTIFICACAO NOTIFICACAO_ ON NOTIFICACAO_.ID_NOTIFICACAO = NOTIFICACAO_PESSOA_.ID_NOTIFICACAO
+WHERE ID_SITUACAO_OPERACAO = 1
+ORDER BY NOTIFICACAO_PESSOA_.ID_PESSOA ASC;
+
+-- UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+SET ID_SITUACAO_OPERACAO = 4
+WHERE ID_SITUACAO_OPERACAO = 3;
+
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
 	# QUESTIONARIO-CAPES
@@ -45623,6 +45529,227 @@ DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 64;
 SELECT * FROM QUESTIONARIO.MODELO_EMAIL ORDER BY ID_MODELO_EMAIL DESC;
 SELECT * FROM QUESTIONARIO.MODELO_EMAIL WHERE TP_FINALIDADE = 'R';
 
+# 03/12/2019
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO ORDER BY ID_PUBLICO_ALVO DESC;
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 65;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 65;
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 66;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 66;
+
+
+SELECT 
+	   ir.ds_identificador_registrado AS CPF,
+	   UPPER(ben.nm_pessoa) AS NOME,
+	   UPPER(CE.DS_CORREIO_ELETRONICO) AS EMAIL
+-- SELECT COUNT(*)
+  FROM processo.processo p
+  JOIN edital.edital e ON e.id_edital = p.id_edital
+  JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+  JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+  JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+  JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo
+                                   AND ppb.tp_situacao_parte = 1
+                                   AND ppb.tp_parte = 1
+  JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+  LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+  LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo
+                                        AND ppi.tp_situacao_parte = 1
+                                        AND ppi.tp_parte IN(3,14)
+  LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+  JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+  JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL
+  LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+  LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+  JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+  JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+  JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+  JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_COORD_AREA HCA ON CA.ID_SITUACAO_ATUAL = HCA.ID_HISTORICO_COORD_AREA AND  HCA.IN_ATIVO = 'S' AND HCA.ST_RESIDENTE = 'H' AND HCA.DT_FIM IS NULL
+  JOIN FREIRE2.PESSOA_FREIRE CA_PF ON CA.ID_PESSOA_FREIRE = CA_PF.ID_PESSOA_FREIRE
+  JOIN CORPORATIVO.PESSOA CA_P ON CA_PF.ID_PESSOA = CA_P.ID_PESSOA
+  JOIN CORPORATIVO.MUNICIPIO M ON E.ID_MUNICIPIO = M.ID_MUNICIPIO
+  JOIN CORPORATIVO.UF U ON E.CD_UF_IBGE = U.CD_UF_IBGE
+  LEFT JOIN FREIRE2.PESSOA_FREIRE PFSUP ON PFSUP.ID_PESSOA_FREIRE = SUP.ID_PESSOA_FREIRE
+  LEFT JOIN CORPORATIVO.PESSOA CSUP ON PFSUP.ID_PESSOA = CSUP.ID_PESSOA  
+  LEFT JOIN corporativo.pessoa ies ON ies.id_pessoa = ppi.id_pessoa
+  LEFT JOIN processo.processo_bolsa pbolsa ON pbolsa.id_processo = p.id_processo
+  LEFT JOIN processo.processo_auxilio paux ON paux.id_processo = p.id_processo
+  LEFT JOIN corporativo.modalidade_bolsa mb ON mb.id_modalidade_bolsa = COALESCE(pbolsa.id_modalidade_bolsa, paux.id_modalidade_bolsa) 
+  JOIN processo.processo pai ON pai.id_processo = p.id_processo_pai
+WHERE p.id_edital IN (3826)
+   AND p.tp_beneficio <> 3
+   AND spa.id_tipo_situacao IN( 12 )
+and p.dt_inicio <= SYSDATE
+and scba.pkg_util.data_termino(p.id_processo) >= SYSDATE
+AND mb.ID_MODALIDADE_BOLSA = 222
+GROUP BY 
+	   ir.ds_identificador_registrado,
+	   ben.nm_pessoa,
+	   CE.DS_CORREIO_ELETRONICO,
+       ben.id_pessoa,
+       CSUP.NM_PESSOA,
+       E.NM_ESCOLA,
+       U.NM_UF;
+       
+     
+      
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO
+
+SELECT COUNT(*)
+-- SELECT IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR, CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+INNER JOIN 
+( 
+SELECT 
+	   ir.ds_identificador_registrado AS CPF,
+	   UPPER(ben.nm_pessoa) AS NOME,
+	   UPPER(CE.DS_CORREIO_ELETRONICO) AS EMAIL
+  FROM processo.processo p
+  JOIN edital.edital e ON e.id_edital = p.id_edital
+  JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+  JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+  JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+  JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo
+                                   AND ppb.tp_situacao_parte = 1
+                                   AND ppb.tp_parte = 1
+  JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+  LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+  LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo
+                                        AND ppi.tp_situacao_parte = 1
+                                        AND ppi.tp_parte IN(3,14)
+  LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+  JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+  JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL
+  LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+  LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+  JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+  JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+  JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+  JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_COORD_AREA HCA ON CA.ID_SITUACAO_ATUAL = HCA.ID_HISTORICO_COORD_AREA AND  HCA.IN_ATIVO = 'S' AND HCA.ST_RESIDENTE = 'H' AND HCA.DT_FIM IS NULL
+  JOIN FREIRE2.PESSOA_FREIRE CA_PF ON CA.ID_PESSOA_FREIRE = CA_PF.ID_PESSOA_FREIRE
+  JOIN CORPORATIVO.PESSOA CA_P ON CA_PF.ID_PESSOA = CA_P.ID_PESSOA
+  JOIN CORPORATIVO.MUNICIPIO M ON E.ID_MUNICIPIO = M.ID_MUNICIPIO
+  JOIN CORPORATIVO.UF U ON E.CD_UF_IBGE = U.CD_UF_IBGE
+  LEFT JOIN FREIRE2.PESSOA_FREIRE PFSUP ON PFSUP.ID_PESSOA_FREIRE = SUP.ID_PESSOA_FREIRE
+  LEFT JOIN CORPORATIVO.PESSOA CSUP ON PFSUP.ID_PESSOA = CSUP.ID_PESSOA  
+  LEFT JOIN corporativo.pessoa ies ON ies.id_pessoa = ppi.id_pessoa
+  LEFT JOIN processo.processo_bolsa pbolsa ON pbolsa.id_processo = p.id_processo
+  LEFT JOIN processo.processo_auxilio paux ON paux.id_processo = p.id_processo
+  LEFT JOIN corporativo.modalidade_bolsa mb ON mb.id_modalidade_bolsa = COALESCE(pbolsa.id_modalidade_bolsa, paux.id_modalidade_bolsa) 
+  JOIN processo.processo pai ON pai.id_processo = p.id_processo_pai
+WHERE p.id_edital IN (3826)
+   AND p.tp_beneficio <> 3
+   AND spa.id_tipo_situacao IN( 12 )
+and p.dt_inicio <= SYSDATE
+and scba.pkg_util.data_termino(p.id_processo) >= SYSDATE
+AND mb.ID_MODALIDADE_BOLSA = 222
+GROUP BY 
+	   ir.ds_identificador_registrado,
+	   ben.nm_pessoa,
+	   CE.DS_CORREIO_ELETRONICO,
+       ben.id_pessoa,
+       CSUP.NM_PESSOA,
+       E.NM_ESCOLA,
+       U.NM_UF
+) 
+FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF 
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL
+-- AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+-- AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , QUESTIONARIO.SQ_PUBLICO.NEXTVAL, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'TESTE_HOMOLOGACAO', SYSDATE
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+INNER JOIN
+(
+SELECT 
+	   ir.ds_identificador_registrado AS CPF,
+	   UPPER(ben.nm_pessoa) AS NOME,
+	   UPPER(CE.DS_CORREIO_ELETRONICO) AS EMAIL
+	   , IR.ID_TIPO_IDENTIFICADOR
+  FROM processo.processo p
+  JOIN edital.edital e ON e.id_edital = p.id_edital
+  JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+  JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+  JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+  JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo AND ppb.tp_situacao_parte = 1 AND ppb.tp_parte = 1
+  JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+  LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+  LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo AND ppi.tp_situacao_parte = 1 AND ppi.tp_parte IN(3,14)
+  LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+  JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+  JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL
+  LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+  LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+  JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+  JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+  JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+  JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_COORD_AREA HCA ON CA.ID_SITUACAO_ATUAL = HCA.ID_HISTORICO_COORD_AREA AND  HCA.IN_ATIVO = 'S' AND HCA.ST_RESIDENTE = 'H' AND HCA.DT_FIM IS NULL
+  JOIN FREIRE2.PESSOA_FREIRE CA_PF ON CA.ID_PESSOA_FREIRE = CA_PF.ID_PESSOA_FREIRE
+  JOIN CORPORATIVO.PESSOA CA_P ON CA_PF.ID_PESSOA = CA_P.ID_PESSOA
+  JOIN CORPORATIVO.MUNICIPIO M ON E.ID_MUNICIPIO = M.ID_MUNICIPIO
+  JOIN CORPORATIVO.UF U ON E.CD_UF_IBGE = U.CD_UF_IBGE
+  LEFT JOIN FREIRE2.PESSOA_FREIRE PFSUP ON PFSUP.ID_PESSOA_FREIRE = SUP.ID_PESSOA_FREIRE
+  LEFT JOIN CORPORATIVO.PESSOA CSUP ON PFSUP.ID_PESSOA = CSUP.ID_PESSOA  
+  LEFT JOIN corporativo.pessoa ies ON ies.id_pessoa = ppi.id_pessoa
+  LEFT JOIN processo.processo_bolsa pbolsa ON pbolsa.id_processo = p.id_processo
+  LEFT JOIN processo.processo_auxilio paux ON paux.id_processo = p.id_processo
+  LEFT JOIN corporativo.modalidade_bolsa mb ON mb.id_modalidade_bolsa = COALESCE(pbolsa.id_modalidade_bolsa, paux.id_modalidade_bolsa) 
+  JOIN processo.processo pai ON pai.id_processo = p.id_processo_pai
+WHERE p.id_edital IN (3826)
+   AND p.tp_beneficio <> 3
+   AND spa.id_tipo_situacao IN( 12 )
+and p.dt_inicio <= SYSDATE
+and scba.pkg_util.data_termino(p.id_processo) >= SYSDATE
+AND mb.ID_MODALIDADE_BOLSA = 222
+GROUP BY 
+	   ir.ds_identificador_registrado,
+	   ben.nm_pessoa,
+	   CE.DS_CORREIO_ELETRONICO,
+       ben.id_pessoa,
+       CSUP.NM_PESSOA,
+       E.NM_ESCOLA,
+       U.NM_UF
+) FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF
+-- AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL
+-- AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+-- AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S';
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -45829,457 +45956,195 @@ SELECT * FROM (
 SELECT * FROM CORPORATIVO.TIPO_IDENTIFICADOR_REGISTRADO;
 SELECT * FROM CORPORATIVO.TIPO_FINALIDADE_ENDERECO;
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-package br.gov.capes.questionario.quartz;
+SELECT * FROM (
+	SELECT 
+		PESSOA_.ID_PESSOA AS ID_PESSOA,
+		IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF,
+		CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO AS ID_CORREIO_ELETRONICO_,
+		CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL,
+		CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE AS FINALIDADE
+	FROM CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = CORREIO_ELETRONICO_.ID_PESSOA
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+	AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+	-- AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+);
 
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Properties;
-import java.util.regex.Pattern;
-import java.util.stream.Collector;
-import java.util.stream.Collectors;
+-- 31884535828
+-- 48043125104
+SELECT 
+	PESSOA_.ID_PESSOA AS ID_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF,
+	CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO AS ID_CORREIO_ELETRONICO_,
+	CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL,
+	CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO,
+	CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE AS FINALIDADE
+-- SELECT * 
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = '31884535828'
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 2;
 
-import javax.inject.Inject;
+SELECT * FROM CORPORATIVO.TIPO_FINALIDADE_ENDERECO;
 
-import org.apache.deltaspike.jpa.api.transaction.Transactional;
-import org.apache.deltaspike.scheduler.api.Scheduled;
-import org.jboss.logging.Logger;
-import org.joda.time.LocalDateTime;
-import org.quartz.DisallowConcurrentExecution;
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%02/12%';
 
-import br.gov.capes.questionario.dominio.FonteDados;
-import br.gov.capes.questionario.dominio.Notificacao;
-import br.gov.capes.questionario.dominio.NotificacaoPessoa;
-import br.gov.capes.questionario.dominio.Preenchimento;
-import br.gov.capes.questionario.dominio.SituacaoOperacao;
-import br.gov.capes.questionario.dominio.dto.ConsultaColunaTipoSqlDTO;
-import br.gov.capes.questionario.dominio.dto.EmailDTO;
-import br.gov.capes.questionario.dominio.dto.PublicacaoDTO;
-import br.gov.capes.questionario.dominio.dto.ResultadoSqlDTO;
-import br.gov.capes.questionario.dominio.filtros.FiltroNotificacaoPessoa;
-import br.gov.capes.questionario.gerenciador.GerenciadorPublicoAlvo;
-import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
-import br.gov.capes.questionario.repositorio.RepositorioFonteDados;
-import br.gov.capes.questionario.repositorio.RepositorioNotificacao;
-import br.gov.capes.questionario.repositorio.RepositorioNotificacaoPessoa;
-import br.gov.capes.questionario.repositorio.RepositorioParametro;
-import br.gov.capes.questionario.repositorio.RepositorioPreenchimento;
-import br.gov.capes.questionario.repositorio.RepositorioPublicacao;
-import br.gov.capes.questionario.util.ServicoEmail;
+SELECT * FROM QUESTIONARIO.PERFIL_PESSOA;
+SELECT * FROM QUESTIONARIO.VINCULO_ORGANIZACIONAL;
+SELECT * FROM QUESTIONARIO.VINCULO_QUESTIONARIO;
 
-@DisallowConcurrentExecution
-@Scheduled(cronExpression="0 * * ? * *")//0 20 17 * * ?  >>>>>>> 0 0 5 * * ?  
-public class NotificadorQuartz implements Job{
+-- DELETE FROM QUESTIONARIO.PERFIL_PESSOA WHERE ID_PERFIL_PESSOA IS NOT NULL;
+-- DELETE FROM QUESTIONARIO.VINCULO_ORGANIZACIONAL WHERE ID_VINCULO_ORGANIZACIONAL IS NOT NULL;
 
-	private static final String LINK_SISTEMA = "link_sistema";
-	
-	private Logger LOGGER = Logger.getLogger(NotificadorQuartz.class);
-	
-	@Inject
-	protected ServicoEmail servicoEmail;
-	
-	@Inject
-	private RepositorioNotificacao repositorioNotificacao;
-	
-	@Inject
-	private RepositorioNotificacaoPessoa repositorioNotificacaoPessoa;
-	
-	@Inject
-	private RepositorioPublicacao repositorioPublicacao;
-	
-	@Inject
-	private RepositorioPreenchimento repositorioPreenchimento;
-	
-	@Inject
-	private RepositorioParametro repositorioParametro;
-	
-	@Inject
-	private RepositorioFonteDados repositorioFonteDados;
-	
-	// FIXME [REDMINE-17001] {NEW} -- ""
-	@Inject
-	private AutorizadorSeguranca autorizadorSeguranca;
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'PATRICK NASCIMENTO PEREIRA';
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'ROBERTA SILVA MILHOMEM';
+SELECT * FROM CORPORATIVO.PESSOA WHERE NM_PESSOA LIKE 'JOSE QUINTINO DA SILVA JUNIOR';
 
-	// FIXME [REDMINE-17001] {NEW} -- ""
-	@Inject
-	private GerenciadorPublicoAlvo gerenciadorPublicoAlvo;
-	
-	private List<SituacaoOperacao> situacoes;
-	
-	private static final String IP_CONTEXO_EXECUTION_JOB = "ip.contexto.execution.job";
+SELECT *
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON
+QUESTIONARIO_.ID_QUESTIONARIO = VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN CORPORATIVO.UNIDADE_ORGANIZACIONAL UNIDADE_ORGANIZACIONAL_ ON UNIDADE_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+WHERE PERFIL_PESSOA_.ID_PESSOA NOT IN( 2860864 );
 
-	private static final String DIRETORIO_ARQUIVO = "arquivos";
-		
-	private static final String CAMINHO_ARQUIVO_CONFIGURACAO = "/questionario-capes/sp.properties";
-	
-	@Override
-	@Transactional
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		if(validacaoAmbiente()) {
-			situacoes = repositorioNotificacao.recuperarSituacoesOperacao(null);
-			
-			SituacaoOperacao situacaoAguardando = recuperarSituacaoPorSigla("AG");
-			SituacaoOperacao situacaoEmExecucao = recuperarSituacaoPorSigla("EX");
-			
-			EmailDTO email = criarEmail();
-			
-			List<NotificacaoPessoa> notificacoesEmExecucao = new ArrayList<>(recuperarNotificacoesPorSituacaoOperacao(situacaoEmExecucao));
-			
-			if(notificacoesEmExecucao!=null && !notificacoesEmExecucao.isEmpty()){
-				LOGGER.info("Inciando processamento de notificações... ");
-				for (NotificacaoPessoa notificacao : notificacoesEmExecucao) {
-					realizarEnvioDeNotificacao(notificacao,email);
-				}
-			}
-			
-			List<NotificacaoPessoa> notificacoesAguardando = new ArrayList<>(recuperarNotificacoesPorSituacaoOperacao(situacaoAguardando));
-			
-			if(notificacoesAguardando!=null && !notificacoesAguardando.isEmpty()){
-				
-				if(notificacoesEmExecucao==null || notificacoesEmExecucao.isEmpty())
-					LOGGER.info("Inciando processamento de notificações... ");	
-				
-				for (NotificacaoPessoa notificacao : notificacoesAguardando) {
-					notificacao.setSituacaoOperacao(situacaoEmExecucao);
-					notificacao.setDataUltimaAlteracao(LocalDateTime.now());
-					repositorioNotificacaoPessoa.salvarSituacaoNotificacao(notificacao);
-				}
-				
-				for (NotificacaoPessoa notificacao : notificacoesAguardando) {
-					realizarEnvioDeNotificacao(notificacao,email);
-				}
-			}
-			
-			if((notificacoesEmExecucao!=null && !notificacoesEmExecucao.isEmpty())||
-					(notificacoesAguardando!=null && !notificacoesAguardando.isEmpty()))
-				LOGGER.info("Notificações processadas. ");
-		}
-		
-	}
-	
-	@Transactional
-	private List<NotificacaoPessoa> recuperarNotificacoesPorSituacaoOperacao(SituacaoOperacao situacaoOperacao){
-		final NotificacaoPessoa filtro = new NotificacaoPessoa();
-		
-		filtro.setSituacaoOperacao(situacaoOperacao);
-		
-		FiltroNotificacaoPessoa parametro = new FiltroNotificacaoPessoa(0, 200, "", true, "", "list", filtro);		
-		parametro.setFiltrarDataAtual(true);
-		return repositorioNotificacaoPessoa.buscarPorParametro(parametro);
-	}
-	
-	private EmailDTO criarEmail(){
-		EmailDTO emailFormatado = new EmailDTO();		
-		emailFormatado.setRemetente(repositorioParametro.recuperaParametroSistemaPorDescricao("questionario.mail.remetente"));
-		return emailFormatado;
-	}
+SELECT
+  ir.ds_identificador_registrado AS "CPF",
+  UPPER(ben.nm_pessoa) AS "NOME",
+  UPPER(CE.DS_CORREIO_ELETRONICO) AS "EMAIL",
+  LISTAGG(UPPER(CA_P.NM_PESSOA), '; ') WITHIN GROUP ( ORDER BY CA_P.NM_PESSOA) AS CORDENADORES_AREA,  
+      ben.id_pessoa AS "Id Pessoa",
+      UPPER(CSUP.NM_PESSOA) AS "Supervisor",
+      UPPER(E.NM_ESCOLA),
+      UPPER(U.NM_UF)
+ FROM processo.processo p
+ JOIN edital.edital e ON e.id_edital = p.id_edital
+ JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+ JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+ JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+ JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo
+                                  AND ppb.tp_situacao_parte = 1
+                                  AND ppb.tp_parte = 1
+ JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+ LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+ LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo
+                                       AND ppi.tp_situacao_parte = 1
+                                       AND ppi.tp_parte IN(3,14)
+ LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+ JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+ JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+ JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL 
+ LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+ LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR 
+ JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+ JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+ JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+ JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S';
+ 
+ 04/12/2019
+ 
+ SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
 
-	@Transactional
-	private void realizarEnvioDeNotificacao(NotificacaoPessoa notificacaoPessoa, EmailDTO email){
-		String destinatario = "";
-		try {
-			Preenchimento preenchimento = recuperarPreenchimentoPorNotificacao(notificacaoPessoa);
-			email.setAssunto(formatarAssuntoEmail(notificacaoPessoa.getNotificacao()));
-			email.setTexto(formatarTextoEmail(notificacaoPessoa.getNotificacao(),preenchimento));
-			email.setDestinatario(formatarDestinatarioEmail(preenchimento));
-			servicoEmail.enviarEmail(email);
-			notificacaoPessoa.setSituacaoOperacao(recuperarSituacaoPorSigla("CO"));
-			repositorioNotificacaoPessoa.salvarSituacaoNotificacao(notificacaoPessoa);
-		} catch (Exception e) {
-			e.printStackTrace();
-			String msg = "Não foi possível enviar e-mail para "+ destinatario;
-			notificacaoPessoa.setSituacaoOperacao(recuperarSituacaoPorSigla("ER"));
-			repositorioNotificacaoPessoa.salvarSituacaoNotificacao(notificacaoPessoa);
-			throw new RuntimeException(msg + destinatario);
-		}
-	}
-	
-	@Transactional
-	private String formatarAssuntoEmail(Notificacao notificacao){
-		String assunto = notificacao.getModeloEmail().getNome();		
-		if(notificacao.getTipoNotificacao().getSigla().equals("VENCIMENTO")){
-			PublicacaoDTO  publicacaoDTO = repositorioPublicacao.buscarPublicacao(notificacao.getNumeroVinculoNotificacao());
-			assunto = assunto.replace("{NOME_QUESTIONARIO}", publicacaoDTO.getNomeQuestionario());
-		}
-		return assunto;
-	}
-	
-	@Transactional
-	private String formatarDestinatarioEmail(Preenchimento preenchimento){
-		String destinatario = preenchimento.getPublico().getCorreioEletronico().getDescricaoCorreioEletronico();
-		return destinatario;
-	}
-	
-	@Transactional
-	private String formatarTextoEmail(Notificacao notificacao, Preenchimento preenchimento){
-		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");		
-		String texto = notificacao.getModeloEmail().getModeloCapes();
-		
-		if(notificacao.getTipoNotificacao().getSigla().equals("VENCIMENTO")){
-			PublicacaoDTO  publicacaoDTO = repositorioPublicacao.buscarPublicacao(notificacao.getNumeroVinculoNotificacao());		
-			texto = texto.replace("{NOME_QUESTIONARIO}", publicacaoDTO.getNomeQuestionario()).replace("{DATA_FIM}", sdf.format(publicacaoDTO.getDataFim()));
-		}
-		
-		List<FonteDados> fontes = repositorioFonteDados.consultarFontesValidasPorModeloEmail(notificacao.getModeloEmail());
-		
-		for (FonteDados fonteDados : fontes) {
-			
-			Collection<ResultadoSqlDTO> resultado = repositorioFonteDados.consultaResuladoSql(fonteDados, 
-					preenchimento.getPublico().getIdentificadorRegistrado().getDescricao(), 1, 10);
-			
-			for (ResultadoSqlDTO resultadoSqlDTO : resultado) {
-				for (ConsultaColunaTipoSqlDTO linha : resultadoSqlDTO.getLinha()) {
-					if (fonteDados.getNome().equals(LINK_SISTEMA)) {
-						
-						String url = linha.getValor().concat(preenchimento.getId().toString());
-						StringBuilder linkQuestionario = new StringBuilder();
-						linkQuestionario.append("<a href=\"");
-						linkQuestionario.append(url);
-						linkQuestionario.append("\" target=\"_blank\" >");
-						linkQuestionario.append("Link do questionário");
-						linkQuestionario.append("</a>");
-						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linkQuestionario.toString());
-					} else {
-						texto = texto.replaceAll(Pattern.quote("${" + fonteDados.getNome() + "}"), linha.getValor());
-					}
-				}
-			}
-		}
-		return texto;
-	}
-	
-	@Transactional
-	private Preenchimento recuperarPreenchimentoPorNotificacao(NotificacaoPessoa notificacaoPessoa){
-		 return repositorioPreenchimento.recuperarPreenchimentoPorNotificacaoPessoa(notificacaoPessoa);
-	}
-	
-	private SituacaoOperacao recuperarSituacaoPorSigla(String sigla){
-		if(situacoes!=null){
-			return situacoes.stream().filter(situacao -> situacao.getSigla().equals(sigla)).collect(toSingleton());	
-		}else{
-			return null;
-		}
-	}
-	
-	private  static <T> Collector<T, ?, T> toSingleton() {
-	    return Collectors.collectingAndThen(
-	            Collectors.toList(),
-	            list -> {
-	                if (list.size() != 1) {
-	                    throw new IllegalStateException();
-	                }
-	                return list.get(0);
-	            }
-	    );
-	}
-	
-	private boolean validacaoAmbiente() {
-		boolean isAmbienteValidoParaExecutarJob = false;
-		String enderecoContexto = System.getProperty("jboss.bind.address");
-		if(!enderecoContexto.contains("localhost")) {
-			if(enderecoContexto.equals(recuperarIPContextoArquivoProperties())) {
-				isAmbienteValidoParaExecutarJob = true;
-			}
-		}
-		LOGGER.info("IP execucao JOB: " + enderecoContexto);
-		LOGGER.info("Habilitacao para executar Jobs: " + isAmbienteValidoParaExecutarJob);
-		return isAmbienteValidoParaExecutarJob;
-	}
-	
-	private String recuperarIPContextoArquivoProperties() {
-		Properties properties = new Properties();
-		String ipContexto = "";
-		try {
-			properties.load(new FileInputStream(System.getProperty(DIRETORIO_ARQUIVO) + CAMINHO_ARQUIVO_CONFIGURACAO));
-			ipContexto = (String) properties.get(IP_CONTEXO_EXECUTION_JOB);
-		} catch(Exception e) {
-			LOGGER.error(e, e);
-			LOGGER.info("Nao foi possivel recuperar os dados do arquivo de Configuracao.");
-		}
-		return ipContexto;
-	}
-	
-}
+SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO 
+WHERE ID_QUESTIONARIO IN(94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73)
+AND CS_STATUS_PREENCHIMENTO = 'R';
 
-package br.gov.capes.questionario.gerenciador;
+SELECT ID_PREENCHIMENTO, ID_PESSOA, DT_FINALIZACAO, CS_STATUS_PREENCHIMENTO 
+FROM QUESTIONARIO.PREENCHIMENTO 
+WHERE ID_QUESTIONARIO IN(94, 93, 92, 91, 90, 89, 88, 87, 86, 85, 84, 83, 82, 81, 80, 79, 78, 77, 76, 75, 74, 73)
+AND CS_STATUS_PREENCHIMENTO = 'R';
 
-import java.rmi.RemoteException;
-import java.util.List;
-import java.util.Map;
+-- SELECT PREENCHIMENTO_.ID_PREENCHIMENTO,
+-- SELECT PESSOA_.ID_PESSOA, 
+SELECT PESSOA_.NM_PESSOA AS NOME_PESSOA
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO IN(94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73)
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'R';
 
-import javax.inject.Inject;
+UPDATE QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+SET PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'A',
+    PREENCHIMENTO_.DT_FINALIZACAO = NULL
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO IN(94,93,92,91,90,89,88,87,86,85,84,83,82,81,80,79,78,77,76,75,74,73)
+AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'R';
 
-import org.apache.deltaspike.jpa.api.transaction.Transactional;
-import org.hibernate.criterion.MatchMode;
-import org.joda.time.LocalDateTime;
+SELECT QUESTIONARIO.SQ_PUBLICO.NEXTVAL , 66, PESSOA_.ID_PESSOA, IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO, CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO, 'S', 'REDMINE-15104', SYSDATE, NULL, NULL
 
-import br.gov.capes.questionario.dominio.ParametroConsulta;
-import br.gov.capes.questionario.dominio.Publico;
-import br.gov.capes.questionario.dominio.PublicoAlvo;
-import br.gov.capes.questionario.dominio.dto.PublicoAlvoDTO;
-import br.gov.capes.questionario.dominio.enums.ErrosComuns;
-import br.gov.capes.questionario.dominio.exceptions.ValidacaoNegocialException;
-import br.gov.capes.questionario.dominio.filtros.FiltroPublicoAlvo;
-import br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca;
-import br.gov.capes.questionario.repositorio.RepositorioPublicoAlvo;
-import br.gov.capes.seguranca.webservice.dto.Grupo;
-import br.gov.capes.seguranca.webservice.dto.Usuario;
+SELECT *
+FROM CORPORATIVO.PESSOA PESSOA_ 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA 
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA 
+INNER JOIN 
+(
+	SELECT 
+	ir.ds_identificador_registrado AS CPF,
+	ben.nm_pessoa AS NOME,
+	CE.DS_CORREIO_ELETRONICO AS EMAIL
+	FROM processo.processo p
+  	JOIN edital.edital e ON e.id_edital = p.id_edital
+    JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+    JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+    JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+    JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo AND ppb.tp_situacao_parte = 1 AND ppb.tp_parte = 1
+  JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+  LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+  LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo AND ppi.tp_situacao_parte = 1 AND ppi.tp_parte IN(3,14)
+  LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+  JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+  JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL
+  LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+  LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+  JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+  JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+  JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+  JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_COORD_AREA HCA ON CA.ID_SITUACAO_ATUAL = HCA.ID_HISTORICO_COORD_AREA AND  HCA.IN_ATIVO = 'S' AND HCA.ST_RESIDENTE = 'H' AND HCA.DT_FIM IS NULL
+  JOIN FREIRE2.PESSOA_FREIRE CA_PF ON CA.ID_PESSOA_FREIRE = CA_PF.ID_PESSOA_FREIRE
+  JOIN CORPORATIVO.PESSOA CA_P ON CA_PF.ID_PESSOA = CA_P.ID_PESSOA
+  JOIN CORPORATIVO.MUNICIPIO M ON E.ID_MUNICIPIO = M.ID_MUNICIPIO
+  JOIN CORPORATIVO.UF U ON E.CD_UF_IBGE = U.CD_UF_IBGE
+  LEFT JOIN FREIRE2.PESSOA_FREIRE PFSUP ON PFSUP.ID_PESSOA_FREIRE = SUP.ID_PESSOA_FREIRE
+  LEFT JOIN CORPORATIVO.PESSOA CSUP ON PFSUP.ID_PESSOA = CSUP.ID_PESSOA  
+  LEFT JOIN corporativo.pessoa ies ON ies.id_pessoa = ppi.id_pessoa
+  LEFT JOIN processo.processo_bolsa pbolsa ON pbolsa.id_processo = p.id_processo
+  LEFT JOIN processo.processo_auxilio paux ON paux.id_processo = p.id_processo
+  LEFT JOIN corporativo.modalidade_bolsa mb ON mb.id_modalidade_bolsa = COALESCE(pbolsa.id_modalidade_bolsa, paux.id_modalidade_bolsa) 
+  JOIN processo.processo pai ON pai.id_processo = p.id_processo_pai
+WHERE p.id_edital IN (3826)
+   AND p.tp_beneficio <> 3
+   AND spa.id_tipo_situacao IN( 12 )
+and p.dt_inicio <= SYSDATE
+and scba.pkg_util.data_termino(p.id_processo) >= SYSDATE
+AND mb.ID_MODALIDADE_BOLSA = 222
+GROUP BY 
+	   ir.ds_identificador_registrado,
+	   ben.nm_pessoa,
+	   CE.DS_CORREIO_ELETRONICO,
+       ben.id_pessoa,
+       CSUP.NM_PESSOA,
+       E.NM_ESCOLA,
+       U.NM_UF
+) FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF 
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL 
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6 
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S';
 
-public class GerenciadorPublicoAlvo implements GerenciadorCRUD<PublicoAlvo, ParametroConsulta<PublicoAlvo>> {
+SELECT * 
 
-	private static final String PARAMETRO_ID_GRUPO_PUBLICO_ALVO = "questionario.idGrupoPublicoAlvo";
-	
-	@Inject
-	private RepositorioPublicoAlvo repositorioPublicoAlvo;
-
-	@Inject
-	private GerenciadorPublicacao gerenciadorPublicacao;
-
-	@Inject
-	private AutorizadorSeguranca autorizadorSeguranca;
-
-	@Override
-	public List<PublicoAlvo> buscarPorParametro(ParametroConsulta<PublicoAlvo> parametro) {
-		return repositorioPublicoAlvo.buscarPorParametro(parametro);
-	}
-
-	@Override
-	public long contarPorParametro(ParametroConsulta<PublicoAlvo> parametro) {
-		return repositorioPublicoAlvo.contarPorParametro(parametro);
-	}
-
-	@Override
-	public PublicoAlvo buscarEmEspecifico(Object id, String[] camposWhitelist) {
-		return repositorioPublicoAlvo.buscarEmEspecifico(id, camposWhitelist);
-	}
-
-	public List<PublicoAlvo> consultarTodosPublicosAlvo() {
-		return repositorioPublicoAlvo.consultarTodosPublicosAlvo();
-	}
-	
-	// FIXME [REDMINE-17001] {UPDATE} -- ""
-	@Override
-	@Transactional
-	public PublicoAlvo alterarEntidade(PublicoAlvo publicoAlvo) {
-		isPublicoAlvoPublicado(publicoAlvo, ErrosComuns.UC006_E10);
-		verificarDuplicidadePublicoAlvo(publicoAlvo);
-		preencheUserData(publicoAlvo);
-		final Usuario user = autorizadorSeguranca.getUsuarioLogado();
-		List<Publico> listaPublico = publicoAlvo.getListaPublico();
-		listaPublico.stream().forEach(p -> { p.setUsuarioUltimaAlteracao(user.getLogin());p.setDataUltimaAlteracao(new LocalDateTime());p.setIdentificadorEnvioIdentificacao('S');});
-		PublicoAlvo publicoAlvoSalvo = repositorioPublicoAlvo.alterarEntidade(publicoAlvo);
-		for(Publico publico: publicoAlvoSalvo.getListaPublico()) {
-			Usuario usuarioPublico = verificarGrupoPublicoAlvo(user, publico.getPessoa().getId());
-			// TODO [ARTHUR] - mensagem temporário criada para usuários que existem na base de dados da capes mas não possuem login,
-			// deverá ser criado uma melhoria para tratamento destes casos  
-			if (usuarioPublico == null) {
-				throw new ValidacaoNegocialException(ErrosComuns.UC006_MSG095);
-			}
-		}		
-		
-		return publicoAlvo;
-	}
-
-	// FIXME [REDMINE-17001] {NEW} -- ""
-	public Usuario verificarGrupoPublicoAlvo(final Usuario user, Long idPessoa) {
-		Usuario usuarioPublico = null;
-		Long idGrupoPublicoAlvo = new Long(autorizadorSeguranca.obterRepositorioParametro().recuperaParametroSistemaPorDescricao(PARAMETRO_ID_GRUPO_PUBLICO_ALVO));
-		try {
-			usuarioPublico = autorizadorSeguranca.obterServicoSeguranca().buscaPermissoes(idPessoa);
-			if (usuarioPublico != null) {
-				boolean possuiGrupoPublicoAlvo = false;
-				for(Grupo grupo: usuarioPublico.getGrupos()){
-					if(grupo.getId().equals(idGrupoPublicoAlvo)){
-						possuiGrupoPublicoAlvo = true;
-					}
-				}
-				if(!possuiGrupoPublicoAlvo){
-					autorizadorSeguranca.obterServicoSeguranca().atribuicaoGrupo(usuarioPublico.getLogin(), idGrupoPublicoAlvo,user.getLogin());
-				}
-			}
-		} catch (RemoteException e) {
-			e.printStackTrace();
-		}
-		return usuarioPublico;
-	}
-
-	private void isPublicoAlvoPublicado(PublicoAlvo publicoAlvo, ErrosComuns errosComuns) {		
-		if (validarPublicoAlvoPublicado(publicoAlvo)) {
-			throw new ValidacaoNegocialException(errosComuns);
-		}		
-	}
-
-	private void verificarDuplicidadePublicoAlvo(PublicoAlvo entidade) {
-		PublicoAlvo antiga = repositorioPublicoAlvo.buscarEmEspecifico(entidade.getId(), null);
-		if (!entidade.equals(antiga)) {
-			verificaSeExisteNoBanco(entidade);
-		}
-		this.preencheUserData(entidade);
-	}
-
-	public void verificaSeExisteNoBanco(final PublicoAlvo publicoAlvo) {
-		PublicoAlvo filtro = new PublicoAlvo(publicoAlvo.getDescricao(), publicoAlvo.getTipoPublicoAlvo().getId());
-		FiltroPublicoAlvo parametro = new FiltroPublicoAlvo(filtro);
-		parametro.getExemplo().enableLike(MatchMode.EXACT);
-		if (repositorioPublicoAlvo.existePorParametro(parametro)) {
-			throw new ValidacaoNegocialException(ErrosComuns.UC003_E3);
-		}
-	}
-
-	private void preencheUserData(final PublicoAlvo publicoAlvo) {
-		final Usuario user = autorizadorSeguranca.getUsuarioLogado();
-		publicoAlvo.setUsuarioUltimaAlteracao(user.getLogin());
-		publicoAlvo.setDataUltimaAlteracao(new LocalDateTime());
-	}
-
-	@Override
-	@Transactional
-	public PublicoAlvo criarEntidade(PublicoAlvo entidade) {
-		if (entidade.getId() != null) {
-			throw new IllegalArgumentException("Entidade sendo cadastrada como nova, tem id");
-		}
-
-		verificaSeExisteNoBanco(entidade);
-
-		this.preencheUserData(entidade);
-		return repositorioPublicoAlvo.criarEntidade(entidade);
-	}
-
-	@Override
-	@Transactional
-	public void excluirEntidade(PublicoAlvo publicoAlvo) {
-		isPublicoAlvoPublicado(publicoAlvo, ErrosComuns.UC006_E03);
-		repositorioPublicoAlvo.excluirEntidade(publicoAlvo);
-	}
-
-	public Boolean validarPublicoAlvoPublicado(PublicoAlvo publicoAlvo) {
-		return gerenciadorPublicacao.existePorPublicoAlvo(publicoAlvo);
-	}
-
-	@Override
-	public boolean existePorParametro(ParametroConsulta<PublicoAlvo> parametro) {
-		return false;
-	}
-
-	@Override
-	public PublicoAlvo alterarEntidadeParcialmente(Object id, Map<String, Object> mapaEntidade) {
-		return null;
-	}
-	
-	public List<PublicoAlvoDTO> consultarQuestionarioPublicoAlvo(Long identificadorQuestionario) {
-		return repositorioPublicoAlvo.consultarQuestionarioPublicoAlvo(identificadorQuestionario);
-	}
-	
-}
-
+SELECT PESSOA_.ID_PESSOA, PESSOA_.NM_PESSOA, IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE PESSOA_.ID_PESSOA = 3251921
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6;
+ 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -46757,7 +46622,12 @@ REDMINE-17002
 	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+ 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # ERROR EM HOMOLOGAÇÃO QUE IMPEDE A EXECUÇÃO DO JOB
 
 17:52:44,306 ERROR [javax.swing.AbstractAction] (ajp-/172.19.160.154:8009-15) java.lang.ArrayIndexOutOfBoundsException: 4: java.lang.ArrayIndexOutOfBoundsException: 4
@@ -47067,6 +46937,8 @@ arquivos
 				12 REDMINE-17466 -> CCAPNSGA-10325
 				13 REDMINE-17003 -> CCAPNSGA-10326
 				14 REDMINE-17525 -> CCAPNSGA-10328
+				15 INATIVIDADE	 -> CCAPNSGA-10330
+				
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -47112,8 +46984,7 @@ AND pessoa.matricula = :matricula
 
 	# QUERYS FREIRE
 
-		- https://redmine.capes.gov.br/issues/15104
-		
+		- https://redmine.capes.gov.br/issues/15104		
 		
 %{font-size:18pt}Nota%
 
@@ -47123,96 +46994,1791 @@ h3. Exemplo:
 
 > *%{color:blue}SELECT%* PP.ID_PESSOA *%{color:green}AS%* *%{color:red}_CODIGO_PESSOA_%*, CP.NM_PESSOA *%{color:green}FROM%* PROCESSO.PROCESSO_PESSOA PP
 
-
 h3. Inserimos nota no [[REDMINE-15104]] referente as alterações realizadas no atendimento desse defeito.
 		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-17525] {} -- ""
+
+REDMINE-13071
+
+Professor Fabricio Dutra (Lingua Portuguesa)
+Professor Wagner Sousa  (Lingua Portuguesa)
+Professor Agnaldo Martino (Lingua Portuguesa)
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+GerenciadorQuestionario -> 
+
+// FIXME [REDMINE-17525] {} -- ""
+	@Override
+	public List<Questionario> buscarPorParametro(final FiltroQuestionario parametro) {
+		List<Questionario> questionarioVinculoOrganizacionalList = repositorioQuestionario.buscarPorParametro(parametro);
+		List<Questionario> questionarioNaoVinculadoList = repositorioQuestionario.recuperarQuestionarioNaoVinculadoUsuarioLogado(autorizadorSeguranca.getUsuarioLogado().getId());
+		for(Questionario questionarioResultado : questionarioNaoVinculadoList) {
+			if(questionarioVinculoOrganizacionalList.contains(questionarioResultado)) {
+				questionarioVinculoOrganizacionalList.remove(questionarioResultado);
+			}
+		}
+		return questionarioVinculoOrganizacionalList;
+	}
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT 
+	   ir.ds_identificador_registrado AS CPF,
+	   UPPER(ben.nm_pessoa) AS NOME,
+	   UPPER(CE.DS_CORREIO_ELETRONICO) AS EMAIL
+	  -- LISTAGG(UPPER(CA_P.NM_PESSOA), '; ') WITHIN GROUP ( ORDER BY CA_P.NM_PESSOA) AS CORDENADORES_AREA,	   
+       --ben.id_pessoa AS "Id Pessoa",
+       --UPPER(CSUP.NM_PESSOA) AS "Supervisor",
+       --UPPER(E.NM_ESCOLA),
+       --UPPER(U.NM_UF)
+  FROM processo.processo p
+  JOIN edital.edital e ON e.id_edital = p.id_edital
+  JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+  JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+  JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+  JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo
+                                   AND ppb.tp_situacao_parte = 1
+                                   AND ppb.tp_parte = 1
+  JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+  LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+  LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo
+                                        AND ppi.tp_situacao_parte = 1
+                                        AND ppi.tp_parte IN(3,14)
+ 
+  LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+
+
+  JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+
+
+  JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL  
+  
+  
+  LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+  LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+  
+  JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+  JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+  JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+  JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+  JOIN FREIRE2.HISTORICO_COORD_AREA HCA ON CA.ID_SITUACAO_ATUAL = HCA.ID_HISTORICO_COORD_AREA AND  HCA.IN_ATIVO = 'S' AND HCA.ST_RESIDENTE = 'H' AND HCA.DT_FIM IS NULL
+  JOIN FREIRE2.PESSOA_FREIRE CA_PF ON CA.ID_PESSOA_FREIRE = CA_PF.ID_PESSOA_FREIRE
+  JOIN CORPORATIVO.PESSOA CA_P ON CA_PF.ID_PESSOA = CA_P.ID_PESSOA
+  
+  JOIN CORPORATIVO.MUNICIPIO M ON E.ID_MUNICIPIO = M.ID_MUNICIPIO
+  JOIN CORPORATIVO.UF U ON E.CD_UF_IBGE = U.CD_UF_IBGE  
+  
+  LEFT JOIN FREIRE2.PESSOA_FREIRE PFSUP ON PFSUP.ID_PESSOA_FREIRE = SUP.ID_PESSOA_FREIRE
+  LEFT JOIN CORPORATIVO.PESSOA CSUP ON PFSUP.ID_PESSOA = CSUP.ID_PESSOA
+
+  
+  LEFT JOIN corporativo.pessoa ies ON ies.id_pessoa = ppi.id_pessoa
+  LEFT JOIN processo.processo_bolsa pbolsa ON pbolsa.id_processo = p.id_processo
+  LEFT JOIN processo.processo_auxilio paux ON paux.id_processo = p.id_processo
+  LEFT JOIN corporativo.modalidade_bolsa mb ON mb.id_modalidade_bolsa = COALESCE(pbolsa.id_modalidade_bolsa, paux.id_modalidade_bolsa) 
+  JOIN processo.processo pai ON pai.id_processo = p.id_processo_pai
+WHERE p.id_edital IN (3826)
+   AND p.tp_beneficio <> 3
+   AND spa.id_tipo_situacao IN( 12 )
+and p.dt_inicio <= SYSDATE
+and scba.pkg_util.data_termino(p.id_processo) >= SYSDATE
+------------------------------------------------------------------------
+AND mb.ID_MODALIDADE_BOLSA = 222
+
+GROUP BY 
+	   ir.ds_identificador_registrado,
+	   ben.nm_pessoa,
+	   CE.DS_CORREIO_ELETRONICO,	   
+       ben.id_pessoa,
+       CSUP.NM_PESSOA,
+       E.NM_ESCOLA,
+       U.NM_UF
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT
+  ir.ds_identificador_registrado AS CPF,
+  UPPER(ben.nm_pessoa) AS NOME,
+  UPPER(CE.DS_CORREIO_ELETRONICO) AS EMAIL
+ FROM processo.processo p
+ JOIN edital.edital e ON e.id_edital = p.id_edital
+ JOIN corporativo.programa_capes prg ON prg.id_programa_capes = e.id_programa_capes
+ JOIN processo.situacao_processo_aplicacao spa ON spa.id_processo = p.id_processo
+ JOIN processo.tipo_situacao ts ON ts.id_tipo_situacao = spa.id_tipo_situacao
+ JOIN processo.processo_pessoa ppb ON ppb.id_processo = p.id_processo
+                                  AND ppb.tp_situacao_parte = 1
+                                  AND ppb.tp_parte = 1
+ JOIN corporativo.pessoa ben ON ben.id_pessoa = ppb.id_pessoa
+ LEFT JOIN corporativo.identificador_registrado ir ON ir.id_pessoa = ben.id_pessoa AND ir.id_tipo_identificador = 1
+ LEFT JOIN processo.processo_pessoa ppi ON ppi.id_processo = p.id_processo
+                                       AND ppi.tp_situacao_parte = 1
+                                       AND ppi.tp_parte IN(3,14)
+ LEFT JOIN CORPORATIVO.CORREIO_ELETRONICO CE ON CE.ID_PESSOA = BEN.ID_PESSOA AND CE.ID_FINALIDADE_ENDERECO = 5 AND CE.IN_PRINCIPAL_FINALIDADE = 'S'
+ JOIN FREIRE2.PESSOA_FREIRE PF ON PF.ID_PESSOA = BEN.ID_PESSOA
+ JOIN FREIRE2.DISCENTE DIS ON DIS.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE AND DIS.IN_ATIVO = 'S'
+ JOIN FREIRE2.HISTORICO_DISCENTE H ON DIS.ID_SITUACAO_ATUAL = H.ID_HISTORICO_DISCENTE AND H.IN_ATIVO = 'S' AND H.ST_DISCENTE = 'H' AND H.DT_FIM IS NULL 
+ LEFT JOIN FREIRE2.VINCULO_DOC_SUPERV_DISCENTE VINC ON VINC.ID_DISCENTE = DIS.ID_DISCENTE
+ LEFT JOIN FREIRE2.DOCENTE_SUPERVISOR SUP ON SUP.ID_DOCENTE_SUPERVISOR = VINC.ID_DOCENTE_SUPERVISOR
+ JOIN FREIRE2.ESCOLA_CAMPO EC ON DIS.ID_ESCOLA_CAMPO = EC.ID_ESCOLA_CAMPO AND EC.IN_ATIVO = 'S'
+ JOIN FREIRE2.ESCOLA E ON EC.ID_ESCOLA = E.ID_ESCOLA
+ JOIN FREIRE2.NUCLEO N ON EC.ID_NUCLEO = N.ID_NUCLEO AND N.IN_ATIVO = 'S'
+ JOIN FREIRE2.COORDENADOR_AREA CA ON N.ID_NUCLEO = CA.ID_NUCLEO AND CA.IN_ATIVO = 'S'
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+- Favorecido:                   Sinagoga Keter Torah (Centro Religioso)
+- Data de Pagamento:            10/01/2019 
+- Produto ou Serviço:           Associação Religiosa
+- Nota Fiscal:                  (Não se Aplica)
+- Valor da Despesa:             R$ 200,00
+- Tipo de Despesa:              Despesa Fixa (01/12)
+- Fonte de Pagamento:           Banco Santander do Brasil
+- Canal de Pagamento:           Transferência Bancária
+- Responsável Pagamento:        Jamille Alves
+
+- Favorecido:                   Banco Santander S.A (Instituição Financeira)
+- Data de Pagamento:            03/12/2019 
+- Produto ou Serviço:           Fatura Mensal de Cartão de Crédito (11/12) (Vencimento 15/11/2019)
+- Nota Fiscal:                  (Não se Aplica)
+- Valor da Despesa:             R$ 2.000,00
+- Tipo de Despesa:              Despesa Fixa Contrato
+- Fonte de Pagamento:           Banco do Brasil
+- Canal de Pagamento:           Internet Banking
+- Responsável Pagamento:        Jamille Alves
+						
+Configuração de Favorecido
+
+	- Ao cadastrar um determinado Favorecido no sistema deve-se
+	
+	Nome Favorecido: 		Banco Santander
+	Categoria:				Instituição Financeira
+	Tipo de Despesa:		Despesa Fixa Contratual (*) (**)
+	
+(*) 	Deve ser carragado automáticamente no cadastro de Despesas. Quando for contratual deve-se ser gerenciado na funcionalidade de contrato e Produto/Serviço
+(**) 	Deve-se gerar notificação de 'Configuração' de Notificações
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Treinamento de Flutter
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Verificar acesso externo aos datasources:
+
+	java:jboss/datasources/geocapesatual
+	java:jboss/datasources/QuestionarioDS
+	java:jboss/datasources/cadastropessoas-oracle
+	java:jboss/datasources/bancoTesesDS
+	java:jboss/datasources/segurancaDS
+	java:jboss/datasources/catalogotesesDS
+	java:jboss/datasources/geocapesDS
+	java:jboss/datasources/instituicoes-servicoDS
+	java:jboss/datasources/cadastropessoas-postgres
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
+#495057 -> #f5f6f8
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Jose, observei que a publicação realizada em 04/12 no ambiente de homologação, não teve nenhum envio de notificação.
+
+Realizei a exclusão e fiz uma nova notificação com um público menor.. e mesmo assim as notificações não foram enviadas.
+
+Por favor avalia esta questão.
+
+Outra questão, em produção da mensagem de "Erro desconhecido do sistema" no ato de importação do público alvo a partir da fonte de dados.
+
+E quando tento fazer a exclusão do público alvo, ocorre o mesmo erro desconhecido do sistema. 
+
+Outra coisa, tem varios erros em homologação... e o ronaldo quer falar contigo para provermos a solução do envio de notificação
+
+Bom dia!, Jose
+
+Preciso ver contigo um panorama de conclusão, visando informar ao Adriano (Ele tem prazo agressivo de publicação, tendo em vista as ferias dos bolsistas com impacto no retorno do questionario):
+1) Situação de importação de público alvo a partir de fonte de dados em produção.
+2) Publicação de questionário e envio de notificação e concessão do perfil público alvo, automaticamente.
+3) Situação de importação e exclusão de público alvo em produção.   
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+PLFINC-20191205142331
+- Implementar funcionalidade FUNC-0001 (Manter Despesas Variáveis)
+
+// Resetar todas as alterações da branch master
+git reset --hard
+
+// Puxar todas as mudanças da branch master
+git checkout master
+git pull -r upstream master
+git pull origin master
+
+// Criar nova Branch baseada na master
+git checkout -b PLFINC-20191205142331
+
+// Commitar
+git status
+git add * -f
+git commit -m "PLFINC-20191205142331\n" -m "\n- Implementar funcionalidade FUNC-0001 (Manter Despesas Variáveis)"
+
+// Empurrar para branch remota
+git push --set-upstream origin PLFINC-20191205142331
+
+// Autenticação plataforma Github
+
+Username: repositorydysprosium
+Password: ******************
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
+Questionário 06/12/2019 (QC) (Interno) (Identificador Obrigatório) v001
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+1. Script
+
+	1.1 Verificar os Questionário afetados
+	1.2 Alterar o status das Notificações "Abertas" para "Concluído"
+
+2. Verificar os motivos das ocorrências de disparidade de quantidade de registros importados na Fonte de Dado X Publico Alvo
+
+3. Exclusão do Público Alvo em Produção
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=12, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-10-30 15:39:44.000000'
+WHERE ID_NOTIFICACAO_PESSOA=23;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=12, ID_PESSOA=369394, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-10-30 15:39:44.000000'
+WHERE ID_NOTIFICACAO_PESSOA=24;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2069858, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1022;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2976802, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1023;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=458322, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1024;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1661279, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1025;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1953485, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1026;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1635972, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1027;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1532887, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1028;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2693917, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1029;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1532615, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1030;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1695418, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1031;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2960709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1032;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1782108, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1033;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1706211, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1034;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3442506, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1035;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1534460, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1036;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2065511, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1037;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1967129, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1038;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1587206, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1039;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2794758, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1040;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=55574, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1041;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=853722, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1042;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1619425, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1043;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=69340, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1044;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1882077, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1045;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537495, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1046;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=74065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1047;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1932882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1048;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1753270, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1049;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=78542, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1050;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3277711, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1051;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1239571, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1052;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=833204, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1053;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2064959, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1054;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1146490, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1055;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=935830, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1056;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1687447, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1057;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=768500, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1058;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1914048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1059;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1762446, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1060;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2972091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1061;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1656733, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1062;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1874759, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1063;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1134118, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1064;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2941188, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1065;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1532069, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1066;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3422548, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1067;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2049162, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1068;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2666197, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1069;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2972142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1070;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1197281, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1071;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=136006, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1072;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537335, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1073;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=566547, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1074;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1584807, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1075;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537544, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1076;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2912778, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1077;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1836001, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1078;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1754026, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1079;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2113852, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1080;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1533683, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1081;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1685686, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1082;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1139943, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1083;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1697670, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1084;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1905793, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1085;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1687302, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1086;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1692007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1087;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2524122, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1088;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3292862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1089;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3274909, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1090;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1186585, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1091;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1162368, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1092;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1840373, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1093;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1706065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1094;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537847, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1095;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1536709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1096;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1695533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1097;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1969820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1098;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3422427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1099;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1696882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1100;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=274989, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1101;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2093741, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1102;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1681937, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1103;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1536862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1104;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1896509, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1105;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=850435, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1106;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2920325, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1107;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1806603, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1108;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537221, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1109;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1734057, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1110;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3002874, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1111;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2974075, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1112;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1834220, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1113;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1769141, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1114;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1601142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1115;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1046339, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1116;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2972035, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1117;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2069965, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1118;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1700326, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1119;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1912229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1120;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1652441, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1121;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1770366, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1122;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1594521, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1123;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1406165, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1124;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1692116, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1125;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1880774, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1126;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=827728, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1127;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1675415, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1128;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1535089, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1129;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1554607, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1130;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1131;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3280568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1132;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1534288, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1133;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1573820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1134;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1992482, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1135;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1136;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1554779, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1137;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2993229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1138;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2392694, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1139;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2972074, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1140;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1652556, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1141;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1533820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1142;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1696007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1143;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1533427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1144;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1784512, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1145;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=756969, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1146;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3394087, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1147;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1541675, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1148;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1537428, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1149;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1540060, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1150;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1770714, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1151;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=408889, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1152;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2841084, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1153;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1533416, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1154;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1780413, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1155;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1838319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1156;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1538624, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1157;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2062658, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1158;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2690990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1159;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1666520, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1160;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1796990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1161;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1715568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1162;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1167486, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1163;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1733461, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1164;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=623291, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1165;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=3025533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1166;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1534537, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1167;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1769370, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1168;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1883432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1169;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=442432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1170;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1534253, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1171;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1634701, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1172;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1600705, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1173;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1635319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1174;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1960918, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1175;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=1531693, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1176;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=715528, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1177;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=41, ID_PESSOA=2974289, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:46:55.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1178;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2069858, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1179;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2976802, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1180;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=458322, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1181;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1661279, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1182;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1953485, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1183;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1635972, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1184;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1532887, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1185;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2693917, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1186;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1532615, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1187;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1695418, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1188;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2960709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1189;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1782108, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1190;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1706211, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1191;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3442506, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1192;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1534460, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1193;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2065511, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1194;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1967129, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1195;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1587206, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1196;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2794758, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1197;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=55574, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1198;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=853722, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1199;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1619425, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1200;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=69340, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1201;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1882077, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1202;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537495, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1203;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=74065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1204;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1932882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1205;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1753270, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1206;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=78542, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1207;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3277711, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1208;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1239571, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1209;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=833204, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1210;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2064959, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1211;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1146490, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1212;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=935830, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1213;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1687447, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1214;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=768500, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1215;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1914048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1216;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1762446, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1217;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2972091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1218;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1656733, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1219;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1874759, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1220;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1134118, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1221;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2941188, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1222;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1532069, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1223;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3422548, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1224;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2049162, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1225;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2666197, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1226;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2972142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1227;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1197281, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1228;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=136006, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1229;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537335, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1230;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=566547, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1231;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1584807, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1232;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537544, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1233;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2912778, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1234;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1836001, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1235;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1754026, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1236;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2113852, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1237;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1533683, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1238;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1685686, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1239;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1139943, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1240;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1697670, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1241;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1905793, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1242;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1687302, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1243;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1692007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1244;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2524122, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1245;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3292862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1246;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3274909, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1247;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1186585, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1248;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1162368, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1249;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1840373, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1250;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1706065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1251;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537847, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1252;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1536709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1253;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1695533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1254;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1969820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1255;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3422427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1256;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1696882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1257;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=274989, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1258;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2093741, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1259;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1681937, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1260;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1536862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1261;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1896509, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1262;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=850435, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1263;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2920325, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1264;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1806603, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1265;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537221, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1266;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1734057, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1267;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3002874, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1268;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2974075, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1269;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1834220, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1270;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1769141, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1271;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1601142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1272;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1046339, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1273;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2972035, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1274;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2069965, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1275;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1700326, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1276;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1912229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1277;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1652441, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1278;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1770366, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1279;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1594521, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1280;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1406165, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1281;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1692116, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1282;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1880774, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1283;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=827728, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1284;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1675415, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1285;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1535089, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1286;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1554607, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1287;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1288;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3280568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1289;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1534288, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1290;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1573820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1291;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1992482, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1292;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1293;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1554779, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1294;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2993229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1295;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2392694, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1296;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2972074, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1297;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1652556, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1298;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1533820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1299;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1696007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1300;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1533427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1301;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1784512, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1302;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=756969, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1303;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3394087, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1304;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1541675, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1305;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1537428, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1306;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1540060, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1307;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1770714, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1308;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=408889, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1309;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2841084, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1310;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1533416, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1311;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1780413, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1312;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1838319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1313;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1538624, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1314;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2062658, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1315;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2690990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1316;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1666520, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1317;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1796990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1318;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1715568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1319;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1167486, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1320;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1733461, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1321;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=623291, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1322;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=3025533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1323;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1534537, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1324;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1769370, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1325;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1883432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1326;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=442432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1327;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1534253, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1328;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1634701, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1329;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1600705, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1330;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1635319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1331;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1960918, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1332;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=1531693, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1333;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=715528, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1334;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=42, ID_PESSOA=2974289, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='53964632104', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-22 09:47:47.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1335;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=49, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-26 14:13:34.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1350;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=49, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-26 14:13:34.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1351;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=50, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-26 14:14:18.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1352;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=50, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-26 14:14:18.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1353;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=51, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 13:17:33.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1354;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=51, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 13:17:33.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1355;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=52, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 13:18:03.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1356;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=52, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 13:18:03.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1357;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=45, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 13:32:13.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1341;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=45, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 13:32:13.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1342;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=46, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 13:33:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1343;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=46, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 13:33:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1344;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=39, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:42:25.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1016;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=39, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:42:25.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1017;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=39, ID_PESSOA=369394, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:42:25.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1018;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=54, ID_PESSOA=935830, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 16:12:52.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1515;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=38, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:33:01.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1013;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=38, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:33:01.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1014;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=38, ID_PESSOA=369394, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:33:01.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1015;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=40, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:47:03.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1019;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=40, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:47:03.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1020;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=40, ID_PESSOA=369394, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-19 13:47:03.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1021;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=43, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 08:38:12.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1336;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=43, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 08:38:12.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1337;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=43, ID_PESSOA=369394, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 08:38:12.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1338;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=44, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 08:40:15.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1339;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=44, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 08:40:15.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1340;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=47, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 17:20:08.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1345;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=47, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 17:20:08.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1346;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=48, ID_PESSOA=1128037, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 17:20:44.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1347;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=48, ID_PESSOA=3303933, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='89626850191', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-25 17:20:44.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1348;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2069858, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1358;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2976802, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1359;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=458322, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1360;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1661279, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1361;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1953485, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1362;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1635972, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1363;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1532887, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1364;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2693917, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1365;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1532615, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1366;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1695418, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1367;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2960709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1368;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1782108, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1369;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1706211, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1370;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3442506, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1371;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1536862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1372;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1534460, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1373;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2065511, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1374;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1967129, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1375;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1587206, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1376;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2794758, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1377;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=55574, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1378;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=853722, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1379;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1619425, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1380;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=69340, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1381;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1882077, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1382;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537495, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1383;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=74065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1384;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1932882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1385;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1753270, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1386;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=78542, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1387;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3277711, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1388;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1239571, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1389;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=833204, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1390;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2064959, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1391;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1146490, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1392;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=935830, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1393;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1687447, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1394;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=768500, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1395;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1914048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1396;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1762446, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1397;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2972091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1398;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1656733, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1399;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1874759, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1400;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1134118, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1401;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2941188, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1402;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1532069, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1403;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3422548, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1404;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2049162, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1405;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2666197, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1406;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2972142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1407;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1197281, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1408;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=136006, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1409;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537335, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1410;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=566547, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1411;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1584807, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1412;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537544, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1413;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2912778, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1414;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1836001, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1415;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1754026, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1416;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2113852, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1417;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1533683, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1418;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1685686, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1419;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1139943, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1420;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1697670, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1421;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1905793, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1422;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1687302, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1423;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1692007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1424;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2524122, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1425;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3292862, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1426;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3274909, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1427;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1186585, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1428;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1162368, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1429;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1840373, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1430;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1706065, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1431;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537847, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1432;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1536709, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1433;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1695533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1434;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1969820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1435;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3422427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1436;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1696882, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1437;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=274989, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1438;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2093741, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1439;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1681937, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1440;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1896509, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1441;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=850435, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1442;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2920325, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1443;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1806603, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1444;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537221, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1445;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1734057, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1446;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3002874, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1447;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2974075, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1448;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1834220, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1449;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1769141, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1450;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1601142, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1451;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1046339, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1452;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2972035, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1453;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2069965, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1454;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1700326, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1455;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1912229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1456;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1652441, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1457;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1770366, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1458;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1594521, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1459;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1406165, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1460;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1692116, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1461;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1880774, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1462;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=827728, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1463;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1675415, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1464;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1535089, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1465;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1554607, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1466;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537091, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1467;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3280568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1468;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1534288, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1469;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1573820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1470;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1992482, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1471;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537048, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1472;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1554779, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1473;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2993229, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1474;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2392694, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1475;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2972074, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1476;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1652556, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1477;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1533820, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1478;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1696007, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1479;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1533427, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1480;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1784512, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1481;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=756969, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1482;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3394087, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1483;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1541675, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1484;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1537428, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1485;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1540060, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1486;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1770714, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1487;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=408889, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1488;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2841084, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1489;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1533416, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1490;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1780413, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1491;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1838319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1492;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1538624, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1493;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2062658, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1494;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2690990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1495;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1666520, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1496;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1796990, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1497;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1715568, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1498;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1167486, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1499;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1733461, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1500;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=623291, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1501;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=3025533, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1502;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1534537, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1503;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1769370, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1504;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1883432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1505;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=442432, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1506;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1534253, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1507;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1634701, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1508;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1600705, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1509;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1635319, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1510;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1960918, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1511;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=1531693, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1512;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=715528, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1513;
+UPDATE QUESTIONARIO.NOTIFICACAO_PESSOA
+SET ID_NOTIFICACAO=53, ID_PESSOA=2974289, ID_SITUACAO_OPERACAO=1, DS_USUARIO_ULTIMA_ALTERACAO='02034660552', DH_ULTIMA_ALTERACAO=TIMESTAMP '2019-11-27 15:29:51.000000'
+WHERE ID_NOTIFICACAO_PESSOA=1514;
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
