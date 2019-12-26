@@ -37139,8 +37139,6 @@ WHERE 1 = 1
 
 SELECT GLOBAL_NAME FROM GLOBAL_NAME;
 
-
-
 -- RECUPERAR USUARIOS PARA COMPOR PUBLICO ALVO NO SISTEMA QUESTIONARIO-CAPES
 SELECT A.ID_PESSOA, 
        A.NM_PESSOA,
@@ -47937,6 +47935,153 @@ COMMENT ON COLUMN 	PUBLIC.TB_DESPESA_VARIAVEL.IS_FONTE_PAGAMENTO_UNICO		IS 'INDI
 COMMENT ON COLUMN 	PUBLIC.TB_DESPESA_VARIAVEL.IS_ITEM_UNICO				IS 'INDICA SE A O ITEM E UNICO';
 COMMENT ON COLUMN 	PUBLIC.TB_DESPESA_VARIAVEL.OBSERVACAO					IS 'GUARDA AS OBSERVACOES (SE HOUVEREM)';
 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT COUNT(*) FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ORDER BY ID_ACESSO_PREENCHIMENTO DESC;
+
+SELECT * FROM QUESTIONARIO.ACESSO_PREENCHIMENTO ORDER BY ID_ACESSO_PREENCHIMENTO DESC;
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 3303933;
+
+SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+
+INSERT INTO QUESTIONARIO.ACESSO_PREENCHIMENTO(ID_ACESSO_PREENCHIMENTO, ID_PREENCHIMENTO, DH_ACESSO_PREENCHIMENTO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO) VALUES
+(QUESTIONARIO.SQ_ACESSO_PREENCHIMENTO.NEXTVAL, 3303933, SYSDATE, 'REDMINE-XXXXX', SYSDATE);
+
+-- INSERT INTO QUESTIONARIO.PUBLICACAO(ID_PUBLICACAO, ID_QUESTIONARIO, DT_INICIO, DT_FIM, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DT_PUBLICACAO, IN_PUBLICADO) 
+VALUES (QUESTIONARIO.SQ_PUBLICACAO.NEXTVAL, 50, SYSDATE, SYSDATE, 'REDMINE-XXXXX', SYSDATE, SYSDATE, 'S');
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+SELECT 
+	IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, 
+	PESSOA_.NM_PESSOA AS NOME, 
+	CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+FROM CORPORATIVO.PESSOA PESSOA_
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+AND (PESSOA_.ID_PESSOA = 1128037 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+OR (PESSOA_.ID_PESSOA = 2860864 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+OR (PESSOA_.ID_PESSOA = 3287270 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+OR (PESSOA_.ID_PESSOA = 3303933 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+AND PESSOA_.TP_PESSOA = 'F';
+
+-- RECUPERAR USUARIOS PARA COMPOR PUBLICO ALVO NO SISTEMA QUESTIONARIO-CAPES
+SELECT A.ID_PESSOA, 
+       A.NM_PESSOA,
+       A.DS_IDENTIFICADOR_REGISTRADO,
+       B.DS_CORREIO_ELETRONICO
+FROM CORPORATIVO.PESSOA A
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO B
+ON B.ID_PESSOA = A.ID_PESSOA AND B.IN_PRINCIPAL_FINALIDADE = 'S'
+WHERE (A.NM_PESSOA LIKE '%ROBERTA SILVA MILHOMEM%')
+OR (A.NM_PESSOA LIKE '%NIRIAN MARTINS SILVEIRA DOS SANTOS%')
+OR (A.NM_PESSOA LIKE '%JOSE QUINTINO DA SIL%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%PATRICK NASCIMENTO PEREIRA%');
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+/*
+	RESPONSAVEL POR REALIZAR A PRORROGACAO DO QUESTIONARIO 'Questionário Pibid - Edital 2018 - Bolsistas de Iniciação à Docência'
+	
+	ID_QUESTIONARIO = 100
+	ID_PUBLICACAO = 110
+	ID_PRORROGACAO = XX
+	ID_NOTIFICACAO = XX
+	ID_NOTIFICACAO_PESSOA = XX
+	ID_MODELO_EMAIL = 42
+	ID_TIPO_NOTIFICACAO = 8
+	ID_PESSOA_PRORROGACAO = 1128037
+*/
+
+-- RECUPERAR USUARIOS PARA COMPOR PUBLICO ALVO NO SISTEMA QUESTIONARIO-CAPES
+SELECT A.ID_PESSOA, 
+       A.NM_PESSOA,
+       A.DS_IDENTIFICADOR_REGISTRADO,
+       B.DS_CORREIO_ELETRONICO
+FROM CORPORATIVO.PESSOA A
+INNER JOIN CORPORATIVO.CORREIO_ELETRONICO B
+ON B.ID_PESSOA = A.ID_PESSOA AND B.IN_PRINCIPAL_FINALIDADE = 'S'
+WHERE (A.NM_PESSOA LIKE '%ROBERTA SILVA MILHOMEM%')
+OR (A.NM_PESSOA LIKE '%NIRIAN MARTINS SILVEIRA DOS SANTOS%')
+OR (A.NM_PESSOA LIKE '%JOSE QUINTINO DA SIL%' AND B.DS_CORREIO_ELETRONICO LIKE '%@indracompany.com%')
+OR (A.NM_PESSOA LIKE '%PATRICK NASCIMENTO PEREIRA%');
+
+-- SELECT * FROM QUESTIONARIO.PUBLICACAO ORDER BY ID_PUBLICACAO DESC;
+-- SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_PUBLICACAO = 110;
+-- SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 100;
+-- SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PUBLICACAO = 110 AND DT_FINALIZACAO IS NULL AND CS_STATUS_PREENCHIMENTO <> 'E';
+-- SELECT * FROM QUESTIONARIO.PRORROGACAO_PUBLICACAO ORDER BY ID_PRORROGACAO_PUBLICACAO DESC;
+-- SELECT * FROM QUESTIONARIO.MODELO_EMAIL WHERE ID_MODELO_EMAIL = 42;
+-- SELECT * FROM QUESTIONARIO.TIPO_NOTIFICACAO ORDER BY ID_TIPO_NOTIFICACAO DESC;
+
+-- ALTERAR DATA DE FIM DA PUBLICACAO
+UPDATE QUESTIONARIO.PUBLICACAO
+SET 
+	DT_FIM = TO_DATE('2019-01-15 00:59:59', 'yyyy-mm-dd hh24:mi:ss'), 
+	DS_USUARIO_ULTIMA_ALTERACAO = 'CATI-XXXXXXXXXX', 
+	DH_ULTIMA_ALTERACAO = SYSDATE
+WHERE ID_PUBLICACAO = 110;
+
+-- ALTERAR A DATA DOS PREENCHIMENTOS COM SITUACAO DIFERENTE DO STATUS 'ENVIADO'
+UPDATE QUESTIONARIO.PREENCHIMENTO
+SET 
+	DT_FIM = TO_DATE('2019-01-15 00:59:59', 'yyyy-mm-dd hh24:mi:ss'), 
+	DH_ULTIMA_ALTERACAO = SYSDATE, 
+	DS_USUARIO_ULTIMA_ALTERACAO = 'CATI-XXXXXXXXXX' 
+WHERE ID_QUESTIONARIO = 100 
+AND ID_PUBLICACAO = 110
+AND DT_FINALIZACAO IS NULL
+AND CS_STATUS_PREENCHIMENTO <> 'E';
+
+-- INSERIR HISTORICO DAS PRORROGACOES (USUARIO QUE EXECUTOU A PRORROGACAO)
+INSERT INTO QUESTIONARIO.PRORROGACAO_PUBLICACAO(ID_PRORROGACAO_PUBLICACAO, ID_PUBLICACAO, ID_PESSOA, DT_PRORROGACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_FIM) VALUES
+(QUESTIONARIO.SQ_PRORROGACAO_PUBLICACAO.NEXTVAL, 110, 1128037, TO_DATE('2019-01-15 00:59:59', 'yyyy-mm-dd hh24:mi:ss'), 'CATI-XXXXXXXXXX', SYSDATE, TO_DATE('2019-12-26 00:00:00', 'yyyy-mm-dd hh24:mi:ss'));
+
+-- CRIAR NOTIFICACOES
+INSERT INTO QUESTIONARIO.NOTIFICACAO (ID_NOTIFICACAO, ID_MODELO_EMAIL, ID_TIPO_NOTIFICACAO, NR_VINCULO_NOTIFICACAO, DH_NOTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO) 
+VALUES (QUESTIONARIO.SQ_NOTIFICACAO.NEXTVAL, 42, 8, 110, SYSDATE, 'CATI-XXXXXXXXXX', SYSDATE);
+
+-- CRIAR NOTIFICACOES DE PESSOA
+INSERT INTO QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAOPESSOA_ (ID_NOTIFICACAO_PESSOA, ID_NOTIFICACAO, ID_PESSOA, ID_SITUACAO_OPERACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO)
+SELECT QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, (SELECT MAX(ID_NOTIFICACAO) FROM QUESTIONARIO.NOTIFICACAO), PREENCHIMENTO_.ID_PESSOA, (
+	SELECT SITUACAO.ID_SITUACAO_OPERACAO
+	FROM QUESTIONARIO.SITUACAO_OPERACAO SITUACAO
+	WHERE SITUACAO.SG_SITUACAO_OPERACAO = 'AG' ), 'CATI-XXXXXXXXXX', SYSDATE
+	FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+	WHERE PREENCHIMENTO_.ID_PUBLICACAO = 110
+	AND PREENCHIMENTO_.ID_QUESTIONARIO = 100
+	AND PREENCHIMENTO_.DT_FINALIZACAO IS NULL
+	AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO <> 'E';
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
