@@ -47870,13 +47870,13 @@ https://stackoverflow.com/questions/50917932/what-versions-of-jackson-are-allowe
 
 URL = jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=dsnv_dr)))
 USERNAME = webquestionario
-PASSWORD = webquestionario
+PASSWORD = WebQuest321
 
 # CONEXÃO COM O BANCO DE DADOS DE HOMOLOGACAO (QUESTIONARIOS)
 
 URL = jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
 USERNAME = webquestionario
-PASSWORD = WebQuest321
+PASSWORD = webquestionario
 
 # CONEXÃO COM O BANCO DE DADOS DE PRODULÇAO (QUESTIONARIOS)
 
@@ -48061,9 +48061,358 @@ SELECT QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, (SELECT MAX(ID_NOTIFICACAO) F
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+-- RECUPERAR DADOS DOS RESPONDENTES COM STATUS 'ENVIADO'
+SELECT COUNT(*) TOTAL_RESPOSTAS_ENVIADAS FROM (
+	SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+	-- SELECT *
+	FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+	JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+	JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PUBLICO_.ID_PESSOA
+	WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 97 -- Referente ao Questionario "Questionário Pibid - Edital 2018 - Bolsistas de Iniciação à Docência"
+	AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'E'
+	ORDER BY PESSOA_.NM_PESSOA ASC
+);
+
+-- RECUPERAR DADOS DOS RESPONDENTES COM STATUS 'ENVIADO'
+SELECT COUNT(*) TOTAL_RESPOSTAS_ENVIADAS FROM (
+	SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO 
+	FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+	JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+	JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+	JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PUBLICO_.ID_PESSOA
+	WHERE PREENCHIMENTO_.ID_QUESTIONARIO = (SELECT ID_QUESTIONARIO FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Questionário Pibid - Edital 2018 - Bolsistas de Iniciação à Docência -v2%')
+	AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'E'
+	ORDER BY PESSOA_.NM_PESSOA ASC
+);
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+14:37:18,593 INFO  [org.hibernate.engine.jdbc.batch.internal.AbstractBatchImpl] (http-localhost/127.0.0.1:8080-3) HHH000010: On release of batch it still contained JDBC statements
+14:37:18,610 ERROR [br.gov.capes.questionario.web.rest.PublicacaoResource] (http-localhost/127.0.0.1:8080-3) javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement: javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1387) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1310) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.convert(AbstractEntityManagerImpl.java:1316) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:999) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.jboss.as.jpa.container.AbstractEntityManager.flush(AbstractEntityManager.java:439) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at br.gov.capes.questionario.repositorio.RepositorioPublicacao.criarEntidade(RepositorioPublicacao.java:92) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarEntidade(GerenciadorPublicacao.java:119) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at sun.reflect.GeneratedMethodAccessor97.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource.criarPublicacao(PublicacaoResource.java:182) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:33) [classes:]
+	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldClientProxy.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldClientProxy.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847) [jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-2.jar:1.0.2.Final-redhat-2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28) [jaxrs-serializer-1.0.11.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169) [jboss-as-web-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
+Caused by: org.hibernate.exception.SQLGrammarException: could not execute statement
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:82) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:49) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:124) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:109) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:189) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.jdbc.batch.internal.NonBatchingBatch.addToBatch(NonBatchingBatch.java:59) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3236) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.updateOrInsert(AbstractEntityPersister.java:3138) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.persister.entity.AbstractEntityPersister.update(AbstractEntityPersister.java:3468) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.action.internal.EntityUpdateAction.execute(EntityUpdateAction.java:140) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:395) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:387) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.engine.spi.ActionQueue.executeActions(ActionQueue.java:304) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.event.internal.AbstractFlushingEventListener.performExecutions(AbstractFlushingEventListener.java:349) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.event.internal.DefaultFlushEventListener.onFlush(DefaultFlushEventListener.java:56) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1195) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.ejb.AbstractEntityManagerImpl.flush(AbstractEntityManagerImpl.java:996) [hibernate-entitymanager-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	... 73 more
+Caused by: java.sql.SQLSyntaxErrorException: ORA-02049: ocorreu timeout: transação distribuída aguardando bloqueio
+
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:447)
+	at oracle.jdbc.driver.T4CTTIoer.processError(T4CTTIoer.java:396)
+	at oracle.jdbc.driver.T4C8Oall.processError(T4C8Oall.java:879)
+	at oracle.jdbc.driver.T4CTTIfun.receive(T4CTTIfun.java:505)
+	at oracle.jdbc.driver.T4CTTIfun.doRPC(T4CTTIfun.java:223)
+	at oracle.jdbc.driver.T4C8Oall.doOALL(T4C8Oall.java:531)
+	at oracle.jdbc.driver.T4CPreparedStatement.doOall8(T4CPreparedStatement.java:207)
+	at oracle.jdbc.driver.T4CPreparedStatement.executeForRows(T4CPreparedStatement.java:1044)
+	at oracle.jdbc.driver.OracleStatement.doExecuteWithTimeout(OracleStatement.java:1328)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeInternal(OraclePreparedStatement.java:3593)
+	at oracle.jdbc.driver.OraclePreparedStatement.executeUpdate(OraclePreparedStatement.java:3674)
+	at oracle.jdbc.driver.OraclePreparedStatementWrapper.executeUpdate(OraclePreparedStatementWrapper.java:1354)
+	at org.jboss.jca.adapters.jdbc.WrappedPreparedStatement.executeUpdate(WrappedPreparedStatement.java:493)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.executeUpdate(ResultSetReturnImpl.java:186) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	... 85 more
+
+14:37:34,879 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012117: TransactionReaper::check timeout for TX 0:ffff7f000101:-35a557d3:5e06309a:d6 in state  RUN
+14:37:34,883 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper Worker 0) ARJUNA012095: Abort of action id 0:ffff7f000101:-35a557d3:5e06309a:d6 invoked while multiple threads active within it.
+14:37:34,885 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper Worker 0) ARJUNA012108: CheckedAction::check - atomic action 0:ffff7f000101:-35a557d3:5e06309a:d6 aborting with 1 threads active!
+14:37:35,382 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012117: TransactionReaper::check timeout for TX 0:ffff7f000101:-35a557d3:5e06309a:d6 in state  CANCEL
+14:37:35,882 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012117: TransactionReaper::check timeout for TX 0:ffff7f000101:-35a557d3:5e06309a:d6 in state  CANCEL_INTERRUPTED
+14:37:35,884 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012120: TransactionReaper::check worker Thread[Transaction Reaper Worker 0,5,main] not responding to interrupt when cancelling TX 0:ffff7f000101:-35a557d3:5e06309a:d6 -- worker marked as zombie and TX scheduled for mark-as-rollback
+14:37:35,884 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper) ARJUNA012110: TransactionReaper::check successfuly marked TX 0:ffff7f000101:-35a557d3:5e06309a:d6 as rollback only
+14:37:57,822 WARN  [com.arjuna.ats.arjuna] (http-localhost/127.0.0.1:8080-5) ARJUNA012077: Abort called on already aborted atomic action 0:ffff7f000101:-35a557d3:5e06309a:d6
+14:37:57,821 WARN  [org.jboss.as.connector.subsystems.datasources.AbstractDataSourceService$MyXaMCF] (Transaction Reaper Worker 0) Lock owned during cleanup: http-localhost/127.0.0.1:8080-5: java.lang.Throwable: Lock owned during cleanup: http-localhost/127.0.0.1:8080-5
+	at org.hibernate.engine.transaction.synchronization.internal.SynchronizationCallbackCoordinatorTrackingImpl.processAnyDelayedAfterCompletion(SynchronizationCallbackCoordinatorTrackingImpl.java:102)
+	at org.hibernate.internal.SessionImpl.delayedAfterCompletion(SessionImpl.java:636)
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1278)
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:401)
+	at br.gov.capes.questionario.repositorio.RepositorioNotificacaoPessoa.criarNotificacoesPessoasPorNotificacao(RepositorioNotificacaoPessoa.java:111)
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao.criarNotificacoes(GerenciadorNotificacao.java:130)
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao$Proxy$_$$_WeldSubclass.criarNotificacoes(GerenciadorNotificacao$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133)
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57)
+	at sun.reflect.GeneratedMethodAccessor97.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao$Proxy$_$$_WeldSubclass.criarNotificacoes(GerenciadorNotificacao$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarNotificacao(GerenciadorPublicacao.java:195)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarRegistrosParaPreenchimento(GerenciadorPublicacao.java:183)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarEntidade(GerenciadorPublicacao.java:121)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133)
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57)
+	at sun.reflect.GeneratedMethodAccessor97.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.PublicacaoResource.criarPublicacao(PublicacaoResource.java:182)
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85)
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127)
+	at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:33)
+	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30)
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112)
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88)
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55)
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java)
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldClientProxy.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldClientProxy.java)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168)
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227)
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216)
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523)
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125)
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55)
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854)
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653)
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
+
+14:37:57,868 WARN  [org.hibernate.engine.transaction.synchronization.internal.SynchronizationCallbackCoordinatorTrackingImpl] (Transaction Reaper Worker 0) HHH000451: Transaction afterCompletion called by a background thread; delaying afterCompletion processing until the original thread can handle it. [status=4]
+14:37:57,868 WARN  [com.arjuna.ats.arjuna] (Transaction Reaper Worker 0) ARJUNA012113: TransactionReaper::doCancellations worker Thread[Transaction Reaper Worker 0,5,main] missed interrupt when cancelling TX 0:ffff7f000101:-35a557d3:5e06309a:d6 -- exiting as zombie (zombie count decremented to 0)
+14:37:57,869 ERROR [br.gov.capes.questionario.web.rest.PublicacaoResource] (http-localhost/127.0.0.1:8080-5) org.hibernate.HibernateException: Transaction was rolled back in a different thread!: org.hibernate.HibernateException: Transaction was rolled back in a different thread!
+	at org.hibernate.engine.transaction.synchronization.internal.SynchronizationCallbackCoordinatorTrackingImpl.processAnyDelayedAfterCompletion(SynchronizationCallbackCoordinatorTrackingImpl.java:105) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.internal.SessionImpl.delayedAfterCompletion(SessionImpl.java:636) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.internal.SessionImpl.executeNativeUpdate(SessionImpl.java:1278) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at org.hibernate.internal.SQLQueryImpl.executeUpdate(SQLQueryImpl.java:401) [hibernate-core-4.2.18.Final-redhat-2.jar:4.2.18.Final-redhat-2]
+	at br.gov.capes.questionario.repositorio.RepositorioNotificacaoPessoa.criarNotificacoesPessoasPorNotificacao(RepositorioNotificacaoPessoa.java:111) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao.criarNotificacoes(GerenciadorNotificacao.java:130) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao$Proxy$_$$_WeldSubclass.criarNotificacoes(GerenciadorNotificacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at sun.reflect.GeneratedMethodAccessor97.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.gerenciador.GerenciadorNotificacao$Proxy$_$$_WeldSubclass.criarNotificacoes(GerenciadorNotificacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarNotificacao(GerenciadorPublicacao.java:195) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarRegistrosParaPreenchimento(GerenciadorPublicacao.java:183) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao.criarEntidade(GerenciadorPublicacao.java:121) [classes:]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.apache.deltaspike.jpa.impl.transaction.ResourceLocalTransactionStrategy.execute(ResourceLocalTransactionStrategy.java:133) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at org.apache.deltaspike.jpa.impl.transaction.TransactionalInterceptor.executeInTransaction(TransactionalInterceptor.java:57) [deltaspike-jpa-module-impl-1.2.1.jar:1.2.1]
+	at sun.reflect.GeneratedMethodAccessor97.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.gerenciador.GerenciadorPublicacao$Proxy$_$$_WeldSubclass.criarEntidade(GerenciadorPublicacao$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource.criarPublicacao(PublicacaoResource.java:182) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:85) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorInvocationContext.proceed(InterceptorInvocationContext.java:127) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.interceptor.RecursoProtegidoInterceptor.validaSeRecursoProtegido(RecursoProtegidoInterceptor.java:33) [classes:]
+	at sun.reflect.GeneratedMethodAccessor65.invoke(Unknown Source) [:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.weld.interceptor.proxy.SimpleMethodInvocation.invoke(SimpleMethodInvocation.java:30) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.SimpleInterceptionChain.invokeNextInterceptor(SimpleInterceptionChain.java:69) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.executeInterception(InterceptorMethodHandler.java:112) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.interceptor.proxy.InterceptorMethodHandler.invoke(InterceptorMethodHandler.java:88) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at org.jboss.weld.bean.proxy.CombinedInterceptorAndDecoratorStackMethodHandler.invoke(CombinedInterceptorAndDecoratorStackMethodHandler.java:55) [weld-core-1.1.28.Final-redhat-1.jar:1.1.28.Final-redhat-1]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldSubclass.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldSubclass.java) [classes:]
+	at br.gov.capes.questionario.web.rest.PublicacaoResource$Proxy$_$$_WeldClientProxy.criarPublicacao(PublicacaoResource$Proxy$_$$_WeldClientProxy.java) [classes:]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) [rt.jar:1.8.0_201]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) [rt.jar:1.8.0_201]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) [rt.jar:1.8.0_201]
+	at java.lang.reflect.Method.invoke(Method.java:498) [rt.jar:1.8.0_201]
+	at org.jboss.resteasy.core.MethodInjectorImpl.invoke(MethodInjectorImpl.java:168) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invokeOnTarget(ResourceMethod.java:269) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:227) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.ResourceMethod.invoke(ResourceMethod.java:216) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.getResponse(SynchronousDispatcher.java:541) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:523) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.core.SynchronousDispatcher.invoke(SynchronousDispatcher.java:125) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.ServletContainerDispatcher.service(ServletContainerDispatcher.java:208) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:55) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher.service(HttpServletDispatcher.java:50) [resteasy-jaxrs-2.3.10.Final-redhat-1.jar:]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:847) [jboss-servlet-api_3.0_spec-1.0.2.Final-redhat-2.jar:1.0.2.Final-redhat-2]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:295) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at br.gov.capes.componentes.jaxrs.ServletSupportProvider.doFilter(ServletSupportProvider.java:28) [jaxrs-serializer-1.0.11.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169) [jboss-as-web-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
