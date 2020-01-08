@@ -48996,17 +48996,231 @@ curl 'https://questionarios.capes.gov.br/questionarios/rest/questionarios/?asc=t
 - Ajuste na versão da dependência "org.jboss.resteasy" da versão "2.3.10.Final" para "2.3.7.Final"
 - Ajuste temerário na classe "InfoAppResource.java" para evitar problemas de 'Broken pipe'
 
-Para o Gerson solicitar acesso ao Googe Analitycs para o Thiago da Cruz da Infra.
+Gerson, para er acesso ao Google Analitycs se faz necessário abrir uma demanda para a infra Thiago da Cruz).
+
+Jose, a versão 1.9.24 foi disponibilizada nos ambientes de teste e homologação, para avaliação. Caso esteja consistente (estiver funcionando em homologação a publicação, resposta para número significativo) por gentileza acompanhar com o Gerson a execução do deploy em produção. E se possível, ao final do dia, que segundo o Analytics tem demandando menos acessos. Ou acompanhe no Analytics o melhor momento para o deploy, lembrando das janelas de deploy as 13h (abrir o cati ate as 10h) e as 17h (abri o cati até as 16h)
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+# 08/01/2020
+
+	-> [FINALIZADO] Criar branch referete a Sprint 18
+	-> [FINALIZADO] Ajustar NORBER
+	-> [AGUARDANDO] Ajustar JIRA
+	-> [AGUARDANDO] Testar no ambiente de Homologação as implementações "commitadas"
+	-> [AGUARDANDO] Realizar análise do REDMINE-XXXXX (Alternativa do Tipo Select)
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18264
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18265
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18266
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18045
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18197
+	-> [AGUARDANDO] Realizar análise do REDMINE-17816
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18040
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18268
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-17817
+	
+	# Plano de Ação
+	
+		-> [REDMINE-18040] Erro de exportação de arquivo excel
+			
+			- Limitar a entrada de perguntas do tipo "Texto" de acordo com o valor Mínimo e Máximo definido no cadastro
+			- Encaminhar arquivo excel por e-mail apos a finalização do processamento assíncrono
+			
+				Verificar "AsyncResponse" (responsável por abrir thread por requisição por usuários no servidor)
+				Verificar o uso da especificação do Java EE, a saber, o "JMS" (configurar o JMS)
+				
+					-> Topics - Funciona como Grupos do whastapp. Todos recebem a mesma coisa
+					-> Queue - Funciona como conversa privada do whastapp. Recebem mensagens diferentes
+				
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Metas do primeiro mês	do ano gregoriano (2020)
+
+	-> Estudar para a certificação da AMBIMA
+	-> Iniciar matrícula no curso de Análise de Sistemas (Católica, UNIP)
+	-> Ir no fórum, após o recesso forence, para iniciar processo contra a Claro Telecom Participações S.A
+	-> Finalizar funcionalidade de FUNCIONALIDADE-0001 (Manter Despesa Variável) do sistema PLFIND
+		
+# Metas do segundo mês do ano gregoriano (2020)
+	
+	-> Estudar para a certificação da JAVA 8
+	-> Iniciar implentação da FUNCIONALIDADE-0002 (Manter Despesa Fixa) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0003 (Manter Receita) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0004 (Manter Movimentação Financeira) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0005 (Manter Plano de Aquisição) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0006 (Manter Relatório - Excel, PDF) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0007 (Manter Notificação) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0008 (Manter Contratos) do sistema PLFIND
+	-> Iniciar implentação da FUNCIONALIDADE-0009 (Manter Empréstimos) do sistema PLFIND
+
+# Metas do terceiro mês do ano gregoriano (2020)
+
+	-> Iniciar faculdade a distância em análise de sistemas
+	-> 
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+18:20:25,251 WARN  [org.eclipse.jetty.http.HttpParser] (HttpClient@260206806-152) badMessage: java.lang.IllegalStateException: too much data after closed for HttpReceiverOverHTTP@6a648f4d on HttpConnectionOverHTTP@7b310682(l:/172.19.3.55:34784 <-> r:des.capes.gov.br/172.19.170.86:80)
+18:20:25,379 INFO  [stdout] (http-localhost/127.0.0.1:8080-2) Enviando erro por email:
+18:20:25,381 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.Gson.fromJson(Gson.java:899)
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.Gson.fromJson(Gson.java:852)
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.Gson.fromJson(Gson.java:801)
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.Gson.fromJson(Gson.java:773)
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoBuscarTokenOAuth.executar(PassoBuscarTokenOAuth.java:51)
+18:20:25,382 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoRegistrarLoginUsuario.executar(PassoRegistrarLoginUsuario.java:25)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoAutorizarUsuario.executar(PassoAutorizarUsuario.java:37)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoCarregarAutorizadorCustomizado.executar(PassoCarregarAutorizadorCustomizado.java:30)
+18:20:25,383 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoRecuperarInformacoesAutenticacao.executar(PassoRecuperarInformacoesAutenticacao.java:28)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.Processo.executar(Processo.java:29)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoExecutarSubProcesso.executar(PassoExecutarSubProcesso.java:19)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,384 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoDecidirQueSubProcessoExecutar.executar(PassoDecidirQueSubProcessoExecutar.java:38)
+18:20:25,385 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,385 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoValidarOrigemDaResposta.executar(PassoValidarOrigemDaResposta.java:43)
+18:20:25,385 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,385 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.PassoDecodificarResposta.executar(PassoDecodificarResposta.java:50)
+18:20:25,385 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.util.processos.Processo.executar(Processo.java:29)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at br.gov.capes.seguranca.autenticacao.sp.FiltroConsumidorServicoAutenticacao.doFilter(FiltroConsumidorServicoAutenticacao.java:60)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149)
+18:20:25,386 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+18:20:25,387 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50)
+18:20:25,388 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169)
+18:20:25,388 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150)
+18:20:25,389 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97)
+18:20:25,389 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102)
+18:20:25,390 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+18:20:25,390 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854)
+18:20:25,391 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653)
+18:20:25,391 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926)
+18:20:25,391 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at java.lang.Thread.run(Thread.java:748)
+18:20:25,392 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+18:20:25,393 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385)
+18:20:25,394 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:183)
+18:20:25,394 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145)
+18:20:25,397 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	at com.google.gson.Gson.fromJson(Gson.java:887)
+18:20:25,398 ERROR [stderr] (http-localhost/127.0.0.1:8080-2) 	... 39 more
+18:20:25,398 ERROR [br.gov.capes.seguranca.autenticacao.sp.FiltroConsumidorServicoAutenticacao] (http-localhost/127.0.0.1:8080-2) Ocorreu um erro ao processar a resposta saml: com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.Gson.fromJson(Gson.java:899) [gson-2.7.jar:]
+	at com.google.gson.Gson.fromJson(Gson.java:852) [gson-2.7.jar:]
+	at com.google.gson.Gson.fromJson(Gson.java:801) [gson-2.7.jar:]
+	at com.google.gson.Gson.fromJson(Gson.java:773) [gson-2.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoBuscarTokenOAuth.executar(PassoBuscarTokenOAuth.java:51) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoRegistrarLoginUsuario.executar(PassoRegistrarLoginUsuario.java:25) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoAutorizarUsuario.executar(PassoAutorizarUsuario.java:37) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoCarregarAutorizadorCustomizado.executar(PassoCarregarAutorizadorCustomizado.java:30) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoRecuperarInformacoesAutenticacao.executar(PassoRecuperarInformacoesAutenticacao.java:28) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.Processo.executar(Processo.java:29) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoExecutarSubProcesso.executar(PassoExecutarSubProcesso.java:19) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoDecidirQueSubProcessoExecutar.executar(PassoDecidirQueSubProcessoExecutar.java:38) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoValidarOrigemDaResposta.executar(PassoValidarOrigemDaResposta.java:43) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.PassoDecodificarResposta.executar(PassoDecodificarResposta.java:50) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.CadeiaPassos.executarProximoPasso(CadeiaPassos.java:31) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.util.processos.Processo.executar(Processo.java:29) [seguranca-sp-java-2.4.7.jar:]
+	at br.gov.capes.seguranca.autenticacao.sp.FiltroConsumidorServicoAutenticacao.doFilter(FiltroConsumidorServicoAutenticacao.java:60) [seguranca-sp-java-2.4.7.jar:]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:246) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:214) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:231) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:149) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.jpa.interceptor.WebNonTxEmCloserValve.invoke(WebNonTxEmCloserValve.java:50) [jboss-as-jpa-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.jboss.as.web.security.SecurityContextAssociationValve.invoke(SecurityContextAssociationValve.java:169) [jboss-as-web-7.5.0.Final-redhat-21.jar:7.5.0.Final-redhat-21]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:150) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:97) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:102) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:854) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.coyote.http11.Http11Protocol$Http11ConnectionHandler.process(Http11Protocol.java:653) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at org.apache.tomcat.util.net.JIoEndpoint$Worker.run(JIoEndpoint.java:926) [jbossweb-7.5.7.Final-redhat-1.jar:7.5.7.Final-redhat-1]
+	at java.lang.Thread.run(Thread.java:748) [rt.jar:1.8.0_201]
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1 path $
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:385) [gson-2.7.jar:]
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:183) [gson-2.7.jar:]
+	at com.google.gson.internal.bind.MapTypeAdapterFactory$Adapter.read(MapTypeAdapterFactory.java:145) [gson-2.7.jar:]
+	at com.google.gson.Gson.fromJson(Gson.java:887) [gson-2.7.jar:]
+	... 39 more
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+=======================================================================================================================================
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
