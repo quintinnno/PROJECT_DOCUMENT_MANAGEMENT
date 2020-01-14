@@ -48606,6 +48606,193 @@ SELECT QUESTIONARIO.SQ_NOTIFICACAO_PESSOA.NEXTVAL, (SELECT MAX(ID_NOTIFICACAO) F
 	AND PREENCHIMENTO_.ID_QUESTIONARIO = 100
 	AND PREENCHIMENTO_.DT_FINALIZACAO IS NULL
 	AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO <> 'E';
+
+# 09/01/2020
+
+SELECT *
+-- SELECT COUNT(*) 
+FROM QUESTIONARIO.ACESSO_PREENCHIMENTO 
+ORDER BY ID_ACESSO_PREENCHIMENTO DESC
+-- DELETE FROM QUESTIONARIO.ACESSO_PREENCHIMENTO WHERE ID_ACESSO_PREENCHIMENTO IS NOT NULL;
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 97;
+SELECT * FROM QUESTIONARIO.RESPOSTA ORDER BY ID_PREENCHIMENTO DESC;
+
+SELECT *
+-- SELECT PREENCHIMENTO_.ID_PREENCHIMENTO, RESPOSTA_.ID_RESPOSTA, RESPOSTA_.TX_SUBJETIVA
+-- SELECT COUNT(*)
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_ 
+JOIN QUESTIONARIO.RESPOSTA RESPOSTA_ ON RESPOSTA_.ID_PREENCHIMENTO = PREENCHIMENTO_.ID_PREENCHIMENTO
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 97
+AND RESPOSTA_.TX_SUBJETIVA IS NOT NULL
+AND LENGTH(RESPOSTA_.TX_SUBJETIVA) > 30000
+-- AND LENGTH(RESPOSTA_.TX_SUBJETIVA) BETWEEN 1 AND 10000
+AND RESPOSTA_.ID_RESPOSTA = 12042257;
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 3195160;
+
+/*
+	ID_RESPOSTA = 12042257
+*/
+
+SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 97;
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 96;
+SELECT * FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 97 AND ID_PERGUNTA = 1325 ORDER BY NR_ORDEM;
+
+SELECT DISTINCT(p.ID_PREENCHIMENTO) AS idPreenchimento, (SELECT DISTINCT(pes.NM_PESSOA)
+FROM CORPORATIVO.PESSOA pes
+WHERE pes.ID_PESSOA = p.ID_PESSOA) AS nomeRespondente, (SELECT ir.DS_IDENTIFICADOR_REGISTRADO
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO ir
+WHERE ir.ID_PESSOA = p.ID_PESSOA
+AND ir.ID_TIPO_IDENTIFICADOR = 6) AS cpfRespondente, p.DH_ULTIMA_ALTERACAO AS dataAlteracao, p.CS_STATUS_PREENCHIMENTO AS status, p.DT_FINALIZACAO AS dataFinalizacao, pu.IN_ENVIO_IDENTIFICACAO AS envioIdentificacao
+FROM QUESTIONARIO.PREENCHIMENTO p
+LEFT JOIN QUESTIONARIO.PUBLICO pu ON
+pu.ID_PUBLICO = p.ID_PUBLICO
+WHERE p.ID_PUBLICACAO = 106
+AND EXISTS (SELECT pb.ID_PUBLICO
+FROM QUESTIONARIO.PUBLICO pb
+WHERE pb.ID_PESSOA = p.ID_PESSOA
+AND pb.ID_PUBLICO_ALVO = 96)
+ORDER BY P.ID_PREENCHIMENTO DESC;
+
+SELECT p.ID_PREENCHIMENTO AS idPreenchimento, (SELECT pg.DS_NUMERACAO
+FROM QUESTIONARIO.PERGUNTA pg
+WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) AS numeroPergunta, (SELECT pg.NR_ORDEM
+FROM QUESTIONARIO.PERGUNTA pg
+WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) AS ordemPergunta, CASE
+WHEN r.TX_SUBJETIVA IS NULL THEN (SELECT ai.TX_ALTERNATIVA
+FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai
+WHERE ai.ID_ALTERNATIVA = r.ID_ALTERNATIVA)
+ELSE r.TX_SUBJETIVA
+END AS resposta, (SELECT ai.TX_ALTERNATIVA
+FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai
+WHERE ai.ID_ALTERNATIVA = r.NR_COMPLEMENTO_ALTERNATIVA) AS complementoAlternativa, r.ID_PERGUNTA AS idPergunta, r.ID_RESPOSTA AS idResposta, r.DT_RESPOSTA_INICIO AS dataRespostaInicio, r.DT_RESPOSTA_FIM AS dataRespostaFim, per.ID_TIPO_PERGUNTA AS idTipoPergunta
+FROM QUESTIONARIO.RESPOSTA r
+INNER JOIN QUESTIONARIO.PREENCHIMENTO p ON
+p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO
+INNER JOIN QUESTIONARIO.PERGUNTA per ON
+per.ID_PERGUNTA = r.ID_PERGUNTA
+WHERE p.ID_PREENCHIMENTO = 849626
+ORDER BY ordemPergunta ;
+
+SELECT * FROM QUESTIONARIO.PERGUNTA ORDER BY ID_PERGUNTA DESC;
+SELECT * FROM QUESTIONARIO.ALTERNATIVA ORDER BY ID_ALTERNATIVA DESC;
+
+SELECT * 
+FROM 
+
+-- QUERY DA FONTE DE DADOS [40.000]
+SELECT COUNT(*) FROM (
+	SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+	FROM CORPORATIVO.PESSOA PESSOA_
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+	AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+	AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+	AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 66134 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%testesoftware%capes.gov.br%')
+	OR (PESSOA_.ID_PESSOA = 3303933 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+	AND (PESSOA_.ID_PESSOA = 3287270 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1)
+	AND PESSOA_.TP_PESSOA = 'F'
+);
+
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE ID_PUBLICO_ALVO = 100;
+SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 100;
+
+DELETE FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 100;
+-- DELETE FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 100;
+-- DELETE FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO IN(1,2);
+
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO_ALVO = 100 AND ID_PESSOA IN(3303933,3287270,54196,18587);
+
+-- INSERT INTO QUESTIONARIO.PUBLICO(ID_PUBLICO, ID_PUBLICO_ALVO, ID_PESSOA, ID_IDENTIFICADOR_REGISTRADO, ID_CORREIO_ELETRONICO, IN_ENVIO_IDENTIFICACAO, DS_USUARIO_ULTIMA_ALTERACAO, DH_ULTIMA_ALTERACAO, DH_LOGIN_INICIAL, DH_ULTIMO_LOGIN ) 
+SELECT * FROM CORPORATIVO.PESSOA PESSOA_ 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA 
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA 
+INNER JOIN
+(
+	SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO AS CPF, PESSOA_.NM_PESSOA AS NOME, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO AS EMAIL
+	FROM CORPORATIVO.PESSOA PESSOA_
+	JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PESSOA_.ID_PESSOA
+	WHERE CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5
+	AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+	AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 1
+	AND (PESSOA_.ID_PESSOA BETWEEN 18587 AND 171442 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO LIKE '%TESTESOFTWARE%CAPES.GOV.BR%')
+	OR (PESSOA_.ID_PESSOA = 3303933 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S')
+	AND (PESSOA_.ID_PESSOA = 3287270 AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO IS NOT NULL AND CORREIO_ELETRONICO_.ID_FINALIDADE_ENDERECO = 5 AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S' AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6)
+	AND PESSOA_.TP_PESSOA = 'F' 
+) FONTE_DADOS_ ON PESSOA_.NM_PESSOA = FONTE_DADOS_.NOME 
+WHERE IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO = FONTE_DADOS_.CPF 
+AND CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO = FONTE_DADOS_.EMAIL 
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6 
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+ORDER BY PESSOA_.NM_PESSOA ASC;
+
+SELECT * FROM CORPORATIVO.CORREIO_ELETRONICO WHERE ID_PESSOA = 54196;
+
+/*
+	ID_PESSOA:  54196
+	CPF: 		03109189798
+	NOME: 		SONIA ALVES GOUVEA
+	EMAIL:      jqsilva@indracompany.com
+	SENHA:      mr4r3b
+	
+	ID_PESSOA:  18587
+	CPF: 		65924665100
+	NOME: 		RODRIGO SILVEIRA ROCHA FRAGA
+	EMAIL:      jqsilva@indracompany.com
+	SENHA:      0cfb7b
+*/
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO ORDER BY ID_QUESTIONARIO DESC;
+SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 102;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 102;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE NR_VINCULO_NOTIFICACAO = (SELECT ID_PUBLICACAO FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 102);
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = (SELECT ID_PUBLICACAO FROM QUESTIONARIO.PUBLICACAO WHERE ID_QUESTIONARIO = 102);
+
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO IN(1);
+SELECT COUNT(*) FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO IN(2);
+
+-- CONSULTA 01
+-- SELECT DISTINCT(p.ID_PREENCHIMENTO) as idPreenchimento, (SELECT DISTINCT(pes.NM_PESSOA) FROM CORPORATIVO.PESSOA pes WHERE pes.ID_PESSOA = p.ID_PESSOA) as nomeRespondente, (SELECT ir.DS_IDENTIFICADOR_REGISTRADO FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO ir WHERE ir.ID_PESSOA =	p.ID_PESSOA AND ir.ID_TIPO_IDENTIFICADOR = 6) as cpfRespondente,  p.DH_ULTIMA_ALTERACAO as dataAlteracao,  p.CS_STATUS_PREENCHIMENTO as status,  p.DT_FINALIZACAO as dataFinalizacao,  pu.IN_ENVIO_IDENTIFICACAO as envioIdentificacao FROM QUESTIONARIO.PREENCHIMENTO p LEFT JOIN QUESTIONARIO.PUBLICO pu on pu.ID_PUBLICO = p.ID_PUBLICO WHERE p.ID_PUBLICACAO = :idPublicacao AND EXISTS (SELECT pb.ID_PUBLICO FROM QUESTIONARIO.PUBLICO pb WHERE pb.ID_PESSOA = p.ID_PESSOA AND pb.ID_PUBLICO_ALVO = :idPublicoAlvo) ORDER BY idPreenchimento
+
+SELECT DISTINCT(p.ID_PREENCHIMENTO) AS idPreenchimento, (SELECT DISTINCT(pes.NM_PESSOA)
+FROM CORPORATIVO.PESSOA pes
+WHERE pes.ID_PESSOA = p.ID_PESSOA) AS nomeRespondente, (SELECT ir.DS_IDENTIFICADOR_REGISTRADO
+FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO ir
+WHERE ir.ID_PESSOA = p.ID_PESSOA
+AND ir.ID_TIPO_IDENTIFICADOR = 6) AS cpfRespondente, p.DH_ULTIMA_ALTERACAO AS dataAlteracao, p.CS_STATUS_PREENCHIMENTO AS status, p.DT_FINALIZACAO AS dataFinalizacao, pu.IN_ENVIO_IDENTIFICACAO AS envioIdentificacao
+FROM QUESTIONARIO.PREENCHIMENTO p
+LEFT JOIN QUESTIONARIO.PUBLICO pu ON
+pu.ID_PUBLICO = p.ID_PUBLICO
+WHERE p.ID_PUBLICACAO = 106
+AND EXISTS (SELECT pb.ID_PUBLICO
+FROM QUESTIONARIO.PUBLICO pb
+WHERE pb.ID_PESSOA = p.ID_PESSOA
+AND pb.ID_PUBLICO_ALVO = 96)
+ORDER BY idPreenchimento;
+
+-- CONSULTA 02
+-- SELECT p.ID_PREENCHIMENTO as idPreenchimento, (SELECT pg.DS_NUMERACAO FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) as numeroPergunta, (SELECT pg.NR_ORDEM FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) as ordemPergunta, CASE WHEN r.TX_SUBJETIVA is null THEN (SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA =	r.ID_ALTERNATIVA) ELSE r.TX_SUBJETIVA END as resposta, (SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA = r.NR_COMPLEMENTO_ALTERNATIVA) as complementoAlternativa, r.ID_PERGUNTA AS idPergunta, r.ID_RESPOSTA as idResposta, r.DT_RESPOSTA_INICIO AS dataRespostaInicio, r.DT_RESPOSTA_FIM AS dataRespostaFim, per.ID_TIPO_PERGUNTA AS idTipoPergunta FROM QUESTIONARIO.RESPOSTA r INNER JOIN QUESTIONARIO.PREENCHIMENTO p on p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO INNER JOIN QUESTIONARIO.PERGUNTA per on per.ID_PERGUNTA = r.ID_PERGUNTA WHERE p.ID_PREENCHIMENTO = :idPreenchimento ORDER BY ordemPergunta
+
+SELECT 
+		p.ID_PREENCHIMENTO AS idPreenchimento, 
+		per.id_tipo_pergunta AS tipo_pergunta_,
+		(SELECT pg.DS_NUMERACAO FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) AS numeroPergunta, 
+		(SELECT pg.NR_ORDEM FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) AS ordemPergunta, 
+			CASE WHEN r.TX_SUBJETIVA IS NULL THEN (SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA = r.ID_ALTERNATIVA)
+			ELSE r.TX_SUBJETIVA
+			END AS resposta, 
+		(SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA = r.NR_COMPLEMENTO_ALTERNATIVA) AS complementoAlternativa, 
+		r.ID_PERGUNTA AS idPergunta, r.ID_RESPOSTA AS idResposta, r.DT_RESPOSTA_INICIO AS dataRespostaInicio, r.DT_RESPOSTA_FIM AS dataRespostaFim, per.ID_TIPO_PERGUNTA AS idTipoPergunta
+FROM QUESTIONARIO.RESPOSTA r
+INNER JOIN QUESTIONARIO.PREENCHIMENTO p ON
+p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO
+INNER JOIN QUESTIONARIO.PERGUNTA per ON
+per.ID_PERGUNTA = r.ID_PERGUNTA
+WHERE p.ID_PREENCHIMENTO = 816199
+ORDER BY ordemPergunta;
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -49003,40 +49190,6 @@ Jose, a versão 1.9.24 foi disponibilizada nos ambientes de teste e homologaçã
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-
-# 08/01/2020
-
-	-> [FINALIZADO] Criar branch referete a Sprint 18
-	-> [FINALIZADO] Ajustar NORBER
-	-> [AGUARDANDO] Ajustar JIRA
-	-> [AGUARDANDO] Testar no ambiente de Homologação as implementações "commitadas"
-	-> [AGUARDANDO] Realizar análise do REDMINE-XXXXX (Alternativa do Tipo Select)
-	-> [AGUARDANDO] Comentar histórico do REDMINE-18264
-	-> [AGUARDANDO] Comentar histórico do REDMINE-18265
-	-> [AGUARDANDO] Comentar histórico do REDMINE-18266
-	-> [AGUARDANDO] Comentar histórico do REDMINE-18045
-	-> [AGUARDANDO] Comentar histórico do REDMINE-18197
-	-> [AGUARDANDO] Realizar análise do REDMINE-17816
-	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18040
-	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18268
-	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-17817
-	
-	# Plano de Ação
-	
-		-> [REDMINE-18040] Erro de exportação de arquivo excel
-			
-			- Limitar a entrada de perguntas do tipo "Texto" de acordo com o valor Mínimo e Máximo definido no cadastro
-			- Encaminhar arquivo excel por e-mail apos a finalização do processamento assíncrono
-			
-				Verificar "AsyncResponse" (responsável por abrir thread por requisição por usuários no servidor)
-				Verificar o uso da especificação do Java EE, a saber, o "JMS" (configurar o JMS)
-				
-					-> Topics - Funciona como Grupos do whastapp. Todos recebem a mesma coisa
-					-> Queue - Funciona como conversa privada do whastapp. Recebem mensagens diferentes
-				
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-=======================================================================================================================================
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Metas do primeiro mês	do ano gregoriano (2020)
 
 	-> Estudar para a certificação da AMBIMA
@@ -49059,8 +49212,7 @@ Jose, a versão 1.9.24 foi disponibilizada nos ambientes de teste e homologaçã
 # Metas do terceiro mês do ano gregoriano (2020)
 
 	-> Iniciar faculdade a distância em análise de sistemas
-	-> 
-
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -49164,47 +49316,316 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Eu não estou usando Hibernate eu estou usando o método tradicional mesmo pra fazer a consulta no banco.
+
+Conexao conexao = new Conexao();
+        Connection conn = conexao.getConnection();
+
+        List<Contrato> lstContrato = new ArrayList<Contrato>();
+        String sql = "select distinct * from sgm_contrato_tmp" + sClausula.montarsClausula();
+        PreparedStatement ps = conn.prepareStatement(sql);
+        System.out.println(sql);
+
+        ResultSet rs = ps.executeQuery();
+
+        System.out.println("passando pelo DAO:");
+
+        Contrato contrato;
+        while (rs.next()) {
+            contrato = new Contrato();
+            contrato.setMissionario(rs.getString("Nome"));
+            contrato.setValor(rs.getDouble("valor"));
+   ...//aqui eu pego as colunas do banco de dados
+ listaContrato.add(contrato);
+//e armazeno todos esses 200mil registros dentro de um ArrayList e dai eu trabalho em cima desse arrayList pra criar uma planilha de excel
+
+Eu tentei criar um DataTable com paginator e tudo com a propriedade value="#{contratoController.listaContrato}"  porém nem assim eu consigo carregar no dataTable.
+Estou utilizando JSF 2. 
+
+Everton Consegui !!!!
+
+Fiz o que você falou eu estava populando um ArrayList no meu ResultSet  dentro do while(rs.next) { }, ao invés de popular o arrayList pra depois trabalhar na criação da planilha do excel eu fiz a criação linha por linha da planilha do excel dentro do próprio resultset 
+utilizando a lib HSSFWorkbook e HSSFSheet e ai dentro do 
+
+while(rs.next) {  
+ HSSFRow linha = sheet.createRow(contador);
+ HSSFRow cabecalho = sheet.createRow((short) 0);
+ cabecalho.createCell(0).setCellValue("NOME");
+ linha.createCell(0).setCellValue(rs.getString("NOME")); 
+}  
+
+dai eu criei um contador pra quando chegar a 65mil ele criar uma nova planilha e continuar adicionando linhas de onde parou...
+e funcionou!!! e a criação da planilha durou apenas 20 segundos !  
+Obrigado a todos pelas dicas vocês são demais!!  
+
+A sim eu tive que aumentar a JVM heap Memory pra 1024m !! 
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+// FIXME [REDMINE-18040] {UPDATE} -- "Teste de consulta da Query"
+	public byte[] gerarRelatorioEXCEL(List<PerguntaDTO> perguntas, Map<String, Object> parametros, PublicacaoDTO publicacaoDTO, PublicoAlvo publicoAlvo) {
+		try {
+			StringBuilder stringBuilder = new StringBuilder("SELECT ")
+				.append("DISTINCT(p.ID_PREENCHIMENTO) as idPreenchimento, ")
+				.append("(SELECT DISTINCT(pes.NM_PESSOA) FROM CORPORATIVO.PESSOA pes WHERE pes.ID_PESSOA = p.ID_PESSOA) as nomeRespondente, ")
+				.append("(SELECT ir.DS_IDENTIFICADOR_REGISTRADO FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO ir WHERE ir.ID_PESSOA =	p.ID_PESSOA ")
+				.append("AND ir.ID_TIPO_IDENTIFICADOR = 6) as cpfRespondente, ")
+				.append(" p.DH_ULTIMA_ALTERACAO as dataAlteracao, ")
+				.append(" p.CS_STATUS_PREENCHIMENTO as status, ")
+				.append(" p.DT_FINALIZACAO as dataFinalizacao, ")
+				.append(" pu.IN_ENVIO_IDENTIFICACAO as envioIdentificacao ")
+				.append("FROM QUESTIONARIO.PREENCHIMENTO p ")
+				.append("LEFT JOIN QUESTIONARIO.PUBLICO pu on pu.ID_PUBLICO = p.ID_PUBLICO ")
+				.append("WHERE p.ID_PUBLICACAO = ? ")
+				.append("AND EXISTS (SELECT pb.ID_PUBLICO FROM QUESTIONARIO.PUBLICO pb WHERE pb.ID_PESSOA = p.ID_PESSOA AND pb.ID_PUBLICO_ALVO = ?) ")
+				.append("ORDER BY idPreenchimento");
+			
+			Context context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup("java:jboss/datasources/QuestionarioDS");
+			Connection connection = dataSource.getConnection();
+			PreparedStatement preparedStatement = connection.prepareStatement(stringBuilder.toString());
+				preparedStatement.setLong(1, publicacaoDTO.getIdPublicacao());
+				preparedStatement.setLong(2, publicoAlvo.getId());
+			ResultSet resultSet = preparedStatement.executeQuery();
+			int contador = 1;
+			while(resultSet.next()) {
+				LOGGER.info(contador++);
+				LOGGER.info(resultSet.getString("idPreenchimento"));
+				LOGGER.info(resultSet.getString("nomeRespondente"));
+				LOGGER.info(resultSet.getString("cpfRespondente"));
+				LOGGER.info(resultSet.getString("dataAlteracao"));
+				LOGGER.info(resultSet.getString("status"));
+				LOGGER.info(resultSet.getString("dataFinalizacao"));
+				LOGGER.info(resultSet.getString("envioIdentificacao"));
+			}
+		} catch (Exception e) {
+			LOGGER.error(e.getMessage());
+		}
+		
+		return output.toByteArray();
+	}																
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+public byte[]  gerarRelatorioExcelRespostas() {
+		Context context;
+		try {
+			context = new InitialContext();
+			DataSource dataSource = (DataSource) context.lookup(JNDI_QUESTIONARIO);
+			Connection connection = dataSource.getConnection();
+		// FIXME [REDMINE-18040] {UPDATE} -- "Montar Subquery de Respostas"
+		StringBuilder stringBuilderResposta = new StringBuilder("SELECT ")
+			.append("p.ID_PREENCHIMENTO as idPreenchimento, ")
+			.append("per.id_tipo_pergunta AS tipo_pergunta_, ")
+			.append("(SELECT pg.DS_NUMERACAO FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) as numeroPergunta, ")
+			.append("(SELECT pg.NR_ORDEM FROM QUESTIONARIO.PERGUNTA pg WHERE pg.ID_PERGUNTA = r.ID_PERGUNTA) as ordemPergunta, ")
+			.append("CASE WHEN r.TX_SUBJETIVA is null ")
+			.append("THEN (SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA =	r.ID_ALTERNATIVA) ")
+			.append("ELSE r.TX_SUBJETIVA END as resposta, ")
+			.append("(SELECT ai.TX_ALTERNATIVA FROM QUESTIONARIO.ALTERNATIVA_IDIOMA ai WHERE ai.ID_ALTERNATIVA = r.NR_COMPLEMENTO_ALTERNATIVA) as complementoAlternativa, ")
+			.append("r.ID_PERGUNTA AS idPergunta, r.ID_RESPOSTA as idResposta, ")
+			.append("r.DT_RESPOSTA_INICIO AS dataRespostaInicio, r.DT_RESPOSTA_FIM AS dataRespostaFim, ")
+			.append("per.ID_TIPO_PERGUNTA AS idTipoPergunta ")
+			.append("FROM QUESTIONARIO.RESPOSTA r ")
+			.append("INNER JOIN QUESTIONARIO.PREENCHIMENTO p on p.ID_PREENCHIMENTO = r.ID_PREENCHIMENTO ")
+			.append("INNER JOIN QUESTIONARIO.PERGUNTA per on per.ID_PERGUNTA = r.ID_PERGUNTA ")
+			.append("WHERE p.ID_PREENCHIMENTO = ? ")
+			.append("ORDER BY ordemPergunta ");
+		try(PreparedStatement preparedStatementResposta = connection.prepareStatement(stringBuilderResposta.toString())) {
+			preparedStatementResposta.setLong(1, 816199L);
+			ResultSet resultSetResposta = preparedStatementResposta.executeQuery();
+			if (connection != null) {
+				System.out.println("Iniciando a recuperacao de Respostas...");
+				resultSetResposta = preparedStatementResposta.executeQuery();
+				int contador = 1;
+				while(resultSetResposta.next()) {
+					LOGGER.info(contador++);
+					LOGGER.info(resultSetResposta.getString("idPreenchimento"));
+					LOGGER.info(resultSetResposta.getInt("tipo_pergunta_"));
+					LOGGER.info(resultSetResposta.getString("numeroPergunta"));
+					LOGGER.info(resultSetResposta.getString("ordemPergunta"));
+					LOGGER.info(resultSetResposta.getString("resposta"));
+					LOGGER.info(resultSetResposta.getString("complementoAlternativa"));
+					LOGGER.info(resultSetResposta.getString("idResposta"));
+					LOGGER.info(resultSetResposta.getString("idTipoPergunta"));
+				}
+			}
+		}
+		} catch (NamingException e) {
+			LOGGER.error("Ocorreu na execução da query.");
+			LOGGER.error(e, e);
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		return new ByteArrayOutputStream().toByteArray(); 
+	}																																
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+Alisson,
+
+Temos um defeito referente a geração de Relatório de Respostas com no formato Excel do Questionário.
+
+Para valores de acima de 10.000 Respostas o sistema não gera.
+
+Mudamos a forma de processamento. Antes realizávamos as consultas de Preenchimentos, Perguntas, Publicação, Público Alvo nas suas respectivas classes de repository. 
+
+Da forma que fizemos agora retiramos todas as injeções, realizamos as consultas (nativas) na classe que gera o excel (sem alimentar arraylists), e inserimos os valores das Colunas e das Linhas diretamente com o resultSet.
+
+Tivemos até uma melhora de desempenho para alguns Relatórios "pequenos", mas para o atendimento do relatório do Questionário de 33.428 respondentes não está sendo possível, pois, ao final teremos um valor absurdo de Respostas (33428 (Público Alvo) × 37 (Perguntas) = 1.236.836 (Respostas possíveis)).
+
+As outras formas que estou pensando em fazer é:
+
+	1. Gerar o arquivo em segundo plano em disco e disponibilizar o arquivo em uma tela para esse fim
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+
+# DE 13/01/2020 Á 17/01/2020
+
+	-> [FINALIZADO] Criar branch referete a Sprint 18
+	-> [FINALIZADO] Ajustar NORBER
+	-> [AGUARDANDO] Ajustar JIRA
+	-> [AGUARDANDO] Testar no ambiente de Homologação as implementações "commitadas"
+	-> [CANCELADO] Realizar análise do REDMINE-XXXXX (Alternativa do Tipo Select)
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18264
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18265
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18266
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18045
+	-> [AGUARDANDO] Comentar histórico do REDMINE-18197
+	-> [AGUARDANDO] Realizar análise do REDMINE-17816
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18040 (Erro de exportação de arquivo excel)
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-18268 (Erro no envio de notificação de exclusão da publicação)
+	-> [AGUARDANDO] Implementar correção do defeito relatado no REDMINE-17817 (Divergência de valores entre a Fonte de Dados e o Público Alvo)
+	
+	# Plano de Ação
+	
+		-> [REDMINE-18040] Erro de exportação de arquivo excel
+			
+			- Limitar a entrada de perguntas do tipo "Texto" de acordo com o valor Mínimo e Máximo definido no cadastro
+			- Encaminhar arquivo excel por e-mail apos a finalização do processamento assíncrono
+			- Não alimentar lista de Preenchimentos, mas carregar os dados em tempo de processamento
+			
+				Verificar "AsyncResponse" (responsável por abrir thread por requisição por usuários no servidor)
+				Verificar o uso da especificação do Java EE, a saber, o "JMS" (configurar o JMS)
+				
+					-> Topics - Funciona como Grupos do whastapp. Todos recebem a mesma coisa
+					-> Queue - Funciona como conversa privada do whastapp. Recebem mensagens diferentes
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# PLFIND
+
+	http://localhost:8180/PLFIND-1.0.0.0-SNAPSHOT/dysprosium/module/funcionalidade-manter-despesa/pagina-manter-despesa.html
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# CHAMADO CATI
+
+[Questionários] Dump dos dados de Produção para o ambiente de Homologação
+
+Prezados,
+
+Solicitamos a realização do dump dos dados de Produção para o ambiente de Homologação referente ao banco de dados ORACLE, no schema QUESTIONARIO.
+
+Saudações,
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# Validar a Query
+
+public List<ThesaurusConcept> getConceptsWoNotes(String idThesaurus, int startIndex, int limit) {
+ Query query = getCurrentSession().createSQLQuery("select c.* "
+     + "from thesaurus_concept c  "
+     + "left join note n on c.identifier = n.conceptid  "
+     + "where c.thesaurusid=:pthesaurusid"
+     + " and n.identifier is null").addEntity(ThesaurusConcept.class);
+ query.setParameter("pthesaurusid", idThesaurus);
+ query.setFirstResult(startIndex);
+ query.setFetchSize(limit);
+ query.setMaxResults(limit);
+ return (List<ThesaurusConcept>) query.list();
+}
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# /home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos/questionario-capes
+
+#configura��o do provedor de servicos����
+
+provedorServico=questionario-capes.capes.gov.br
+acsUrl=http://localhost:8080/questionario/acs
+
+urlAutenticacao=http://des.capes.gov.br/sso/sso
+urlLogout=http://des.capes.gov.br/sso/slo
+
+arquivoCertificadoIDP=/home/indra/Desenvolvimento/Thalium/thalium_tool/thalium_tool_server/thalium_tool_server_jboss/arquivos/questionario-capes/seguranca.crt
+classeAutorizadora=br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca
+
+idp.oauth.url=http://des.capes.gov.br/sso/oauth
+
+# IP da maquina responsavel por executar um determinado Job
+ip.contexto.execution.job=172.19.170.134
+
+# HOMOLOGACAO - /home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos/questionario-capes
+
+#configuração do provedor de servicos    
+
+provedorServico=questionario-capes.capes.gov.br
+acsUrl=http://localhost:8080/questionario/acs
+
+urlAutenticacao=http://hom.capes.gov.br/sso/sso
+urlLogout=http://hom.capes.gov.br/sso/slo
+
+arquivoCertificadoIDP=/home/indra/Desenvolvimento/Thalium/thalium_tool/thalium_tool_server/thalium_tool_server_jboss/arquivos/questionario-capes/seguranca.crt
+classeAutorizadora=br.gov.capes.questionario.infraestrutura.seguranca.AutorizadorSeguranca
+
+idp.oauth.url=http://des.capes.gov.br/sso/oauth
+
+# IP da maquina responsavel por executar um determinado Job
+ip.contexto.execution.job=172.19.170.134
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# 14/01/2020
+
+	-> PLFIND
+
+		-> Tela de Cadastro de Despesas
+
+			- Implementar autocomplete para o campo "Favorecido"
+			- Implementar modal de cadastro de "Favorecido" na tela de Despesa Variável
+			- Implementar máscara para o campo Data da Despesa
+			- Implementar validação no campo Data da Despesa (não permitir data maior que a data atual)
+			- Implementar o cadastro de múltiplos "Produtos e Serviços" (persistir na tabela TABLE_PRODUTO_SERVICO)
+			- Implementar o cadastro de múltiplas "Formas de Pagamentos" (persistir na tabela TABLE_FORMA_PAGAMENTO)
+			- Corrigir defeito do campo "Quantidade de Itens" com o valor inicial igual a "1"
+			- Implementar modal de cadastro de "Fonte de Pagamento" na tela de Despesa Variável
+			- Implementar modal de cadastro de "Canal de Pagamento" na tela de Despesa Variável
+			- Implementar modal de cadastro de "Responsável pelo Pagamento" na tela de Despesa Variável
+		
+	-> QUESTIONARIOS
+	
+		- Descobrir como aumentar o tempo de processamento (tela carregando) do Relatório
+		- Implementar ajustes nas querys para aumentar a velocidade de recuperação
+		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-																																		
+# DESPESA
+
+
+Rota:
+
+Asa Norte -> Taguatinga Norte
+Taguatinga Centro -> Taguatinga Sul
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
