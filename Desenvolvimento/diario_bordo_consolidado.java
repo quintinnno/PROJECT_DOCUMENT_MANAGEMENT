@@ -51674,22 +51674,103 @@ Erros reproduzios em homologação com Apache jMeter:
 	- 204 - No content	
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# Apache JMeter
-
-	- 
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
 Alteramos os logs para facilitar a leitura com o a nomeclatura "server<IP_MAQUINA>.log"
 
 Verificamos que os ambientes estavam com o arquivo standalone.xml da maquina com o IP XXX esta diferente da maquina do IP YYY
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+public Long recuperarQuantidadeRespostasPossiveis(Long idPublicacao) {
+		StringBuilder stringBuilder = new StringBuilder("SELECT COUNT(resposta_.id) ")
+			.append("FROM Resposta resposta_ ")
+			.append("JOIN resposta_.preenchimento preenchimento_ ")
+			.append("WHERE preenchimento_.publicacao.id = :id_publicacao_parameter_ ");
+		TypedQuery<Long> typedQuery = entityManager.createQuery(stringBuilder.toString(), Long.class);
+			typedQuery.setParameter("id_publicacao_parameter_", idPublicacao);
+		return (long) typedQuery.getMaxResults();
+	}
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-XXXXX] {NEW} -- ""
+	public long recuperarQuantidadeRespostasPossiveis(Long idQuestionario, Long idPublicoAlvo) {
+		StringBuilder stringBuilder = new StringBuilder("SELECT (quantidade_perguntas_ * quantidade_publico_alvo_) AS quantidade_respostas_possiveis_ ")
+			.append("FROM (SELECT ")
+			.append("(SELECT COUNT(*) FROM QUESTIONARIO.PERGUNTA PERGUNTA_ ")
+			.append("JOIN QUESTIONARIO.TIPO_PERGUNTA TIPO_PERGUNTA_ ON TIPO_PERGUNTA_.ID_TIPO_PERGUNTA = PERGUNTA_.ID_TIPO_PERGUNTA ")
+			.append("WHERE PERGUNTA_.ID_QUESTIONARIO = :id_questionario_parameter_ ")
+			.append("AND TIPO_PERGUNTA_.DS_TIPO_PERGUNTA != 'INFORMACAO' ")
+			.append("AND TIPO_PERGUNTA_.DS_TIPO_PERGUNTA != 'ROTULO') AS QUANTIDADE_PERGUNTAS_, ")
+			.append("(SELECT COUNT(*) FROM QUESTIONARIO.PUBLICO PUBLICO_ WHERE PUBLICO_.ID_PUBLICO_ALVO = :id_publico_alvo_parameter_) AS quantidade_publico_alvo_ ")
+			.append("FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ WHERE QUESTIONARIO_.ID_QUESTIONARIO = :id_questionario_parameter_ );");
+		SQLQuery sqlQuery = session.createSQLQuery(stringBuilder.toString()).addScalar("quantidade_respostas_possiveis_", StandardBasicTypes.LONG);
+			sqlQuery.setParameter("id_questionario_parameter_", idQuestionario);
+			sqlQuery.setParameter("id_publico_alvo_parameter_", idPublicoAlvo);
+			long quantidadePerguntas = (long) sqlQuery.uniqueResult();
+		return quantidadePerguntas;
+	}
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Diagrama de Sequencia
+
+	-> Busca determinar a sequencia de eventos que devem ocorrer em determinada execução
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+REDMINE-XXXXX
+
+	- Salvar relatório com o nome do Questionário
+	- Na tela de consulta de Questionário alterar o select comum para o componente de select de Pesquisa
+	- Implementar fluxo de exceção caso o actor tente realizar o download de um relatório ainda não processado
+	- Verificar limite máximo em Megabyte para download do array de Bytes
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# REDMINE-18040
+
+	Geramos a versão 1.9.24C-SNAPSHOT com as implementações referentes ao REDMINE-18040
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# LOTERIA
+
+	APOSTA					MEGASENA				
+	DATA SORTEIO			
+	CONCURSO				2231
+	NUMEROS APOSTADOS		02 21 35 40 51 58
+	NUMEROS SORTEADOS		04 13 25 40 53 57
+	NUMEROS ACERTADOS		40 
+	TAXA DE ACERTO			01/06
+	
+	APOSTA					LOTOFACIL
+	DATA SORTEIO			
+	CONCURSO				1925
+	NUMEROS APOSTADOS		03 04 07 08 09 10 12 14 15 16 17 18 20 24 25
+	NUMEROS SORTEADOS		01 02 03 04 05 06 07 09	13 14 16 18 20 21 23
+	NUMEROS ACERTADOS		03 04 07 09 14 16 18 20 
+	TAXA DE ACERTO			08/15
+	
+	APOSTA					QUINA
+	DATA SORTEIO			04/02/2020
+	CONCURSO				5188
+	NUMEROS APOSTADOS		11 16 23 69 77
+	NUMEROS SORTEADOS		12 23 31 35 63
+	NUMEROS ACERTADOS		23 
+	TAXA DE ACERTO			01/05
+	
+	APOSTA					MEGASENA			
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+-> Testar configurações em Homologação
+-> Verificar com o Wilton sobre o cadastro de pessoas
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
