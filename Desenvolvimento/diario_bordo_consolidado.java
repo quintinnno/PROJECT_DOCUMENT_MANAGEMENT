@@ -51753,6 +51753,86 @@ REDMINE-XXXXX
 	TAXA DE ACERTO			01/05
 	
 	APOSTA					MEGASENA			
+	DATA SORTEIO			08/02/2020
+	CONCURSO				2232
+	NUMEROS APOSTADOS		02 21 35 40 51 58
+	NUMEROS SORTEADOS		07 08 31 34 38 47
+	NUMEROS ACERTADOS		--- 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				1926
+	NUMEROS APOSTADOS		03 04 07 08 09 10 12 14 15 16 17 18 20 24 25
+	NUMEROS SORTEADOS		01 04 05 06 09 10 13 14 15 16 17 18 21 23 24
+	NUMEROS ACERTADOS		04 09 10 14 15 16 17 18 24 
+	TAXA DE ACERTO			09/06
+	
+	APOSTA					MEGASENA			
+	DATA SORTEIO			08/02/2020
+	CONCURSO				2232
+	NUMEROS APOSTADOS		YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					MEGASENA			
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					MEGASENA			
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					MEGASENA			
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					LOTOFACIL		
+	DATA SORTEIO			DD/MM/AAAA
+	CONCURSO				22xx
+	NUMEROS APOSTADOS		YY YY YY YY YY YY YY YY YY YY YY YY
+	NUMEROS SORTEADOS		XX XX XX XX XX XX XX XX XX XX XX XX
+	NUMEROS ACERTADOS		TT 
+	TAXA DE ACERTO			00/06
+	
+	APOSTA					MEGASENA			
 	DATA SORTEIO			DD/MM/AAAA
 	CONCURSO				22xx
 	NUMEROS APOSTADOS		YY YY YY YY YY YY
@@ -51776,9 +51856,37 @@ REDMINE-XXXXX
 	-> 8Kintino@!
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+h3. Prezados,
+
+h3. Referente ao _script "CONSULTAS_QUESTIONARIO_CORRECAO_4.sql"_, solicitamos, caso possível, "refatorar" um novo _script_ com as pessoas que não foram contempladas nas _querys_ geradas anteriormente.
+
+h3. Nosso objetivo é criar um novo *Público Alvo* e realizar uma nova +publicação+ para esse essas pessoas, especificamente.
+
+h3. Saudações,
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# 07/02/2020
+
+	# TAREDAS
+	
+		- [??] Finalizar massa de teste do REDMINE-18040
+		- [??] Finalizar REDMINE-18197 (criar subtarefa)
+		- [??] Acompanhar o GESTAO-20200206000026 (Henrique)
+		- [??] Alterar versão do Cadastro de Pessoas para a versão 1.5.7
+		- [??] Configurar JMETER para tentar simular os erros de Produção (403 e 204)
+		- [OK] Encaminhar os relatórios de Enviados para área gestora (Bruna)
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# REDMINE-18045
+
+	- Corrigir erro: "Malformed input or input contains unmappable characters: /CAPES/Arquivos/AplWeb/Desenv/Java/questionario-capes/RelatorioResposta/667069/Question?rio 10/02/2020 (QC) (Interno) (Identificador Obrigat?rio) v001.xls"
+	
+Questionário 10/02/2020 (QC) (Interno) (Identificador Obrigatório) v001
+Questionario_10/02/2020_(QC)_(Interno)_(Identificador Obrigatorio)_v001.xls
+Questionario_10/02/2020_(QC)_(Interno)_(Identificador Obrigatorio)_v001.xls
+	
+http://www.java2s.com/Tutorial/Java/0220__I18N/UseNormalizertoRemoveAccents.htm
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Ao recarregar a configuração o APACHE o Mod Cluster perdeu a aplicacao perdeu a comunicacao. Ver log: 18:34 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
