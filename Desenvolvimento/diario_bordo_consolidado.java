@@ -55589,18 +55589,136 @@ Jose,
 Na sprint 21 precisa incluir também o esforço estimado das tarefas, e definirmos o que compreenderá cada release, visando o teste rápido e versão em produção.
 E a tarefa prioritaria de hoje é  https://redmine.capes.gov.br/issues/19958.
 A versão 1.9.25, com previsão de liberação para teste da Montreal em 26/02/2020, compreenderá:
-   https://redmine.capes.gov.br/issues/18040   e
-   https://redmine.capes.gov.br/issues/17816   
+   https://redmine.capes.gov.br/issues/18040
+   https://redmine.capes.gov.br/issues/17816
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+CATI-2020012410001235 - PUBLICACAO DE QUESTIONARIOS
+CATI-2020021110001491 - PRORROGAÇAO DO PRAZO DE RESPOSTAS + PUBLICACAO DE RESIDENTES
+
+http://www.oraclehome.com.br/2013/06/17/encontrando-registros-duplicados/
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# 21/02/2020
+
+	-> [CONCLUÍDO] Estimar esforço em todos os REDMINES da SPRINT 21
+	-> [CONCLUÍDO] Finalizar REDMINE-19958 (cliclo I - Identificar registros duplicados).
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# MEU VIVO
+
+Senha: 997375
+
+210220204243836 - PROTOCOLO VIVO (ligação "caiu")
+210220204253095 - PROTOCOLO VIVO (atendido por: )
+
+R$ 684,35 (3x)
+
+12/2019 - 
+01/2020 - 
+02/2020 - 
+
+3 dias para 
+
+61 9 9599-5532
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+-- 2050
+SELECT COUNT(*) FROM (
+  SELECT 
+    PREENCHIMENTO_.ID_PREENCHIMENTO,
+    PREENCHIMENTO_.ID_PESSOA,
+    PUBLICACAO_.ID_PUBLICACAO,
+    PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO,
+    PESSOA_.NM_PESSOA,
+    IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO,
+    CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+  FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+  JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+  JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+  JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA 
+  JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA 
+  WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+  AND PUBLICACAO_.ID_PUBLICACAO IN(117, 118)
+  AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+  AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+  AND PREENCHIMENTO_.ID_PESSOA IN(XXXXXX)
+  ORDER BY PESSOA_.NM_PESSOA ASC
+);
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 1490368 AND ID_QUESTIONARIO = 96;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_PESSOA = 1490368 AND ID_NOTIFICACAO IN(110,155);
+
+SELECT 
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA, 
+	COUNT(*) AS TOTAL_ 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+-- WHERE ID_PUBLICACAO = 117 
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+GROUP BY PREENCHIMENTO_.ID_PESSOA, PESSOA_.NM_PESSOA 
+ORDER BY TOTAL_ DESC;
+
+/*
+SELECT 
+    PREENCHIMENTO_.ID_PREENCHIMENTO,
+    PREENCHIMENTO_.ID_PESSOA,
+    PUBLICACAO_.ID_PUBLICACAO,
+    PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO,
+    PESSOA_.NM_PESSOA,
+    IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO,
+    CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO;
+*/
+
+SELECT * FROM QUESTIONARIO.PUBLICACAO WHERE ROWNUM <= 10;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ROWNUM <= 10;
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ROWNUM <= 10;
+SELECT * FROM QUESTIONARIO.DETALHE_PUBLICACAO WHERE ROWNUM <= 10;
+
+SELECT *
+FROM QUESTIONARIO.DETALHE_PUBLICACAO DETALHE_PUBLICACAO_
+JOIN QUESTIONARIO.PUBLICO_ALVO PUBLICO_ALVO_ ON DETALHE_PUBLICACAO_.
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+
+  SELECT COUNT(*) AS TOTAL_
+  -- SELECT *
+  FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+  JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+  JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+  JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PREENCHIMENTO_.ID_PESSOA 
+  JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PREENCHIMENTO_.ID_PESSOA 
+  WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+  AND PUBLICACAO_.ID_PUBLICACAO IN(117, 118)
+  AND PREENCHIMENTO_.ID_PESSOA IN(1490368)
+  -- ORDER BY PESSOA_.NM_PESSOA ASC;
+  ORDER BY PREENCHIMENTO_.ID_PREENCHIMENTO ASC;
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+RAMAL - 6537 (Lanche)
+6138 - RAMAL José Augusto
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# 20191227000033 [QUESTIONARIOS] - REDMINE 17815 FINALIZADO 34d 22h 31/01/2020 10:19 [DOCUMENTACAO] [REDMINE-XXXXX]
+  20191227000043 [QUESTIONARIOS] - REDMINE 18192 FINALIZADO 34d 22h 31/01/2020 10:23 [DOCUMENTACAO] [REDMINE-18192]  
+  20191227000038 [QUESTIONARIOS] - REDMINE 18266 FINALIZADO 34d 22h 31/01/2020 10:20 [DOCUMENTACAO] [REDMINE-18266]  
+  20191227000036 [QUESTIONARIOS] - REDMINE 18264 FINALIZADO 34d 22h 31/01/2020 10:19 [DOCUMENTACAO] [REDMINE-18264]  
+  20191227000037 [QUESTIONARIOS] - REDMINE 18265 FINALIZADO 34d 22h 31/01/2020 10:18 [DOCUMENTACAO] [REDMINE-18265]  
+  20191227000041 [QUESTIONARIOS] - REDMINE 18189 FINALIZADO 34d 22h 31/01/2020 10:15 [DOCUMENTACAO] [REDMINE-18189]  
+  20191227000045 [QUESTIONARIOS] - REDMINE 18191 FINALIZADO 34d 22h 31/01/2020 10:14 [DOCUMENTACAO] [REDMINE-18191]  
+  20191227000042 [QUESTIONARIOS] - REDMINE 18190 FINALIZADO 34d 22h 31/01/2020 10:12 [DOCUMENTACAO] [REDMINE-18190]  
+  20191227000046 [QUESTIONARIOS] - REDMINE 18193 FINALIZADO 34d 21h 31/01/2020 09:49 [DOCUMENTACAO] [REDMINE-18193]  
+  20191227000047 [QUESTIONARIOS] - REDMINE 18194 FINALIZADO 34d 21h 31/01/2020 09:47 [DOCUMENTACAO] [REDMINE-18194]
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+cd /home/user/Downloads
+chmod +x sqldeveloper-19.2.1.247.2212.noarch.rpm
+./sqldeveloper-19.2.1.247.2212.noarch.rpm
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+rpm -i sqldeveloper-19.2.1.247.2212.noarch.rpm
+rpm -U sqldeveloper-19.2.1.247.2212.noarch.rpm
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+sudo alien --scripts sqldeveloper-19.2.1.247.2212.noarch.rpm
+sudo dpkg -i sqldeveloper_19.2.1-248.2212_all.deb
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Filtro de consulta de chamados a nos quais os script devem ser ajustados serem ajustados
+
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=7&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
