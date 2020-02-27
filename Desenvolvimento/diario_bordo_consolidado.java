@@ -19348,6 +19348,7 @@ Realizamos o _merge_ dessa implementação para a _trunk_ (_build_ *1.9.0*).
 [REDMINE-12177] [QUESTIONÁRIO CAPES] - Manter Resposta ajuste na ação do botão "Limpar"
 [REDMINE-11401] [QUESTIONÁRIO CAPES] - BACKEND: Tratamento QC_UC007_Manter_Resposta
 [REDMINE-11396] [QUESTIONÁRIO CAPES] - BACKEND: Tratamento QC_UC008_Gerar_Relatorios
+[REDMINE-11396] [QUESTIONÁRIO CAPES] - BACKEND: Tratamento QC_UC008_Gerar_Relatorios
 [MERGE] [REDMINE-12177] [QUESTIONARIO-CAPES] - Manter Resposta ajuste na ação do botão "Limpar"
 - Realizado merge da branch referente a SPRINT 008 para a TRUNK
 
@@ -55720,9 +55721,61 @@ sudo dpkg -i sqldeveloper_19.2.1-248.2212_all.deb
 
 https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=7&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# 26/02/2020 (tarefas)
+
+	- Gerar release 1.9.25
+	
+		- REDMINE-18040
+		- REDMINE-17816
+		
+	- Evolução da SPRINT 21 (de 17/02 até 04/03)
+	
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		- REDMINE-XXXXX
+		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+																																		
+# TAREFAS
+
+	- Criar carteirinha do SESC
+	- Criar contrato do Guympass
+	- Procurar assistência social para aposentadoria da Renata e Thereza
+	- Procurar advogado para aposentadoria da Renata e Thereza
+	- Procurar meios de construção do lote de Santa Maria
+	- Pagar conta Vivo (Santa Maria) de R$ 700,00 e solicitar a suspensão do contrato por 3 meses
+	- Contratar pedreiro para arrumar Pia Externa, Pia Interna, Banheiro e Telhados da Thereza
+	- Procurar lugares para adoção de 12 gatos de Thereza
+	- Procurar Renda Extra
+	- Estudar para certificação CPA 10
+	- Estudar para certificação Java 8
+	- Realizar matrícula na UNIP (EAD)
+	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+	/CAPES/Arquivos/AplWeb/Desenv/Java/questionario-capes/relatorio-resposta
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# COMMIT
+
+[REDMINE-17816] Ajuste de Cadastro de Pessoa
+- Atualização da versão de '1.0.141' para '1.5.0'
+- Ajustes na chamada do serviço 'recuperarPessoaFisicaConsultandoReceita()' acrescentando a sigla da aplicação e o identificador do usuário logado
+- Impactou nos fluxos de Público Alvo e Unidade Organizacional
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
