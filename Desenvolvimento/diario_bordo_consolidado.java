@@ -55225,6 +55225,208 @@ ORDER BY QUESTIONARIO_.ID_QUESTIONARIO DESC;
 */
 
 }
+
+SELECT 
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA, 
+	COUNT(*) AS TOTAL_ 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+-- WHERE ID_PUBLICACAO = 117 
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+GROUP BY PREENCHIMENTO_.ID_PESSOA, PESSOA_.NM_PESSOA 
+ORDER BY TOTAL_ DESC;
+
+-- 4 = 9
+-- 3 = 2
+-- 2 = 10.731
+SELECT 
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA, 
+	COUNT(*) AS TOTAL_ 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+GROUP BY PREENCHIMENTO_.ID_PESSOA, PESSOA_.NM_PESSOA 
+ORDER BY TOTAL_ DESC;
+
+-- XX.XXX
+SELECT 
+	PREENCHIMENTO_.ID_PREENCHIMENTO,
+	PREENCHIMENTO_.ID_PESSOA,
+	PUBLICACAO_.ID_PUBLICACAO,
+	PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO,
+	PESSOA_.NM_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+-- SELECT COUNT(*)
+-- SELECT * 
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+JOIN QUESTIONARIO.NOTIFICACAO NOTIFICACAO_ ON NOTIFICACAO_.NR_VINCULO_NOTIFICACAO = PUBLICACAO_.ID_PUBLICACAO
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+WHERE PREENCHIMENTO_.ID_PESSOA IN(3163861	,3165296	,3175616	,3175714	,3179522	,3179530	,3179577	,3168272	,3183018	,3180344	,3164126	,3164134	,3163658	,3164260	,3179638	,3179676	,3161915	,3181810	,3168830	,3164795	,3164805	,3164807	,3176475	,3176479	,2711562	,2711691	,2711912	,2713664	,2705552	,2701731	,2661927	,2713437	,2708109	,2713191	,2713243	,2707799	,2713350	,2713290	,2712931	,2712979	,2712987	,2713482	,2708290	,2708301	,2713125	,2734958	,2734532	,2734551	,2710406	,2768257	,2757376	,2757162	,2723320	,2768991	,2769027	,2768782	,2768895	,2787738	,2836870	,2791478	,2832169	,2818056	,2832102	,2791804	,2795538	,2812966	,2792579	,2788484	,2788491	,2790350	,2852132	,2789004	,2817907	,2837326	,2821301	,2793400	,2820922	,2797235	,2797243	,2816865	,2799888	,2965077	,2954634	,2964521	,2896417	,2887602	,2976492	,2837287	,2631922	,2771114	,2632997	,2631884	,2706233	,2706240	,2732830	,2756075	,2689494	,2548991	,2687112	,2689619	,2676903	,2664344	,2667265	,2632161	,2685356	,2667881	,2690200	,2690257	,2689392	,2689407	,2684748	,2678927	,2697336	,2686072	,2675512	,2665109	,2681749	,2709771	,2677381	,2709986	,2677100	,2710519	,2632671	,2635680	,2711720	,2668816	,2683921	,2677779	,2677816	,2713009	,2678261	,2678280	,2712871	,2712877	,2673700	,2678509	,2687167	,2687208	,2634124	,2681961	,2681964	,2633687	,2632573	,2672327	,2632206	,2634481	,2634744	,2729035	,2723746	,2711338	,2670137	,2711200	,2513401	,2441952	,2568451	,2495271	,2388918	,2628884	,2565761	,2535975	,2515123	,2557937	,2557956	,2499412	,2384296	,2384381	,2559494	,2384437	,2384441	,2384475	,2527190	,2628558	,2629046	,2382915	,2489941	,2529863	,2529895	,2528314	,2399026	,2391440	,2490336	,2514924	,2483605	,2523454	,2379409	,2483392	,2507231	,2506356	,2506360	,2506364	,2566630	,2517615	,2488294	,2487335	,2487337	,2506459	,2506460	,2485133	,2625192	,2617826	,2498433	,2500190	,2486496	,2391783	,2567984	,2527295	,2513754	,2635504	,2729181	,2734860	,2735105	,2734815	,2635790	,2756228	,2771244	,2631738	,2485973	,2523015	,2498769	,2498844	,2498873	,2505839	,2516339	,2538764	,2495669	,2487648	,2526866	,2488191	,2397380	,2484018	,2511583	,2527491	,2568606	,2514705	,2489959	,2489990	,2539638	,2536760	,2516440	,2516473	,2549985	,2567021	,2550784	,2550788	,2567164	,2550842	,2550858	,2528899	,2528935	,2392165	,2548447	,2556763	,2556765	,2457799	,2551173	,2551379	,2551419	,2384004	,2550952	,2525855	,2551099	,2521225	,2526122	,2487539	,2517705	,2625222	,2488099	,2625113	,2618106	,2564466	,2538796	,2568467	,2568513	,2500687	,2577936	,2569346	,2526212	,2496438	,2489390	,2559779	,2019962	,2024847	,2075098	,2172487	,2172495	,2182270	,2185913	,2185956	,2184303	,2186489	,2147854	,2173534	,2173022	,2173163	,2173300	,2181955	,2146158	,2129156	,2145504	,2174717	,2183511	,2176325	,2176353	,2186287	,2184662	,2176672	,2166431	,2146219	,2173609	,2147236	,2166631	,2374548	,2375431	,2366418	,2376045	,2358905	,2359778	,2496961	,2559252	,2559260	,2527874	,2527912	,2527996	,2514077	,2516943	,2513929	,2629126	,2485326	,2527202	,2515228	,2515232	,2627711	,2627727	,2486765	,2512046	,2559908	,2516132	,2517299	,2540456	,2383113	,2383119	,2541362	,2541386	,2541512	,583550	,606926	,614036	,663521	,669719	,707155	,712723	,741240	,742671	,796461	,808233	,854907	,878972	,932948	,933343	,1104878	,1105094	,1131689	,1160290	,1161458	,1161822	,1168168	,1171391	,1174540	,1177774	,1182964	,1186716	,1195487	,1199553	,1201224	,1201227	,1210219	,1337336	,1338524	,1340895	,1341328	,1342755	,1350062	,1354804	,1354983	,1371490	,1394199	,1402565	,1402829	,1414169	,1415256	,1418006	,1418281	,1432810	,1457808	,1460117	,1495554	,1523931	,1557727	,1587686	,1601228	,1640833	,1735926	,1762727	,1836326	,1871708	,1926398	,1931667	,1992131	,3152746	,3151318	,3144130	,3153981	,3161654	,3417278	,2935084	,3168898	,3417443	,3163372	,3156646	,2689694	,3144269	,3145774	,3157381	,3157384	,3157386	,3161415	,3161424	,3161267	,3161308	,3160479	,2798630	,3164614	,3164639	,3164659	,3162567	,3162196	,3162208	,3111024	,2535395	,3190355	,3190360	,3149367	,3149383	,3151580	,3157920	,2796460	,3164849	,2838242	,3166684	,3110713	,3154786	,3154835	,2817984	,3167518	,3092270	,3156785	,3142289	,3148787	,3148827	,3172756	,2559094	,3411666	,3163814	,2797206	,3350278	,3352768	,3352778	,3352794	,3200496	,182863	,271543	,540734	,3144828	,2808023	,3141587	,3149029	,3038210	,2771066	,3160584	,3400022	,3400070	,3162461	,3156341	,2751937	,2861005	,2756254	,3168237	,3165301	,3422893	,3150744	,3418084	,2791404	,3153435	,2797308	,3102233	,3353511	,3164978	,2971455	,3160829	,3149278	,2769053	,2733797	,3401806	,2550683	,3162690	,3167402	,3155404	,3160236	,3168079	,2795405	,2885650	,3161546	,2770983	,3164395	,3406423	,3208405	,2527319	,2541635	,3151924	,2767370	,2769564	,2515583	,3169163	,2797085	,3262065	,3406672	,2815405	,2821254	,3160691	,3160697	,2753112	,2795489	,2759159	,2820833	,3163919	,3152714	,3373007	,3314320	,3370846	,3315379	,3373557	,3166831	,3165538	,3157617	,2769435	,2769445	,3148354	,2830688	,3159354	,3159355	,3396327	,3164044	,3164050	,3148601	,2933392	,3162994	,3161168	,3161172	,2753846	,2753848	,2797430	,3152823	,3152855	,3149717	,3149742	,3149746	,2786703	,3148674	,3157022	,2750283	,3150061	,3156428	,3106608	,3153877	,3153901	,2558605	,2766167	,3150165	,2893778	,2634067	,3158047	,2873382	,3162894	,2772692	,3146474	,3213001	,3165791	,3168776	,2485865	,2485876	,2485878	,3153641	,3126776	,3126784	,3168673	,2734289	,3153328	,3156924	,3150395	,3150523	,3209970	,3214454	,3214513	,3216363	,3199283	,3199295	,3199347	,3199368	,3206954	,3212311	,3222929	,3222960	,3198042	,3204646	,3311910	,3311915	,3311918	,3353455	,3309790	,3351101	,3304379	,3341773	,3322724	,3322752	,3348905	,3348951	,3312517	,3312582	,3346591	,3351379	,3323512	,3197935	,3261528	,3381394	,3383853	,3147868	,3379458	,3284022	,3386163	,3375734	,3383255	,3358831	,3354233	,3193484	,3354966	,3332584	,3307707	,3300172	,3329469	,3306835	,3263567	,3308660	,3298616	,3356599	,3325271	,3373946	,3373704	,3338722	,3311323	,3309061	,3318406	,3252817	,3252829	,3324380	,3202846	,3202859	,3194277	,3203726	,3203780	,3212166	,3212181	,3195696	,3195710	,3195712	,3200815	,3219187	,3218624	,3222778	,3207743	,3207790	,3207823	,3204216	,3204225	,3194969	,3215081	,3215503	,3205840	,3218368	,3218392	,3219580	,3216823	,3213601	,3213695	,3215423	,3198140	,3201613	,3201663	,3218554	,3197079	,3202471	,3209406	,3209459	,3209470	,3214179	,3217200	,3198541	,3198584	,3198628	,3220360	,3203986	,3203519	,3214411	,3216053	,3216140	,3217449	,3206523	,3218836	,3218892	,3220502	,3220578	,3221526	,3217777	,3217795	,3204797	,3197795	,3203847	,3209954	,3209956	,3196977	,3212365	,3203374	,3198859	,3198861	,3213778	,3194108	,3207873	,3203205	,3203214	,3193453	,3206141	,3207591	,3164764	,3205617	,3186421	,3211607	,3156218	,3156223	,3156226	,3194350	,3208491	,3208519	,3200327	,3209145	,3209189	,3206437	,3209475	,3209571	,3212852	,3201182	,3201763	,3208671	,3208672	,3208709	,3194508	,3198882	,3198934	,3198938	,3166272	,3199827	,3202842	,3197489	,3205156	,3205189	,3210278	,3222580	,3207685	,3202628	,3202712	,3211912	,3211915	,3211959	,3213918	,3214919	,3200627	,3200629	,3200722	,3205340	,3205398	,3210336	,3203126	,3222646	,3156102	,3255296	,3195292	,3168334	,3168349	,3271493	,2795646	,3252877	,3206311	,3206344	,3214708	,3214726	,3214651	,3201894	,3219181	,3220791	,3217010	,3217071	,3208214	,3208258	,3208283	,3205974	,3205981	,3199797	,3208660	,3211146	,3212573	,3215991	,3219325	,3204060	,3210584	,3208951	,3210408	,3210436	,3210468	,3213214	,3216573	,3216611	,3208853	,3211421	,3210642	,3210648	,3210687	,3210745	,3214073	,3212123	,3212124	,3209041	,3196587	,3196623	,3222085	,3205236	,3205287	,3201248	,3201102	,3196871	,3196877	,3211088	,3207284	,3207390	,3203004	,3207424	,3207457	,3196953	,3196972	,3244085	,3244096	,3235137	,3235163	,3247694	,3232585	,3232683	,3235759	,3239362	,3230884	,3247761	,3233984	,3231607	,3231640	,3230098	,3232012	,3178790	,3178796	,3178822	,3244938	,3244956	,3244987	,3248618	,3238085	,3239075	,3239130	,3236564	,3236642	,3231989	,3248810	,3271737	,3270379	,3262675	,3279577	,3264768	,3272936	,3262235	,3259980	,3260014	,3254165	,3254211	,3264624	,3215887	,3256988	,3164155	,3164184	,3164192	,3252697	,3256427	,3255671	,3207023	,3207036	,3253846	,3258430	,3260555	,3270716	,3253551	,3253557	,3253626	,3270132	,3253684	,3195357	,3266054	,3272508	,3284008	,3296642	,3291671	,3284710	,2820997	,3193219	,3281410	,3282208	,3196010	,3283638	,3250454	,3281192	,3281195	,3251470	,3251250	,3190150	,3287332	,3158197	,3287474	,3283033	,3287240	,2970740	,3149624	,3158992	,3159005	,3194737	,3234425	,3236817	,3236860	,3236870	,3193315	,3223143	,3232907	,3232191	,3249315	,3223299	,3233178	,3229535	,3223732	,3223871	,3233295	,3229741	,3225099	,3195059	,3195135	,3236734	,3245886	,3155647	,3242990	,3234265	,3240024	,3241335	,3241933	,3195576	,3231110	,3235357	,3226645	,3233593	,3231827	,3243295	,3233021	,3225300	,3169651	,3227587	,3186134	,3185577	,3188975	,3186223	,3186234	,3186297	,3163475	,3163501	,3188130	,3188146	,3183637	,3183725	,3184746	,3190542	,3190569	,3191754	,3188569	,3190680	,3190712	,3191962	,3192003	,3189308	,3183525	,3183583	,3183587	)
+AND PREENCHIMENTO_.ID_QUESTIONARIO = 96
+AND NOTIFICACAO_.ID_TIPO_NOTIFICACAO = 7
+ORDER BY PESSOA_.NM_PESSOA ASC;
+
+SELECT * FROM QUESTIONARIO.PUBLICO WHERE ID_PUBLICO IN(338365, 338261, 371299, 371300);
+
+-- COM ERRO
+SELECT * 
+FROM QUESTIONARIO.NOTIFICACAO_PESSOA NOTIFICACAO_PESSOA_
+WHERE NOTIFICACAO_PESSOA_.ID_PESSOA = 1156625;
+
+SELECT ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, DT_INICIO, DT_FIM, DT_FINALIZACAO, ID_PUBLICACAO, ID_PUBLICO FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA IN(1156625);
+SELECT ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, DT_INICIO, DT_FIM, DT_FINALIZACAO, ID_PUBLICACAO, ID_PUBLICO FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PREENCHIMENTO IN(922338,922341);
+
+SELECT ID_PREENCHIMENTO, ID_QUESTIONARIO, ID_PESSOA, DT_INICIO, DT_FIM, DT_FINALIZACAO, ID_PUBLICACAO, ID_PUBLICO 
+FROM QUESTIONARIO.PREENCHIMENTO 
+WHERE ID_PREENCHIMENTO IN(1490368);
+
+SELECT * FROM QUESTIONARIO.TIPO_NOTIFICACAO ORDER BY ID_TIPO_NOTIFICACAO DESC;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE NR_VINCULO_NOTIFICACAO = 117 AND ID_TIPO_NOTIFICACAO = 7;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 110;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE NR_VINCULO_NOTIFICACAO = 118 AND ID_TIPO_NOTIFICACAO = 7;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 115;
+
+-- RECUPERAR STATUS DE NOTIFICACAO DE UMA DETERMINADA PUBLICACAO
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 110 AND ID_PESSOA = 1490368;
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_NOTIFICACAO = 115 AND ID_PESSOA = 1490368;
+
+-- RECUPERAR (2.050)
+SELECT 
+	PREENCHIMENTO_.ID_PREENCHIMENTO,
+	PREENCHIMENTO_.ID_PESSOA,
+	PUBLICACAO_.ID_PUBLICACAO,
+	PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO,
+	PESSOA_.NM_PESSOA,
+	IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA 
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA 
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+AND PUBLICACAO_.ID_PUBLICACAO IN(117, 118)
+AND IDENTIFICADOR_REGISTRADO_.ID_TIPO_IDENTIFICADOR = 6
+AND CORREIO_ELETRONICO_.IN_PRINCIPAL_FINALIDADE = 'S'
+-- AND PREENCHIMENTO_.ID_PESSOA IN()
+ORDER BY PESSOA_.NM_PESSOA ASC;
+
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO LIKE '%04831718912%';
+
+SELECT 
+	GRUPO_.ID_GRUPO, 
+	GRUPO_.DS_GRUPO, 
+	USUARIO_GRUPO_.ID_PESSOA_FISICA, 
+	USUARIO_GRUPO_.DH_ULTIMA_ALTERACAO, 
+	USUARIO_GRUPO_.DS_USUARIO_ULTIMA_ALTERACAO 
+FROM SEGURANCA.GRUPO GRUPO_
+JOIN SEGURANCA.USUARIO_GRUPO USUARIO_GRUPO_ ON USUARIO_GRUPO_.ID_GRUPO = GRUPO_.ID_GRUPO
+WHERE USUARIO_GRUPO_.ID_PESSOA_FISICA IN(150300);
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 150300;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 2753968;
+SELECT * FROM QUESTIONARIO.PUBLICO_ALVO  WHERE ID_PUBLICO_ALVO = 105;
+
+-- RECUPERAR TODOS OS PREENCHIMENTOS DUPLICADOS PARA O QUESTIONARIO 96 ENTRE AS PUBLICACOES 117 E 118
+SELECT 
+	PREENCHIMENTO_.ID_PREENCHIMENTO,
+	PREENCHIMENTO_.ID_PESSOA,
+	PREENCHIMENTO_.ID_PUBLICACAO,
+	PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO,
+	PESSOA_.NM_PESSOA
+-- SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+AND PREENCHIMENTO_.ID_PUBLICACAO IN(117, 118)
+AND PREENCHIMENTO_.ID_PESSOA IN()
+GROUP BY PREENCHIMENTO_.ID_PREENCHIMENTO, PREENCHIMENTO_.ID_PESSOA, PREENCHIMENTO_.ID_PUBLICACAO, PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO, PESSOA_.NM_PESSOA
+ORDER BY PESSOA_.NM_PESSOA ASC;
+
+SELECT 
+	PREENCHIMENTO_.ID_PESSOA,
+	PESSOA_.NM_PESSOA,
+	COUNT(*) AS TOTAL_
+-- SELECT *
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PREENCHIMENTO_.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = PREENCHIMENTO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+AND PREENCHIMENTO_.ID_PUBLICACAO IN(117, 118)
+-- AND PREENCHIMENTO_.ID_PESSOA IN(3182487)
+HAVING COUNT(1) = 2
+GROUP BY PREENCHIMENTO_.ID_PESSOA, PESSOA_.NM_PESSOA
+ORDER BY PESSOA_.NM_PESSOA ASC;
+
+SELECT (10741*2) FROM DUAL;
+
+SELECT 
+	PREENCHIMENTO.ID_PREENCHIMENTO, 
+	PREENCHIMENTO.ID_PESSOA, 
+	PREENCHIMENTO.ID_PUBLICACAO, 
+	PREENCHIMENTO.CS_STATUS_PREENCHIMENTO, 
+	PESSOA.NM_PESSOA,
+	IDENTIFICADOR_REGISTRADO.DS_IDENTIFICADOR_REGISTRADO,
+	CORREIO_ELETRONICO.DS_CORREIO_ELETRONICO
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO
+JOIN CORPORATIVO.PESSOA PESSOA ON PESSOA.ID_PESSOA = PREENCHIMENTO.ID_PESSOA
+JOIN QUESTIONARIO.PUBLICO PUBLICO ON PUBLICO.ID_PUBLICO = PREENCHIMENTO.ID_PUBLICO
+JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO ON CORREIO_ELETRONICO.ID_CORREIO_ELETRONICO = PUBLICO.ID_CORREIO_ELETRONICO
+JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO ON IDENTIFICADOR_REGISTRADO.ID_IDENTIFICADOR_REGISTRADO = PUBLICO.ID_IDENTIFICADOR_REGISTRADO
+WHERE PREENCHIMENTO.ID_PESSOA IN 
+(
+	SELECT PREENCHIMENTO_.ID_PESSOA
+	FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+	WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+	AND PREENCHIMENTO_.ID_PUBLICACAO IN(117, 118)
+	HAVING COUNT(1) = 2
+	GROUP BY PREENCHIMENTO_.ID_PESSOA
+)
+ORDER BY PESSOA.NM_PESSOA ASC;
+
+SELECT PREENCHIMENTO_.ID_PESSOA, COUNT(1) AS TOTAL_PREENCHIMENTO_PESSOA_
+FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 96
+AND PREENCHIMENTO_.ID_PUBLICACAO IN(117, 118)
+HAVING COUNT(1) > 1
+GROUP BY PREENCHIMENTO_.ID_PESSOA;
+
+
+-- RECUPERAR DADOS DOS RESPONDENTES COM STATUS 'ENVIADO' (Questionário Pibid - Edital 2018 - Bolsistas de Iniciação à Docência)
+SELECT COUNT(*) TOTAL_RESPOSTAS_ENVIADAS FROM (
+        SELECT IDENTIFICADOR_REGISTRADO_.DS_IDENTIFICADOR_REGISTRADO, PESSOA_.NM_PESSOA, CORREIO_ELETRONICO_.DS_CORREIO_ELETRONICO
+     	-- SELECT *
+        FROM QUESTIONARIO.PREENCHIMENTO PREENCHIMENTO_
+        JOIN QUESTIONARIO.PUBLICO PUBLICO_ ON PUBLICO_.ID_PUBLICO = PREENCHIMENTO_.ID_PUBLICO
+        JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IDENTIFICADOR_REGISTRADO_ ON IDENTIFICADOR_REGISTRADO_.ID_IDENTIFICADOR_REGISTRADO = PUBLICO_.ID_IDENTIFICADOR_REGISTRADO
+        JOIN CORPORATIVO.CORREIO_ELETRONICO CORREIO_ELETRONICO_ ON CORREIO_ELETRONICO_.ID_CORREIO_ELETRONICO = PUBLICO_.ID_CORREIO_ELETRONICO
+        JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PUBLICO_.ID_PESSOA
+        WHERE PREENCHIMENTO_.ID_QUESTIONARIO = 97 -- Questionario "Questionário Pibid - Edital 2018 - Bolsistas de Iniciação à Docência"
+        AND PREENCHIMENTO_.CS_STATUS_PREENCHIMENTO = 'E'
+        AND PREENCHIMENTO_.DT_FINALIZACAO BETWEEN PREENCHIMENTO_.DT_INICIO AND TO_DATE('2020-01-08 00:00:00', 'yyyy-mm-dd hh24:mi:ss')
+        ORDER BY PESSOA_.NM_PESSOA ASC
+);
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 96;
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 https://stackoverflow.com/questions/49649394/getting-different-session-ids-in-servlet-dofilter-and-spring-securitys-applica
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -55717,9 +55919,9 @@ rpm -U sqldeveloper-19.2.1.247.2212.noarch.rpm
 sudo alien --scripts sqldeveloper-19.2.1.247.2212.noarch.rpm
 sudo dpkg -i sqldeveloper_19.2.1-248.2212_all.deb
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# Filtro de consulta de chamados a nos quais os script devem ser ajustados serem ajustados
+# Filtro de consulta de chamados a nos quais os script devem ser ajustados
 
- https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=7&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=*&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=7&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # 26/02/2020 (tarefas)
 
@@ -55769,6 +55971,100 @@ sudo dpkg -i sqldeveloper_19.2.1-248.2212_all.deb
 	/CAPES/Arquivos/AplWeb/Desenv/Java/questionario-capes/relatorio-resposta
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# LINHA 122 pt-br.json
+"commons.mensagem.MSG105": "Aguarde até o término do processamento do Relatório de Respostas",
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Geramos evidências para os REDMINE:
+
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000026
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000025
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000024
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000023
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000021
+ https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20200220000020
+ 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+88617793520		jc0b6c		
+88763935791		5rqr7r
+88860655900		dr2r0p
+88892158791		6bxc0b
+88909980087		2b6jxj
+24014486400		8bqp5c
+24041696615		4ryj7b
+90390121487		pc2j9r
+02554145520		sr5p0r
+08439007841		jj2b9c
+
+jqsilva@indracompany.com
+
+16514599320		
+35408570363
+85659100910
+91081777320
+09562031675
+02321206411
+05340531309
+00505408155
+88717496004
+21587780836
+
+27482395806
+02461977909
+00652317162
+02524083144
+40298219875
+10943771714
+31529011000
+97675830172
+44576595253
+01929141033
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+cd /run/user/1000/gvfs/smb-share:server=samba-gns.capes.gov.br,share=logs_homolog/Java/questionario-capes
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Filtro de consulta de chamados a nos quais os script devem ser Fechados SPRINT 21
+
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=tracker%2Cid%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=2&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=488&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=1&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=2&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=488&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# SPRINT 20
+
+	- [AGUARDANDO] REDMINE-18040
+		- Aguardando Teste Interno
+	
+	- [AGUARDANDO] REDMINE-17816
+		- Aguarndado Teste Interno
+	
+# SPRINT 21
+
+	[FINALIZADO] https://redmine.capes.gov.br/issues/19962
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14101
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14125	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14131
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14144
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14145
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14159
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14236
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14239
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14251	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14300
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14219
+	
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14148 -- Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14157 -- Não consegui reproduzir
+		
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14258
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14263
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14265
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14276
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14304
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14314
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14328	
+	
+	// FIXME [REDMINE-14131] {UPDATE} -- ""
+	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # COMMIT
 
 [REDMINE-17816] Ajuste de Cadastro de Pessoa
@@ -55776,7 +56072,39 @@ sudo dpkg -i sqldeveloper_19.2.1-248.2212_all.deb
 - Ajustes na chamada do serviço 'recuperarPessoaFisicaConsultandoReceita()' acrescentando a sigla da aplicação e o identificador do usuário logado
 - Impactou nos fluxos de Público Alvo e Unidade Organizacional
 
+[REDMINE-18040] Erro de exportação de arquivo excel
+
+[REDMINE-19962] Correção de data fim com horário as 23h59 da data limite
+
+[REDMINE-14101] Verificar mensagem MSG008
+
+[REDMINE-14125] Ausência dos "dois pontos" na label da aplicação da tela Pesquisar Questionário
+
+[REDMINE-14131] Divergência na nomenclatura do campo Remover Publicação na tela do Pesquisar Questionário
+
+[REDMINE-14144] Divergência na nomenclatura do titulo do Cadastrar Questionário
+
+[REDMINE-14145] Ausência do ícone de “Informação” na tela de Cadastrar Questionário
+
+[REDMINE-14159] Divergências entre tela e documento
+
+[REDMINE-14236] Ausência do ícone de “Informação” na tela de Editar Questionário
+
+[REDMINE-14239] Interface 022 + RA "D" - Público Alvo
+
+[REDMINE-14251] Na tela de Editar Questionário apresenta o botão "Cadastrar"
+
+[REDMINE-14300] O ícone de informação apresenta do lado direito na tela de "Publicar Questionário"
+
+[REDMINE-14219] O campo Aplicação não retorna por padrão a aplicação ‘Questionário’
+
+[REDMINE-14148] Emissão da mensagem indicando o sucesso da ação de exclusão
+ 	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+@DisallowConcurrentExecution
+// @Scheduled(cronExpression = "0 * * ? * *") // Executar a cada 1 minuto para testes
+@Scheduled(cronExpression = "0 0 0/1 * * ?") // Executar a cada 1 hora
+public class ProcessadorArquivoRelatorioQuartz implements Serializable, Job { ... }
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Worspress
 
@@ -55859,6 +56187,18 @@ http://www.bosontreinamentos.com.br/mysql/como-instalar-o-mysql-8-0-no-ubuntu-li
         sudo systemctl enable mysql
         sudo apt install mysql-workbench-community    
 
+SUBSTITUIDO POR:
+
+<capes-isl-select id="select-publicoAlvo"
+          					label="{{'questionario.pesquisar.label.publico_alvo' | translate}}" 
+          					model="$ctrl.publicacao.publicoSelecionado" 
+          					chave="$option.descricao"
+          					trackby="$option.id" 
+          					options="$ctrl.listaPublicoAlvo" 
+          					hint-icon="{{'publicacao.manter.hint.publico_alvo' | translate}}"
+          					requerido="true"
+          					classes-group="col-md-12" />
+							
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # IONIC
     
@@ -55885,6 +56225,7 @@ http://www.bosontreinamentos.com.br/mysql/como-instalar-o-mysql-8-0-no-ubuntu-li
         ionic g page <nome_pagina>
         ionic g page menu        
 
+Realizamos o _roolback_ das configurações.
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 https://www.liquidweb.com/kb/install-nvm-node-version-manager-node-js-ubuntu-16-04-lts/
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -55895,6 +56236,77 @@ https://www.liquidweb.com/kb/install-nvm-node-version-manager-node-js-ubuntu-16-
         - NODEJS (v11.8.0)
         - IONIC ()
 
+Presidente FPASBRIL - Frente Palamente de Cooperacao e Amizade Brasil Israle pez Paz Universal
+
+Conforme entendimento estamos prestando essas informações 
+e ratificanto o 
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Fibre Solutions
+(61) 3323-6290
+
+Agência Criativar - Criação de sites
+(61) 3344-2914
+
+(R$ 2.220,00 -> R$ 2.500,00)
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Wordpress
+
+	- É CMS -> Sistema de Gerenciamento de Conteúdos	
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Hospedagem
+	
+	-> br.000webhost.com
+	-> 
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Túlio Estatístico
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+-> Weley Safadão - Ninguém e de Ferro
+-> Matheus e Kaun - Nosso Santo Bateu -- 
+-> Matheus e Kaun - "Se eu te amo eu não"
+-> Henrique e Juliano - Vai namorar comigo sim
+-> Bruno e Davi - Essa boca ai
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Boticalio Acoordis
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
