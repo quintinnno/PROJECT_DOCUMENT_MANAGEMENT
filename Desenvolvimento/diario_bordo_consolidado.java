@@ -56050,11 +56050,11 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14251	
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14300
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14219
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14148 (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14258
 	
-	[AGUARDANDO] https://redmine.capes.gov.br/issues/14148 -- Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14157 -- Não consegui reproduzir
-		
-	[AGUARDANDO] https://redmine.capes.gov.br/issues/14258
+			
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14263
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14265
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14276
