@@ -56706,41 +56706,41 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	
 # SPRINT 21
 
-	[FINALIZADO] https://redmine.capes.gov.br/issues/19962
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14101
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14125	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14131
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14144
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14145
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14159
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14236
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14239
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14251	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14300
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14219
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14148 (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14258
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14263
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14265	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14314	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14147
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14182
+	[FINALIZADO] https://redmine.capes.gov.br/issues/19962 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14101 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14125 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14131 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14144 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14145 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14159 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14236 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14239 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14251 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14300 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14219 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14148  (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14258 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14263 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14265 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14314 [OK]	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14147 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
 	
 # SPRINT 22	
 	
-	[IMPLEMENTACAO] https://redmine.capes.gov.br/issues/14256
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14256
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14248
 	
-	[AGUARDANDO] https://redmine.capes.gov.br/issues/14248	
-	[AGUARDANDO] https://redmine.capes.gov.br/issues/14368
-	[AGUARDANDO] https://redmine.capes.gov.br/issues/16944
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14122
 	
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/14368
+	[AGUARDANDO] https://redmine.capes.gov.br/issues/16944	
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14276
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14304
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14328
 	[AGUARDANDO] https://redmine.capes.gov.br/issues/14157 -- Não consegui reproduzir. Deve-se deixar apenas o perfil de Unidade organizacional
 	
-	// FIXME [REDMINE-14131] {UPDATE} -- ""
+	// FIXME [REDMINE-14122] {UPDATE} -- ""
 	
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # COMMIT
@@ -56778,13 +56778,15 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
 [REDMINE-14148] Emissão da mensagem indicando o sucesso da ação de exclusão
 
-[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-
 [REDMINE-14263] Interface 024 - RA "G"
 
 [REDMINE-14265] Interface 025 - Replicar Questionário
 
 [REDMINE-14314] Sistema não realizando a validação do fluxo de exceção 8
+
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+[REDMINE-14248] Ao editar o questionário e acionar o botão salvar é apresentado uma mensagem que não foi possível encontrar o resultado da pesquisa
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Implementação do REDMINE-18040
@@ -57039,9 +57041,57 @@ Ja verifiquei com o banco de dados e gcm, e não há reporte de lentidão.
 	sudo dd if=/home/indra/Downloads/neon-user-20200305-1117.iso of=/dev/sdb1 bs=4M
 		
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Cadastro de Tempo Gastão
+
+	- Tarefa: 			19962
+	- Data:   			09/03/2020
+	- Horas:  			
+	- Comentario:		[SPRINT 21] Implementação de Correção de Defeitos + Teste de Desenvolvimento + Commit na branch
+	- Atividade:		Desenvolvimento
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Ramal 6178 (Bruno)
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+# Treinamentos
+
+	-> Wordpress (Juscelino)
+	-> AgularJS  (Neri)
+	-> Preparatório para Certificação Java 8
+	-> Preparatório para Certificação CPA 10
+	
+# Projetos
+
+	-> Plataforma de Lançamento Financeiro (DWM)
+	-> Plataforma de Lançamento de Gestão de Projeto (DWM)
+	-> Plataforma de Lançamento de Comercio Eletrônico (DWM)
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+  this.pesquisarForm = () => {
+		verificarPeriodoVigencia(vm.formPesquisa);
+	    $state.go(
+	      'questionario-pesquisa',
+	      {
+	        sigla: vm.formPesquisa.sigla,
+	        nome: vm.formPesquisa.nome,
+	        pagina: 1,
+	        postLoad: [],
+	        situacao: vm.formPesquisa.situacao ? vm.formPesquisa.situacao.id : vm.formPesquisa.situacao,
+	        dataInicio: vm.formPesquisa.dataInicio,
+	        dataFim: vm.formPesquisa.dataFim,
+	        idAplicacao: vm.aplicacaoCatalogoObject.idAplicacao,
+	      },
+	      { reload: true },
+	    );
+  };
+  
+  // FIXME -- Verificar periodo de vigencia
+  function verificarPeriodoVigencia(formPesquisa) {
+	if(vm.formPesquisa.dataInicio != null || vm.formPesquisa.dataFim != null) {
+		if (vm.formPesquisa.dataInicio > vm.formPesquisa.dataFim) {
+			return CapesIslToaster.error('commons.mensagem.MSG075', { i18n: true });
+		}
+	}
+  };
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
