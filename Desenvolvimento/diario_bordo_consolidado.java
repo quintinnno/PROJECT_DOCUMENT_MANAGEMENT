@@ -48256,6 +48256,7 @@ GerenciadorQuestionario ->
 		}
 		return questionarioVinculoOrganizacionalList;
 	}
+    
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 =======================================================================================================================================
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -55427,6 +55428,66 @@ SELECT COUNT(*) TOTAL_RESPOSTAS_ENVIADAS FROM (
 
 SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_QUESTIONARIO = 96;
 
+SELECT 
+	NOTIFICACAO_PUBLICACAO_.ID_NOTIFICACAO_PUBLICACAO, 
+	NOTIFICACAO_PUBLICACAO_.ID_PUBLICACAO, 
+	PUBLICACAO_.ID_QUESTIONARIO, 
+	QUESTIONARIO_.NM_QUESTIONARIO 
+-- SELECT * 
+FROM QUESTIONARIO.NOTIFICACAO_PUBLICACAO NOTIFICACAO_PUBLICACAO_
+JOIN QUESTIONARIO.PUBLICACAO PUBLICACAO_ ON PUBLICACAO_.ID_PUBLICACAO = NOTIFICACAO_PUBLICACAO_.ID_PUBLICACAO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = PUBLICACAO_.ID_QUESTIONARIO
+ORDER BY ID_NOTIFICACAO_PUBLICACAO DESC;
+
+SELECT
+        IR.DS_IDENTIFICADOR_REGISTRADO AS CPF,
+        P.NM_PESSOA AS NOME, 
+        CE.DS_CORREIO_ELETRONICO AS EMAIL
+FROM FREIRE2.RESIDENTE R
+INNER JOIN FREIRE2.HISTORICO_RESIDENTE H ON R.ID_SITUACAO_ATUAL = H.ID_HISTORICO_RESIDENTE AND H.IN_ATIVO = 'S' AND H.ID_TIPO_SITUACAO_RESIDENTE = 1
+INNER JOIN FREIRE2.PESSOA_FREIRE PF ON R.ID_PESSOA_FREIRE = PF.ID_PESSOA_FREIRE
+INNER JOIN CORPORATIVO.PESSOA P ON PF.ID_PESSOA = P.ID_PESSOA
+INNER JOIN CORPORATIVO.IDENTIFICADOR_REGISTRADO IR ON P.ID_PESSOA = IR.ID_PESSOA AND IR.ID_TIPO_IDENTIFICADOR = 1
+INNER JOIN (
+          SELECT CE.*,
+                ROW_NUMBER() OVER(PARTITION BY ID_PESSOA
+                        ORDER BY CASE WHEN ID_FINALIDADE_ENDERECO = 5 AND IN_PRINCIPAL_FINALIDADE = 'S' THEN 1
+                                WHEN IN_PRINCIPAL_FINALIDADE = 'S' THEN 2 ELSE 3 END
+                ) AS SEQ
+        FROM CORPORATIVO.CORREIO_ELETRONICO CE
+) CE ON CE.ID_PESSOA = P.ID_PESSOA AND CE.SEQ = 1
+WHERE 1 = 1
+AND R.IN_ATIVO = 'S'
+AND ROWNUM <= 10
+GROUP BY P.ID_PESSOA, IR.DS_IDENTIFICADOR_REGISTRADO, P.NM_PESSOA, CE.DS_CORREIO_ELETRONICO;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Questionário 16/03/2020 (QC) (Interno) (Identificador Obrigatório) v001%';
+
+SELECT *
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+WHERE (1 = 1)
+AND PUBLICACAO_.ID_QUESTIONARIO = 114 
+ORDER BY PUBLICACAO_.DH_ULTIMA_ALTERACAO ASC;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%DED-Circular%';
+
+SELECT *
+FROM QUESTIONARIO.PUBLICACAO PUBLICACAO_
+WHERE (1 = 1)
+AND PUBLICACAO_.ID_QUESTIONARIO = 20 
+ORDER BY PUBLICACAO_.DH_ULTIMA_ALTERACAO ASC;
+
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO LIKE '02735025144';
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO LIKE '68651600291';
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO LIKE '08579866430';
+
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE ID_PESSOA = 3179451;
+
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA IS NOT NULL ORDER BY ID_PREENCHIMENTO DESC;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 3148383;
+
+SELECT * FROM QUESTIONARIO.NOTIFICACAO_PESSOA WHERE ID_SITUACAO_OPERACAO = 1;
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 https://stackoverflow.com/questions/49649394/getting-different-session-ids-in-servlet-dofilter-and-spring-securitys-applica
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -56918,7 +56979,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	- [AGUARDANDO] REDMINE-17816
 		- Aguarndado Teste Interno
 	
-# SPRINT 21
+# SPRINT 21 (v1.9.26)
 
 	[FINALIZADO] https://redmine.capes.gov.br/issues/19962 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14101 [OK]
@@ -56932,7 +56993,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14251 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14300 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14219 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14148  (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14148 [OK] (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14258 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14263 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14265 [OK]
@@ -56940,25 +57001,41 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14147 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
 	
-# SPRINT 22	
+# SPRINT 22	(v1.9.27)
 	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14256
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14248
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14122	
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14182
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14256    
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14312    
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14329
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14276
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14304
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14328
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14256 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14248 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14122 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14312 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14329 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14276 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14304 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14328 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/20853 [OK] -- Tarefa do REDMINE-11930. Ajustar a Unidade Organizacional
     
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14157 -- Não consegui reproduzir. Deve-se deixar apenas o perfil de Unidade organizacional
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14336 - Defeito de data inválida  
+    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14157 - Deve-se deixar apenas o perfil de Unidade organizacional e tentar acessar
     [AGUARDANDO] https://redmine.capes.gov.br/issues/16944 - Imagem Safari
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Tipo Anexação de Documentos
-	
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/11269 - Resultado Análise de Impacto (Exportação de Relatório do Tipo Excel)
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Importação de arquivos para a composição de Público Alvo na modalidade Lote
     
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# MENSAGEM COMMIT
+
+[SPRINT 22] IMPLEMENTAÇÃO DA CORREÇÃO DO DEFEITO
+
+h4. *Correção*
+
+No contexto do *REDMINE-14256*, implementamos as correções pertinentes.
+
+h4. *Versão*
+
+Essa alteração estará disponível na próxima versão, a saber, *1.9.27-SNAPSHOT*.
+
+
 # COMMIT
 
 [REDMINE-17816] Ajuste de Cadastro de Pessoa
@@ -57014,6 +57091,8 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
 [REDMINE-14328] Quantidade de registro na Grid é superior de até 10 registros na tela de Publicar Questionário
 
+[REDMINE-20853] Ajustar a visibilidade dos questionários nas funcionalidades (Unidade Organizacional)
+
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
@@ -57021,7 +57100,19 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 [REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+h4. %{color:blue}Correção%
+
+* No contexto do *REDMINE-20853*, implementamos as correções pertinentes.
+
+h4. %{color:blue}Funcionalidade%
+
+As alterações afetarão o UC003 - Manter Questionário
+
+h4. %{color:blue}Versão%
+
+Caso passe no *%{color:blue}Teste Interno%*, essa alteração estará disponível na próxima versão, a saber, *1.9.27-SNAPSHOT*.
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Implementação do REDMINE-18040
@@ -57376,12 +57467,89 @@ Ramal 6178 (Bruno)
    https://redmine.capes.gov.br/projects/questionariocapes/issues?fields%5B%5D=issue_tags&operators%5Bissue_tags%5D=%3D&set_filter=1&values%5Bissue_tags%5D%5B%5D=DEVOLU%C3%87%C3%83O   
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
 Login: 61945226234
 Nome: ANA CRISTINA BRAGA BARROS
 Senha: 3b0pyr
+
+Login: 68651600291
+Nome: JUNIOR WANZELER POMPEU
+Senha: 4rkj8b
+
+Login: 08579866430
+Nome: ANGELA NUNES FERRO
+Senha: 7b0rfb
+
+Login: 02740016670
+Nome: GRAZIELA CRISTINA CHAVES DE CASTRO
+Senha: 7j8crc
+
+Login: 04550366834
+Nome: CARLOS OSMAR BERTERO
+Senha: 3b0b8p
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+                                                                                                                                    
+./#/semPermissao/?urlLogout=http://hom.capes.gov.br/sso/slo?RelayState=http://localhost:8080/questionario&usuarioLogado=JUNIOR WANZELER POMPEU&versao=1.9.27-SNAPSHOT
+./#/semPermissao/?urlLogout=http://hom.capes.gov.br/sso/slo?RelayState=http://localhost:8080/questionario&usuarioLogado=68651600291
+
+http://localhost:3001/questionario/#/visualizar-questionario-respostas/?visualizarQuestionario&idPreenchimento=988236
+
+http://localhost:3001/questionario/#/questionario-responder
+
+http://localhost:3001/questionario-capes/visualizar-questionario?idPreenchimento=1147940
+
+-- ORIGINAL
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=1148361
+http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=1147940
+
+-- ALTERADO
+http://localhost:3001/questionario/#/visualizar-questionario?idPreenchimento=1148361
+http://localhost:3001/questionario/#/visualizar-questionario?idPreenchimento=1147940
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+private void redirecionaUsuarioNaoAutorizado(String usuarioLogado, String versao, HttpServletResponse response, HttpServletRequest request) {
+		try {
+			final StringBuilder url = new StringBuilder();
+
+			url.append(URL_SEM_ACESSO);
+
+			url.append("?urlLogout=");
+			url.append(obterUrlLogout(request));
+
+			if (usuarioLogado != null) {
+				url.append("&usuarioLogado=");
+				url.append(usuarioLogado);
+			}
+
+			if (versao != null && !versao.isEmpty()) {
+				url.append("&versao=");
+				url.append(versao);
+			}
+
+			response.sendRedirect(url.toString());http://des.capes.gov.br/questionario-capes/visualizar-questionario?idPreenchimento=1147940
+
+		} catch (IOException e) {
+			LOGGER.error(e, e);
+		}
+	}
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+-- JOSE QUINTINO DA SILVA JUNIOR
+Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Organizacional - Presidência) v001
+
+-- 	PATRICK NASCIMENTO PEREIRA
+84	Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Organizacional - Diretoria de Educação a Distância) v002
+69	Questionário 02/03/2020 (QC) (Interno) (Identificador Obrigatório) v001
+70	bbbbbbbbbb
+81	Editar 1.1
+
+# [REDMINE-11930] Funcionalidades Afetadas
+
+    -> Manter 
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
