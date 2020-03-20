@@ -56970,57 +56970,6 @@ cd /run/user/1000/gvfs/smb-share:server=samba-gns.capes.gov.br,share=logs_homolo
 https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=tracker%2Cid%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=2&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=488&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=tracker_id&op%5Btracker_id%5D=%3D&v%5Btracker_id%5D%5B%5D=1&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 
 https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=2&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=488&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# SPRINT 20
-
-	- [AGUARDANDO] REDMINE-18040
-		- Aguardando Teste Interno
-	
-	- [AGUARDANDO] REDMINE-17816
-		- Aguarndado Teste Interno
-	
-# SPRINT 21 (v1.9.26)
-
-	[FINALIZADO] https://redmine.capes.gov.br/issues/19962 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14101 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14125 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14131 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14144 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14145 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14159 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14236 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14239 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14251 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14300 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14219 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14148 [OK] (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14258 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14263 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14265 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14314 [OK]	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14147 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
-	
-# SPRINT 22	(v1.9.27)
-	
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14256 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14248 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14122 [OK]
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14312 [OK]
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14329 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14276 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14304 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14328 [OK]
-    [FINALIZADO] https://redmine.capes.gov.br/issues/20853 [OK] -- Tarefa do REDMINE-11930. Ajustar a Unidade Organizacional
-    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14336 - Defeito de data inválida  
-    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14157 - Deve-se deixar apenas o perfil de Unidade organizacional e tentar acessar
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/16944 - Imagem Safari
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Tipo Anexação de Documentos
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/11269 - Resultado Análise de Impacto (Exportação de Relatório do Tipo Excel)
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Importação de arquivos para a composição de Público Alvo na modalidade Lote
     
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # MENSAGEM COMMIT
@@ -57112,7 +57061,16 @@ As alterações afetarão o UC003 - Manter Questionário
 
 h4. %{color:blue}Versão%
 
-Caso passe no *%{color:blue}Teste Interno%*, essa alteração estará disponível na próxima versão, a saber, *1.9.27-SNAPSHOT*.
+Caso passe no *%{color:blue}Teste%*, essa alteração estará disponível na próxima versão, a saber, *1.9.27-SNAPSHOT*.
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+                                                                                                                                        
+h4. %{color:blue}Correção%
+
+* No contexto do *REDMINE-14336*, implementamos as correções pertinentes.
+
+h4. %{color:blue}Versão%
+
+* Caso passe no *%{color:blue}Teste Interno%*, essa alteração estará disponível na próxima versão, a saber, *1.9.28-SNAPSHOT*.
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Implementação do REDMINE-18040
@@ -57551,7 +57509,7 @@ Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Or
     -> Manter 
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-# LINUX NEON 
+# LINUX NEON
 
 -- Ajustar pacotes quebrados
 
@@ -57572,14 +57530,563 @@ Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Or
     > pkcon refresh
     > pkcon update
 
+*/
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+Drusos = Al Mohahi Dum (adoradores de um único D'us)
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+https://vpn.capes.gov.br/faq/Como_Utilizar_a_VPN.pdf
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+// FIXME [REDMINE-14336] {UPDATE} -- ""
+  vm.gerarRelatorio = () => {
+	  
+	  vm.isValid_tipoRelatorio = true;
+	  vm.isValid_relatorio = true;
+	  vm.isValid_situacao = true;
+	  vm.isValid_ano = true;
+	  vm.isValid_formato = true;
+	  
+	  vm.isDataInicioPeriodoVigenciaInvalid = false;
+	  vm.isDataFinalPeriodoVigenciaInvalid = false;
+
+	var dataInicioPeriodoVigencia = new Date(vm.form.dataInicio);
+	var dataFinalPeriodoVigencia = new Date(vm.form.dataFim);
+	
+	var moment = require('moment');
+	if (vm.form.dataInicio != undefined){
+		vm.form.dataInicioFormat = moment(vm.form.dataInicio, "DD/MM/YYYY").format('YYYY-MM-DD').toString();
+	} else {
+		vm.form.dataInicioFormat = null;
+	}
+	
+	if (vm.form.dataFim != undefined){
+		vm.form.dataFimFormat = moment(vm.form.dataFim, "DD/MM/YYYY").format('YYYY-MM-DD').toString();
+	}  else {
+		vm.form.dataFimFormat = null;
+	}
+	
+	if(vm.form.tipoRelatorio == null || vm.form.relatorio == null || vm.form.situacao == null || vm.form.ano == null ||	vm.form.formato == null) {
+		
+		if(vm.form.tipoRelatorio == null) {
+			vm.isValid_tipoRelatorio = false;
+		}else{
+			if(vm.form.relatorio == null) {
+				vm.isValid_relatorio = false;
+			}else{
+				if(vm.form.situacao == null)
+					vm.isValid_situacao = false;
+				
+				if(vm.form.ano == null)
+					vm.isValid_ano = false;
+				
+				if(vm.form.formato == null)
+					vm.isValid_formato = false;
+			}
+		}
+		
+		return CapesIslToaster.error('commons.mensagem.MSG004', { i18n: true });
+	}
+	
+	if(dataInicioPeriodoVigencia != 'Invalid Date') {
+		dataInicioPeriodoVigencia = null;
+		vm.isDataInicioPeriodoVigenciaInvalid = false;
+	}
+	
+	if(dataFinalPeriodoVigencia != 'Invalid Date') {
+		dataFinalPeriodoVigencia = null;
+		vm.isDataFinalPeriodoVigenciaInvalid = false;
+	}
+	
+	if(dataInicioPeriodoVigencia == 'Invalid Date' || dataFinalPeriodoVigencia == 'Invalid Date') {
+		if(dataInicioPeriodoVigencia == 'Invalid Date' && dataFinalPeriodoVigencia == 'Invalid Date') {
+			vm.isDataInicioPeriodoVigenciaInvalid = true;
+			vm.isDataFinalPeriodoVigenciaInvalid = true;
+		} else {
+			if(dataInicioPeriodoVigencia == 'Invalid Date') vm.isDataInicioPeriodoVigenciaInvalid = true;
+			if(dataFinalPeriodoVigencia == 'Invalid Date') vm.isDataFinalPeriodoVigenciaInvalid = true;
+		}
+		if(vm.isDataInicioPeriodoVigenciaInvalid == true || vm.isDataFinalPeriodoVigenciaInvalid == true) {
+			return CapesIslToaster.error('commons.mensagem.MSG106', { i18n: true });
+		}
+	}
+	
+	if (vm.form.dataInicio > vm.form.dataFim) { 
+		CapesIslToaster.error('commons.mensagem.MSG035', { i18n: true });
+	} else { 
+		
+		if(vm.form.questionarioObject != undefined || vm.form.questionarioObject != null) {
+			vm.form.questionario = vm.form.questionarioObject.title;
+		} else {
+			vm.form.questionario = null;
+		}
+		
+		RelatoriosService.gerarRelatorios(vm.form).then((data) => {
+		console.log(data);
+		var blob = new Blob([data.data], {type: 'application/octet-stream'});
+		var fileURL = URL.createObjectURL(blob);
+		var a = document.createElement('a');
+		a.href = fileURL; 
+		a.target = '_blank';
+		if (vm.form.formato == 1) {
+		    a.download = name+'.pdf';
+		}else {
+		   a.download = name+'.xls';
+		}
+		   document.body.appendChild(a);
+		   a.click();
+		}).catch(carregarMensagemErro);
+	  }
+  };
+
+// FIXME --
+  function validateDate(dataParameter) {
+     var RegExPattern = /^((((0?[1-9]|[12]\d|3[01])[\.\-\/](0?[13578]|1[02])      [\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|[12]\d|30)[\.\-\/](0?[13456789]|1[012])[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|((0?[1-9]|1\d|2[0-8])[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?\d{2}))|(29[\.\-\/]0?2[\.\-\/]((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00)))|(((0[1-9]|[12]\d|3[01])(0[13578]|1[02])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|[12]\d|30)(0[13456789]|1[012])((1[6-9]|[2-9]\d)?\d{2}))|((0[1-9]|1\d|2[0-8])02((1[6-9]|[2-9]\d)?\d{2}))|(2902((1[6-9]|[2-9]\d)?(0[48]|[2468][048]|[13579][26])|((16|[2468][048]|[3579][26])00)|00))))$/;
+     if(dataParameter !== null) {
+    	 if (!((dataParameter.value.match(RegExPattern)) && (dataParameter.value!=''))) {
+             alert('Data inválida.');
+             dataParameter.focus();
+           } else
+           	alert('Data válidaa.'); 
+     }
+    }
+
+if(typeof vm.form.dataInicio === "undefined" || vm.form.dataInicio === null) {
+		console.log("vm.form.dataInicio....");
+	}
+    
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+import { merge, find, propEq } from 'ramda';
+
+export const name = 'RelatoriosCtrl';
+
+export default function RelatoriosCtrl(
+  $stateParams,
+  $state,
+  $rootScope,
+  $modal,
+  $capesModal,
+  $window,
+  $q,
+  CapesIslToaster,
+  Questionarios,
+  $timeout,
+  RelatoriosService
+) {
+  'ngInject';
+  
+  let vm = this;
+  vm.form = {tipoRelatorio: null,
+		  	 relatorio: null,
+		  	 situacao:null,
+		  	 ano:null,
+		  	 dataInicio: null,
+		  	 dataFim: null,
+		  	 dataInicioFormat: null,
+		  	 dataFimFormat: null,
+		  	 sigla:'QC',
+		  	 questionario: null,
+		  	 questionarioObject: null,
+		  	 formato: null,
+		  	 tipoPublico : null,
+		  	 tipoIdentificacao:null,
+  }
+	
+  vm.isValid_tipoRelatorio = true;
+  vm.isValid_relatorio = true;
+  vm.isValid_situacao = true;
+  vm.isValid_ano = true;
+  vm.isValid_formato = true;
+  vm.isDataInicioPeriodoVigenciaInvalid = false;
+  vm.isDataFinalPeriodoVigenciaInvalid = false;
+  
+  vm.opcaoTiposRelatorios = [{id:1 , tipoRelatorio:"Consolidado"}, {id:2 , tipoRelatorio:"Detalhado"}];
+  vm.opcaoRelatorios = [{id:1 , tipoRelatorio:"Questionário"}, {id:2 , tipoRelatorio:"Público Alvo"}];
+  vm.situacao = [{tipo:'PB', situacao: 'Publicado'},{tipo:'NP', situacao: 'Não Publicado'},{tipo:'RP', situacao: 'Remover Publicação'}];
+  vm.formatosDownload =[{id:1,formato:"PDF"},{id:2,formato:"Excel"}];
+  vm.tipoPublico = [{id:1, tipoPublico:'Interno'},{id:2 , tipoPublico:'Externo'},{id:3 , tipoPublico:'Lote'},{id: 4, tipoPublico:'Fonte de Dados'}];
+  vm.tipoIdentificacao = [{tipo:'O', tipoIdentificacao:'Identificação Obrigatória'},{tipo:'P', tipoIdentificacao:'Identificação Opcional'},{tipo:'A', tipoIdentificacao:'Identificação Anônima'}];
+  vm.anos = criarListaDeAnos();
+  
+  vm.gerarRelatorio = () => {
+	  vm.isValid_tipoRelatorio = true;
+	  vm.isValid_relatorio = true;
+	  vm.isValid_situacao = true;
+	  vm.isValid_ano = true;
+	  vm.isValid_formato = true;
+	  
+	  var dataInicioPeriodoVigencia = new Date(vm.form.dataInicio);
+	  var dataFinalPeriodoVigencia = new Date(vm.form.dataFim);
+	  
+	var moment = require('moment');
+	if (vm.form.dataInicio != undefined){
+		vm.form.dataInicioFormat = moment(vm.form.dataInicio, "DD/MM/YYYY").format('YYYY-MM-DD').toString();
+	} else {
+		vm.form.dataInicioFormat = null;
+	}
+	
+	if (vm.form.dataFim != undefined){
+		vm.form.dataFimFormat = moment(vm.form.dataFim, "DD/MM/YYYY").format('YYYY-MM-DD').toString();
+	}  else {
+		vm.form.dataFimFormat = null;
+	}
+	
+	if(vm.form.tipoRelatorio == null || vm.form.relatorio == null || vm.form.situacao == null ||
+			vm.form.ano == null ||	vm.form.formato == null ) {
+		if(vm.form.tipoRelatorio == null){
+			vm.isValid_tipoRelatorio = false;			
+		}else{
+			if(vm.form.relatorio == null){
+				vm.isValid_relatorio = false;
+			}else{
+				if(vm.form.situacao == null)
+					vm.isValid_situacao = false;
+				
+				if(vm.form.ano == null)
+					vm.isValid_ano = false;
+				
+				if(vm.form.formato == null)
+					vm.isValid_formato = false;
+			}
+		}
+		
+		return CapesIslToaster.error('commons.mensagem.MSG004', { i18n: true });
+	}
+	
+	if(dataInicioPeriodoVigencia == 'Invalid Date' || dataFinalPeriodoVigencia == 'Invalid Date') {
+		if(dataInicioPeriodoVigencia == 'Invalid Date' && dataFinalPeriodoVigencia == 'Invalid Date') {
+			vm.isDataInicioPeriodoVigenciaInvalid = true;
+			vm.isDataFinalPeriodoVigenciaInvalid = true;
+		} else {
+			if(dataInicioPeriodoVigencia == 'Invalid Date') vm.isDataInicioPeriodoVigenciaInvalid = true;
+			if(dataFinalPeriodoVigencia == 'Invalid Date') vm.isDataFinalPeriodoVigenciaInvalid = true;
+		}
+		if(vm.isDataInicioPeriodoVigenciaInvalid == true || vm.isDataFinalPeriodoVigenciaInvalid == true) {
+			return CapesIslToaster.error('commons.mensagem.MSG106', { i18n: true });
+		}
+	}
+	
+	if (vm.form.dataInicio > vm.form.dataFim) { 
+		CapesIslToaster.error('commons.mensagem.MSG035', { i18n: true });
+	} else { 
+		
+		if(vm.form.questionarioObject != undefined || vm.form.questionarioObject != null) {
+			vm.form.questionario = vm.form.questionarioObject.title;
+		} else {
+			vm.form.questionario = null;
+		}
+		
+		RelatoriosService.gerarRelatorios(vm.form).then((data) => {
+		console.log(data);
+		var blob = new Blob([data.data], {type: 'application/octet-stream'});
+		var fileURL = URL.createObjectURL(blob);
+		var a = document.createElement('a');
+		a.href = fileURL; 
+		a.target = '_blank';
+		if (vm.form.formato == 1) {
+		    a.download = name+'.pdf';
+		}else {
+		   a.download = name+'.xls';
+		}
+		   document.body.appendChild(a);
+		   a.click();
+		}).catch(carregarMensagemErro);
+	  }
+		
+	clearDate();
+	
+  };
+  
+  function carregarMensagemErro(erro) {
+	  if (erro.statusText == 'Bad Request') {
+		  CapesIslToaster.error('commons.mensagem.MSG002', { i18n: true });
+	  } else if (err.data.mensagem || erro.mensagem) {
+		  CapesIslToaster.error(err.data.mensagem,{ i18n: true });
+	  }
+	  else {
+		  CapesIslToaster.error('commons.erros.desconhecido', { i18n: true });
+	  }
+  }
+  
+  this.avisarCamposObrigatorios = (event) => {
+	    event.preventDefault();
+	    CapesIslToaster.error('commons.mensagem.MSG004', { i18n: true });
+	  };
+  
+  vm.buscarNomeQuestionario = (filtro) => {
+	  const optionsConsulta = {
+		      offset: null,
+		      max: 5,
+		      orderBy: null ,
+		      asc: true,
+		      sigla: null,
+		      nome: filtro,
+		    };
+	  var deferred = $q.defer();
+	  Questionarios.consultarPorParametro([], optionsConsulta).then(function(response){
+          deferred.resolve(response.data);
+      });
+	  var res = deferred.promise;
+	  return $timeout(function(){
+		  return res;
+	  },300);
+  }
+  criarListaDeAnos();
+  
+  function criarListaDeAnos(){
+	  var anoAtual = new Date().getFullYear();
+	  var anoIncial = 2017;
+	  var listaAnos = [];
+	  for(var i = 0; i < (anoAtual - anoIncial); i++){
+          listaAnos.push(2017 + i);   		  
+	  }
+	  for(var i = 0; i < 5; i++){
+          listaAnos.push(anoAtual + i);   		  
+	  }
+	  return listaAnos;
+  }
+  
+  // FIXME ---
+  vm.verificarData = (dataInicioParameter, dataFimParameter) => {
+	if(typeof dataInicioParameter === "undefined") {
+		vm.form.dataInicio = null;
+		vm.isDataInicioPeriodoVigenciaInvalid = true;
+		return CapesIslToaster.error('commons.mensagem.MSG106', { i18n: true });
+	} else {
+		vm.isDataInicioPeriodoVigenciaInvalid = false;
+	}
+	
+	if(typeof dataFimParameter === "undefined") {
+		vm.form.dataFim = null;
+		vm.isDataFinalPeriodoVigenciaInvalid = true;
+		return CapesIslToaster.error('commons.mensagem.MSG106', { i18n: true });
+	}
+	
+  };
+  
+  // FIXME ---
+  function clearDate(tipoRelatorioParameter, relatorioParameter, situacaoParameter, anoParameter, questionarioParameter, questionarioObjectParameter, formatoParameter, tipoPublicoParameter, tipoIdentificacaoParameter) {
+	  vm.form = {
+		tipoRelatorio: tipoRelatorioParameter,
+		relatorio: relatorioParameter,
+		situacao: situacaoParameter,
+		ano: anoParameter,
+		dataInicio: null,
+		dataFim: null,
+		dataInicioFormat: null,
+		dataFimFormat: null,
+		sigla:'QC',
+		questionario: questionarioParameter,
+		questionarioObject: questionarioObjectParameter,
+		formato: formatoParameter,
+		tipoPublico : tipoPublicoParameter,
+		tipoIdentificacao: tipoIdentificacaoParameter,
+	  }
+  };
+  
+  vm.limparForm = () => {
+	  vm.form = {tipoRelatorio: null,
+			  	 relatorio: null,
+			  	 situacao:null,
+			  	 ano:null,
+			  	 dataInicio: null,
+			  	 dataFim: null,
+			  	 dataInicioFormat: null,
+			  	 dataFimFormat: null,
+			  	 sigla:'QC',
+			  	 questionario: null,
+			  	 questionarioObject: null,
+			  	 formato: null,
+			  	 tipoPublico : null,
+			  	 tipoIdentificacao:null,
+	  }
+		
+	  vm.isValid_tipoRelatorio = true;
+	  vm.isValid_relatorio = true;
+	  vm.isValid_situacao = true;
+	  vm.isValid_ano = true;
+	  vm.isValid_formato = true;
+  };
+  
+  vm.atualizarFiltros = () => {
+	  if(vm.form.tipoRelatorio == null){
+		  vm.form = { };
+		  vm.isValid_relatorio = true;
+		  vm.isValid_situacao = true;
+		  vm.isValid_ano = true;
+		  vm.isValid_formato = true;
+	  }else{
+		  vm.isValid_tipoRelatorio = true;		  
+		  if(vm.form.relatorio == null){
+			  vm.form.situacao = null;
+			  vm.form.ano = null;
+			  vm.form.dataInicio = null;
+			  vm.form.dataFim = null;
+			  vm.form.dataInicioFormat = null;
+			  vm.form.dataFimFormat = null;
+			  vm.form.sigla = 'QC';
+			  vm.form.questionario = null;
+			  vm.form.questionarioObject = null;
+			  vm.form.formato = null;
+			  vm.form.tipoPublico = null;
+			  vm.form.tipoIdentificacao = null;
+			  
+			  vm.isValid_situacao = true;
+			  vm.isValid_ano = true;
+			  vm.isValid_formato = true;
+		  }else{
+			  vm.isValid_relatorio = true;
+		  }
+	  }
+  };
+}
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Demandas abertas para fechamento da SPRINT 023
+
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=o&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=508&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=me&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# Demandas concluídas da SPRINT 023
+
+https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=9&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=80&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=508&f%5B%5D=issue_tags&op%5Bissue_tags%5D=%3D&v%5Bissue_tags%5D%5B%5D=Em+teste+interno&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+	
+# SPRINT 21 (v1.9.26)
+
+	[FINALIZADO] https://redmine.capes.gov.br/issues/19962 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14101 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14125 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14131 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14144 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14145 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14159 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14236 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14239 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14251 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14300 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14219 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14148 [OK] (Deve-se observar que existe um erro onde o sistema cadastra mais de usuário ao inserir uma determinada Unidade)
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14258 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14263 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14265 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14314 [OK]	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14147 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
+	
+# SPRINT 22	(v1.9.27)
+	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14256 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14248 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14122 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14312 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14329 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14276 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14304 [OK]
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14328 [OK]
+    [FINALIZADO] https://redmine.capes.gov.br/issues/20853 [OK] -- Tarefa do REDMINE-11930. Ajustar a Unidade Organizacional
+
+# SPRINT 23	(v1.9.28)
+
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14336 - Defeito de data inválida    
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14259
+    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14307
+    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14240
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14250
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14254
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14266
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14286
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14287
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14311
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14314
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14360
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14395
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14403
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/19950
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/8408
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12014
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12422
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14037
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14109
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14118
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14119
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14143
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14148
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14178
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14185
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14195
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14220
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14230
+    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Visibilidade da Unidade Organizacional    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14157 - Deve-se deixar apenas o perfil de Unidade organizacional e tentar acessar
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/16944 - Imagem Safari
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Tipo Anexação de Documentos
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/11269 - Resultado Análise de Impacto (Exportação de Relatório do Tipo Excel)
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Importação de arquivos para a composição de Público Alvo na modalidade Lote
+    
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+[REDMINE-14336] Data final inválida
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+[REDMINE-XXXXX] AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+h4. %{color:blue}Correção%
+
+* No contexto do *REDMINE-20853*, implementamos as correções pertinentes.
+
+h4. %{color:blue}Versão%
+
+Caso passe no *%{color:blue}Teste%*, essa alteração estará disponível na próxima versão, a saber, *1.9.28-SNAPSHOT*.
+
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+Ben Shapiro: &#8220;Confiar no governo chinês depois de uma traição dessa magnitude não seria apenas tolice. Seria imoral&#8221;.Ben Shapiro: “Confiar no governo chinês depois de uma traição dessa magnitude não seria apenas tolice. Seria imoral”.| Foto: Pixabay
+Ouça este conteúdo
+Nesta semana, o presidente Donald Trump foi atacado por usar o termo “vírus chinês” para descrever o coronavírus, a fonte da nova pandemia que causou uma crise econômica e o isolamento de cidadãos em quase todos os países ocidentais.
+
+O fato de a imprensa de alguma forma ter encontrado tempo para tratar de um assunto menor — a descrição de um vírus chinês como tal — em meio a um pânico mundial sem precedentes demonstra o profundo descompromisso daqueles que reclamam.
+
+É inacreditável que o termo seja controverso. O vírus realmente teve origem na China. Mais do que isso, a ideia de que o governo chinês deveria ser protegido das consequências de suas medidas tirânicas e seu governo patológico é de uma perversidade sem igual.
+
+Não se engane: o governo chinês é o principal responsável pela explosão dessa pandemia.
+
+Os chamados “mercados selvagens” da China — mercados que geralmente vendem carne de animais selvagens, como cobras e pangolins — existem por vários motivos, desde o preço até a crença supersticiosa nas propriedades medicinais dos animais exóticos.
+
+De acordo com Zhenzhong Si, pesquisador da Universidade de Waterloo, “o consumo de animais selvagens é considerado um símbolo de riqueza, porque eles são mais raros e caros”.
+
+Seja qual for a justificativa, o governo comunista chinês tem sido tolerante demais com esses mercados, mesmo eles já tendo sido os responsáveis pela disseminação do coronavírus, SARS, gripe aviária, gripe asiática e gripe suína.
+
+O governo chinês tem sido igualmente tolerante com a medicina chinesa em comparação com a medicina científica, o que aumenta o risco do surgimento dessas doenças.
+
+O mesmo governo agora elogiado por ter isolado à força seus próprios cidadãos — o mesmo governo que dizem ter prendido até um milhão de uigures sem que eles tenham cometido nenhum crime — há décadas se mostra relutante em deter a venda de animais exóticos.
+
+O autoritarismo, obviamente, não se aplica à solução mais óbvia para todo um grupo de epidemias em potencial.
+
+Enquanto isso, o governo chinês agiu rapidamente para impedir a disseminação de informações sobre o coronavírus, o que abriu caminho para que as pessoas infectadas viajassem livremente.
+
+Quando o oftalmologista Li Wenliang falou a seus colegas sobre o coronavírus, numa reunião virtual em dezembro, o governo chinês o obrigou a jurar que estava “falando mentiras”. Ele acabou morrendo por causa da doença.
+
+Depois que outras informações sobre o coronavírus começaram a surgir, o governo comunista simplesmente mentiu sobre o assunto, sugerindo que os casos não estavam aumentando – uma mentira na qual a Organização Mundial da Saúde acreditou.
+
+O governo chinês continua a espalhar sua propaganda política, agora dizendo que o coronavírus teve origem nos Estados Unidos.
+
+Lijian Zhao, vice-diretor do Departamento de Informações do Ministério do Exterior da China, tuitou um link para um artigo dizendo que havia “provas de que o vírus teve origem nos Estados Unidos”.
+
+E dá mesmo para acreditar que a China teve apenas 127 casos diagnosticados entre 9 e 16 de março, mesmo depois que o governo chinês expulsou jornalistas norte-americanos tanto da China quanto de Hong Kong?
+
+Depois que tudo isso passar, é hora de os norte-americanos discutirem seriamente suas relações com a China. A administração Trump deveria cogitar uma proibição de viagens para a China até que o país pelo menos prove ter fechado seus mercados de animais exóticos.
+
+A crise atual custará milhões de empregos, de economias e milhares de vidas. Confiar no governo chinês depois de uma traição dessa magnitude não seria apenas tolice. Seria imoral.
+
+Ben Shapiro é apresentador do "The Ben Shapiro Show" e editor-chefe do DailyWire.com.
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
