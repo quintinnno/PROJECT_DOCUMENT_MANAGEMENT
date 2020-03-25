@@ -57992,10 +57992,11 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
     [FINALIZADO] https://redmine.capes.gov.br/issues/14240 - Defeito de mensagem incorreta
     [FINALIZADO] https://redmine.capes.gov.br/issues/14250 - Defeito de Valor Minimo e Maximo
     
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14254 - Sistema permite duplicidade de perguntas [ERRO NAO OCORRE]
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14307 - Falta icone de ordenação    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick
+    [NAO_DEFEITO] https://redmine.capes.gov.br/issues/14254 - Sistema permite duplicidade de perguntas [ERRO NAO OCORRE]
     
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14307 - Falta icone de ordenação    
+    
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick    
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14266
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14286
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14287
@@ -58135,8 +58136,8 @@ capes-028341@capes028341:~/Versionamento/PLDOC/PROJECT_DOCUMENT_MANAGEMENT$ ip a
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # 25/03/2020
 
-    11:36 - 15:36
-    16:36 - 20:36
+    11:36 - 15:50
+    16:50 - 20:36
     
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
