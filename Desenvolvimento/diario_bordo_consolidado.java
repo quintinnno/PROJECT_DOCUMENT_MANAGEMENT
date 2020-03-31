@@ -57900,7 +57900,7 @@ export default function RelatoriosCtrl(
 		tipoIdentificacao: tipoIdentificacaoParameter,
 	  }
   };
-  
+
   vm.limparForm = () => {
 	  vm.form = {tipoRelatorio: null,
 			  	 relatorio: null,
@@ -57917,14 +57917,14 @@ export default function RelatoriosCtrl(
 			  	 tipoPublico : null,
 			  	 tipoIdentificacao:null,
 	  }
-		
+
 	  vm.isValid_tipoRelatorio = true;
 	  vm.isValid_relatorio = true;
 	  vm.isValid_situacao = true;
 	  vm.isValid_ano = true;
 	  vm.isValid_formato = true;
   };
-  
+
   vm.atualizarFiltros = () => {
 	  if(vm.form.tipoRelatorio == null){
 		  vm.form = { };
@@ -57933,7 +57933,7 @@ export default function RelatoriosCtrl(
 		  vm.isValid_ano = true;
 		  vm.isValid_formato = true;
 	  }else{
-		  vm.isValid_tipoRelatorio = true;		  
+		  vm.isValid_tipoRelatorio = true;
 		  if(vm.form.relatorio == null){
 			  vm.form.situacao = null;
 			  vm.form.ano = null;
@@ -57947,7 +57947,7 @@ export default function RelatoriosCtrl(
 			  vm.form.formato = null;
 			  vm.form.tipoPublico = null;
 			  vm.form.tipoIdentificacao = null;
-			  
+
 			  vm.isValid_situacao = true;
 			  vm.isValid_ano = true;
 			  vm.isValid_formato = true;
@@ -57968,7 +57968,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
 https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&set_filter=1&sort=id%3Adesc&f%5B%5D=status_id&op%5Bstatus_id%5D=%3D&v%5Bstatus_id%5D%5B%5D=9&f%5B%5D=assigned_to_id&op%5Bassigned_to_id%5D=%3D&v%5Bassigned_to_id%5D%5B%5D=80&f%5B%5D=sprint_id&op%5Bsprint_id%5D=%3D&v%5Bsprint_id%5D%5B%5D=508&f%5B%5D=issue_tags&op%5Bissue_tags%5D=%3D&v%5Bissue_tags%5D%5B%5D=Em+teste+interno&f%5B%5D=&c%5B%5D=tracker&c%5B%5D=status&c%5B%5D=priority&c%5B%5D=subject&c%5B%5D=assigned_to&c%5B%5D=category&c%5B%5D=updated_on&c%5B%5D=fixed_version&c%5B%5D=sprint&c%5B%5D=cf_7&c%5B%5D=cf_3&group_by=&t%5B%5D=estimated_hours&t%5B%5D=spent_hours&t%5B%5D=cf_7&t%5B%5D=
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-	
+
 # SPRINT 21 (v1.9.26)
 
 	[FINALIZADO] https://redmine.capes.gov.br/issues/19962 [OK]
@@ -57987,12 +57987,12 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14258 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14263 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14265 [OK]
-	[FINALIZADO] https://redmine.capes.gov.br/issues/14314 [OK]	
+	[FINALIZADO] https://redmine.capes.gov.br/issues/14314 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14147 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14182 [OK]
-	
+
 # SPRINT 22	(v1.9.27)
-	
+
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14256 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14248 [OK]
 	[FINALIZADO] https://redmine.capes.gov.br/issues/14122 [OK]
@@ -58006,16 +58006,15 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
 # SPRINT 23	(v1.9.28)
 
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14336 - Defeito de data inválida    
-    [FINALIZADO] https://redmine.capes.gov.br/issues/14259 - Nomeclatura de botao errada (deve ser Voltar)    
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14336 - Defeito de data inválida
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14259 - Nomeclatura de botao errada (deve ser Voltar)
     [FINALIZADO] https://redmine.capes.gov.br/issues/14240 - Defeito de mensagem incorreta
     [FINALIZADO] https://redmine.capes.gov.br/issues/14250 - Defeito de Valor Minimo e Maximo
-    
-    [NAO_DEFEITO] https://redmine.capes.gov.br/issues/14254 - Sistema permite duplicidade de perguntas [ERRO NAO OCORRE]
-    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14307 - Falta icone de ordenação    
-    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick    
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14254 - Sistema permite duplicidade de perguntas [ERRO NAO OCORRE]
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14307 - Falta icone de ordenação
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick
+
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14266
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14286
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14287
@@ -58039,17 +58038,17 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14195
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14220
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14230
-    
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Visibilidade da Unidade Organizacional    
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Visibilidade da Unidade Organizacional
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14157 - Deve-se deixar apenas o perfil de Unidade organizacional e tentar acessar
     [AGUARDANDO] https://redmine.capes.gov.br/issues/16944 - Imagem Safari
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Tipo Anexação de Documentos
     [AGUARDANDO] https://redmine.capes.gov.br/issues/11269 - Resultado Análise de Impacto (Exportação de Relatório do Tipo Excel)
     [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Importação de arquivos para a composição de Público Alvo na modalidade Lote
-    
-    
-    
-    
+
+
+
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 
 [REDMINE-14336] Data final inválida
@@ -58159,16 +58158,197 @@ capes-028341@capes028341:~/Versionamento/PLDOC/PROJECT_DOCUMENT_MANAGEMENT$ ip a
     17:15 - 20:36
     
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿# FECHAR CHAMADOS GESTAO
+
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+
+﻿﻿# FECHAR CHAMADOS GESTAO
+
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000008
+
+https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
-﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿# COMANDOS LINUX
+
+  /*
+    > sudo apt-get install -f
+    > sudo rm -rf /var/lib/dpkg/info/*
+    > sudo gedit /etc/apt/sources.list
+  */
+
+# 26/03/2020
+
+  10:31 - 15:02
+  16:02 - 20:31
+
+# RAPIDSVN
+
+  > sudo apt-get install rapidsvn
+
+# INSTALAR FONTE 'SOURCE CODE PRO'
+
+  -- Ciar arquivo (install-source-code-pro) com o seguinte conteudo
+
+  /*
+    #!/usr/bin/env bash
+
+    cd Downloads
+
+    wget https://github.com/adobe-fonts/source-code-pro/archive/2.030R-ro/1.050R-it.zip
+
+    if [ ! -d "~/.fonts" ] ; then
+        mkdir ~/.fonts
+    fi
+
+    unzip 1.050R-it.zip
+
+    cp source-code-pro-*-it/OTF/*.otf ~/.fonts/
+    rm -rf source-code-pro*
+    rm 1.050R-it.zip
+
+    cd ~/
+
+    fc-cache -f -v
+  */
+
+  -- Rodar os camandos para instalação
+
+    > sudo chmod +x
+    > ./install-source-code-pro.sh
+
+[DOCUMENTACAO] [REDMINE-16889] [GESTAO-20191227000032] - Notificação em duplicidade
+[DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] - Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
+[DOCUMENTACAO] [REDMINE-14896] [GESTAO-20190905000005] - Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
+[DOCUMENTACAO] [REDMINE-15012] [GESTAO-20190905000010] - MONITORAMENTO - Avaliar com volume significativo
+[DOCUMENTACAO] [REDMINE-15006] [GESTAO-20190905000009] - NOTIFICAÇÃO - Adequar funcionamento (query + quantidade + paginação)
+[DOCUMENTACAO] [REDMINE-15004] [GESTAO-20190905000008] - Adequar query de publicação
+
+[DOCUMENTACAO] [REDMINE-14501] [GESTAO-20190905000006] - Avaliação de adequação de funcionalidade de público alvo importação por lote
+
+[DOCUMENTACAO] [REDMINE-00388] [GESTAO-20190509000040] - Aprimorar perfil para acesso aos questionários
+
+[DOCUMENTACAO] [REDMINE-XXXXX] [GESTAO-XXXXXXXXXXXXXX] - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+[DOCUMENTACAO] [REDMINE-XXXXX] [GESTAO-XXXXXXXXXXXXXX] - aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+Hoje continuei a trabalhar nas demandas de documentação. Estou fializando o chamado GESTAO-20190905000006 nesse momento.
+
+Este caso de uso tem como objetivo manter público alvo do sistema, permitindo que o ator que possua grupo de acesso com as devidas transaes vinculadas, possa realizar as tarefas de pesquisar, cadastrar, editar, excluir e visualizar pblico alvo do sistema.
+
+# 27/03/2020
+
+  10:30 - 16:02
+  17:02 - 19:30 (17:48)
+
+# INSTALAR MELLOWPLAYER (OUVIR DEZZER) [UBUNTU 19.10]
+
+  > wget -c https://github.com/ColinDuquesnoy/MellowPlayer/releases/download/3.1.0/MellowPlayer-x86_64.AppImage
+  > chmod +x MellowPlayer*AppImage
+  > ./MellowPlayer*
+  > sudo apt-get install flashplayer-chromium
+
+# INSTALAR O PROGRAMA DE TECLADO BUCKLESPRING [UBUNTU 19.10]
+
+  -- Instalar programa
+    > sudo snap install bucklespring
+
+  -- Atualizar programa
+    > sudo snap refresh bucklespring
+
+  -- Remover Programa
+    > sudo snap remove bucklespring
+
+# INSTALAR O PROGRAMA PLANK DOCK [UBUNTU 19.10]
+
+  > sudo add-apt-repository ppa:ricotz/docky
+  > sudo apt-get update
+  > sudo apt-get install plank
+  > sudo apt-get remove plank
+
+# INSTALAR ZHS [UBUNTU 19.10]
+
+  > sudo apt-get install zsh
+
+# INSTALAR ASDF GERENCIADOR DE PACOTES [UBUNTU 19.10]
+
+  > https://asdf-vm.com/#/core-manage-asdf-vm
+
+# INSTALAR NODEJS [UBUNTU 19.10]
+
+  > https://github.com/nodesource/distributions/blob/master/README.md
+
+# TREINAMENTO DE REACT NATIVE
+
+  > https://rocketseat.com.br/week/aulas/11.0?aula=1
+
+# FRASES
+
+  "O código nunca mente"
+  "Adicione um I ao seu DE"
+
+# Malba Tahan (El Radig Sherif Ali Yezid Isaidin ibn Salem Hank Malba Tahan)
+
+  > "A memória dos sete grades geomatras cristãos ou agnósticos: Descartes, Pascal, Newton, Euler, Libnitz, Langrant, Cont. Que Alah se compadeça desses infiéis. E a memória do inesquecível matemático, filoso e astrônomo mulçumano: Bushafar Mohamed Al ben Mussah Al-Kaismi. Allah mantenha em sua glória."
+
+# 30/03/2020
+
+  10:12 14:32
+  15:32 19:12
+
+# GESTAO
+
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20191227000032/
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/tags/documentos/CHAMADO_20191227000032
+
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20191016000022/
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/tags/documentos/CHAMADO_20191016000022
+
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20190905000005/
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/tags/documentos/CHAMADO_20190905000005
+
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/trunk/documentos/documentos_nao_padronizados/CHAMADO_20190905000010/
+http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/tags/documentos/CHAMADO_20190905000010
+
+# 31/03/2020
+
+  10:04 14:04
+  15:04 19:04
+
+# INSTALAR MAVEN [UBUNTU 19.10]
+
+  > sudo apt update
+  > sudo apt install maven
+  > mvn -version
+
+  -- Caso não funcione realizar o seguinte procedimento
+
+  > java -version
+  > wget https://www-us.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.tar.gz -P /tmp
+  > sudo tar xf /tmp/apache-maven-*.tar.gz -C /opt
+  > sudo ln -s /opt/apache-maven-3.6.0 /opt/maven
+  > sudo nano /etc/profile.d/maven.sh
+
+  ---------------
+    export JAVA_HOME=/usr/lib/jvm/default-java
+    export M2_HOME=/opt/maven
+    export MAVEN_HOME=/opt/maven
+    export PATH=${M2_HOME}/bin:${PATH}
+  ---------------
+
+  > sudo chmod +x /etc/profile.d/maven.sh
+  > source /etc/profile.d/maven.sh
+  > mvn -version
+
+# CONTATO DPU
+
+  Defensoria Pública Geral da União
+  Gabinete da defensoria pública na Brasília
+  Endereço: Setor Bancário Sul Q. 2 Cleto Meirelles - Asa Sul, Brasília - DF, 70070-120
+  Aberto ⋅ Fecha às 15:00
+  Telefone: (61) 3318-7900
+
+# 
