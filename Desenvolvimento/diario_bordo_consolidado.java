@@ -18949,8 +18949,15 @@ Sim, as questões são parte da confusão da inteligencia.
 "Algumas pessoas entram na nossa vida só para criarmos anticorpos."
 "Algumas pessoas sozinhas já estão mal acompanhadas"
 "Quimicamente falando o Alcóo é uma solução"
+"Depois da pandemia, tem gente que deveria continuar usando máscara."
+"Evitem visitar os parentes. Eles não estão com saudades, e a maioria nem gosta de você. Fique em casa."
+"Tem gente achando que vai ficar 30 dias em casa, e a fada do dente vai colocar dinheiro debaixo do travesseiro."
+"Falaram que na quarentena é normal você conversar com o cachorro, plantas e até paredes. Mas procure um psiquiatra se eles começarem a te responder ."
+"Você morreria para salvar sua vida?"
+"O importante não é vencer. É fazer o outro perder."
+"A pessoa coloca na foto de perfil "Fique em casa", mas já vi na rua hoje umas três vezes batendo perna."
 
-https://www.osvigaristas.com.br/frases/pagina3.html
+https://www.osvigaristas.com.br/frases/pagina5.html
 
 ======================================================================================================================================= ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 Glenn Greenwald (o defensor de neonazistas) afirmava que "os jornalistas brasileiros não têm uma estratégia para combater Bolsonaro".
@@ -58435,4 +58442,17 @@ http://svn.capes.gov.br/svn/QUESTIONARIO-CAPES/tags/documentos/CHAMADO_201909050
   > Gerar script para Prorrogar Questionários
   > Estimar Tempo para as tarefas
 
-#
+# 03/04/2020
+
+  Login: 02195114380
+  Nome: HUDINEIA PEREIRA DE SOUSA
+  Senha: 6p0r7p
+
+  Login: 57323909287
+  Nome: MIRANCLEIDE DE ARAUJO BATISTA CARNEIRO
+  Senha: db0p6b
+
+  Login: 65247442253
+  Nome: JOCILENE MONTEIRO DE SOUZA
+  Senha: 3r9j0b
+  Questionário: Programa Residência Pedagógica (RP) - Preceptores
