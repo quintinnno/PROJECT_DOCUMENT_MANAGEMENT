@@ -51524,6 +51524,26 @@ SELECT COUNT(1) FROM (
 	ORDER BY PESSOA_.NM_PESSOA ASC
 );
 
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO = '03835438352' AND ID_TIPO_IDENTIFICADOR  = 6;
+
+SELECT * FROM CORPORATIVO.PESSOA WHERE ID_PESSOA = 3282461;
+
+SELECT * FROM QUESTIONARIO.PERFIL_PESSOA;
+SELECT * FROM QUESTIONARIO.VINCULO_ORGANIZACIONAL;
+SELECT * FROM QUESTIONARIO.VINCULO_QUESTIONARIO;
+
+SELECT 	UNIDADE_ORGANIZACIONAL_.NM_UNIDADE_ORGANIZACIONAL,
+		QUESTIONARIO_.NM_QUESTIONARIO
+-- SELECT *
+FROM QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_
+JOIN CORPORATIVO.UNIDADE_ORGANIZACIONAL UNIDADE_ORGANIZACIONAL_ ON UNIDADE_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+WHERE PERFIL_PESSOA_.ID_PESSOA = 3282461;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO IN(63,53,42,66);
+
 SELECT * FROM QUESTIONARIO.PUBLICO_ALVO WHERE DS_PUBLICO_ALVO LIKE 'RESIDENTES';
 
 SELECT * FROM QUESTIONARIO.NOTIFICACAO WHERE NR_VINCULO_NOTIFICACAO = 110;
@@ -51597,8 +51617,130 @@ WHERE p.ID_PREENCHIMENTO IN(898524)
 ORDER BY ORDEM_PERGUNTA;
 
 
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO = '02735025144' AND ID_TIPO_IDENTIFICADOR  = 6;
+SELECT * FROM CORPORATIVO.IDENTIFICADOR_REGISTRADO WHERE DS_IDENTIFICADOR_REGISTRADO = '03089233169' AND ID_TIPO_IDENTIFICADOR  = 6;
+
+SELECT 	QUESTIONARIO_.ID_QUESTIONARIO,
+		QUESTIONARIO_.NM_QUESTIONARIO,
+		UNIDADE_ORGANIZACIONAL_.NM_UNIDADE_ORGANIZACIONAL
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN CORPORATIVO.UNIDADE_ORGANIZACIONAL UNIDADE_ORGANIZACIONAL_ ON UNIDADE_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL
+LEFT JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+WHERE PERFIL_PESSOA_.ID_PESSOA NOT IN( 3303933 )
+AND PERFIL_PESSOA_.ID_PESSOA IS NULL;
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO IN(83,84);
+
+SELECT 	QUESTIONARIO_.ID_QUESTIONARIO,
+		QUESTIONARIO_.NM_QUESTIONARIO,
+		UNIDADE_ORGANIZACIONAL_.NM_UNIDADE_ORGANIZACIONAL
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON QUESTIONARIO_.ID_QUESTIONARIO = VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN CORPORATIVO.UNIDADE_ORGANIZACIONAL UNIDADE_ORGANIZACIONAL_ ON UNIDADE_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_UNIDADE_ORGANIZACIONAL
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+WHERE PERFIL_PESSOA_.ID_PESSOA IN( 3303933 );
+
+SELECT QUESTIONARIO_.NM_QUESTIONARIO
+-- SELECT *
+FROM QUESTIONARIO.QUESTIONARIO QUESTIONARIO_
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON VINCULO_QUESTIONARIO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+WHERE PESSOA_.ID_PESSOA = 3287270;
+
+SELECT QUESTIONARIO_.NM_QUESTIONARIO
+-- SELECT *
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON VINCULO_QUESTIONARIO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+WHERE PESSOA_.ID_PESSOA IN(3303933);
+-- WHERE EXISTS ( SELECT NULL FROM CORPORATIVO.PESSOA WHERE PESSOA_.ID_PESSOA <> 3303933 );
+
+-- Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Organizacional - Presidência) v001
+-- Questionário 18/03/2020 (QC) (Interno) (Identificador Obrigatório) (Unidade Organizacional - Diretoria de Educação a Distância) v002
+
+-- LISTA NEGRA. O QUESTIONARIO QUE APARECER AQUI DEVE SER EXCLUIDOS NA TELA.
+SELECT QUESTIONARIO_.NM_QUESTIONARIO
+-- SELECT *
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+LEFT JOIN CORPORATIVO.PESSOA PESSOA_ ON PESSOA_.ID_PESSOA = PERFIL_PESSOA_.ID_PESSOA
+LEFT JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+LEFT JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+LEFT JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON VINCULO_QUESTIONARIO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+-- WHERE EXISTS ( SELECT NULL FROM CORPORATIVO.PESSOA WHERE PESSOA_.ID_PESSOA = 3287270 );
+WHERE PESSOA_.ID_PESSOA NOT IN(3287270);
 
 
+-- LISTA NEGRA. O QUESTIONARIO QUE APARECER AQUI DEVE SER EXCLUIDOS NA TELA.
+-- DEVE APARECER: 84 (Diretoria)
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+LEFT JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+LEFT JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+-- LEFT JOIN QUESTIONARIO.QUESTIONARIO QUESTIONARIO_ ON VINCULO_QUESTIONARIO_.ID_QUESTIONARIO = QUESTIONARIO_.ID_QUESTIONARIO
+-- WHERE EXISTS ( SELECT NULL FROM CORPORATIVO.PESSOA WHERE PESSOA_.ID_PESSOA = 3287270 );
+-- WHERE PERFIL_PESSOA_.ID_PESSOA IN(3303933);
+WHERE PERFIL_PESSOA_.ID_PESSOA IN(3287270);
+
+
+SELECT PERFIL_PESSOA_.ID_PESSOA, VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+
+SELECT *
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+LEFT JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+AND PERFIL_PESSOA_.ID_PESSOA <> 3287270 ;
+AND EXISTS (SELECT * FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ WHERE PERFIL_PESSOA_.ID_PESSOA = 3287270);
+
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO
+FROM QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+WHERE EXISTS (SELECT ID_VINCULO_ORGANIZACIONAL FROM QUESTIONARIO.PERFIL_PESSOA WHERE ID_PESSOA <> 3303933);
+
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO, PERFIL_PESSOA_.ID_PESSOA
+FROM QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+--AND PERFIL_PESSOA_.ID_PESSOA = 3303933;
+AND PERFIL_PESSOA_.ID_PESSOA = 3287270;
+
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO, PERFIL_PESSOA_.ID_PESSOA
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_QUESTIONARIO
+-- AND PERFIL_PESSOA_.ID_PESSOA IN(3287270)
+AND PERFIL_PESSOA_.ID_PESSOA NOT IN(3303933)
+;
+
+-- RECUPERAR QUESTINARIOS NAO VINCULADOS A UMA DETERMINADA PESSOA
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO, PERFIL_PESSOA_.ID_PESSOA
+FROM QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_
+JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL;
+
+
+-- RECUPERAR QUESTINARIOS NAO VINCULADOS A UMA DETERMINADA PESSOA
+SELECT VINCULO_QUESTIONARIO_.ID_QUESTIONARIO, PERFIL_PESSOA_.ID_PESSOA
+FROM QUESTIONARIO.VINCULO_QUESTIONARIO VINCULO_QUESTIONARIO_
+LEFT JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+LEFT JOIN QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ ON PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL = VINCULO_QUESTIONARIO_.ID_VINCULO_ORGANIZACIONAL
+WHERE EXISTS ( SELECT 1 FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_ WHERE PERFIL_PESSOA_.ID_PESSOA = 3303933 );
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE ID_QUESTIONARIO = 92;
+
+SELECT *
+FROM QUESTIONARIO.PERFIL_PESSOA PERFIL_PESSOA_
+LEFT JOIN QUESTIONARIO.VINCULO_ORGANIZACIONAL VINCULO_ORGANIZACIONAL_ ON VINCULO_ORGANIZACIONAL_.ID_VINCULO_ORGANIZACIONAL = PERFIL_PESSOA_.ID_VINCULO_ORGANIZACIONAL
+WHERE PERFIL_PESSOA_.ID_PESSOA = 3303933;
 
 
 SELECT COUNT(*) AS TOTAL_RESIDENTES FROM (
@@ -58074,62 +58216,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
       [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
       [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
       [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
----------------------------------------------------------------------------------------------------------------------------------------------------------
-# SPRINT 24	(v1.9.28)
 
-    # 1.9.28A-SNAPSHOT
-
-      [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/19950 - Script para Prorrogação de Questionário
-      [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14220 - Campo obrigatório não informado
-
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/17525 - Limitar acesso via Unidade Organizacional
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/17222 - Demanda Consolidada
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/16944 - Ajustar Imagem Safari
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14368 - Pergunta do Tipo Anexação de Documentos
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14360 - Erro na pergunta do tipo Grupo
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14230 - Mensagem de sucesso não apresentada
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14157 - Permissão de Usuário
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14098 - Campos Obrigatórios Não Informados
-      [AGUARDANDO] [MELHORIA] https://redmine.capes.gov.br/issues/21423 - Pergunta do Tipo Anexação de Documentos
-      [AGUARDANDO] [MELHORIA] https://redmine.capes.gov.br/issues/12427 - Composição de Público Alvo na modalidade Lote
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14037 - No Público Alvo LOTE o sistema está realizando uma exclusão duplicada
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/12422 - Importação de múltiplos registros por lote
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/08408 - No Monitoramento o sistema não contabilização dos usuários que apenas logaram na aplicação
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/20991 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14403 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14316 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14311 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14266 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick
-      [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14178 - Aguardando verificação do Patrick
-
-      [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14195
-      [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14151
-      [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14143
-      [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14119
-
-# MENSAGEM DE COMMIT
-
-  [REDMINE-14220] Campo obrigatório não informado
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-  [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
--------------------------------------------------------------------------------------------------------------------------------------------------------------
-h4. %{color:blue}Correção%
-
-* No contexto do *REDMINE-14286*, implementamos as correções pertinentes.
-* *%{color:red}@Patrick Pereira%* segue para *%{color:blue}Teste Interno%*.
-----------------------------------------------------------------------------------------
 h4. %{color:blue}Correção%
 
 * No contexto do *REDMINE-14286*, implementamos as correções pertinentes, a saber:
@@ -58652,7 +58739,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
   S1EB042745
 
-# FECHAR CHAMADOSSOM
+# FECHAR CHAMADOS GESTAO
 
     > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190509000040
     > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000006
@@ -58664,8 +58751,84 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
   > 1.9.28-RC1-SNAPSHOT
 
-#
+# DADOS
 
-Login: 72287144153
-Nome: ISRAEL SOUZA GONTIJO
-Senha: 6b3p0r
+  Login: 72287144153
+  Nome: ISRAEL SOUZA GONTIJO
+  Senha: 6b3p0r
+
+  ---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+  # SPRINT 24	(v1.9.28)
+
+      # 1.9.29RC01-SNAPSHOT
+
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14395
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14307
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14286
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14220
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14118
+
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/19950 - Script para Prorrogação de Questionário
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14220 - Campo obrigatório não informado
+
+      # 1.9.29RC02-SNAPSHOT
+
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14178 - Corrigir campo sigla
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14098 - Campos Obrigatórios Não Informados
+
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14230 - Mensagem de sucesso não apresentada
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/17222 - Demanda Consolidada
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/16944 - Ajustar Imagem Safari
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14360 - Erro na pergunta do tipo Grupo
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14157 - Permissão de Usuário
+
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14037 - No Público Alvo LOTE o sistema está realizando uma exclusão duplicada
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/12422 - Importação de múltiplos registros por lote
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/08408 - No Monitoramento o sistema não contabilização dos usuários que apenas logaram na aplicação
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/17525 - Limitar acesso via Unidade Organizacional
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14368 - Pergunta do Tipo Anexação de Documentos
+
+        [AGUARDANDO] [MELHORIA] https://redmine.capes.gov.br/issues/21423 - Pergunta do Tipo Anexação de Documentos
+        [AGUARDANDO] [MELHORIA] https://redmine.capes.gov.br/issues/12427 - Composição de Público Alvo na modalidade Lote
+
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/20991 - Aguardando verificação do Patrick
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14403 - Aguardando verificação do Patrick
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14316 - Aguardando verificação do Patrick
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14311 - Aguardando verificação do Patrick
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14266 - Aguardando verificação do Patrick
+        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14237 - Aguardando verificação do Patrick
+
+        [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14195
+        [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14151
+        [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14143
+        [CANCELADO]  [DOCUMENTACAO]  https://redmine.capes.gov.br/issues/14119
+
+  # MENSAGEM DE COMMIT
+
+    [REDMINE-14220] Campo obrigatório não informado
+    [REDMINE-14178] Divergência entre a regra de apresentação RA "J" com os campos obrigatórios na tela do cadastrar questionário
+    [REDMINE-14098] A1 + E2 - Campos Obrigatórios Não Informados
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] ap-00000000000000000000000000000000000000000000000000000000000000000000000
+
+# TREINAMENTO NODEJS + MONGODB + ANGULARJS
+
+  - https://www.youtube.com/watch?v=r_GFSRragaI&t=372s
+  - https://www.youtube.com/watch?v=wDWdqlYxfcw&list=PLHlHvK2lnJndvvycjBqQAbgEDqXxKLoqn
+  - https://www.youtube.com/watch?v=VHOd-RBj1MA&list=PLvimn1Ins-41lVr-SPWF1mdNTzog05TcA
+  - https://www.youtube.com/watch?v=KtDwdoxQL4A
+  - https://www.youtube.com/watch?v=-gd73iczlS8&list=PL3vQyqzqjZ637sWpKvniMCxdqZhnMJC1d
+  - https://www.youtube.com/watch?v=u54DyL5N2qA&t=17s
+  - https://www.youtube.com/watch?v=RuubsWkjwrM&list=PLZ14qQz3cfJIHeNmClIuqL3jpRDlJKVSd
+  - https://www.youtube.com/watch?v=Kan1sMNOlIc
+  - https://www.youtube.com/watch?v=LLqq6FemMNQ&list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B
+  - https://www.devmedia.com.br/view/viewaula.php?idcomp=37544
