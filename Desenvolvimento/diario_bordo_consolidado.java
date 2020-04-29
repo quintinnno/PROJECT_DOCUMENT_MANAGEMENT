@@ -355,14 +355,12 @@
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss-eap/arquivos/
             -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
             -Darquivos=/home/indra/Desenvolvimento/Ferrum/ferrum_tool/ferrum_tool_server/arquivos
-			-Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
+			      -Darquivos=/home/indra/Desenvolvimento/Cesium/cesium_tool/cesium_tool_server/cesium_tool_server_jbossA/arquivos
 
-
--Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
--Darquivos=/home/indra/Desenvolvimento/Ununtrium/ununtrium_tool/ununtrium_tool_server/arquivos
--Darquivos=/home/indra/Desenvolvimento/Ununpentium/ununpentium_tool/ununpentium_tool_server/arquivos
+            -Darquivos=/home/indra/Desenvolvimento/Mercurium/mercurium_tool/mercurium_tool_server/mercurium_tool_server_jboss/arquivos/
+            -Darquivos=/home/indra/Desenvolvimento/Ununtrium/ununtrium_tool/ununtrium_tool_server/arquivos
+            -Darquivos=/home/indra/Desenvolvimento/Ununpentium/ununpentium_tool/ununpentium_tool_server/arquivos
             -Darquivos=/home/indra/Desenvolvimento/Stanium/stanium_ambiente_homologacao/stanium_ambiente_homologacao_tool/stanium_ambiente_homologacao_tool_server/stanium_ambiente_homologacao_tool_server_jboss/arquivos
-
 
             -Darquivos=/home/indra/Desenvolvimento/Cyprium/cyprium_tool/cyprium_tool_server/cyprium_tool_server_jboss/arquivos
 
@@ -57474,7 +57472,6 @@ Ja verifiquei com o banco de dados e gcm, e não há reporte de lentidão.
 # Acompanhar CATI
 
 	http://cati.capes.gov.br/dti?Action=AgentTicketZoom;TicketID=469547&Session=102bb8c100c8bb3f57d320476bbdbfea4a
-
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Formatar Pendrive pelo terminal
 
@@ -57494,7 +57491,6 @@ Ja verifiquei com o banco de dados e gcm, e não há reporte de lentidão.
 
 	// Criar pendrive bootavel
 	sudo dd if=/home/indra/Downloads/neon-user-20200305-1117.iso of=/dev/sdb1 bs=4M
-
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 # Cadastro de Tempo Gastão
 
@@ -58776,8 +58772,8 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
         [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14178 - Corrigir campo sigla
         [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14098 - Campos Obrigatórios Não Informados
+        [FINALIZADO] [DEFEITO]  https://redmine.capes.gov.br/issues/14230 - Mensagem de sucesso não apresentada
 
-        [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14230 - Mensagem de sucesso não apresentada
         [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/17222 - Demanda Consolidada
         [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/16944 - Ajustar Imagem Safari
         [AGUARDANDO] [DEFEITO]  https://redmine.capes.gov.br/issues/14360 - Erro na pergunta do tipo Grupo
@@ -58809,8 +58805,8 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
     [REDMINE-14220] Campo obrigatório não informado
     [REDMINE-14178] Divergência entre a regra de apresentação RA "J" com os campos obrigatórios na tela do cadastrar questionário
     [REDMINE-14098] A1 + E2 - Campos Obrigatórios Não Informados
-    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-14230] Mensagem de sucesso não apresentada
+    [REDMINE-16944] Ajustar imagens para que fique adequado ao utilizar o Safari
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -58831,4 +58827,323 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
   - https://www.youtube.com/watch?v=RuubsWkjwrM&list=PLZ14qQz3cfJIHeNmClIuqL3jpRDlJKVSd
   - https://www.youtube.com/watch?v=Kan1sMNOlIc
   - https://www.youtube.com/watch?v=LLqq6FemMNQ&list=PLJ_KhUnlXUPtbtLwaxxUxHqvcNQndmI4B
-  - https://www.devmedia.com.br/view/viewaula.php?idcomp=37544
+  - https://www.devmedia.com.SCRITPbr/view/viewaula.php?idcomp=37544
+
+# CORRIGIR ERRO ECLIPSE DIFF DE ARQUIVOS JAVASCRIPT
+
+  > Acessar "Window > Preferences > Compare/Patch > General"
+  > Desmarcar o checkbox "Open structure compare automatically"
+
+# RAMBAM
+
+  > http://ohelmoshe.com.br/curso-rambam-hilchot-deot
+  > https://www.chabad.org/library/article_cdo/aid/920161/jewish/Tefilah-and-Birkat-Kohanim-Chapter-One.htm
+
+# SENHA
+
+  Login: 29449900809
+  Nome: MALCOM GUIMARAES RODRIGUES
+  Senha: 9c5bcb
+
+# CONFIGURAÇÃO JBOSS
+
+  > -Darquivos=/home/indra/Desenvolvimento/Thallium/thallium_tool/thallium_tool_server/arquivos
+
+# PLFINN - Plataforma de Lançamento Financeiro
+
+  > Tecnologias
+
+    > Eclipse IDE
+    > Project Maven
+    > Java 8
+    > Git
+    > PostgreSQL
+    > JPA
+    > AngularJS
+    > HTML 5
+    > CSS 3
+    > Boostrap 4
+
+  > Contrução
+
+    > Criado projeto Manven (via Eclipse)
+    > Criado conta no Github para o usuário: Ununtrium
+
+# FERIAS
+
+  > Marcação de férias realizada em 16/04/2020, com prazo de 15 dias, com inicio em 29/09/2020.
+
+# MUSIC
+
+  Ynta Omryh
+
+  Hagauh-nyah ly
+  Lyha-yah milirrahu
+  Alymuh nandãm
+  Alay modill guyrraho
+
+  Hagauh-niah ly
+  Lya yah  milirrahu
+  Alymuh nandam
+  Alay modill guirraho
+
+  Ily shuf tuh
+  Ablimed shuf faik
+  Ayan-yah
+
+  Omry dã-yah
+  Yrarr sibuhy say
+  Alah yah
+
+  Yly shuf tuh
+  Yly shuf tuh
+
+  Ablimed shuf-faik
+  Any-yah
+
+  Omri dãyah
+  Yach sibuh
+  Ysa-yah layah
+  Ily shuf-tuh
+
+  Ablimed shuh-faik
+  Ane-yah
+  Omri dãyah
+  Yarh yarh sibuh
+  Ysa-yah le-yah
+
+  Ynta omry
+  Ynta omry
+
+  Ly dada bynu-rak
+  Sabach uyly dada bynu-rak
+
+  Sabach
+  Yntah Yntah
+  Yntah Omry
+
+  ....
+
+  Chady eminah omri
+  Amynak rhah rhah
+  Uah-deah yah habibi
+
+  Edy yh
+  Minah omrih rhah
+
+  Edy yh
+  Minah omrih
+  Adelek rhah rhah
+  Uah-deah yah habibi
+
+  Edy yh
+  Minah omrih rhah
+
+  Ueneh shefih
+  Elby ebylek
+
+  Fayra-chak
+  Uachy-dek
+  Wene-deh
+
+  Fidun-yah hy
+  Familyh guirah
+
+  ...
+
+  Fidah dikyh aytibez
+  Achay ve omri
+  Ity-yah guy-aty
+  Wet-yah achef
+  Achefley
+  La omri
+  Ygui-ryh
+
+  Fidah dikyh aytibez
+  Achay ve omri
+  Ity-yah guy-aty
+  Wet-yah achef
+  Achefley
+  La omri
+  Ygui-ryh
+
+  ...
+
+  Fulyh facha-steh
+  Hami-mah blakayely
+  Iltah achah
+  Finurah ayneh
+  Rhay-buil
+  Ufih-kery
+
+  Fulyh facha-steh
+  Hami-mah blakayely
+  Iltah achah
+  Finurah ayneh
+  Rhay-buil
+  Ufih-kery
+
+  ...
+
+  Yah chayaet
+  Al-lby
+  Yah avilamy
+  Na chayekih
+  Lêh lêh leh leh
+
+  Chabil-kish chaweyk
+  Yah habibi bady-ryh
+
+  ...
+
+  Ily shuf tuh
+  Ily shuf tuh
+
+  Ablimed shuf faik
+  Ayan-yah
+  Omri dãyah
+  Yach yach sibuh
+  Ysa-yah layah
+  Ily shuf-tuh
+
+  Ablimed shuh-faik
+  Ane-yah
+  Omri dãyah
+  Yach yach sibuh
+  Ysa-yah le-yah
+
+  Ynta omry
+  Ynta omry
+
+  Ly dada bynu-rak
+  Sabach uyly dada bynu-rak
+
+  Sabach
+  Yntah Yntah
+  Yntah Omry
+
+#
+
+  Oiee
+  tem uma tarefa geral
+  aí é só apontar as horas nela
+  vou te mandar
+  Horas trabalhadas:
+  https://jira.indra.es/browse/CBAAT-210
+
+  Horas de ausências justificadas (Atestados e Férias):
+  https://jira.indra.es/browse/CBAAT-211
+
+  Lembrando que atestados e justificativas de ausências devem ser encaminhados digitalizados
+  com prioridade para o e-mail: controledeausencias@indracompany.com  lsoaresb@indracompany.com, wjferreira@indracompany.com
+  esse primeiro link
+
+  é só clicar em "Log work"
+  e lançar as horas
+  bem mais simples que antes auhsaus
+
+#
+
+01
+    REDMINE-12014​
+    REDMINE-14109
+02
+    REDMINE-14146
+    REDMINE-14148
+03
+    REDMINE-14185
+    REDMINE-14240
+06
+    REDMINE-14250
+    REDMINE-14254
+07
+    REDMINE-14259
+    REDMINE-14287
+08
+    REDMINE-14314
+    REDMINE-14336
+09
+    REDMINE-14151​
+    REDMINE-14178
+13
+    REDMINE-14230
+    REDMINE-14286
+14
+    REDMINE-14307
+    REDMINE-14316
+15
+    REDMINE-14403
+    REDMINE-20991
+16
+
+# CONTATOS
+
+    - Restaurante Adega da Cachaça
+      - Telefone: 3257-2470
+
+#
+  - https://conexaopolitica.com.br/ultimas/as-narrativas-por-tras-do-acordao-de-bolsonaro/
+
+#
+
+"02735025144";"jqsilva@indracompany.com"
+"03089233169";"patricktestegti@gmail.com"
+"10742330699";"testesoftware.1133349@capes.gov.br"
+"05748226316";"testesoftware.1133348@capes.gov.br"
+"41062500806";"testesoftware.1133302@capes.gov.br"
+"39466265806";"testesoftware.1133259@capes.gov.br"
+"10320278433";"testesoftware.1133264@capes.gov.br"
+"00827793170";"testesoftware.1133205@capes.gov.br"
+"06129686501";"testesoftware.1133201@capes.gov.br"
+"35646108802";"testesoftware.1133620@capes.gov.br"
+"08517264967";"testesoftware.1133319@capes.gov.br"
+"29449900809";"testesoftware.1156715@capes.gov.br"
+"99423448704";"testesoftware.2409723@capes.gov.br"
+
+# REDMINE - ENTREGA ATÉ "23/04/2020"
+
+  + 1.9.30-SNAPSHOT
+
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14037
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14395
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14230
+
+    [FINALIZADO] https://redmine.capes.gov.br/issues/8408
+
+    [EXECUCAO] https://redmine.capes.gov.br/issues/14157
+    [EXECUCAO] https://redmine.capes.gov.br/issues/14118 - Padronização de campo da funcionalidade Unidade Organizacional
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Permitir tratamento assíncrono dos processamentos de importação de arquivos para a composição de Público Alvo na modalidade Lote
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/12422 - Importação de múltiplos registros por lote.
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14151 - MSG035 não confere
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 -  Grupo Tabela não apresentado
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14266 - Interface 025 - RA "E"
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14360 - Interface 005 – Visualizar Questionário – Pergunta Tipo Grupo
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Interface 010 – Visualizar Questionário – Pergunta Tipo Anexação de Documento - opção não encontrada
+t
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/21927 - Cadastrar questionário
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/21928 - Cadastrar questionário - botão Adicionar
+
+    [REDMINE-14395] Interface 020 - RA "S" - Campos obrigatórios sem destaque
+    [REDMINE-14230] Mensagem de sucesso não apresentada
+    [REDMINE-14037] Público Alvo / Excluir Pessoa - O sistema está realizando uma exclusão duplicada
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+# GERAR EVIDENCIA DE TESTE DOS SEGUINTES CHAMADOS
+
+      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010
+      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009
+      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005
+      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022
+      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032
+
+#
