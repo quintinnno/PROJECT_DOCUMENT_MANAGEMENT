@@ -59108,16 +59108,19 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
     [FINALIZADO] https://redmine.capes.gov.br/issues/14395
     [FINALIZADO] https://redmine.capes.gov.br/issues/14230
 
-    [FINALIZADO] https://redmine.capes.gov.br/issues/8408
+    [FINALIZADO] https://redmine.capes.gov.br/issues/8408 - Não contabilização dos usuários que apenas logaram na aplicação
+    [FINALIZADO] https://redmine.capes.gov.br/issues/14118 - Padronização de campo da funcionalidade Unidade Organizacional
 
-    [EXECUCAO] https://redmine.capes.gov.br/issues/14157
-    [EXECUCAO] https://redmine.capes.gov.br/issues/14118 - Padronização de campo da funcionalidade Unidade Organizacional
+    [EXECUCAO] https://redmine.capes.gov.br/issues/14157 - Mensagem de erro não confere (deve redirecionar para uma página de acesso não permitido)
+
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14151 - MSG035 não confere ao Pesquisar Questionario (Data de início da vigência do questionário maior que a data fim)
 
     [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
     [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Permitir tratamento assíncrono dos processamentos de importação de arquivos para a composição de Público Alvo na modalidade Lote
     [AGUARDANDO] https://redmine.capes.gov.br/issues/12422 - Importação de múltiplos registros por lote.
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14151 - MSG035 não confere
-    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 -  Grupo Tabela não apresentado
+
+    [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Grupo Tabela não apresentado
 
     [AGUARDANDO] https://redmine.capes.gov.br/issues/14266 - Interface 025 - RA "E"
     [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
@@ -59130,7 +59133,9 @@ t
     [REDMINE-14395] Interface 020 - RA "S" - Campos obrigatórios sem destaque
     [REDMINE-14230] Mensagem de sucesso não apresentada
     [REDMINE-14037] Público Alvo / Excluir Pessoa - O sistema está realizando uma exclusão duplicada
-    [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+    [REDMINE-14151] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -59140,10 +59145,18 @@ t
 
 # GERAR EVIDENCIA DE TESTE DOS SEGUINTES CHAMADOS
 
-      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010
-      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009
-      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005
-      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022
-      > https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009 -- Versionado
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005 -- Serviço de seguranca [Printar o código]
+
+      [AGUARDANDO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022 -- Processo schema (query + configuração) [criar script e especificar ]
+      [AGUARDANDO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032 --
+
+      [PENDENTE]   https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010 -- Essa demanda não está em Produção
+
+# COMMIT
+
+      [DOCUMENTACAO] [REDMINE-15006] Adequar funcionamento (query + quantidade + paginação)
+      [DOCUMENTACAO] [REDMINE-14896] Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
+      [DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
 
 #
