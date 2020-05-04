@@ -1577,7 +1577,7 @@
 		E: Sub-process /usr/bin/dpkg returned an error code (1)
 
 	+ Correção
-		"sudo rm /var/lib/dpkg/info/*"
+		"sudo rm -rf /var/lib/dpkg/info/"
 
     # Melhorando o uso mais eficiente da memória RAM (linux Mint 19)
 
@@ -6868,6 +6868,8 @@ VALUES(SQ_PARAMETRO_SISTEMA.NEXTVAL, 'questionario.siglasAplicacoes', 'QC,SCBA',
     Morbidade - Mortalidade
 
     -Darquivos=/home/desenvolvimento/Desenvolvimento/Cyprium/cyprium_tool/cyprium_server/cyprium_server_jboss_v1/jboss-eap-6.4/arquivos
+    
+    -Darquivos=/home/quintinn/Desenvolvimento/Indra/Cesium/cesium_tool/cesium_tool_server/arquivos
 
     -Darquivos=/home/desenvolvimento/Desenvolvimento/Plumbum/plumbum_tool/plumbum_sever/plumbum_server_jboss_v1/jboss-eap-6.4/arquivos
 
@@ -57479,10 +57481,10 @@ Ja verifiquei com o banco de dados e gcm, e não há reporte de lentidão.
 	sudo fdisk -l
 
 	// Desmontar pendrive
-	sudo umount /dev/sdb1
+	sudo umount /dev/sdb
 
 	// Formatar pendrive com o nome "CAPES"
-	sudo mkfs.vfat -n "CAPES" /dev/sdb1
+	sudo mkfs.vfat -n "CAPES" /dev/sdb
 
 # Criar pendrive bootavel
 
@@ -59151,13 +59153,39 @@ h4. %{color:blue}Correção%
       [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022 -- Processo schema (query + configuração) [criar script e especificar ]
       [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032 -- Notificação de Duplicidade
 
-      [PENDENTE]   https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000010 -- Essa demanda não está em Produção
+# CONFIGURAR CHECK POINT
+    
+    -- Instalar dependencias
+        sudo apt-get install libnss3-tools
+        sudo apt-get install openssl
+        sudo apt-get install xterm
+        sudo apt-get install libpam0g:i386 
+        sudo apt-get install libx11-6:i386 
+        sudo apt-get install libstdc++6:i386 
+        sudo apt-get install libstdc++5:i386
+    
+# REMOVER JAVA ORACLE
+    
+    -- Links para exclusão do Java
+    sudo update-alternatives --display java
+    
+    -- Excluir item a item
+    sudo update-alternatives --remove "java" "/usr/lib/jvm/1.8.0_202/bin/java"
+    
+    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
+    sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+    
+# INSTALAR JAVA (via ASDF)
 
-# COMMIT
-
-      [DOCUMENTACAO] [REDMINE-15006] Adequar funcionamento (query + quantidade + paginação)
+  java -version
+  sudo apt-get install jq
+  asdf plugin-add java
+  asdf list java
+  asdf list all java
+  asdf install java adopt-openjdk-8u202-b08
+  
+# 
+[DOCUMENTACAO] [REDMINE-15006] Adequar funcionamento (query + quantidade + paginação)
       [DOCUMENTACAO] [REDMINE-14896] Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
       [DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
       [DOCUMENTACAO] [REDMINE-16889] [GESTAO-20191227000032] Notificação em Duplicidade
-
-#
