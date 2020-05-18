@@ -6868,7 +6868,7 @@ VALUES(SQ_PARAMETRO_SISTEMA.NEXTVAL, 'questionario.siglasAplicacoes', 'QC,SCBA',
     Morbidade - Mortalidade
 
     -Darquivos=/home/desenvolvimento/Desenvolvimento/Cyprium/cyprium_tool/cyprium_server/cyprium_server_jboss_v1/jboss-eap-6.4/arquivos
-    
+
     -Darquivos=/home/quintinn/Desenvolvimento/Indra/Cesium/cesium_tool/cesium_tool_server/arquivos
 
     -Darquivos=/home/desenvolvimento/Desenvolvimento/Plumbum/plumbum_tool/plumbum_sever/plumbum_server_jboss_v1/jboss-eap-6.4/arquivos
@@ -49045,9 +49045,11 @@ PASSWORD = WebQuest321
 
 # CONEXÃO COM O BANCO DE DADOS DE HOMOLOGACAO (QUESTIONARIOS)
 
-jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
+# jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST=exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
 
-jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
+# jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
+
+jdbc:oracle:thin:@(DESCRIPTION=(ADDRESS_LIST=(LOAD_BALANCE=on)(ADDRESS=(PROTOCOL=TCP)(HOST=rac-dh.fc.capes.gov.br)(PORT=1521))(ADDRESS=(PROTOCOL=TCP)(HOST= exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com)(PORT=1521)))(CONNECT_DATA=(SERVICE_NAME=hom_dr)))
 
 USERNAME = webquestionario
 PASSWORD = webquestionario
@@ -59135,6 +59137,8 @@ t
     [REDMINE-14037] Público Alvo / Excluir Pessoa - O sistema está realizando uma exclusão duplicada
     [REDMINE-14157] Mensagem de erro não confere
     [REDMINE-14266] Interface 025 - RA "E"
+    [REDMINE-21928] Cadastrar questionário - botão Adicionar
+    [REDMINE-21927] Cadastrar questionário
 
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     [REDMINE-XXXXX] aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
@@ -59357,3 +59361,214 @@ https://iplogger.org/
     dpkg --get-selections | grep postgres
 
 # Acessar PostgreSQL pelo terminal
+
+    + Mensagens
+
+          h4. %{color:blue}Correção%
+
+          * Segue para *%{color:blue}Teste Interno%*.
+
+    + Versões
+
+      v1.9.30-SNAPSHOT (Entregues)
+
+      https://redmine.capes.gov.br/issues/08408
+      https://redmine.capes.gov.br/issues/14037
+      https://redmine.capes.gov.br/issues/14098
+      https://redmine.capes.gov.br/issues/14119
+      https://redmine.capes.gov.br/issues/14151
+      https://redmine.capes.gov.br/issues/14157
+      https://redmine.capes.gov.br/issues/14195
+      https://redmine.capes.gov.br/issues/14220
+      https://redmine.capes.gov.br/issues/14230
+      https://redmine.capes.gov.br/issues/14266
+      https://redmine.capes.gov.br/issues/14402
+      https://redmine.capes.gov.br/issues/14403
+      https://redmine.capes.gov.br/issues/16944
+      https://redmine.capes.gov.br/issues/14143
+      https://redmine.capes.gov.br/issues/14395
+      https://redmine.capes.gov.br/issues/21463
+      https://redmine.capes.gov.br/issues/21464
+
+# GERAR EVIDENCIA DE TESTE DOS SEGUINTES CHAMADOS
+
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000009 -- Versionado
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20190905000005 -- Serviço de seguranca [Printar o código]
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191016000022 -- Processo schema (query + configuração) [criar script e especificar ]
+      [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032 -- Notificação de Duplicidade
+
+# CONFIGURAR CHECK POINT
+
+    -- Instalar dependencias
+        sudo apt-get install libnss3-tools
+        sudo apt-get install openssl
+        sudo apt-get install xterm
+        sudo apt-get install libpam0g:i386
+        sudo apt-get install libx11-6:i386
+        sudo apt-get install libstdc++6:i386
+        sudo apt-get install libstdc++5:i386
+
+# REMOVER JAVA ORACLE
+
+    -- Links para exclusão do Java
+    sudo update-alternatives --display java
+
+    -- Excluir item a item
+    sudo update-alternatives --remove "java" "/usr/lib/jvm/1.8.0_202/bin/java"
+
+    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
+    sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+
+# INSTALAR JAVA (via ASDF)
+
+  java -version
+  sudo apt-get install jq
+  asdf plugin-add java
+  asdf list java
+  asdf list all java
+  asdf install java adopt-openjdk-8u202-b08
+
+#
+[DOCUMENTACAO] [REDMINE-15006] Adequar funcionamento (query + quantidade + paginação)
+      [DOCUMENTACAO] [REDMINE-14896] Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
+      [DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
+      [DOCUMENTACAO] [REDMINE-16889] [GESTAO-20191227000032] Notificação em Duplicidade
+
+# ID_PESSOA
+
+    705191,
+    3303933,
+    3287270,
+    2860864
+
+#
+
+  > Continuamos enfrentar problemas de timeout com relação ao serviço de
+
+# SPRINT 26 (23/04/2020)
+
+  + VERSAO
+
+      + 1.9.31-SNAPSHOT
+
+      + 1.9.31RC01-SNAPSHOT
+
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/14368 - Interface 010 – Visualizar Questionário – Pergunta Tipo Anexação de Documento
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/14237 - Grupo Tabela não apresentado
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/14360 - Interface 005 – Visualizar Questionário – Pergunta Tipo Grupo
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/12427 - Permitir tratamento assíncrono dos processamentos de importação de arquivos para a composição de Público Alvo na modalidade Lote
+        [AGUARDANDO] https://redmine.capes.gov.br/issues/12422 - Importação de múltiplos registros por lote
+
+        [DEVOLUCAO] https://redmine.capes.gov.br/issues/14157 - Mensagem de erro não confere (deve redirecionar para uma página de acesso não permitido)
+
+    + COMMIT
+
+      [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+      + MENSAGEM
+
+            h4. %{color:blue}Correção%
+
+            * Segue para *%{color:blue}Teste Interno%*.
+
+     + DOCUMENTACAO
+
+        [DOCUMENTACAO] [REDMINE-XXXXXX] [GESTAO-XXXXXXXXXXXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+# ATALHO ECLIPSE
+
+---------------------------------------------------------------------------------------------------------------------
+/usr/share/applications/eclipse_thalium.desktop
+---------------------------------------------------------------------------------------------------------------------
+[Desktop Entry]
+Name=Eclipse Thallium
+Comment=Code Editing. Redefined.
+GenericName=Text Editor
+Exec=/home/indra/Desenvolvimento/Thallium/thallium_tool/thallium_tool_ide/eclipse --no-sandbox --unity-launch %F
+Icon=/usr/share/icons/hicolor/scalable/apps/goa-account-owncloud.svg
+Type=Application
+StartupNotify=false
+StartupWMClass=Code
+Categories=Utility;TextEditor;Development;IDE;
+MimeType=text/plain;inode/directory;
+Actions=new-empty-window;
+Keywords=eclipse;
+X-Desktop-File-Install-Version=0.24
+[Desktop Action new-empty-window]
+Name=New Empty Window
+Exec=/home/indra/Desenvolvimento/Thallium/thallium_tool/thallium_tool_ide/eclipse --no-sandbox --new-window %F
+Icon=/usr/share/icons/hicolor/scalable/apps/goa-account-owncloud.svg
+---------------------------------------------------------------------------------------------------------------------
+
+#
+
+De qualquer forma irei solicitar a alteração de um arquivo "mod_reqtimeout" das configurações do Apache Mod Cluster.
+
+#
+
+Boa tarde,
+
+Continuamos a receber o erro no ambiente de Homologação do sistema Questionários.
+Acreditamos que possamos reverter ajustando o arquivo "mod_reqtimeout" ou aumentando o tempo limite de conexão.
+
+Seria possível ?
+
+Erro:
+
+"Caused by: java.io.IOException: JBWEB002011: Socket read failed
+	at org.apache.coyote.ajp.AjpProcessor.read(AjpProcessor.java:1128)
+	at org.apache.coyote.ajp.AjpProcessor.readMessage(AjpProcessor.java:1206)
+	at org.apache.coyote.ajp.AjpProcessor.receive(AjpProcessor.java:1145)
+	at org.apache.coyote.ajp.AjpProcessor$SocketInputBuffer.doRead(AjpProcessor.java:1271)
+	at org.apache.coyote.Request.doRead(Request.java:438)
+	at org.apache.catalina.connector.InputBuffer.realReadBytes(InputBuffer.java:361)"
+
+Solicitamos a alteração do arquivo "mod_reqtimeout" na linha "RequestReadTimeout body=10,minrate=500", alterando o valor do minrate de "500" para "200".
+
+# Mishne Torah
+
+  https://www.chabad.org/library/article_cdo/aid/904980/jewish/Yesodei-haTorah-Chapter-Five.htm
+
+#
+
+Patrick, José Ricardo, José Quintino e Time de arquitetura,
+
+Por gentileza avaliem os impactos relativos a esta mudança no ambiente de homologação, considerando as seguintes aplicações/ferramentas no mínimo nesta avaliação, tendo em vista que está programada atualização do ambiente de produção no próximo sábado, 16/05/2020.
+
+Assim, por gentileza me reportem até 13/05/2020, com informe se "Sem" ou "com" impacto.
+
+# AJUSTAR
+
+    > Na tela de Publicação do Questionário o sistema deve apresentar todos os Modelos de E-mail (Internos e Externos)
+
+#
+
+COORDENAÇÃO DE PROG. CURSOS E FORM. EM EAD
+
+02034660552	THAINARA SILVA ALMEIDA	testesoftware.1039960@capes.gov.br
+53964632104	SILVIA HELENA RODRIGUES	testesoftware.4300964@capes.gov.br
+
+#
+
+RepositorioModeloEmail -> consultarModelosPorTipo()
+
+// FIXME [REDMINE-XXXXXX] {UPDATE} -- "Deve retirar a restricao por tipo de Publico Alvo"
+	@SuppressWarnings("unchecked")
+	public List<ModeloEmail> consultarModelosPorTipo(final TipoPublicoModeloEmail tipo) {
+		final Criteria criteria = session.createCriteria(ModeloEmail.class, "m")
+//				.add(Restrictions.eq("m.tipoPublicoModelo", tipo))
+				.add(Restrictions.eq("m.finalidadeModelo", FinalidadeModeloEmail.P));
+		return criteria.list();
+	}
+
+#
+
+  Corrigimos o problema do link do sistema no ambiente de Produção.
+
+  Estamos com problemas ao realizar a notificações. O sistema não está enviando os e-mails. Agora a pouco pedimos para o GCM reiniciar o servido, mas o problema permanece.
+
+#
