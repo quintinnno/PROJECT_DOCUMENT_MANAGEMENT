@@ -59189,3 +59189,171 @@ h4. %{color:blue}Correção%
       [DOCUMENTACAO] [REDMINE-14896] Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
       [DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
       [DOCUMENTACAO] [REDMINE-16889] [GESTAO-20191227000032] Notificação em Duplicidade
+
+#
+# 30/04/2020
+
+	+ Tarefas
+
+		+ Questionários
+
+			> Gerar evidência de teste para o chamado GESTAO-XXXXXXXXXXXXXX
+			> Fechar 3 REDMINES de Defeito
+			> Finalizar REDMINE de Tipo Anexação de Documento
+			> Fechar JIRA
+			> Montar ambiente de Desenvolvimento
+
+				> Configurar Java
+
+					sudo mv jdk1.8.0_202 /opt/java
+			        sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_202/bin/java" 1
+			        sudo update-alternatives --set java /opt/java/jdk1.8.0_202/bin/java
+			        java -version
+
+			    > Configurar Maven
+
+			    	sudo apt-get update
+			    	sudo apt-get -y install maven
+			    	mvn -version
+
+		+ Gestão de chamados
+
+			> Chamados de defeito não tem documentação
+			> Chamados de evolutivas possuem documentação
+
+		+ Plataforma de Lançamento Financeiro
+
+			> Funcionalidades
+
+				> Manter Despesa Variável
+				> Manter Despesa Fixa (Contratos)
+				> Manter Configuração de Felicidade
+
+
+
+Moro não conseguiu sustentar suas mentiras.
+
+"Para 80% da população não vai ser nem gripezinha, não vai ser nada, nem saber que teve. Para os 15%, 20%, tem que tomar cuidado" - Jair Bolsonaro
+
+https://www.mundodoshackers.com.br/como-conseguir-o-ip-de-alguem
+https://iplogger.org/
+
+# Plataforma de Lançamento Gerenciador de Ponto Eletrônico - PLGPEL
+
+	+ Funcionalidades
+
+		-> Manter Registro de Ponto Eletrônico
+		-> Manter Contrato de Trabalho
+		-> Manter Painel Principal
+		-> Manter Registro de Marcação de Ponto Eletrônico
+		-> Manter Relatórios
+			- Ajuste de Marcação
+			- Saldo de Banco de Horas
+			- Planejamento de Compensação
+			- Saldos a Vencer
+			- Cartão de Ponto Eletrônico
+		-> Manter Ajustes de Marcação
+		-> Manter Notificações
+			- Lembretes de marcação de Ponto Eletrônico
+			- Lembretes do inicio do período de ajustes
+			- Lembretes de marcação não homologadas 
+
+	+ Desafios
+
+		-> Importar dados arquivo (Norber)
+		-> Exportar dados para PDF
+		-> Criar Robo para marcação automática de ponto eletronico (Norber)
+		-> Envio de e-mail automático
+	
+	+ Modelagem de Dados
+
+		+ Tabelas
+
+			TB_REGISTRO_PONTO_ELETRONICO
+				CODIGO
+				ID_DOCUMENTO
+				DATA_REGISTRO
+				ENTRADA_I
+				SAIDA_I
+				ENTRADA_II
+				SAIDA_II
+				SALDO_EXPEDIENTE
+				SALDO_TOTAL
+				OBSERVACAO
+
+	+ Prototipação
+
+		+ Prototipar a tela de Registro de Usuário
+		+ Prototipar a tela de Login
+		+ Prototipar a tela de Demonstrativo
+		+ Prototipar a tela de Registro de Ponto Eletrônico
+
+	+ Implementar Protótipos
+
+# Plataforma de Lançamento - Gerenciador Financeiro Domiciliar - PLGFDO
+
+	+ Funcionalidades
+
+	+ Desafios
+
+	+ Integrações
+
+# PLGFDO - Modelagem de dados
+
+	+ Funcionalidade - Gerenciador de Transferências Bancárias
+
+		- TB_TRANSFERENCIA_BANCARIA
+
+			CODIGO
+			ID_INSTITUICAO_FINANCEIRA
+			ID_FAVORECIDO (pessoa física)
+			ID_TIPO_TRANSFERENCIA (se for ted ou doc)
+			ID_AGENDAMENTO_TRANSFERENCIA (define a data e hora da transferencia)
+			ID_DOCUMENTO (identificador do serviço de documento. Documento anexo da transferencia)
+			IDENTIFICADOR_TRANSFERENCIA
+			DATA_TRANSFERENCIA (data e hora da transferencia)
+			VALOR_TRANSFERENCIA
+			
+		- TB_TRANSFERENCIA_BANCARIA
+
+			CODIGO:							000001					
+			ID_INSTITUICAO_FINANCEIRA:		000001 - BANCO SANTANDER DO BRASIL
+			ID_FAVORECIDO:					000001 - EDSON CUTRIM MENDANHA
+			ID_TIPO_TRANSFERENCIA:			000001 - TED (TRANSFERENCIA ELETRONICA DISPONÍVEL)	
+			ID_AGENDAMENTO_TRANSFERENCIA:   
+			IDENTIFICADOR_TRANSFERENCIA:    TRANSFERENCIA_BANCARIA_20200507172700_<ID_BANCO_DESTINO>_<ID_FAVORECIDO>
+			DATA_TRANSFERENCIA:     		07/05/2020 ÁS 17:02:35
+			VALOR_TRANSFERENCIA:			R$ 150,00
+
+			CODIGO:							000002					
+			ID_INSTITUICAO_FINANCEIRA:		000002 - BANCO DO BRASIL
+			ID_FAVORECIDO:					000002 - JAMILLE BATISTA ALVES
+			ID_TIPO_TRANSFERENCIA:			000002 - DOC (TRANSFERENCIA ELETRONICA DISPONÍVEL)	
+			ID_AGENDAMENTO_TRANSFERENCIA:   
+			IDENTIFICADOR_TRANSFERENCIA:    TRANSFERENCIA_BANCARIA_20200507172700_<ID_BANCO_DESTINO>_<ID_FAVORECIDO>
+			DATA_TRANSFERENCIA:     		07/05/2020 ÁS 17:34:23
+			VALOR_TRANSFERENCIA:			R$ 3.000,00
+
+	+ Funcionalidade - Gerenciador de ...
+
+# Frases
+
+	Professor Abideno GusLisboa
+
+	O especialista e aquele que estuda cada vez mais sobre cada vez menos sobre quase tudo (por que ninguem sabe tudo), sobre quase nada
+
+# Instalar PostgreSQL 12 (Linux Derbian)
+
+	Criar arquivo no endereço "/etc/apt/sources.list.d/pgdg.list" com o conteúdo:
+
+		deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main
+	
+	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+    
+    sudo apt-get update
+
+    sudo apt-get install postgresql-12
+
+    dpkg --get-selections | grep postgres
+
+# Acessar PostgreSQL pelo terminal
