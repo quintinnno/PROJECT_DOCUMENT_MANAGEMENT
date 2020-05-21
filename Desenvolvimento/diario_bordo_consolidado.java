@@ -59589,4 +59589,24 @@ RepositorioModeloEmail -> consultarModelosPorTipo()
 
   # Demandas
 
-  #
+# Auxilio Emergencia Renata
+    365161
+
+# Árabe 
+
+    A: "Mabruk" (Parabéns)
+    B (masculino): "Allah iberik fik" (Que D-S que nos abençoe com sua presença)
+
+    B (feminino): "Allah iberik fiki" (Que D-S que nos abençoe com sua presença)
+
+    B: "Shukran" (Obrigado)
+
+    Galvanizar (gauvanize) - 
+    Exíguo (exíguo de suas manifestações verbais) - 
+    Ixido - Saudável
+
+# Chave de recuperação Megaupload
+
+    82IrAodBy5FN0-1K_hB97g
+    
+# 
