@@ -59464,7 +59464,8 @@ https://iplogger.org/
 
     + COMMIT
 
-      [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+      [REDMINE-17525] Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+
       [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -59571,4 +59572,21 @@ RepositorioModeloEmail -> consultarModelosPorTipo()
 
   Estamos com problemas ao realizar a notificações. O sistema não está enviando os e-mails. Agora a pouco pedimos para o GCM reiniciar o servido, mas o problema permanece.
 
-#
+# CAPES
+
+  - https://redmine.capes.gov.br/issues/14098
+
+
+-> Corrigir esso ao pesquisar um quesiotnaior em uma determinada Notificação o sistema apresenta erro desconhecido
+
+  Questionario 22/05
+
+-> Modelo de E-mail Externo
+
+-> Bancos e schemas que o Questionário acessam tabela
+
+# SPRINT 27 (DD/MM/2020 à DD/MM/2020)
+
+  # Demandas
+
+  #
