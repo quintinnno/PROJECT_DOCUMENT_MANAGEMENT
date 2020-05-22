@@ -58877,7 +58877,7 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
 
   > Marcação de férias realizada em 16/04/2020, com prazo de 15 dias, com inicio em 29/09/2020.
 
-# MUSIC
+# MUSIC - ITA OMRYH
 
   Ynta Omryh
 
@@ -59026,6 +59026,91 @@ https://redmine.capes.gov.br/projects/questionariocapes/issues?utf8=%E2%9C%93&se
   Yntah Yntah
   Yntah Omry
 
+# MUSIC - WAY LIH
+
+  Way Lih
+
+  Kol ha-laila
+  Hitbal-balti
+  Vehaya li meuleh
+  Yesh akhat
+  Amra li - Albih
+  Va-ani ragish lezeh
+
+  Ktsat shatiti
+  Ve-ala lih
+  Od akhat hitlahavah
+  Yesh li khavera ba-bait
+  Lo rotseh
+  Af be-aiyah
+
+  Wai li Wai li Wai li
+  Ha-balagan haze shelih
+  Ha-isha sham-ah hakol
+  Vekhusalti-kmo gadol
+
+  Kholeh, kholeh, kholeh
+  Att ossa otti kholeh
+  Ohev et hayalda
+  Lo rotse lifgoah bah
+
+  (Wai li wai li wai li
+  Habalagan haze sheli
+  Ha-isha sham-ah hakol
+  Vekhusalti-kmo gadol
+  Wai li wai li wai li)
+
+  Mabatim affim halaila
+  Vehakhom kan oleh
+  Ba-al-habait hishtage-a
+  Kol hamoadon maleh
+
+  Bakhurot hen sug shel geza
+  Mashu meiyukhad kaze
+  Mefatot otkha berega
+  Ekh efshar latset mize?
+
+  Wai li wai li wai li
+  Habalagan haze sheli
+  Ha-isha sham-ah hakol
+  Vekhusalti-kmo gadol
+
+  Kholeh, kholeh, kholeh
+  Att ossa otti kholeh
+  Ohev et hayalda
+  Lo rotse lifgoa ba
+  Wai li wai li wai li...
+
+  Shum isha lo mitkhashevet
+  Yesh li lev adin (ken)
+  Ani mevakesh izvuni
+  Od me-at gam mitkhanen
+
+  Al na tishlekhi yadaim
+  Ani mevakesh yaffe
+  (Yesh lo khavera babait)
+  Rak itta ani eheye...
+
+  Eheye, eheye, eheye
+  Rak itta ani eheye
+  Hi bona al khatuna
+  Va-ani ohev ottah
+  Wai li wai li wai li
+
+  Habalagan haze sheli
+  Ha-isha sham-ah hakol
+  Vekhusalti kmo gadol
+
+  (Wai li wai li wai li
+  Habalagan haze sheli
+  Ha-isha sham-ah hakol
+  Vekhusalti kmo gadol)
+
+  Wai li wai li wai li
+
+  https://lyricstranslate.com/en/wai-li-%D7%95%D7%95%D7%90%D7%99-%D7%9C%D7%99-wai-li.html
+  https://lyricstranslate.com
+
 #
 
   Oiee
@@ -59158,27 +59243,27 @@ h4. %{color:blue}Correção%
       [FINALIZADO] https://gestao.capes.gov.br/chamados.php/Chamado/visualizarChamado/id/20191227000032 -- Notificação de Duplicidade
 
 # CONFIGURAR CHECK POINT
-    
+
     -- Instalar dependencias
         sudo apt-get install libnss3-tools
         sudo apt-get install openssl
         sudo apt-get install xterm
-        sudo apt-get install libpam0g:i386 
-        sudo apt-get install libx11-6:i386 
-        sudo apt-get install libstdc++6:i386 
+        sudo apt-get install libpam0g:i386
+        sudo apt-get install libx11-6:i386
+        sudo apt-get install libstdc++6:i386
         sudo apt-get install libstdc++5:i386
-    
+
 # REMOVER JAVA ORACLE
-    
+
     -- Links para exclusão do Java
     sudo update-alternatives --display java
-    
+
     -- Excluir item a item
     sudo update-alternatives --remove "java" "/usr/lib/jvm/1.8.0_202/bin/java"
-    
+
     sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
     sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
-    
+
 # INSTALAR JAVA (via ASDF)
 
   java -version
@@ -59187,8 +59272,8 @@ h4. %{color:blue}Correção%
   asdf list java
   asdf list all java
   asdf install java adopt-openjdk-8u202-b08
-  
-# 
+
+#
 [DOCUMENTACAO] [REDMINE-15006] Adequar funcionamento (query + quantidade + paginação)
       [DOCUMENTACAO] [REDMINE-14896] Remove autenticação dos serviços de Resposta para viabilizar o teste de performance
       [DOCUMENTACAO] [REDMINE-16507] [GESTAO-20191016000022] Habilitar acesso ao Banco de Dados ao schema "PROCESSO"
@@ -59260,7 +59345,7 @@ https://iplogger.org/
 		-> Manter Notificações
 			- Lembretes de marcação de Ponto Eletrônico
 			- Lembretes do inicio do período de ajustes
-			- Lembretes de marcação não homologadas 
+			- Lembretes de marcação não homologadas
 
 	+ Desafios
 
@@ -59268,7 +59353,7 @@ https://iplogger.org/
 		-> Exportar dados para PDF
 		-> Criar Robo para marcação automática de ponto eletronico (Norber)
 		-> Envio de e-mail automático
-	
+
 	+ Modelagem de Dados
 
 		+ Tabelas
@@ -59317,23 +59402,23 @@ https://iplogger.org/
 			IDENTIFICADOR_TRANSFERENCIA
 			DATA_TRANSFERENCIA (data e hora da transferencia)
 			VALOR_TRANSFERENCIA
-			
+
 		- TB_TRANSFERENCIA_BANCARIA
 
-			CODIGO:							000001					
+			CODIGO:							000001
 			ID_INSTITUICAO_FINANCEIRA:		000001 - BANCO SANTANDER DO BRASIL
 			ID_FAVORECIDO:					000001 - EDSON CUTRIM MENDANHA
-			ID_TIPO_TRANSFERENCIA:			000001 - TED (TRANSFERENCIA ELETRONICA DISPONÍVEL)	
-			ID_AGENDAMENTO_TRANSFERENCIA:   
+			ID_TIPO_TRANSFERENCIA:			000001 - TED (TRANSFERENCIA ELETRONICA DISPONÍVEL)
+			ID_AGENDAMENTO_TRANSFERENCIA:
 			IDENTIFICADOR_TRANSFERENCIA:    TRANSFERENCIA_BANCARIA_20200507172700_<ID_BANCO_DESTINO>_<ID_FAVORECIDO>
 			DATA_TRANSFERENCIA:     		07/05/2020 ÁS 17:02:35
 			VALOR_TRANSFERENCIA:			R$ 150,00
 
-			CODIGO:							000002					
+			CODIGO:							000002
 			ID_INSTITUICAO_FINANCEIRA:		000002 - BANCO DO BRASIL
 			ID_FAVORECIDO:					000002 - JAMILLE BATISTA ALVES
-			ID_TIPO_TRANSFERENCIA:			000002 - DOC (TRANSFERENCIA ELETRONICA DISPONÍVEL)	
-			ID_AGENDAMENTO_TRANSFERENCIA:   
+			ID_TIPO_TRANSFERENCIA:			000002 - DOC (TRANSFERENCIA ELETRONICA DISPONÍVEL)
+			ID_AGENDAMENTO_TRANSFERENCIA:
 			IDENTIFICADOR_TRANSFERENCIA:    TRANSFERENCIA_BANCARIA_20200507172700_<ID_BANCO_DESTINO>_<ID_FAVORECIDO>
 			DATA_TRANSFERENCIA:     		07/05/2020 ÁS 17:34:23
 			VALOR_TRANSFERENCIA:			R$ 3.000,00
@@ -59351,9 +59436,9 @@ https://iplogger.org/
 	Criar arquivo no endereço "/etc/apt/sources.list.d/pgdg.list" com o conteúdo:
 
 		deb http://apt.postgresql.org/pub/repos/apt/ buster-pgdg main
-	
+
 	wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-    
+
     sudo apt-get update
 
     sudo apt-get install postgresql-12
@@ -59465,6 +59550,7 @@ https://iplogger.org/
     + COMMIT
 
       [REDMINE-17525] Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+      [REDMINE-22789] Notificações - Erro na Pesquisa
 
       [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
       [REDMINE-XXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -59585,9 +59671,42 @@ RepositorioModeloEmail -> consultarModelosPorTipo()
 
 -> Bancos e schemas que o Questionário acessam tabela
 
-# SPRINT 27 (DD/MM/2020 à DD/MM/2020)
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# SPRINT 26 (DD/MM/2020 à DD/MM/2020)
 
-  # Demandas
+  + DEMANDAS
+
+    [FINALIZADO] https://redmine.capes.gov.br/issues/17525 - Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+    [FINALIZADO] https://redmine.capes.gov.br/issues/22789 - Erro ao pesquisar questionarios na funcionalidade de Notificacao
+
+  + COMMIT
+
+    [REDMINE-17525] Sistema não está limitando o acesso de funcionalidades de acordo com a Unidade Organizacional
+    [REDMINE-22789] Notificações - Erro na Pesquisa
+
+  + MENSAGEM
+
+          h4. %{color:blue}Correção%
+
+          * Segue para *%{color:blue}Teste Interno%*.
+
+  + DOCUMENTACAO
+
+    [DOCUMENTACAO] [REDMINE-XXXXXX] [GESTAO-XXXXXXXXXXXXXX] XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+# COMMITAR ALTERAÇÕES DO PLDOC
+
+  cd Versionamento/PLDOC/PROJECT_DOCUMENT_MANAGEMENT/
+  git add *
+  git commit -m "[Plataforma de Lançamento Documental]"
+  git push
+  (repository.desenvolvimento@gmail.com)
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Auxilio Emergencia Renata
     365161
@@ -59610,3 +59729,5 @@ RepositorioModeloEmail -> consultarModelosPorTipo()
     82IrAodBy5FN0-1K_hB97g
     
 # 
+
+
