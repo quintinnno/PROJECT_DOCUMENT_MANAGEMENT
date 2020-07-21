@@ -46038,6 +46038,10 @@ PREENCHIMENTO: ABERTO
 EMAIL: pnascimento@indracompany.com
 SENHA:
 
+Login: 89577337368
+Nome: SEBASTIANA PEREIRA BRITO
+Senha: rp7c7r
+
 
 SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 3200968 AND ID_QUESTIONARIO = 97;
 SELECT COUNT(*) FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PESSOA = 3183679 AND ID_QUESTIONARIO = 97;
@@ -55868,6 +55872,27 @@ SELECT * FROM QUESTIONARIO.ALTERNATIVA WHERE ID_PERGUNTA = 1801;
 
 SELECT * FROM DOC.DOCUMENTO WHERE NM_ARQUIVO = 'E-mail enviado ao cliente.pdf';
 
+# DESENVOLVIMENTO
+
+SELECT * FROM QUESTIONARIO.QUESTIONARIO WHERE NM_QUESTIONARIO LIKE '%Questionário 07/07/2020 (QC) (Fonte de Dados) (Identificador Obrigatório) v005%';
+SELECT * FROM QUESTIONARIO.PERGUNTA WHERE ID_QUESTIONARIO = 149 AND ID_TIPO_PERGUNTA = 5;
+SELECT * FROM QUESTIONARIO.ALTERNATIVA WHERE ID_PERGUNTA IN(1889,1890,1891,1892,1893);
+SELECT * FROM QUESTIONARIO.RESPOSTA WHERE ID_PERGUNTA IN(1889,1890,1891,1892,1893);
+SELECT * FROM QUESTIONARIO.ALTERNATIVA WHERE ID_DOCUMENTO = 1502070;
+SELECT * FROM QUESTIONARIO.PREENCHIMENTO WHERE ID_PREENCHIMENTO = 1149534;
+SELECT * FROM QUESTIONARIO.RESPOSTA WHERE ID_PREENCHIMENTO = 1149534;
+SELECT * FROM QUESTIONARIO.RESPOSTA WHERE ID_RESPOSTA = 10505859;
+
+SELECT ID_ALTERNATIVA,
+	   ID_PERGUNTA,
+	   ID_DOCUMENTO,
+	   NR_ORDEM,
+	   DS_USUARIO_ULTIMA_ALTERACAO,
+	   DH_ULTIMA_ALTERACAO
+FROM QUESTIONARIO.ALTERNATIVA 
+WHERE ID_PERGUNTA = 1893
+AND ID_ALTERNATIVA = 5630;
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 https://stackoverflow.com/questions/49649394/getting-different-session-ids-in-servlet-dofilter-and-spring-securitys-applica
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
@@ -59982,7 +60007,19 @@ RepositorioModeloEmail -> consultarModelosPorTipo()
     82IrAodBy5FN0-1K_hB97g
 
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+                                                                                                                                        
+Nome:               Questionários - Desenvolvimento (http://des.capes.gov.br/questionario-capes)
+Host:               exafcw-scan2.br1.ocm.s7186966.oraclecloudatcustomer.com
+Name database:      dsnv_dr
+Username:           webquestionario
+Password:           WebQuest321
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+proxyweb.capes.gov.br 8080
+proxyweb.capes.gov.br 8080
+proxyweb.capes.gov.br 8080
+proxyweb.capes.gov.br 8080
+localhost, 127.0.0.0/8, ::1
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
