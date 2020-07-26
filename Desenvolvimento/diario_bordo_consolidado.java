@@ -2987,6 +2987,11 @@ git push --set-upstream origin MACS1000
             -- URL
                 https://github.com/repositoryproduction/project_plataforma_lancamento_financeiro.git
 
+        -- Plataforma de Lançamento - Blog Pessoal
+
+            -- URL
+                https://github.com/palladhium/PLBLOG.git
+                
 ---------------------------------------------------------------------
 # PROCEDIMENTOS RABBIT SVN
 ---------------------------------------------------------------------
