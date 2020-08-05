@@ -1661,7 +1661,7 @@ http://www.programmersought.com/article/74371531952/
         - cd ~
         - ls .bashrc
         - nano .bashrc
-            export JAVA_HOME=/opt/java/jdk1.8.0_201/bin
+            export JAVA_HOME=/opt/java/jdk1.8.0_241/bin
             export PATH=$JAVA_HOME/bin:$PATH
         - $JAVA_HOME
         - $PATH
@@ -1683,8 +1683,8 @@ http://www.programmersought.com/article/74371531952/
         sudo rm -rf linuxuprising-ubuntu-java-bionic.list
         sudo rm -rf linuxuprising-ubuntu-java-bionic.list.save
 
-        sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
-        sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+        sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_241/bin/java" 1
+        sudo update-alternatives --set java /opt/java/jdk1.8.0_241/bin/java
 
     ## INSTALAR JAVA DA ORACLE PELO ARQUIVO
 
@@ -1693,8 +1693,8 @@ http://www.programmersought.com/article/74371531952/
         $ tar -zxvf jdk-
         $ sudo mkdir -p /opt/java
         $ sudo mv jdk1.8.0_201 /opt/java
-        $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
-        $ sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+        $ sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_241/bin/java" 1
+        $ sudo update-alternatives --set java /opt/java/jdk1.8.0_241/bin/java
         $ java -version
 
     ## INSTALAR JAVA (ORACLE)
@@ -60296,8 +60296,8 @@ h4. %{color:blue}Correção%
     -- Excluir item a item
     sudo update-alternatives --remove "java" "/usr/lib/jvm/1.8.0_202/bin/java"
 
-    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
-    sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_241/bin/java" 1
+    sudo update-alternatives --set java /opt/java/jdk1.8.0_241/bin/java
 
 # INSTALAR JAVA (via ASDF)
 
@@ -60536,8 +60536,8 @@ https://iplogger.org/
     -- Excluir item a item
     sudo update-alternatives --remove "java" "/usr/lib/jvm/1.8.0_202/bin/java"
 
-    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_201/bin/java" 1
-    sudo update-alternatives --set java /opt/java/jdk1.8.0_201/bin/java
+    sudo update-alternatives --install "/usr/bin/java" "java" "/opt/java/jdk1.8.0_241/bin/java" 1
+    sudo update-alternatives --set java /opt/java/jdk1.8.0_241/bin/java
 
 # INSTALAR JAVA (via ASDF)
 
@@ -60817,7 +60817,106 @@ https://www.magnetdl.cc/details/e4c2bfd70145ffa81839764dfd7978f917c933fe
 -- Angular 4, REST e Spring Boot - Algaworks.rar
 https://www.magnetdl.cc/details/926fa0673fc1124fbff9b2f28211a9ab17d6ed62
 
+-- IDEA IntelliJ
+https://ftuapps.dev/jetbrains-intellij-idea-2020-1-build-201-6668-121-win-macos-linux-crack-145345/
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
+# INSTALAR NODE NO DEEPIN
+
+sudo curl https://raw.githubusercontent.com/creationix/nvm/master/install.sh | bash
+
+source ~/.profile 
+source ~/.bashrc
+
+nvm ls-remote
+
+nvm install v12.18.2
+
+nvm list
+
+nvm use v12.18.2
+
+node --version
+
+nvm list
+
+nvm uninstall v4.9.1
+
+Fonte: https://tecadmin.net/install-nodejs-with-nvm/
+
+npm install -g nodemon
+npm install --save-dev nodemon
+
+npm install -g live-server
+
+-- Realizar merge da codificação da branch PLFIND-20191226233641 para a master
+
+git checkout master
+git fetch
+git pull
+git merge PLBLOG-50351020200628
+git push origin master
+(palladhium)
+
+
+-- Criar nova branch
+git checkout master
+git fetch
+git pull
+git checkout -b PLFIND-20200405223242
+
+git add * -f
+git commit -m "[PLPOE-20190926235711]" -m "- Implementar Recuperação do Registro de Ponto Eletrônico via Banco de Dados" -m "- Alterar mapeamento do pacote de 'br.plataformalancamento.pontoeletronico.Entity' para 'br.plataformalancamento.pontoeletronico.model'" -m "- Alterar mapeamento da classe 'PontoEletronicoModel'" -m "- Alterar nome da classe de 'PontoEletronicoEntity' para 'PontoEletronicoModel'"
+git push --set-upstream origin PLFIND-20200405223242
+(palladhium)
+
+# CL_ARTIGO -- Collenction Artigo
+
+CL_ARTIGO {
+	CODIGO 
+	TITULO
+	CONTEUDO
+	DATA_PUBLICACAO
+	AUTOR
+}
+
+Utilizar o MLAB (Serviço online gratuito)
+Usar Moongo localhost
+
+# Investigar funcionamento do MongoDB via Shell
+
+PLBLOG-API-25302120200727
+
+- Instalação da dependência Mongoose
+- Implementação do schema ArtigoModel
+- Implementação do schema UsuarioModel
+
+Instalar MongoDB linux (Deepin 20)
+
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4
+echo "deb http://repo.mongodb.org/apt/debian stretch/mongodb-org/4.0 main" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list
+sudo apt-get update
+sudo apt-get install mongodb-org -y
+sudo service mongodb start
+
+mongo "mongodb+srv://plblog.peuku.mongodb.net/PLBLOG" --username josequintino
+
+[{
+  "titulo": "Titulo 2020 v1",
+  "conteudo": "Artigo 2020 v1",
+  "autor": "José Quintino"
+}]
+
+-- Treinamento: API NodeJS + Express + Mongo
+https://www.youtube.com/watch?v=BN_8bCfVp88&list=PL85ITvJ7FLoiXVwHXeOsOuVppGbBzo2dp
+
+-- Treinamento: Mongodb + NodeJS + AngularJS
+https://www.youtube.com/watch?v=TGPhVOqgQwg
+
+-- Veririficar quais portas ocupadas
+sudo lsof -i :3000
+kill -9 {PID}
+
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
 ﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿﻿
